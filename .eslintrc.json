@@ -1,0 +1,144 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "plugins": [
+    "react",
+    "mocha",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "@typescript-eslint/indent": ["error", 2],
+    "arrow-parens": [
+      "warn",
+      "always"
+    ],
+    "class-methods-use-this": "off",
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "never"
+      }
+    ],
+    "consistent-return": "off",
+    "func-names": [
+      "warn",
+      "as-needed"
+    ],
+    "id-length": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ], 
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "assert": "either"
+      }
+    ],
+    "jsx-a11y/label-has-for": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 80,
+        "ignoreComments": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreUrls": true,
+        "ignoreRegExpLiterals": true,
+        "tabWidth": 2
+      }
+    ],
+    "max-params": [
+      "warn",
+      { 
+        "max": 3
+      }
+    ],
+    "mocha/no-exclusive-tests": "error",
+    "mocha/no-mocha-arrows": "error",
+    "mocha/no-pending-tests": "warn",
+    "mocha/no-skipped-tests": "warn",
+    "no-console": "off",
+    "no-plusplus": [
+      "warn", {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "no-underscore-dangle": "off",
+    "prefer-arrow-callback": 0,
+    "mocha/prefer-arrow-callback": 2,
+    "prefer-template": "off",
+    "prefer-destructuring": [
+      "error",
+      {
+        "VariableDeclarator": {
+         "array": false,
+         "object": true
+        },
+        "AssignmentExpression": {
+          "array": false,
+          "object": true
+        }
+      },
+      {
+        "enforceForRenamedProperties": false
+      }
+    ],
+    "radix": "off",
+    "react/destructuring-assignment": [
+      "error",
+      "always",
+      {
+        "ignoreClassFields": true
+      }
+    ],
+    "react/forbid-prop-types": [
+      "error", 
+      {
+        "forbid": [
+          "any",
+          "array"
+        ]
+      }
+    ],
+    "react/jsx-filename-extension": "off",
+    "react/no-did-update-set-state": "warn",
+    "react/prefer-stateless-function": "off",
+    "react/prop-types": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/**/*"
+      ],
+      "rules": {
+        "func-names": 0,
+        "@typescript-eslint/explicit-function-return-type": 0,
+        "@typescript-eslint/no-object-literal-type-assertion": 0
+      }
+    }
+  ]
+}

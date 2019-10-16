@@ -1,0 +1,5 @@
+node_modules/
+build/
+docs/
+**/*.test.js.snap
+**/*.test.tpl.js
