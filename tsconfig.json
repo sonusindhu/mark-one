@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "ES6",
+    "sourceMap": true,
+    "outDir": "./lib",
+    "baseUrl": "./src",
+    "incremental": true,
+    "paths": {
+      "testData": [
+        "/__tests__/data/index.ts"
+      ],
+      "mark-one/*": [
+        "src/*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "webpackfile.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib"
+  ]
+}
