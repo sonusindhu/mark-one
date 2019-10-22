@@ -4,9 +4,9 @@ const webpack = require('webpack');
 const TSConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
-  name: 'client',
-  modei: 'none',
-  entry: ['./src/client/index.ts'],
+  name: 'styleguide',
+  mode: 'none',
+  entry: ['./src/index.ts'],
   output: {
     path: path.resolve(__dirname, 'build/static'),
     filename: 'app.js',
