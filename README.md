@@ -2,9 +2,31 @@
 
 A React UI library in development at the Harvard John A. Paulson School of Engineering and Applied Sciences.
 
+## Installing
+
+> Project is unpublished, so this will not work yet
+
+Mark One can be installed from NPM:
+
+```
+npm install mark-one
+```
+
+Components can be imported and used individually in projects.
+
+```jsx
+import { BasicButton } from 'mark-one'
+
+export default () => (
+  <BasicButton>
+    Click Me!
+  </BasicButton>
+)
+```
+
 ## Structure
 
-All components are under the `./src` directory, broken into subdirectorie by category. Tests live alongside the code in `__tests__` directories.
+All components are defined under the `./src` directory, divided into subdirectories by category. Tests live alongside the code in `__tests__` directories.
 
 ### Buttons
 
@@ -28,9 +50,9 @@ High-level page structure components, including headers, modals, etc.
 
 ## Adding Components
 
-See `CONTRIBUTING.MD`
+Guidelines for adding components are defined in [`CONTRIBUTING.MD`](CONTRIBUTING.MD)
 
 ## Documentation
 
-We're using [React Styleguidist](https://react-styleguidist.js.org/) to generate our documentation. Run `npm run build` to see the docs.
+We're using [React Styleguidist](https://react-styleguidist.js.org/) to generate our documentation.
 
