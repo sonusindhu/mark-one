@@ -1,24 +1,26 @@
 # Adding Components to the Library
 
-## Style
+## Code Style
 
-The component should be the default export of the file.
+Each file should contain only one component, and that component should be the default export of the file.
 
-Prefer stateless functional components wherever possible, using [hooks](https://reactjs.org/docs/hooks-reference.html) to manage state if necessary.
+Components should be re-exported from the `index.ts` file in its directory.
 
-All components should pass eslint rules defined in .eslintrc.json. Check with `npm run lint`.
+Prefer functional components wherever possible, using [hooks](https://reactjs.org/docs/hooks-reference.html) to manage state if necessary.
 
-Use [`styled-components`](https://www.styled-components.com/) to apply css styles to components.
+All components should conform to eslint rules defined in `.eslintrc.json`. Check code with `npm run lint`.
 
-Use constants for colors, spacing, borders, etc. These can be found at `TKTKTKTKTK`
+## Styled Components
 
-Make sure the add the component to the `index.ts` file in its directory to ensure that it is re-exported correctly.
+We're using [`styled-components`](https://www.styled-components.com/) to apply css styles to components.
+
+Values for colors, spacing, text sizes/styles, etc. should be defined as part of [the global theme](https://www.styled-components.com/docs/advanced#theming) in `src/Theme/BaseTheme.ts`
 
 ## Typescript
 
 All components in the library should be written in Typescript with the `.tsx` extension.
 
-All props for each component should be defined in an interface, which should be exported alongside the component.
+Props for each component should be defined in an interface, which should be a named export alongside the component.
 
 You can check your typing by running `npm run typecheck`
 
@@ -26,25 +28,28 @@ You can check your typing by running `npm run typecheck`
 
 We're using [`mocha`](https://mochajs.org/) and [`testing-library/react`](https://testing-library.com/docs/react-testing-library/intro) to test components. 
 
-Component tests should ensure that any conditional rendering logic works as expected, and that any handlers or orther efined behaviors run when expected.
+- `npm run test` will run the test suite once and print a coverage report.
+- `npm run test:watch` will watch the src directory and re-run tests on changes, without a coverage report.
+
+Component tests should ensure that any conditional rendering logic works as expected, and that handlers/behaviors run in the expected situations.
 
 Tests should be written in a file called `__tests__/Component.test.ts` alongside the component.
 
-## Styleguide
+## Documentation
 
-[React Styleguidist](https://react-styleguidist.js.org) can be used to demo and develop components.
+[React Styleguidist](https://react-styleguidist.js.org) is used to create documentation.
 
-- Use `npm run start` to bring up the hot-reloading dev server
+- `npm run start` will bring up a hot-reloading dev server during development.
 
-- Use `npm run build` to generate static html documentation
+- `npm run build` will generate static html documentation.
 
 In your component file, you can add additional context to your props interface by adding `/** jsdoc-style comments */` above the fields.
 
-Additional details about the component should be added above the component definition in a docblock.
-
-### Example:
+Additional details about the component should be added above the component definition in a docblock. For example:
 
 ```jsx
+// src/demo/Test.tsx
+
 import React, {ReactChildren} from 'react';
 
 export interface ITestProps {
@@ -67,24 +72,27 @@ const Test = (props: ITestProps) => (
 export default Test;
 ```
 
-To render your component in styleguidist, you'll need to create an accompanying example file under the top-level `examples` directory. 
+## Component Examples
 
-This file should replicate the sub-directory structure of the `src` directory, with a `.md` extension. (e.g. `src/buttons/TestButton.tsx` would have an example file of `src/buttons/TestButton.md`)
+Styleguidist will also render usage examples for components, which can be helpful during development. 
 
-The example file can include fenced code blocks with a `jsx` type, which will render as a modifiable component in the documentation.
+You'll need to create an example file under the top-level `examples` directory for each component under `src`. This file should replicate the sub-directory structure of the `src` directory, with a `.md` extension. (e.g. `src/buttons/TestButton.tsx` would have an example file of `src/buttons/TestButton.md`)
 
-### Example
+The example file can use any valid markdown, and fenced code blocks with a `jsx` type will render as a modifiable component in the documentation.
 
-```
+
+```` markdown
+// examples/demo/Test.md
+
 Renders the children in a div, with an optional background color
 
-\`\`\`jsx
+``` jsx
 <Test color="#abcabc">Testing Color #abcabc</Test>
-\`\`\`
+```
 
 Testing another color
 
-\`\`\`jsx
+``` jsx
 <Test color="#fafafa">Testing color #fafafa</Test>
-\`\`\`
 ```
+````
