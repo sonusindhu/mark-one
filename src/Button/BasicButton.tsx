@@ -1,17 +1,19 @@
-import React, { FunctionComponent, MouseEventHandler, ReactNode, ReactElement } from 'react';
-import styled, { ThemeConsumer } from 'styled-components';
+import React, {
+  FunctionComponent, MouseEventHandler, ReactNode, ReactElement,
+} from 'react';
+import styled from 'styled-components';
 
 export interface ButtonProps {
   /** Text or components to be displayed on the button */
-  children?: ReactNode,
+  children?: ReactNode;
   /** Sets the class name of the element */
-  className?: string,
+  className?: string;
   /** Function to call on click event */
-  clickHandler: MouseEventHandler,
+  clickHandler: MouseEventHandler;
   /** If true, button won't fire */
-  disabled?: boolean,
+  disabled?: boolean;
   /** Allows you to pass in style properties for the element */
-  theme: object,
+  theme?: object;
 }
 
 const BasicButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
@@ -21,34 +23,32 @@ const BasicButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
     clickHandler,
     disabled,
     theme,
-  } = props
+  } = props;
   return (
-    <StyledButton 
-      onClick={ clickHandler } 
-      theme={ theme } 
-      className={ className } 
-      disabled={ disabled }>
+    <StyledButton
+      onClick={clickHandler}
+      theme={theme}
+      className={className}
+      disabled={disabled}
+    >
       { children }
     </StyledButton>
-  )
-}
+  );
+};
 
 BasicButton.defaultProps = {
   children: '',
   className: undefined,
   disabled: undefined,
-}
+};
 
-const StyledButton = styled.button.attrs(props => ({
-  className: props.className,
-  disabled: props.disabled,
-}))`
+const StyledButton = styled.button`
   cursor: pointer;
-  border: ${({theme}) => theme.border.light};
-  padding: ${({theme}) => theme.ws.xsmall + ' ' + theme.ws.small};
-  fontSize: ${({theme}) => theme.font.body.size};
-  fontWeight: ${({theme}) => theme.font.light};
-  color: ${({theme}) => theme.text.dark};
-`
+  border: ${({ theme }): string => (theme.border ? theme.border.light : '1px solid black')};
+  padding: ${({ theme }): string => (theme.ws ? theme.ws.xsmall + ' ' + theme.ws.small : '10px')};
+  fontSize: ${({ theme }): string => (theme.font ? theme.font.body.size : '12px')};
+  fontWeight: ${({ theme }): string => (theme.font ? theme.font.light : '200')};
+  color: ${({ theme }): string => (theme.text ? theme.text.dark : 'black')};
+`;
 
 export default BasicButton;
