@@ -50,7 +50,7 @@ High-level page structure components, including headers, modals, etc.
 
 ## Adding Components
 
-Guidelines for adding components are defined in [`CONTRIBUTING.MD`](CONTRIBUTING.MD)
+Guidelines for adding components are defined in [`CONTRIBUTING.md`](CONTRIBUTING.md)
 
 ## Documentation
 
