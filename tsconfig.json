@@ -8,6 +8,7 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "moduleResolution": "node",
     "target": "ES6",
     "sourceMap": true,
     "outDir": "./lib",
@@ -28,6 +29,7 @@
   ],
   "exclude": [
     "node_modules",
-    "lib"
+    "lib",
+    "**/*.test.ts"
   ]
 }

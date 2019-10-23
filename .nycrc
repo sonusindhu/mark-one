@@ -1,0 +1,15 @@
+{
+  "check-coverage": true,
+  "lines": 80,
+  "statements": 80,
+  "functions": 80,
+  "extends": "@istanbul/nyc-config-typescript",
+  "all": false,
+  "include": ["src/**/*"],
+  "exclude": ["src/**/__tests__/*"],
+  "extension": [".js", ".ts", ".tsx"],
+  "clean": true,
+  "instrument": true,
+  "sourceMap": true,
+  "reporter": "text"
+}
