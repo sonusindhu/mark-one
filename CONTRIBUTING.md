@@ -33,7 +33,7 @@ We're using [`mocha`](https://mochajs.org/) and [`testing-library/react`](https:
 
 Component tests should ensure that any conditional rendering logic works as expected, and that handlers/behaviors run in the expected situations.
 
-Tests should be written in a file called `__tests__/Component.test.ts` alongside the component.
+Tests should be written in a file called `__tests__/Component.test.tsx` within the same subdirectory as the component.
 
 ## Documentation
 
@@ -96,3 +96,21 @@ Testing another color
 <Test color="#fafafa">Testing color #fafafa</Test>
 ```
 ````
+
+## Folder Structure
+
+After adding your component, tests, and examples, your should have the following in your folder structure:
+
+```
+mark-one/
+├── examples/
+│   └── demo/
+│       └──TestComponent.md
+└── src/
+    ├── demo/
+    │   ├── __tests__/
+    |   │   └──TestComponent.test.tsx
+    │   ├──index.ts
+    │   └──TestComponent.tsx
+    └──index.ts
+```
