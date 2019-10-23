@@ -38,7 +38,7 @@ Tests should be written in a file called `__tests__/Component.test.ts` alongside
 
 - Use `npm run build` to generate static html documentation
 
-In your component file, you can add additional context to your props interface by adding `/** jsdoc-style comments */` above the fields (_note the double-asterisks on the comment opening_).
+In your component file, you can add additional context to your props interface by adding `/** jsdoc-style comments */` above the fields.
 
 Additional details about the component should be added above the component definition in a docblock.
 
