@@ -13,11 +13,26 @@ export interface ThemeWrapperProps {
  * use the theme should include the `useContext()` hook to grab it. e.g.:
  *
  * ```jsx
- * import { useContext } from 'react';
- * import { ThemeContext }  from 'styled-components';
- * ...
- *   const theme: MarkOneTheme = useContext(ThemeContext);
- * ...
+ * import React, { useContext, SFC, ReactElement } from 'react';
+ * import styled, { ThemeContext } from 'styled-components';
+ * import { BaseTheme } from 'mark-one';
+ *
+ * const TestComponent: SFC = (): ReactElement => {
+ *   const theme: BaseTheme = useContext(ThemeContext);
+ *
+ *   const DarkBackgroundDiv = styled.div`
+ *     background: ${({theme}) => theme.color.background.dark};
+ *   `
+ *
+ *   return (
+ *     <DarkBackgroundDiv>
+ *       This will have a dark background.
+ *     </DarkBackgroundDiv>
+ *   )
+ *
+ * };
+ *
+ * export default TestComponent;
  * ```
  */
 
