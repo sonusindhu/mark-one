@@ -1,11 +1,11 @@
 import React, {
-  FunctionComponent, MouseEventHandler, ReactChildren, ReactElement,
+  FunctionComponent, MouseEventHandler, ReactNode, ReactElement,
 } from 'react';
 import styled from 'styled-components';
 
 export interface ButtonProps {
   /** Text or components to be displayed on the button */
-  children?: ReactChildren;
+  children?: ReactNode;
   /** Sets the class name of the element */
   className?: string;
   /** Function to call on click event */
@@ -38,8 +38,6 @@ const BasicButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
 
 BasicButton.defaultProps = {
   children: '',
-  className: undefined,
-  disabled: undefined,
 };
 
 const StyledButton = styled.button`
