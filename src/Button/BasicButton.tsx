@@ -6,8 +6,6 @@ import styled from 'styled-components';
 export interface ButtonProps {
   /** Text or components to be displayed on the button */
   children?: ReactNode;
-  /** Sets the class name of the element */
-  className?: string;
   /** Function to call on click event */
   clickHandler: MouseEventHandler;
   /** If true, button won't fire */
@@ -19,7 +17,6 @@ export interface ButtonProps {
 const BasicButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
   const {
     children,
-    className,
     clickHandler,
     disabled,
     theme,
@@ -28,7 +25,6 @@ const BasicButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
     <StyledButton
       onClick={clickHandler}
       theme={theme}
-      className={className}
       disabled={disabled}
     >
       { children }
