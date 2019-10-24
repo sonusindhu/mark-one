@@ -21,7 +21,7 @@ describe('Basic Button', function () {
   it('renders', function () {
     getByText('Click You');
   });
-  it('calls the click handler', function () {
+  it('calls the click handler when clicked', function () {
     fireEvent.click(getByText('Click You'));
     assert.equal(clickSpy.callCount, 1);
   });
