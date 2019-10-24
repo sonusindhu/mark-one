@@ -14,6 +14,15 @@ export interface ButtonProps {
   theme?: object;
 }
 
+const StyledButton = styled.button`
+  cursor: pointer;
+  border: ${({ theme }): string => (theme.border ? theme.border.light : '1px solid black')};
+  padding: ${({ theme }): string => (theme.ws ? theme.ws.xsmall + ' ' + theme.ws.small : '10px')};
+  fontSize: ${({ theme }): string => (theme.font ? theme.font.body.size : '12px')};
+  fontWeight: ${({ theme }): string => (theme.font ? theme.font.light : '200')};
+  color: ${({ theme }): string => (theme.text ? theme.text.dark : 'black')};
+`;
+
 const BasicButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
   const {
     children,
@@ -35,14 +44,5 @@ const BasicButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
 BasicButton.defaultProps = {
   children: '',
 };
-
-const StyledButton = styled.button`
-  cursor: pointer;
-  border: ${({ theme }): string => (theme.border ? theme.border.light : '1px solid black')};
-  padding: ${({ theme }): string => (theme.ws ? theme.ws.xsmall + ' ' + theme.ws.small : '10px')};
-  fontSize: ${({ theme }): string => (theme.font ? theme.font.body.size : '12px')};
-  fontWeight: ${({ theme }): string => (theme.font ? theme.font.light : '200')};
-  color: ${({ theme }): string => (theme.text ? theme.text.dark : 'black')};
-`;
 
 export default BasicButton;
