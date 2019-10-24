@@ -49,29 +49,29 @@ const MarkOneTheme: BaseTheme = {
   color: {
     background: {
       light: COLOR.WHITE,
-      subtle: darken(0.1, COLOR.WHITE),
-      medium: darken(0.25, COLOR.WHITE),
-      dark: darken(0.6, COLOR.WHITE),
+      subtle: darken(0.03, COLOR.WHITE),
+      medium: darken(0.175, COLOR.WHITE),
+      dark: darken(0.535, COLOR.WHITE),
       darker: darken(0.75, COLOR.WHITE),
       accent: '#903030',
       info: {
         light: lighten(0.2, COLOR.BLUE),
         medium: COLOR.BLUE,
-        dark: darken(0.2, COLOR.BLUE),
+        dark: darken(0.1, COLOR.BLUE),
       },
       positive: {
-        light: lighten(0.2, COLOR.GREEN),
+        light: lighten(0.15, COLOR.GREEN),
         medium: COLOR.GREEN,
         dark: darken(0.2, COLOR.GREEN),
       },
       negative: {
-        light: lighten(0.2, COLOR.RED),
+        light: lighten(0.1, COLOR.RED),
         medium: COLOR.RED,
         dark: darken(0.2, COLOR.RED),
       },
     },
     text: {
-      light: lighten(0.75, COLOR.BLACK),
+      light: lighten(0.9, COLOR.BLACK),
       medium: lighten(0.35, COLOR.BLACK),
       dark: COLOR.BLACK,
       info: COLOR.BLUE,
@@ -113,8 +113,8 @@ const MarkOneTheme: BaseTheme = {
   },
   border: {
     hairline: `1px solid ${COLOR.BLACK}`,
-    light: `2px solid ${lighten(0.75, COLOR.BLACK)}`,
-    heavy: `6px solid ${lighten(0.25, COLOR.BLACK)}`,
+    light: `2px solid ${lighten(0.5, COLOR.BLACK)}`,
+    heavy: `6px solid ${lighten(0.3, COLOR.BLACK)}`,
   },
   ws: {
     zero: '0px',
