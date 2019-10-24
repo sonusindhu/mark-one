@@ -8,7 +8,8 @@ describe('Basic Button', function () {
   let getByText;
   let clickSpy;
   beforeEach(function () {
-    clickSpy = spy()({ getByText } = render(
+    clickSpy = spy();
+    ({ getByText } = render(
       <BasicButton clickHandler={clickSpy}>
         Click You
       </BasicButton>
