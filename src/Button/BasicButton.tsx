@@ -1,11 +1,11 @@
 import React, {
-  FunctionComponent, MouseEventHandler, ReactNode, ReactElement,
+  FunctionComponent, MouseEventHandler, ReactChildren, ReactElement,
 } from 'react';
 import styled from 'styled-components';
 
 export interface ButtonProps {
   /** Text or components to be displayed on the button */
-  children?: ReactNode;
+  children?: ReactChildren;
   /** Sets the class name of the element */
   className?: string;
   /** Function to call on click event */
