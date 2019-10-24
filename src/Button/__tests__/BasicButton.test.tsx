@@ -8,7 +8,11 @@ describe('Basic Button', function () {
   let getByText;
   let clickSpy;
   beforeEach(function () {
-    clickSpy = spy()({ getByText } = render(<BasicButton clickHandler={clickSpy}>Click You</BasicButton>));
+    clickSpy = spy()({ getByText } = render(
+      <BasicButton clickHandler={clickSpy}>
+        Click You
+      </BasicButton>
+    ));
   });
   afterEach(function () {
     clickSpy.resetHistory();
