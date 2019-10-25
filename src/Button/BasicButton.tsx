@@ -22,7 +22,7 @@ const StyledButton = styled.button`
   fontSize: ${({ theme }): string => (theme.font ? theme.font.body.size : '12px')};
   fontWeight: ${({ theme }): string => (theme.font ? theme.font.light : '200')};
   padding: ${({ theme }): string => (theme.ws ? theme.ws.xsmall + ' ' + theme.ws.small : '10px')};
-  &:hover{
+  &:hover {
     background: ${({ theme }): string => (theme.color ? theme.color.background.dark : 'gray')};
   }
 `;
