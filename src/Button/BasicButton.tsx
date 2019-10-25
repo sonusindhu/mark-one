@@ -19,8 +19,8 @@ const StyledButton = styled.button`
   border: ${({ theme }): string => (theme.border ? theme.border.light : '1px solid black')};
   color: ${({ theme }): string => (theme.text ? theme.text.dark : 'black')};
   cursor: pointer;
-  fontSize: ${({ theme }): string => (theme.font ? theme.font.body.size : '12px')};
-  fontWeight: ${({ theme }): string => (theme.font ? theme.font.light : '200')};
+  font-size: ${({ theme }): string => (theme.font ? theme.font.body.size : '12px')};
+  font-weight: ${({ theme }): string => (theme.font ? theme.font.light : '200')};
   padding: ${({ theme }): string => (theme.ws ? theme.ws.xsmall + ' ' + theme.ws.small : '10px')};
   &:hover {
     background: ${({ theme }): string => (theme.color ? theme.color.background.dark : 'gray')};
