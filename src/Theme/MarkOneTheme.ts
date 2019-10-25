@@ -28,24 +28,24 @@ export interface BaseTheme extends DefaultTheme {
   ws?: { [key: string]: string };
 }
 
-const COLOR = {
-  WHITE: '#ffffff',
-  BLACK: '#181818',
-  BLUE: '#0c6090',
-  GREEN: '#40DE40',
-  RED: '#ff4040',
-};
+enum COLOR {
+  WHITE = '#ffffff',
+  BLACK = '#181818',
+  BLUE = '#0c6090',
+  GREEN = '#40DE40',
+  RED = '#ff4040',
+}
 
-const FONT = {
-  SANS: '"Open Sans", sans-serif',
-  MONO: '"Roboto Mono", monospace',
-};
+enum FONT {
+  SANS = '"Open Sans", sans-serif',
+  MONO = '"Roboto Mono", monospace',
+}
 
-const WEIGHT = {
-  LIGHT: '300',
-  MEDIUM: '400',
-  BOLD: '600',
-};
+enum WEIGHT {
+  LIGHT = '300',
+  MEDIUM = '400',
+  BOLD = '600',
+}
 
 const MarkOneTheme: BaseTheme = {
   color: {
