@@ -9,17 +9,19 @@ type ColorRange = {
   [key: string]: string | ColorRange;
 }
 
+type FontSpec = {
+  family?: string;
+  size?: string;
+  weight?: string;
+}
+
 export interface BaseTheme extends DefaultTheme {
   color?: {
     background?: ColorRange;
     text?: ColorRange;
   };
   font?: {
-    [key: string]: {
-      family?: string;
-      size?: string;
-      weight?: string;
-    };
+    [key: string]: FontSpec;
   };
   shadow?: { [key: string]: string };
   border?: { [key: string]: string };
