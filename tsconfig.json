@@ -9,6 +9,16 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "target": "ES6",
+    "types": [
+      "jsdom",
+      "mocha",
+      "node",
+      "react",
+      "react-dom",
+      "sinon",
+      "styled-components",
+      "webpack"
+    ],
     "sourceMap": true,
     "outDir": "./lib",
     "baseUrl": "./src",
@@ -23,12 +33,9 @@
     }
   },
   "include": [
-    "src",
-    "webpackfile.js"
+    "src"
   ],
   "exclude": [
-    "node_modules",
-    "lib",
-    "**/*.test.ts"
+    "node_modules"
   ]
 }
