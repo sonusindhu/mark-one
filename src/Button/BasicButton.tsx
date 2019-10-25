@@ -15,12 +15,16 @@ export interface ButtonProps {
 }
 
 const StyledButton = styled.button`
-  cursor: pointer;
+  background: ${({ theme }): string => (theme.color ? theme.color.background.medium : 'gray')};
   border: ${({ theme }): string => (theme.border ? theme.border.light : '1px solid black')};
-  padding: ${({ theme }): string => (theme.ws ? theme.ws.xsmall + ' ' + theme.ws.small : '10px')};
+  color: ${({ theme }): string => (theme.text ? theme.text.dark : 'black')};
+  cursor: pointer;
   fontSize: ${({ theme }): string => (theme.font ? theme.font.body.size : '12px')};
   fontWeight: ${({ theme }): string => (theme.font ? theme.font.light : '200')};
-  color: ${({ theme }): string => (theme.text ? theme.text.dark : 'black')};
+  padding: ${({ theme }): string => (theme.ws ? theme.ws.xsmall + ' ' + theme.ws.small : '10px')};
+  &:hover{
+    background: ${({ theme }): string => (theme.color ? theme.color.background.dark : 'gray')};
+  }
 `;
 
 const BasicButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
