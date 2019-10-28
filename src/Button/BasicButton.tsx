@@ -18,7 +18,7 @@ export interface ButtonProps {
 const StyledButton = styled.button`
   background: ${({ theme }): string => (theme.color.background.medium)};
   border: ${({ theme }): string => (theme.border.light)};
-  color: ${({ theme }): string => (theme.text.dark)};
+  color: ${({ theme }): string => (theme.color.text.dark)};
   cursor: pointer;
   font-size: ${({ theme }): string => (theme.font.body.size)};
   font-weight: ${({ theme }): string => (theme.font.light)};
