@@ -28,7 +28,7 @@
         "/__tests__/data/index.ts"
       ],
       "mark-one/*": [
-        "src/*"
+        "*"
       ]
     }
   },
