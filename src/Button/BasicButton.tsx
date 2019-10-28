@@ -2,7 +2,7 @@ import React, {
   FunctionComponent, MouseEventHandler, ReactNode, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from 'mark-one/Theme';
+import { BaseTheme } from 'mark-one';
 
 export interface ButtonProps {
   /** Text or components to be displayed on the button */

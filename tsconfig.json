@@ -27,8 +27,8 @@
       "testData": [
         "/__tests__/data/index.ts"
       ],
-      "mark-one/*": [
-        "*"
+      "mark-one": [
+        "index.ts"
       ]
     }
   },
