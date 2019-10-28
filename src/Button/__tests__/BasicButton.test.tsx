@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from 'test-utils';
 import { spy } from 'sinon';
 import assert from 'assert';
 import BasicButton from '../BasicButton';
