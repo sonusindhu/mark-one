@@ -5,10 +5,8 @@ import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'mark-one';
 
 export interface TableProps {
-  /** TODO */
+  /** Internal table components like <thead> and <tbody> including their respective child components */
   children?: ReactNode;
-  /** Allows you to pass in style properties for the element */
-  theme?: object;
 }
 
 const StyledTable = styled.table`
