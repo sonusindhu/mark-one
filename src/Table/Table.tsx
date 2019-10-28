@@ -7,6 +7,8 @@ import { BaseTheme } from 'mark-one';
 export interface TableProps {
   /** TODO */
   children?: ReactNode;
+  /** Allows you to pass in style properties for the element */
+  theme?: object;
 }
 
 const StyledTable = styled.table`
@@ -14,3 +16,17 @@ const StyledTable = styled.table`
     margin: ${({ theme }): string => (theme.ws.small)};
     padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.small)};
 `;
+
+const Table: FunctionComponent<TableProps> = (props): ReactElement => {
+  const {
+    children,
+  } = props;
+  const theme: BaseTheme = useContext(ThemeContext);
+  return (
+    <StyledTable theme={theme}>
+      {children}
+    </StyledTable>
+  );
+};
+
+export default Table;
