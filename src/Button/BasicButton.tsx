@@ -1,7 +1,8 @@
 import React, {
-  FunctionComponent, MouseEventHandler, ReactNode, ReactElement,
+  FunctionComponent, MouseEventHandler, ReactNode, ReactElement, useContext,
 } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
+import { BaseTheme } from 'mark-one';
 
 export interface ButtonProps {
   /** Text or components to be displayed on the button */
@@ -15,12 +16,16 @@ export interface ButtonProps {
 }
 
 const StyledButton = styled.button`
+  background: ${({ theme }): string => (theme.color.background.medium)};
+  border: ${({ theme }): string => (theme.border.light)};
+  color: ${({ theme }): string => (theme.color.text.dark)};
   cursor: pointer;
-  border: ${({ theme }): string => (theme.border ? theme.border.light : '1px solid black')};
-  padding: ${({ theme }): string => (theme.ws ? theme.ws.xsmall + ' ' + theme.ws.small : '10px')};
-  fontSize: ${({ theme }): string => (theme.font ? theme.font.body.size : '12px')};
-  fontWeight: ${({ theme }): string => (theme.font ? theme.font.light : '200')};
-  color: ${({ theme }): string => (theme.text ? theme.text.dark : 'black')};
+  font-size: ${({ theme }): string => (theme.font.body.size)};
+  font-weight: ${({ theme }): string => (theme.font.light)};
+  padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.small)};
+  &:hover {
+    background: ${({ theme }): string => (theme.color.background.dark)};
+  }
 `;
 
 const BasicButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
@@ -28,8 +33,8 @@ const BasicButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
     children,
     clickHandler,
     disabled,
-    theme,
   } = props;
+  const theme: BaseTheme = useContext(ThemeContext);
   return (
     <StyledButton
       onClick={clickHandler}

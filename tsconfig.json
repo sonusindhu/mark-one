@@ -24,11 +24,14 @@
     "baseUrl": "./src",
     "incremental": true,
     "paths": {
-      "testData": [
-        "/__tests__/data/index.ts"
+      "test-data": [
+        "./__tests__/data/index.ts"
       ],
-      "mark-one/*": [
-        "src/*"
+      "test-utils": [
+        "./__tests__/utils/index.ts"
+      ],
+      "mark-one": [
+        "./index.ts"
       ]
     }
   },
