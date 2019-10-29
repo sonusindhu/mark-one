@@ -1,5 +1,8 @@
-import React, { FunctionComponent, ReactElement, ReactNode } from 'react';
-import styled from 'styled-components';
+import React, {
+  FunctionComponent, ReactElement, ReactNode, useContext,
+} from 'react';
+import styled, { ThemeContext } from 'styled-components';
+import { BaseTheme } from 'mark-one';
 
 export interface CellProps {
   /** Text or components to be displayed in the cell */
@@ -18,8 +21,11 @@ const Cell: FunctionComponent<CellProps> = (props): ReactElement => {
   const {
     children,
   } = props;
+  const theme: BaseTheme = useContext(ThemeContext);
   return (
-    <StyledCell>
+    <StyledCell
+      theme={theme}
+    >
       {children}
     </StyledCell>
   );
