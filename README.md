@@ -1,5 +1,12 @@
 # Mark One
 
+[![Travis](https://img.shields.io/travis/com/seas-computing/mark-one.svg)](https://travis-ci.com/seas-computing/mark-one)
+[![Codecov](https://img.shields.io/codecov/c/gh/seas-computing/mark-one.svg)](https://codecov.io/gh/seas-computing/mark-one)
+[![Styleguidist](https://img.shields.io/badge/docs-Styleguidist-red.svg)](https://seas-computing.github.io/mark-one/)
+![GitHub top language](https://img.shields.io/github/languages/top/seas-computing/mark-one.svg)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md)
+![BSD License](https://img.shields.io/github/license/seas-computing/mark-one)
+
 A React UI library in development at the Harvard John A. Paulson School of Engineering and Applied Sciences.
 
 ## Installing
