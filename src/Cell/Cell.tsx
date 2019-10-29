@@ -23,9 +23,7 @@ const Cell: FunctionComponent<CellProps> = (props): ReactElement => {
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
-    <StyledCell
-      theme={theme}
-    >
+    <StyledCell theme={theme}>
       {children}
     </StyledCell>
   );
