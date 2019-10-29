@@ -7,11 +7,11 @@ export interface CellProps {
 }
 
 const StyledCell = styled.td`
-  border: ;
-  font-family: ;
-  font-size: ;
-  padding: ;
-  text-align: ;
+  border: ${({ theme }): string => (theme.border.hairline)};
+  font-family: ${({ theme }): string => (theme.font.data.family)};
+  font-size: ${({ theme }): string => (theme.font.data.size)};
+  padding: ${({ theme }): string => (theme.ws.xsmall)};
+  text-align: 'center';
 `;
 
 const Cell: FunctionComponent<CellProps> = (props): ReactElement => {
