@@ -7,7 +7,7 @@ import { BaseTheme } from 'mark-one';
 export interface RowProps {
   /** Cell components to be displayed in the row */
   children: ReactNode;
-  /** Controls whether your table will have rows of alternating colors */
+  /** Controls whether the background of the row has a darker background color */
   isStriped?: boolean;
 }
 
