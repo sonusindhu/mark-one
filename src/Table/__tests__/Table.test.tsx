@@ -16,7 +16,6 @@ describe('Table Components', function () {
       </Table>
     ));
   });
-  // look at React Testing docs to see if there's a way to test that below is a td
   describe('Table Cell', function () {
     it('contains text', function () {
       getByText('Hello World');
