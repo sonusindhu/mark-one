@@ -4,7 +4,7 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'mark-one';
 
-export interface CellProps {
+export interface TableCellProps {
   /** Text or components to be displayed in the cell */
   children: ReactNode;
 }
@@ -17,7 +17,7 @@ const StyledCell = styled.td`
   text-align: 'center';
 `;
 
-const Cell: FunctionComponent<CellProps> = (props): ReactElement => {
+const TableCell: FunctionComponent<TableCellProps> = (props): ReactElement => {
   const {
     children,
   } = props;
@@ -29,4 +29,4 @@ const Cell: FunctionComponent<CellProps> = (props): ReactElement => {
   );
 };
 
-export default Cell;
+export default TableCell;
