@@ -6,7 +6,7 @@ import { BaseTheme } from 'mark-one';
 
 export interface TableProps {
   /** Internal table components like <thead> and <tbody> including their respective child components */
-  children: ReactNode;
+  children: ReactNode | HTMLTableSectionElement;
 }
 
 const StyledTable = styled.table`
