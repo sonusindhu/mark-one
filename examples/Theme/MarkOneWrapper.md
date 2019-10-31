@@ -46,7 +46,7 @@ const BackgroundDiv = styled.div`
 ```jsx
 import styled from 'styled-components';
 const TextBlock = styled.span`
-  font-family: ${({theme, type}) => theme.font[type].font};
+  font-family: ${({theme, type}) => theme.font[type].family};
   font-weight: ${({theme, type}) => theme.font[type].weight};
   font-size: ${({theme, type}) => theme.font[type].size}
 `;
@@ -96,6 +96,3 @@ const BorderDiv = styled.div`
   ))}
 </div>
 ```
-
-
-
