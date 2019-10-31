@@ -14,7 +14,8 @@ export interface TableHeadingCellProps {
 }
 
 const StyledTableHeadingCell = styled.td`
-
+  font-weight: ${({ theme }): string => (theme.font.bold.weight)};
+  text-align: 'center';
 `;
 const TableHeadingCell: FunctionComponent<TableHeadingCellProps> = (props):
 ReactElement => {
