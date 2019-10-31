@@ -9,6 +9,8 @@ export interface TableHeadingCellProps {
   children: ReactNode;
   /** Function to call on click event */
   clickHandler?: MouseEventHandler;
+  /** Specifies the group of cells that the table heading refers to */
+  scope: 'row' | 'col' | 'rowgroup' | 'colgroup' | 'auto';
 }
 
 const StyledTableHeadingCell = styled.td`
