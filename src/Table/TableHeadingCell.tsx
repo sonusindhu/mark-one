@@ -21,10 +21,16 @@ const TableHeadingCell: FunctionComponent<TableHeadingCellProps> = (props):
 ReactElement => {
   const {
     children,
+    clickHandler,
+    scope,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
-    <StyledTableHeadingCell theme={theme}>
+    <StyledTableHeadingCell
+      onClick={clickHandler}
+      theme={theme}
+      scope={scope}
+    >
       {children}
     </StyledTableHeadingCell>
   );
