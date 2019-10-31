@@ -13,7 +13,7 @@ export interface TableHeadingCellProps {
   scope: 'row' | 'col' | 'rowgroup' | 'colgroup' | 'auto';
 }
 
-const StyledTableHeadingCell = styled.td`
+const StyledTableHeadingCell = styled.th`
   font-weight: ${({ theme }): string => (theme.font.bold.weight)};
   text-align: 'center';
 `;
