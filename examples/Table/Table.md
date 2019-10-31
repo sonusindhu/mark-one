@@ -1,11 +1,11 @@
 ```jsx
-import { TableRow } from 'mark-one';
+import { Table, TableRow, TableHeadingCell } from 'mark-one';
 <Table>
   <thead>
     <TableRow>
-      <th>ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
+      <TableHeadingCell scope={'col'}>ID</TableHeadingCell>
+      <TableHeadingCell scope={'col'}>First Name</TableHeadingCell>
+      <TableHeadingCell scope={'col'}>Last Name</TableHeadingCell>
     </TableRow>
   </thead>
   <tbody>
