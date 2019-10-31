@@ -54,6 +54,7 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "^4.2.0",
+    "ignore-styles": "^5.0.1",
     "jsdom": "^15.2.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^6.2.1",
