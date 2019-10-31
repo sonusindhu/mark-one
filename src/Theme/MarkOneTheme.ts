@@ -82,6 +82,11 @@ const MarkOneTheme: BaseTheme = {
     },
   },
   font: {
+    base: {
+      family: FONT.SANS,
+      size: '16px',
+      weight: WEIGHT.MEDIUM,
+    },
     body: {
       family: FONT.SANS,
       size: '1em',
