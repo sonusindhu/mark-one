@@ -36,4 +36,6 @@ ReactElement => {
   );
 };
 
+declare type TableHeadingCell = ReactElement<TableHeadingCellProps>;
+
 export default TableHeadingCell;
