@@ -1,13 +1,13 @@
 ```jsx
-import { TableRow } from 'mark-one';
+import { TableRow, TableHead } from 'mark-one';
 <Table>
-  <thead>
+  <TableHead>
     <TableRow>
       <th>ID</th>
       <th>First Name</th>
       <th>Last Name</th>
     </TableRow>
-  </thead>
+  </TableHead>
   <tbody>
     <TableRow isStriped={true}>
       <td>1</td>
