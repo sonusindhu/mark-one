@@ -24,4 +24,6 @@ const TableHead: FunctionComponent<TableHeadProps> = (props): ReactElement => {
   );
 };
 
+declare type TableHead = ReactElement<TableHeadProps>;
+
 export default TableHead;
