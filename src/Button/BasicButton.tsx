@@ -21,7 +21,7 @@ const StyledButton = styled.button`
   color: ${({ theme }): string => (theme.color.text.dark)};
   cursor: pointer;
   font-size: ${({ theme }): string => (theme.font.body.size)};
-  font-weight: ${({ theme }): string => (theme.font.light)};
+  font-weight: ${({ theme }): string => (theme.font.body.weight)};
   padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.small)};
   &:hover {
     background: ${({ theme }): string => (theme.color.background.dark)};
