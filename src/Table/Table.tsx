@@ -1,12 +1,13 @@
 import React, {
-  FunctionComponent, ReactElement, useContext, ReactNode,
+  FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'mark-one';
+import TableHead from './TableHead';
 
 export interface TableProps {
   /** Internal table components like <thead> and <tbody> including their respective child components */
-  children: ReactNode | HTMLTableSectionElement;
+  children: TableHead;
 }
 
 const StyledTable = styled.table`
