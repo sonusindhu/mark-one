@@ -1,7 +1,8 @@
 import React, {
-  FunctionComponent, ReactElement,
+  FunctionComponent, ReactElement, useContext,
 } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
+import { BaseTheme } from 'mark-one';
 import TableRow from './TableRow';
 
 export interface TableHeadProps {
@@ -10,15 +11,16 @@ export interface TableHeadProps {
 }
 
 const StyledTableHead = styled.thead`
-  background-color: theme.color.background.medium;
+  background-color: ${({ theme }): string => (theme.color.background.medium)};
 `;
 
 const TableHead: FunctionComponent<TableHeadProps> = (props): ReactElement => {
   const {
     children,
   } = props;
+  const theme: BaseTheme = useContext(ThemeContext);
   return (
-    <StyledTableHead>
+    <StyledTableHead theme={theme}>
       {children}
     </StyledTableHead>
   );
