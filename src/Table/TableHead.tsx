@@ -2,11 +2,11 @@ import React, {
   FunctionComponent, ReactElement,
 } from 'react';
 import styled from 'styled-components';
-import TableRow, { TableRowProps } from './TableRow';
+import TableRow from './TableRow';
 
 export interface TableHeadProps {
   /** Our TableRow functional component serves as the children for TableHead */
-  children: ReactElement<TableRowProps>;
+  children: TableRow;
 }
 
 const StyledTableHead = styled.thead`
