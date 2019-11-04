@@ -4,6 +4,11 @@ import { render } from "@testing-library/react";
 import { strictEqual } from "assert";
 
 describe('Page body', function() {
+  it('does not require any content to be provided', function() {
+    const body = render(<PageBody></PageBody>).getByRole('main');
+    strictEqual(body.textContent, '');
+  });
+
   it('renders any content provided', function() {
     const body = render(
       <PageBody>

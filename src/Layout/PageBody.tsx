@@ -5,7 +5,7 @@ import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'mark-one';
 
 export interface PageBodyProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const MainComponent = styled.main``;
