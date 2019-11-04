@@ -7,7 +7,7 @@ import TableRow from './TableRow';
 
 export interface TableBodyProps {
   /** Our TableRow functional component serves as the children for TableBody */
-  children: TableRow;
+  children: TableRow[];
   /** Controls whether to add a scrollbar in the case where the content of the
    * body does not fit within the table body
    */
@@ -30,5 +30,7 @@ const TableBody: FunctionComponent<TableBodyProps> = (props): ReactElement => {
     </StyledTableBody>
   );
 };
+
+declare type TableBody = ReactElement<TableBodyProps>;
 
 export default TableBody;
