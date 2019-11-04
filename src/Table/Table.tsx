@@ -4,10 +4,11 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'mark-one';
 import TableHead from './TableHead';
+import TableBody from './TableBody';
 
 export interface TableProps {
   /** Internal table components like <thead> and <tbody> including their respective child components */
-  children: TableHead;
+  children: Array<TableHead | TableBody>;
 }
 
 const StyledTable = styled.table`
