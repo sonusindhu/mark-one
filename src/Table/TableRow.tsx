@@ -1,8 +1,7 @@
-import React, {
-  FunctionComponent, ReactElement, ReactNode, useContext,
+import {
+  ReactElement, ReactNode,
 } from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from 'mark-one';
+import styled, { withTheme } from 'styled-components';
 
 export interface TableRowProps {
   /** Cell components to be displayed in the row */
@@ -11,25 +10,12 @@ export interface TableRowProps {
   isStriped?: boolean;
 }
 
-const StyledRow = styled.tr<TableRowProps>`
+const TableRow = styled.tr<TableRowProps>`
   background: ${({ theme, isStriped }): string => (isStriped ? theme.color.background.subtle : theme.color.background.light)};
   &:hover {
     background: ${({ theme }): string => (theme.color.background.medium)};
   }
 `;
-
-const TableRow: FunctionComponent<TableRowProps> = (props): ReactElement => {
-  const {
-    children,
-    isStriped,
-  } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
-  return (
-    <StyledRow theme={theme} isStriped={isStriped}>
-      {children}
-    </StyledRow>
-  );
-};
 
 TableRow.defaultProps = {
   isStriped: false,
@@ -37,4 +23,4 @@ TableRow.defaultProps = {
 
 declare type TableRow = ReactElement<TableRowProps>;
 
-export default TableRow;
+export default withTheme(TableRow);
