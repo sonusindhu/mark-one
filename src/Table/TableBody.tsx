@@ -1,9 +1,8 @@
-import React, {
-  FunctionComponent, ReactElement, useContext,
+import {
+  ReactElement,
 } from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from 'mark-one';
-import TableRow from './TableRow';
+import styled, { withTheme } from 'styled-components';
+import { TableRow } from './TableRow';
 
 export interface TableBodyProps {
   /** Our TableRow functional component serves as the children for TableBody */
@@ -14,23 +13,10 @@ export interface TableBodyProps {
   isScrollable: boolean;
 }
 
-const StyledTableBody = styled.tbody<TableBodyProps>`
+const TableBody = styled.tbody<TableBodyProps>`
   overflow: ${({ isScrollable }): string => (isScrollable ? 'scroll' : 'visible')};
 `;
 
-const TableBody: FunctionComponent<TableBodyProps> = (props): ReactElement => {
-  const {
-    children,
-    isScrollable,
-  } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
-  return (
-    <StyledTableBody theme={theme} isScrollable={isScrollable}>
-      {children}
-    </StyledTableBody>
-  );
-};
+export type TableBody = ReactElement<TableBodyProps>;
 
-declare type TableBody = ReactElement<TableBodyProps>;
-
-export default TableBody;
+export default withTheme(TableBody);
