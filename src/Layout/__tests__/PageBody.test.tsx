@@ -1,15 +1,15 @@
 import React from 'react';
 import { PageBody } from 'mark-one';
-import { render } from "@testing-library/react";
-import { strictEqual } from "assert";
+import { render } from '@testing-library/react';
+import { strictEqual } from 'assert';
 
-describe('Page body', function() {
-  it('does not require any content to be provided', function() {
-    const body = render(<PageBody></PageBody>).getByRole('main');
+describe('Page body', function () {
+  it('does not require any content to be provided', function () {
+    const body = render(<PageBody />).getByRole('main');
     strictEqual(body.textContent, '');
   });
 
-  it('renders any content provided', function() {
+  it('renders any content provided', function () {
     const body = render(
       <PageBody>
         <p>
