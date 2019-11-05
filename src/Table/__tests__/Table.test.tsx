@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, cleanup } from 'test-utils';
+import convert from 'color-convert';
 import { strictEqual } from 'assert';
 import TableCell from '../TableCell';
 import TableBody from '../TableBody';
@@ -7,12 +8,14 @@ import TableHead from '../TableHead';
 import TableHeadingCell from '../TableHeadingCell';
 import TableRow from '../TableRow';
 import Table from '../Table';
+import MarkOneTheme from '../../Theme/MarkOneTheme';
 
 describe('Table Components', function () {
   let getByText;
   let getAllByRole;
+  let getByTestId;
   beforeEach(function () {
-    ({ getByText, getAllByRole } = render(
+    ({ getByText, getAllByRole, getByTestId } = render(
       <Table>
         <TableHead>
           <TableRow>
@@ -22,7 +25,7 @@ describe('Table Components', function () {
           </TableRow>
         </TableHead>
         <TableBody isScrollable>
-          <TableRow isStriped>
+          <TableRow isStriped data-testid="firstStripedRow">
             <TableCell>1</TableCell>
             <TableCell>Lucy</TableCell>
             <TableCell>Bernstein</TableCell>
@@ -63,6 +66,13 @@ describe('Table Components', function () {
     it('renders every table cell', function () {
       const cellCount = getAllByRole('cell').length;
       strictEqual(cellCount, 12);
+    });
+    it('renders a row with a darker background color when isStriped is true', function () {
+      const row = getByTestId('firstStripedRow');
+      const style = window.getComputedStyle(row);
+      const expectedColor = convert.hex.rgb(MarkOneTheme.color.background.subtle as string);
+      const convertExpectedToRGB = `rgb(${expectedColor[0]}, ${expectedColor[1]}, ${expectedColor[2]})`;
+      strictEqual(style.backgroundColor, convertExpectedToRGB);
     });
   });
 });
