@@ -21,6 +21,6 @@ TableRow.defaultProps = {
   isStriped: false,
 };
 
-declare type TableRow = ReactElement<TableRowProps>;
+export type TableRow = ReactElement<TableRowProps>;
 
 export default withTheme(TableRow);
