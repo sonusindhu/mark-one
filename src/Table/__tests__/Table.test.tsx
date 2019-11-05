@@ -24,7 +24,7 @@ describe('Table Components', function () {
             <TableHeadingCell scope="col">Last Name</TableHeadingCell>
           </TableRow>
         </TableHead>
-        <TableBody isScrollable>
+        <TableBody isScrollable data-testid="tableBody">
           <TableRow isStriped data-testid="firstStripedRow">
             <TableCell>1</TableCell>
             <TableCell>Lucy</TableCell>
@@ -70,9 +70,18 @@ describe('Table Components', function () {
     it('renders a row with a darker background color when isStriped is true', function () {
       const row = getByTestId('firstStripedRow');
       const style = window.getComputedStyle(row);
-      const expectedColor = convert.hex.rgb(MarkOneTheme.color.background.subtle as string);
+      const expectedColor = convert.hex.rgb(
+        MarkOneTheme.color.background.subtle as string
+      );
       const convertExpectedToRGB = `rgb(${expectedColor[0]}, ${expectedColor[1]}, ${expectedColor[2]})`;
       strictEqual(style.backgroundColor, convertExpectedToRGB);
+    });
+  });
+  describe('Table Body', function () {
+    it('has the appropriate CSS properties when isScrollable prop is true', function () {
+      const body = getByTestId('tableBody');
+      const style = window.getComputedStyle(body);
+      strictEqual(style.overflow, 'scroll');
     });
   });
 });
