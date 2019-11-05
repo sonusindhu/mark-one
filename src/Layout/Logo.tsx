@@ -1,10 +1,13 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { BaseTheme } from 'mark-one';
 
 export interface LogoProps {
-  /** The elements to be displayed inside the Header */
-  children: ReactNode;
+  /**
+  * The text of the link, which will not display on screeen but will render
+  * to the DOM for screen-reader compatibility
+  * */
+  children: string;
   /**
   * The height at which the image should be displayed
   * @default 75px
@@ -14,7 +17,7 @@ export interface LogoProps {
   href?: string;
   /** the url for the image to be displayed */
   image?: string;
-  /** The Application theme */
+  /** The application theme */
   theme: BaseTheme;
   /**
    * The width at which the image should be displayed
