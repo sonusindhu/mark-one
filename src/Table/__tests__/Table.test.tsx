@@ -104,5 +104,26 @@ describe('Table Components', function () {
       const style = window.getComputedStyle(getByTestId('tbody'));
       strictEqual(style.overflow, 'visible');
     });
+    it('sets CSS overflow to visible when isScrollable prop is not specified', function () {
+      render(
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeadingCell scope="col">Second</TableHeadingCell>
+            </TableRow>
+          </TableHead>
+          <TableBody data-testid="tbody">
+            <TableRow>
+              <TableCell>2</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>4</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      );
+      const style = window.getComputedStyle(getByTestId('tbody'));
+      strictEqual(style.overflow, 'visible');
+    });
   });
 });
