@@ -78,7 +78,7 @@ describe('Table Components', function () {
     });
   });
   describe('Table Body', function () {
-    it('has the appropriate CSS properties when isScrollable prop is true', function () {
+    it('sets CSS overflow to scroll when isScrollable prop is true', function () {
       const body = getByTestId('tableBody');
       const style = window.getComputedStyle(body);
       strictEqual(style.overflow, 'scroll');
