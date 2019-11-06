@@ -70,10 +70,10 @@ describe('Table Components', function () {
     it('renders a row with a darker background color when isStriped is true', function () {
       const row = getByTestId('firstStripedRow');
       const style = window.getComputedStyle(row);
-      const expectedColor = convert.hex.rgb(
+      const [red, green, blue] = convert.hex.rgb(
         MarkOneTheme.color.background.subtle as string
       );
-      const convertExpectedToRGB = `rgb(${expectedColor[0]}, ${expectedColor[1]}, ${expectedColor[2]})`;
+      const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
       strictEqual(style.backgroundColor, convertExpectedToRGB);
     });
   });
