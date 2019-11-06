@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'mark-one';
-import TableRow from './TableRow';
+import { TableRow } from './TableRow';
 
 export interface TableHeadProps {
   /** Our TableRow functional component serves as the children for TableHead */

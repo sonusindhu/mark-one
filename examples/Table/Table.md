@@ -1,5 +1,5 @@
 ```jsx
-import { Table, TableRow, TableHeadingCell, TableHead } from 'mark-one';
+import { Table, TableBody, TableRow, TableHeadingCell, TableHead } from 'mark-one';
 <Table>
   <TableHead>
     <TableRow>
@@ -8,7 +8,7 @@ import { Table, TableRow, TableHeadingCell, TableHead } from 'mark-one';
       <TableHeadingCell scope={'col'}>Last Name</TableHeadingCell>
     </TableRow>
   </TableHead>
-  <tbody>
+  <TableBody isScrollable={true}>
     <TableRow isStriped={true}>
       <td>1</td>
       <td>Kristin</td>
@@ -39,6 +39,6 @@ import { Table, TableRow, TableHeadingCell, TableHead } from 'mark-one';
       <td>Alex</td>
       <td>Rainer</td>
     </TableRow>
-  </tbody>
+  </TableBody>
 </Table>
 ```
