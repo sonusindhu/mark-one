@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageBody } from 'mark-one';
-import { render } from '@testing-library/react';
+import { render } from 'test-utils';
 import { strictEqual } from 'assert';
 
 describe('Page body', function () {

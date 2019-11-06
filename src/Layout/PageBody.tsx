@@ -1,25 +1,12 @@
-import React, {
-  FunctionComponent, ReactElement, useContext, ReactNode,
-} from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import { ReactNode } from 'react';
+import styled, { withTheme } from 'styled-components';
 import { BaseTheme } from 'mark-one';
 
 export interface PageBodyProps {
   children?: ReactNode;
+  theme: BaseTheme,
 }
 
-const MainComponent = styled.main``;
+const PageBody = styled.main<PageBodyProps>``;
 
-const PageBody: FunctionComponent<PageBodyProps> = (props): ReactElement => {
-  const {
-    children,
-  } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
-  return (
-    <MainComponent theme={theme}>
-      {children}
-    </MainComponent>
-  );
-};
-
-export default PageBody;
+export default withTheme(PageBody);
