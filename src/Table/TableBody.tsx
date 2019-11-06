@@ -17,6 +17,10 @@ const TableBody = styled.tbody<TableBodyProps>`
   overflow: ${({ isScrollable }): string => (isScrollable ? 'scroll' : 'visible')};
 `;
 
+TableBody.defaultProps = {
+  isScrollable: false,
+};
+
 export type TableBody = ReactElement<TableBodyProps>;
 
 export default withTheme(TableBody);
