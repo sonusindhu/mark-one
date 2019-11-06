@@ -83,5 +83,26 @@ describe('Table Components', function () {
       const style = window.getComputedStyle(body);
       strictEqual(style.overflow, 'scroll');
     });
+    it('sets CSS overflow to visible when isScrollable prop is false', function () {
+      render(
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeadingCell scope="col">First</TableHeadingCell>
+            </TableRow>
+          </TableHead>
+          <TableBody isScrollable={false} data-testid="tbody">
+            <TableRow>
+              <TableCell>1</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>3</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      );
+      const style = window.getComputedStyle(getByTestId('tbody'));
+      strictEqual(style.overflow, 'visible');
+    });
   });
 });
