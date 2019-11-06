@@ -10,7 +10,7 @@ export interface TableBodyProps {
   /** Controls whether to add a scrollbar in the case where the content of the
    * body does not fit within the table body
    */
-  isScrollable: boolean;
+  isScrollable?: boolean;
 }
 
 const TableBody = styled.tbody<TableBodyProps>`
