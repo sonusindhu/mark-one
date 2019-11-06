@@ -10,7 +10,7 @@ describe('Page body', function () {
   });
 
   it('renders any content provided', function () {
-    const body = render(
+    const { childElementCount, firstChild } = render(
       <PageBody>
         <p>
           Hello World
@@ -18,6 +18,7 @@ describe('Page body', function () {
       </PageBody>
     ).getByRole('main');
 
-    strictEqual(body.textContent, 'Hello World');
+    strictEqual(childElementCount, 1);
+    strictEqual(firstChild.nodeName, 'P');
   });
 });
