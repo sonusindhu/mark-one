@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, ReactElement } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { BaseTheme } from 'mark-one';
 
@@ -10,5 +10,7 @@ export interface PageBodyProps {
 }
 
 const PageBody = styled.main<PageBodyProps>``;
+
+declare type PageBody = ReactElement<PageBodyProps>;
 
 export default withTheme(PageBody);
