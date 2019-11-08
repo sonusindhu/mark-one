@@ -6,7 +6,7 @@ export interface PageBodyProps {
   /** Page contents */
   children?: ReactNode;
   /** The theme this component should use for styling */
-  theme: BaseTheme,
+  theme: BaseTheme;
 }
 
 const PageBody = styled.main<PageBodyProps>``;
