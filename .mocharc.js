@@ -1,9 +1,8 @@
 module.exports = {
-  exit: true,
   ui: 'bdd',
   reporter: 'spec',
   timeout: 30000,
-  recursive: true,
+  file: '.mochainit.ts',
   require: [
     'ts-node/register',
     'raf/polyfill',
