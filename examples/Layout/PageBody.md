@@ -5,7 +5,7 @@ import { PageBody } from 'mark-one';
   <h1>Hello world</h1>
 
   <p>
-    Here is some exmaple content
+    Here is some example content
   </p>
 </PageBody>
 ```
