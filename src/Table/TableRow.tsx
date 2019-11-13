@@ -16,6 +16,9 @@ const StyledRow = styled.tr<RowProps>`
   &:hover {
     background: ${({ theme }): string => (theme.color.background.medium)};
   }
+  th {
+    background-color: ${({ theme }): string => (theme.color.background.medium)};
+  }
 `;
 
 const TableRow: FunctionComponent<RowProps> = (props): ReactElement => {
