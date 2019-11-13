@@ -49,8 +49,8 @@ const Logo = styled.a<LogoProps>`
 Logo.defaultProps = {
   href: '',
   image: '',
-  width: '200px',
-  height: '75px',
+  width: '175px',
+  height: '50px',
 };
 
 declare type Logo = ReactElement<LogoProps>;

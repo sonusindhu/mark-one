@@ -8,7 +8,7 @@ import logo from './H_SEAS_logo_RGB.svg';
 </Logo>
 ```
 
-By default, it will render at `200px` x `75px`:
+By default, it will render at `175px` x `50px`:
 
 ```jsx
 import logo from './H_SEAS_logo_RGB.svg';
