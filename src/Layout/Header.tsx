@@ -28,7 +28,6 @@ const Header = styled.header<HeaderProps>`
   background-color: ${({ background }): string => background};
   box-shadow: ${({ theme }): string => theme.shadow.light};
   display: flex;
-  height: 80px;
   justify-content: ${({ justify }): string => justify};
   padding: ${({ theme }): string => `${theme.ws.medium} ${theme.ws.small}`};
   width: 100%;
