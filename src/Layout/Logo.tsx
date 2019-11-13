@@ -43,6 +43,7 @@ const Logo = styled.a<LogoProps>`
   line-height: 0;
   margin: ${({ theme }): string => `${theme.ws.zero} ${theme.ws.small}`};
   width: ${({ width }): string => width};
+  min-width: 100px;
   height: ${({ height }): string => height};
 `;
 
