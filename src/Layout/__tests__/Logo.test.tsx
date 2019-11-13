@@ -12,10 +12,10 @@ describe('Logo', function () {
     });
   });
   describe('height prop', function () {
-    it('Should default to 75px', function () {
+    it('Should default to 50px', function () {
       render(<Logo>Sample Text</Logo>);
       const logoStyles = window.getComputedStyle(document.querySelector('a'));
-      strictEqual(logoStyles.height, '75px');
+      strictEqual(logoStyles.height, '5px');
     });
     it('Should use the prop value instead', function () {
       render(<Logo height="100px">Sample Text</Logo>);
@@ -24,10 +24,10 @@ describe('Logo', function () {
     });
   });
   describe('width prop', function () {
-    it('Should default to 200px', function () {
+    it('Should default to 175px', function () {
       render(<Logo>Sample Text</Logo>);
       const logoStyles = window.getComputedStyle(document.querySelector('a'));
-      strictEqual(logoStyles.width, '200px');
+      strictEqual(logoStyles.width, '175px');
     });
     it('Should use the prop value instead', function () {
       render(<Logo width="100px">Sample Text</Logo>);
