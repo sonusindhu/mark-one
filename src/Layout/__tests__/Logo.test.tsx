@@ -15,7 +15,7 @@ describe('Logo', function () {
     it('Should default to 50px', function () {
       render(<Logo>Sample Text</Logo>);
       const logoStyles = window.getComputedStyle(document.querySelector('a'));
-      strictEqual(logoStyles.height, '5px');
+      strictEqual(logoStyles.height, '50px');
     });
     it('Should use the prop value instead', function () {
       render(<Logo height="100px">Sample Text</Logo>);
