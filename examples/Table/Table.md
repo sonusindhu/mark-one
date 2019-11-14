@@ -1,5 +1,5 @@
 ```jsx
-import { Table, TableBody, TableRow, TableHeadingCell, TableHead } from 'mark-one';
+import { Table, TableCell, TableBody, TableRow, TableHeadingCell, TableHead } from 'mark-one';
 <Table>
   <TableHead>
     <TableRow>
@@ -10,34 +10,34 @@ import { Table, TableBody, TableRow, TableHeadingCell, TableHead } from 'mark-on
   </TableHead>
   <TableBody isScrollable={true}>
     <TableRow isStriped={true}>
-      <td>1</td>
-      <td>Kristin</td>
-      <td>Glenn</td>
+      <TableCell>1</TableCell>
+      <TableCell>Kristin</TableCell>
+      <TableCell>Glenn</TableCell>
     </TableRow>
     <TableRow>
-      <td>2</td>
-      <td>Jack</td>
-      <td>Thompson</td>
+      <TableCell>2</TableCell>
+      <TableCell>Jack</TableCell>
+      <TableCell>Thompson</TableCell>
     </TableRow>
     <TableRow isStriped={true}>
-      <td>3</td>
-      <td>Lianne</td>
-      <td>Michaels</td>
+      <TableCell>3</TableCell>
+      <TableCell>Lianne</TableCell>
+      <TableCell>Michaels</TableCell>
     </TableRow>
     <TableRow>
-      <td>4</td>
-      <td>Gabriela</td>
-      <td>Hines</td>
+      <TableCell>4</TableCell>
+      <TableCell>Gabriela</TableCell>
+      <TableCell>Hines</TableCell>
     </TableRow>
     <TableRow isStriped={true}>
-      <td>5</td>
-      <td>Cindy</td>
-      <td>Wong</td>
+      <TableCell>5</TableCell>
+      <TableCell>Cindy</TableCell>
+      <TableCell>Wong</TableCell>
     </TableRow>
     <TableRow>
-      <td>6</td>
-      <td>Alex</td>
-      <td>Rainer</td>
+      <TableCell>6</TableCell>
+      <TableCell>Alex</TableCell>
+      <TableCell>Rainer</TableCell>
     </TableRow>
   </TableBody>
 </Table>

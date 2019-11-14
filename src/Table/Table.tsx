@@ -16,6 +16,7 @@ const StyledTable = styled.table`
     border-collapse: collapse;
     margin: ${({ theme }): string => (theme.ws.small)};
     padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.small)};
+    width: 100%;
 `;
 
 const Table: FunctionComponent<TableProps> = (props): ReactElement => {

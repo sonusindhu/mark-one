@@ -15,6 +15,9 @@ const TableRow = styled.tr<TableRowProps>`
   &:hover {
     background: ${({ theme }): string => (theme.color.background.medium)};
   }
+  th {
+    background-color: ${({ theme }): string => (theme.color.background.medium)};
+  }
 `;
 
 TableRow.defaultProps = {

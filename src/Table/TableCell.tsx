@@ -10,7 +10,8 @@ export interface TableCellProps {
 }
 
 const StyledCell = styled.td`
-  border: ${({ theme }): string => (theme.border.hairline)};
+  border-left: ${({ theme }): string => (theme.border.light)};
+  border-right: ${({ theme }): string => (theme.border.light)};
   font-family: ${({ theme }): string => (theme.font.data.family)};
   font-size: ${({ theme }): string => (theme.font.data.size)};
   padding: ${({ theme }): string => (theme.ws.xsmall)};

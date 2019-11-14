@@ -14,6 +14,7 @@ export interface TableHeadingCellProps {
 }
 
 const StyledTableHeadingCell = styled.th`
+  border: ${({ theme }): string => (theme.border.light)};
   font-weight: ${({ theme }): string => (theme.font.bold.weight)};
   text-align: 'center';
 `;
