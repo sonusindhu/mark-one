@@ -1,9 +1,4 @@
-process.env.NODE_ENV = "testing";
-import jsdom from 'jsdom-global';
 import { cleanup } from '@testing-library/react';
-
-before(function configureEnzyme() {
-  jsdom('', { runScripts: 'outside-only' });
-});
+process.env.RTL_SKIP_AUTO_CLEANUP = 'true';
 
 afterEach(cleanup);

@@ -1,14 +1,14 @@
 ```jsx
-import { Table, TableCell, TableRow, TableHeadingCell } from 'mark-one';
+import { Table, TableCell, TableBody, TableRow, TableHeadingCell, TableHead } from 'mark-one';
 <Table>
-  <thead>
+  <TableHead>
     <TableRow>
       <TableHeadingCell scope={'col'}>ID</TableHeadingCell>
       <TableHeadingCell scope={'col'}>First Name</TableHeadingCell>
       <TableHeadingCell scope={'col'}>Last Name</TableHeadingCell>
     </TableRow>
-  </thead>
-  <tbody>
+  </TableHead>
+  <TableBody isScrollable={true}>
     <TableRow isStriped={true}>
       <TableCell>1</TableCell>
       <TableCell>Kristin</TableCell>
@@ -39,6 +39,6 @@ import { Table, TableCell, TableRow, TableHeadingCell } from 'mark-one';
       <TableCell>Alex</TableCell>
       <TableCell>Rainer</TableCell>
     </TableRow>
-  </tbody>
+  </TableBody>
 </Table>
 ```

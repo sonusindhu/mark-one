@@ -1,6 +1,8 @@
-import React, { ReactElement, ReactNode, FunctionComponent } from 'react';
+import React, {
+  ReactElement, ReactNode, FunctionComponent,
+} from 'react';
 import { ThemeProvider } from 'styled-components';
-import MarkOneTheme from './MarkOneTheme';
+import { GlobalCSS, MarkOneTheme } from 'mark-one';
 
 export interface ThemeWrapperProps {
   /** The content of the app that should receive the theme */
@@ -41,6 +43,7 @@ const MarkOneWrapper: FunctionComponent<ThemeWrapperProps> = ({
 }): ReactElement => (
   <ThemeProvider theme={MarkOneTheme}>
     <>
+      <GlobalCSS />
       {children}
     </>
   </ThemeProvider>
