@@ -8,13 +8,13 @@ A React UI library in development at the Harvard John A. Paulson School of Engin
 
 Mark One can be installed from NPM:
 
-```
+``` bash
 npm install mark-one
 ```
 
 Components can be imported and used individually in projects.
 
-```jsx
+``` tsx static
 import { BasicButton } from 'mark-one'
 
 export default () => (
@@ -40,7 +40,7 @@ Components for handling the layout and behavior of forms, such as field sets, co
 
 Text fields, checkboxes, radio buttons, text areas, select boxes, etc.
 
-### ~Spinners~ Indicators
+### Indicators
 
 Elements to indicate whether an asynchronous process is in progress, such as a data upload or fetch from the server.
 
