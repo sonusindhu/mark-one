@@ -41,16 +41,17 @@ const Logo = styled.a<LogoProps>`
   display: inline-block;
   font-size: 0;
   line-height: 0;
-  margin: ${({ theme }): string => `${theme.ws.xsmall} ${theme.ws.small}`};
+  margin: ${({ theme }): string => `${theme.ws.zero} ${theme.ws.small}`};
   width: ${({ width }): string => width};
+  min-width: 100px;
   height: ${({ height }): string => height};
 `;
 
 Logo.defaultProps = {
   href: '',
   image: '',
-  width: '200px',
-  height: '75px',
+  width: '175px',
+  height: '50px',
 };
 
 declare type Logo = ReactElement<LogoProps>;
