@@ -1,3 +1,11 @@
+## Describe your changes
+<!--
+  In a few sentences, explain what your charges will do if merged. You can also
+  use this space to ask any questions about your changes, highlight particular 
+  issues, and provide any additional information about how to run and/or test 
+  your code.
+-->
+
 ## Types of changes
 <!--
   What types of changes does your code introduce? Put an `x` in all the boxes
