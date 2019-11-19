@@ -47,7 +47,7 @@ In your component file, you can add additional context to your props interface b
 
 Additional details about the component should be added above the component definition in a docblock. For example:
 
-```jsx
+``` tsx static
 // src/demo/Test.tsx
 
 import React, {ReactChildren} from 'react';
@@ -101,7 +101,7 @@ Testing another color
 
 After adding your component, tests, and examples, your should have the following in your folder structure:
 
-```
+``` markdown
 mark-one/
 ├── examples/
 │   └── demo/
