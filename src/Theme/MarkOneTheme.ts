@@ -28,14 +28,6 @@ export interface BaseTheme extends DefaultTheme {
   ws?: { [key: string]: string };
 }
 
-enum COLOR {
-  WHITE = '#ffffff',
-  BLACK = '#181818',
-  BLUE = '#0c6090',
-  GREEN = '#40DE40',
-  RED = '#ff4040',
-}
-
 enum FONT {
   SANS = '"Open Sans", sans-serif',
   MONO = '"Roboto Mono", monospace',
@@ -47,38 +39,41 @@ enum WEIGHT {
   BOLD = '600',
 }
 
+const WHITE = '#fefefe';
+const BLACK = '#181818';
+
 const MarkOneTheme: BaseTheme = {
   color: {
     background: {
-      light: COLOR.WHITE,
-      subtle: darken(0.03, COLOR.WHITE),
-      medium: darken(0.175, COLOR.WHITE),
-      dark: darken(0.535, COLOR.WHITE),
-      darker: darken(0.75, COLOR.WHITE),
-      accent: '#903030',
+      light: WHITE,
+      subtle: darken(0.07, WHITE),
+      medium: darken(0.175, WHITE),
+      dark: '#93a1ad',
+      darker: darken(0.75, WHITE),
+      accent: '#a51c30',
       info: {
-        light: lighten(0.2, COLOR.BLUE),
-        medium: COLOR.BLUE,
-        dark: darken(0.1, COLOR.BLUE),
+        light: '#95b5df',
+        medium: '#4e88c7',
+        dark: '#084161',
       },
       positive: {
-        light: lighten(0.15, COLOR.GREEN),
-        medium: COLOR.GREEN,
-        dark: darken(0.2, COLOR.GREEN),
+        light: '#81e981',
+        medium: '#4db848',
+        dark: '#178717',
       },
       negative: {
-        light: lighten(0.1, COLOR.RED),
-        medium: COLOR.RED,
-        dark: darken(0.2, COLOR.RED),
+        light: '#ff8f9c',
+        medium: '#ff4040',
+        dark: '#ed1b2a',
       },
     },
     text: {
-      light: lighten(0.9, COLOR.BLACK),
-      medium: lighten(0.35, COLOR.BLACK),
-      dark: COLOR.BLACK,
-      info: COLOR.BLUE,
-      positive: COLOR.GREEN,
-      negative: COLOR.RED,
+      light: lighten(0.9, BLACK),
+      medium: lighten(0.35, BLACK),
+      dark: BLACK,
+      info: '#4e88c7',
+      positive: '#4db848',
+      negative: '#ff4040',
     },
   },
   font: {
@@ -119,9 +114,9 @@ const MarkOneTheme: BaseTheme = {
     medium: '0 4px 16px 2px rgba(0,0,0,0.24)',
   },
   border: {
-    hairline: `1px solid ${COLOR.BLACK}`,
-    light: `2px solid ${lighten(0.5, COLOR.BLACK)}`,
-    heavy: `6px solid ${lighten(0.3, COLOR.BLACK)}`,
+    hairline: `1px solid ${BLACK}`,
+    light: `2px solid ${lighten(0.5, BLACK)}`,
+    heavy: `6px solid ${lighten(0.3, BLACK)}`,
   },
   ws: {
     zero: '0px',
