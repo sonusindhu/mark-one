@@ -1,5 +1,5 @@
 import React, {
-  FunctionComponent, ReactElement, ReactNode, useContext,
+  FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'mark-one';
