@@ -11,7 +11,7 @@ export interface NavListProps {
   theme?: object;
 }
 
-const StyledNavList = styled.nav`
+const StyledNavList = styled.ul`
   background-color: ${({ theme }): string => (theme.color.background.subtle)};
 `;
 
