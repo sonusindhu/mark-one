@@ -6,6 +6,7 @@ import { BaseTheme } from 'mark-one';
 import { NavItem } from './NavItem';
 
 export interface NavListProps {
+  /** Our NavItem functional component serves as the children for NavList  */
   children: NavItem;
   /** Allows you to pass in style properties for the element */
   theme?: object;

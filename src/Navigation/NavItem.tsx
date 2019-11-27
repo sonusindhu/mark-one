@@ -4,6 +4,7 @@ import {
 import styled, { withTheme } from 'styled-components';
 
 export interface NavItemProps {
+  /** Text or components to be displayed in the nav item */
   children: ReactNode;
   /** Controls whether the NavItem is in focus */
   isActive: boolean;
