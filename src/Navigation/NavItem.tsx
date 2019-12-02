@@ -1,18 +1,17 @@
-import {
-  MouseEventHandler, ReactElement, ReactNode,
+import React, {
+  ReactElement, ReactNode, FunctionComponent, useContext,
 } from 'react';
-import styled, { withTheme } from 'styled-components';
+import { BaseTheme } from 'mark-one';
+import styled, { ThemeContext } from 'styled-components';
 
 export interface NavItemProps {
   /** Text or components to be displayed in the nav item */
   children: ReactNode;
   /** Controls whether the NavItem is in focus */
   isActive: boolean;
-  /** Function to call on click event */
-  clickHandler: MouseEventHandler;
 }
 
-const NavItem = styled.li<NavItemProps>`
+const StyledNavItem = styled.li<NavItemProps>`
   background: ${({ theme, isActive }): string => (isActive ? theme.color.background.light : theme.color.background.subtle)};
   border-bottom: ${({ theme, isActive }): string => (isActive ? '1px solid transparent' : theme.border.hairline)};
   border-left: ${({ theme, isActive }): string => (isActive ? theme.border.hairline : '1px solid transparent')};
@@ -34,6 +33,22 @@ const NavItem = styled.li<NavItemProps>`
   }
 `;
 
+const NavItem: FunctionComponent<NavItemProps> = (props): ReactElement => {
+  const {
+    children,
+    isActive,
+  } = props;
+  const theme: BaseTheme = useContext(ThemeContext);
+  return (
+    <StyledNavItem
+      isActive={isActive}
+      theme={theme}
+    >
+      {children}
+    </StyledNavItem>
+  );
+};
+
 export type NavItem = ReactElement<NavItemProps>;
 
-export default withTheme(NavItem);
+export default NavItem;
