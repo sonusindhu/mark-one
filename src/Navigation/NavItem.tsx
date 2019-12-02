@@ -1,8 +1,7 @@
-import React, {
-  ReactElement, ReactNode, FunctionComponent, useContext,
+import {
+  ReactElement, ReactNode,
 } from 'react';
-import { BaseTheme } from 'mark-one';
-import styled, { ThemeContext } from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 
 export interface NavItemProps {
   /** Text or components to be displayed in the nav item */
@@ -33,22 +32,6 @@ const StyledNavItem = styled.li<NavItemProps>`
   }
 `;
 
-const NavItem: FunctionComponent<NavItemProps> = (props): ReactElement => {
-  const {
-    children,
-    isActive,
-  } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
-  return (
-    <StyledNavItem
-      isActive={isActive}
-      theme={theme}
-    >
-      {children}
-    </StyledNavItem>
-  );
-};
-
 export type NavItem = ReactElement<NavItemProps>;
 
-export default NavItem;
+export default withTheme(StyledNavItem);
