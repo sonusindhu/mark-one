@@ -7,7 +7,7 @@ import { NavItem } from './NavItem';
 
 export interface NavListProps {
   /** Our NavItem functional component serves as the children for NavList  */
-  children: NavItem;
+  children: Array<NavItem>;
 }
 
 const StyledNavList = styled.nav`
