@@ -14,7 +14,10 @@ export interface NavItemProps {
 
 const NavItem = styled.li<NavItemProps>`
   background: ${({ theme, isActive }): string => (isActive ? theme.color.background.light : theme.color.background.subtle)};
-  border: ${({ theme, isActive }): string => (isActive ? theme.border.light : '1px solid transparent')};
+  border-bottom: ${({ theme, isActive }): string => (isActive ? '1px solid transparent' : theme.border.light)};
+  border-left: ${({ theme, isActive }): string => (isActive ? theme.border.light : '1px solid transparent')};
+  border-right: ${({ theme, isActive }): string => (isActive ? theme.border.light : '1px solid transparent')};
+  border-top: ${({ theme, isActive }): string => (isActive ? theme.border.light : '1px solid transparent')};
   color: ${({ theme, isActive }): string => (isActive ? theme.color.text.medium : theme.color.text.info)};
   margin: 0px 0px -1px;
   padding: 0px 10px;
