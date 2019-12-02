@@ -19,7 +19,7 @@ const NavItem = styled.li<NavItemProps>`
   margin: 0px 0px -1px;
   padding: 0px 10px;
   &:hover {
-    border: ${({ theme }): string => (theme.border.hairline)};
+    border: ${({ theme, isActive }): string => (isActive ? theme.border.light : theme.border.hairline)};
     color: ${({ theme }): string => (theme.color.text.medium)};
   }
 `;
