@@ -12,8 +12,7 @@ export interface NavListProps {
 
 const StyledNavList = styled.nav`
   background-color: ${({ theme }): string => (theme.color.background.subtle)};
-  display: flex;
-  flex-wrap: wrap;
+  border-collapse: collapse;
 `;
 
 const NavList: FunctionComponent<NavListProps> = (props): ReactElement => {

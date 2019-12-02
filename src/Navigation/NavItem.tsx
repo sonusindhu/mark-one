@@ -14,15 +14,22 @@ export interface NavItemProps {
 
 const NavItem = styled.li<NavItemProps>`
   background: ${({ theme, isActive }): string => (isActive ? theme.color.background.light : theme.color.background.subtle)};
-  border-bottom: ${({ theme, isActive }): string => (isActive ? '1px solid transparent' : theme.border.light)};
-  border-left: ${({ theme, isActive }): string => (isActive ? theme.border.light : '1px solid transparent')};
-  border-right: ${({ theme, isActive }): string => (isActive ? theme.border.light : '1px solid transparent')};
-  border-top: ${({ theme, isActive }): string => (isActive ? theme.border.light : '1px solid transparent')};
+  border-bottom: ${({ theme, isActive }): string => (isActive ? '1px solid transparent' : theme.border.hairline)};
+  border-left: ${({ theme, isActive }): string => (isActive ? theme.border.hairline : '1px solid transparent')};
+  border-right: ${({ theme, isActive }): string => (isActive ? theme.border.hairline : '1px solid transparent')};
+  border-top: ${({ theme, isActive }): string => (isActive ? theme.border.hairline : '1px solid transparent')};
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
   color: ${({ theme, isActive }): string => (isActive ? theme.color.text.medium : theme.color.text.info)};
-  margin: 0px 0px -1px;
-  padding: 0px 10px;
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0.5rem 1rem;
   &:hover {
-    border: ${({ theme, isActive }): string => (isActive ? theme.border.light : theme.border.hairline)};
+    border-bottom: ${(): string => ('1px solid transparent')};
+    border-left: ${({ theme }): string => (theme.border.hairline)};
+    border-right: ${({ theme }): string => (theme.border.hairline)};
+    border-top: ${({ theme }): string => (theme.border.hairline)};
     color: ${({ theme }): string => (theme.color.text.medium)};
   }
 `;
