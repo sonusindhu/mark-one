@@ -20,8 +20,7 @@ const StyledNavItem = styled.li<NavItemProps>`
   border-top-right-radius: .25rem;
   color: ${({ theme, isActive }): string => (isActive ? theme.color.text.medium : theme.color.text.info)};
   display: inline-block;
-  list-style-type: none;
-  margin: 0;
+  margin-bottom: -1px;
   padding: 0.5rem 1rem;
   &:hover {
     border-bottom: ${(): string => ('1px solid transparent')};
