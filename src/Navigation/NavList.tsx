@@ -10,7 +10,7 @@ export interface NavListProps {
   children: Array<NavItem>;
 }
 
-const StyledNavList = styled.nav`
+const StyledNavList = styled.ul`
   background-color: ${({ theme }): string => (theme.color.background.subtle)};
   border-collapse: collapse;
   display: flex;
@@ -25,9 +25,7 @@ const NavList: FunctionComponent<NavListProps> = (props): ReactElement => {
   const theme: BaseTheme = useContext(ThemeContext);
   return (
     <StyledNavList theme={theme}>
-      <ul>
-        { children }
-      </ul>
+      { children }
     </StyledNavList>
   );
 };
