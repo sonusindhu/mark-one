@@ -1,8 +1,7 @@
-import React, {
-  FunctionComponent, ReactElement, useContext,
+import {
+  ReactElement,
 } from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from 'mark-one';
+import styled, { withTheme } from 'styled-components';
 import { TabListItem } from './TabListItem';
 
 export interface TabListProps {
@@ -10,7 +9,7 @@ export interface TabListProps {
   children: Array<TabListItem>;
 }
 
-const StyledTabList = styled.ul`
+const TabList = styled.ul`
   background-color: ${({ theme }): string => (theme.color.background.subtle)};
   border-collapse: collapse;
   display: flex;
@@ -18,18 +17,6 @@ const StyledTabList = styled.ul`
   list-style-type: none;
 `;
 
-const TabList: FunctionComponent<TabListProps> = (props): ReactElement => {
-  const {
-    children,
-  } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
-  return (
-    <StyledTabList theme={theme}>
-      { children }
-    </StyledTabList>
-  );
-};
+export type TabList = ReactElement<TabListProps>;
 
-declare type TabList = ReactElement<TabListProps>;
-
-export default TabList;
+export default withTheme(TabList);
