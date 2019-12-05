@@ -5,9 +5,15 @@ import styled, { withTheme } from 'styled-components';
 import { TabListItem } from './TabListItem';
 
 export interface TabListProps {
-  /** Our NavItem functional component serves as the children for NavList  */
+  /** Our TabListItem functional component serves as the children for TabList  */
   children: Array<TabListItem>;
 }
+
+/**
+ * @component TabList
+ * TabList is a group of tabs that can be used on its own or also wrapped in a
+ * <nav> tag in order to create a navigation list
+ */
 
 const TabList = styled.ul`
   background-color: ${({ theme }): string => (theme.color.background.subtle)};
