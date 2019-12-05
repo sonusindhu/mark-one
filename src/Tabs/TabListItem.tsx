@@ -3,14 +3,14 @@ import {
 } from 'react';
 import styled, { withTheme } from 'styled-components';
 
-export interface NavItemProps {
-  /** Text or components to be displayed in the nav item */
+export interface TabListItemProps {
+  /** Text or components to be displayed in the TabList item */
   children: ReactNode;
-  /** Controls whether the NavItem is in focus */
+  /** Controls whether the TabListItem is in focus */
   isActive: boolean;
 }
 
-const StyledNavItem = styled.li<NavItemProps>`
+const StyledTabListItem = styled.li<TabListItemProps>`
   background: ${({ theme, isActive }): string => (isActive ? theme.color.background.light : theme.color.background.subtle)};
   border: ${({ theme }): string => theme.border.hairline};
   border-bottom: ${({ theme, isActive }): string => (isActive ? '1px solid transparent' : theme.border.hairline)};
@@ -25,6 +25,6 @@ const StyledNavItem = styled.li<NavItemProps>`
   }
 `;
 
-export type NavItem = ReactElement<NavItemProps>;
+export type TabListItem = ReactElement<TabListItemProps>;
 
-export default withTheme(StyledNavItem);
+export default withTheme(StyledTabListItem);

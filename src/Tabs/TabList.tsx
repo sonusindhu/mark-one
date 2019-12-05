@@ -3,14 +3,14 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'mark-one';
-import { NavItem } from './NavItem';
+import { TabListItem } from './TabListItem';
 
-export interface NavListProps {
+export interface TabListProps {
   /** Our NavItem functional component serves as the children for NavList  */
-  children: Array<NavItem>;
+  children: Array<TabListItem>;
 }
 
-const StyledNavList = styled.ul`
+const StyledTabList = styled.ul`
   background-color: ${({ theme }): string => (theme.color.background.subtle)};
   border-collapse: collapse;
   display: flex;
@@ -18,18 +18,18 @@ const StyledNavList = styled.ul`
   list-style-type: none;
 `;
 
-const NavList: FunctionComponent<NavListProps> = (props): ReactElement => {
+const TabList: FunctionComponent<TabListProps> = (props): ReactElement => {
   const {
     children,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
-    <StyledNavList theme={theme}>
+    <StyledTabList theme={theme}>
       { children }
-    </StyledNavList>
+    </StyledTabList>
   );
 };
 
-declare type NavList = ReactElement<NavListProps>;
+declare type TabList = ReactElement<TabListProps>;
 
-export default NavList;
+export default TabList;
