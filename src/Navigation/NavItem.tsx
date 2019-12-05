@@ -16,8 +16,6 @@ const StyledNavItem = styled.li<NavItemProps>`
   border-left: ${({ theme, isActive }): string => (isActive ? theme.border.hairline : '1px solid transparent')};
   border-right: ${({ theme, isActive }): string => (isActive ? theme.border.hairline : '1px solid transparent')};
   border-top: ${({ theme, isActive }): string => (isActive ? theme.border.hairline : '1px solid transparent')};
-  border-top-left-radius: .25rem;
-  border-top-right-radius: .25rem;
   color: ${({ theme, isActive }): string => (isActive ? theme.color.text.medium : theme.color.text.info)};
   display: inline-block;
   margin-bottom: -1px;
