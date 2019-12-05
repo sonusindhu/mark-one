@@ -19,8 +19,10 @@ describe('Tabigation Component', function () {
     ));
   });
   describe('Tab Item', function () {
-    it('contains text', function () {
+    it('renders its children', function () {
       getByText('Tab 1');
+      getByText('Tab 2');
+      getByText('Tab 3');
     });
     it('renders a tab item with the light theme background color when isActive is true', function () {
       const tabItem = getByTestId('activeTabItem');
