@@ -6,7 +6,7 @@ import TabList from '../TabList';
 import TabListItem from '../TabListItem';
 import MarkOneTheme from '../../Theme/MarkOneTheme';
 
-describe('Tabigation Component', function () {
+describe('TabListItem Component', function () {
   let getByText;
   let getByTestId;
   beforeEach(function () {

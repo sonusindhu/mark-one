@@ -4,7 +4,7 @@ import { strictEqual } from 'assert';
 import TabList from '../TabList';
 import TabListItem from '../TabListItem';
 
-describe('Tabigation Component', function () {
+describe('TabList Component', function () {
   let getAllByRole;
   beforeEach(function () {
     ({ getAllByRole } = render(
