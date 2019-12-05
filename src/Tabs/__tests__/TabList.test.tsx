@@ -16,9 +16,9 @@ describe('Tabigation Component', function () {
     ));
   });
   describe('Tab List', function () {
-    it('renders every tab item', function () {
-      const listItemCount = getAllByRole('listitem').length;
-      strictEqual(listItemCount, 3);
+    it('renders a <ul>', function () {
+      const tabListCount = getAllByRole('list').length;
+      strictEqual(tabListCount, 1);
     });
   });
 });
