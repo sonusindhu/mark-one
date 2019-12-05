@@ -14,14 +14,14 @@ const TabListItem = styled.li<TabListItemProps>`
   background: ${({ theme, isActive }): string => (isActive ? theme.color.background.light : theme.color.background.subtle)};
   border: ${({ theme }): string => theme.border.hairline};
   border-bottom: ${({ theme, isActive }): string => (isActive ? '1px solid transparent' : theme.border.hairline)};
-  color: ${({ theme, isActive }): string => (isActive ? theme.color.text.medium : theme.color.text.info)};
+  color: ${({ theme, isActive }): string => (isActive ? theme.color.text.medium : theme.color.text.dark)};
   display: inline-block;
   margin-bottom: -1px;
   padding: 0.5rem 1rem;
   &:hover {
     border: ${({ theme }): string => (theme.border.hairline)};
     border-bottom: ${(): string => ('1px solid transparent')};
-    color: ${({ theme }): string => (theme.color.text.medium)};
+    color: ${({ theme }): string => (theme.color.text.dark)};
   }
 `;
 
