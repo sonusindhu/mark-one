@@ -7,10 +7,10 @@ export interface TabListItemProps {
   /** Text or components to be displayed in the TabList item */
   children: ReactNode;
   /** Controls whether the TabListItem is in focus */
-  isActive: boolean;
+  isActive?: boolean;
 }
 
-const StyledTabListItem = styled.li<TabListItemProps>`
+const TabListItem = styled.li<TabListItemProps>`
   background: ${({ theme, isActive }): string => (isActive ? theme.color.background.light : theme.color.background.subtle)};
   border: ${({ theme }): string => theme.border.hairline};
   border-bottom: ${({ theme, isActive }): string => (isActive ? '1px solid transparent' : theme.border.hairline)};
@@ -25,6 +25,10 @@ const StyledTabListItem = styled.li<TabListItemProps>`
   }
 `;
 
+TabListItem.defaultProps = {
+  isActive: false,
+};
+
 export type TabListItem = ReactElement<TabListItemProps>;
 
-export default withTheme(StyledTabListItem);
+export default withTheme(TabListItem);
