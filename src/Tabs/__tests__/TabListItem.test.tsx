@@ -8,9 +8,8 @@ import MarkOneTheme from '../../Theme/MarkOneTheme';
 
 describe('TabListItem Component', function () {
   let getByText;
-  let getByTestId;
   beforeEach(function () {
-    ({ getByText, getByTestId } = render(
+    ({ getByText } = render(
       <TabList>
         <TabListItem>Tab 1</TabListItem>
         <TabListItem isActive data-testid="activeTabItem">Tab 2</TabListItem>
@@ -25,19 +24,10 @@ describe('TabListItem Component', function () {
       getByText('Tab 3');
     });
     it('renders a tab item with the light theme background color when isActive is true', function () {
-      const tabItem = getByTestId('activeTabItem');
+      const tabItem = getByText('Tab 2');
       const style = window.getComputedStyle(tabItem);
       const [red, green, blue] = convert.hex.rgb(
         MarkOneTheme.color.background.light as string
-      );
-      const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
-      strictEqual(style.backgroundColor, convertExpectedToRGB);
-    });
-    it('renders a tab item with the subtle theme background color when isActive is false', function () {
-      const tabListItem = getByTestId('inactiveTabItem');
-      const style = window.getComputedStyle(tabListItem);
-      const [red, green, blue] = convert.hex.rgb(
-        MarkOneTheme.color.background.subtle as string
       );
       const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
       strictEqual(style.backgroundColor, convertExpectedToRGB);
