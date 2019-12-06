@@ -16,7 +16,8 @@ export interface TabListProps {
  */
 
 const TabList = styled.ul`
-  background-color: ${({ theme }): string => (theme.color.background.subtle)};
+  background-color: transparent;
+  border-bottom: ${({ theme }): string => theme.border.hairline};
   border-collapse: collapse;
   display: flex;
   flex-wrap: wrap;
