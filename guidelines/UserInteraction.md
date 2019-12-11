@@ -35,63 +35,6 @@ The second area, Administration, manages the following content:
 * Manage courses
 * Manage faculty
 
-#### Screen captures of the current interface
-##### Public interface
-
-<figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/intro_fourYear.png" alt="Four Year Plan" width="300">
-  <figcaption>Four Year Plan</figcaption>
-</figure>
-
-<figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/intro_schedule.png" alt="Four Year Plan" width="300">
-  <figcaption>Scheduled courses</figcaption>
-</figure>
-
-##### Private interface - edit content
-
-<figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/intro_private_courses.png" alt="Four Year Plan" width="300">
-  <figcaption>Courses</figcaption>
-</figure>
-
-<figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/intro_private_faculty.png" alt="Faculty" width="300">
-  <figcaption>Faculty</figcaption>
-</figure>
-
-<figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/intro_private_schedule.png" alt="Schedule" width="300">
-  <figcaption>Schedule</figcaption>
-</figure>
-
-<figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/intro_private_fouryear.png" alt="4 year plan" width="300">
-  <figcaption>4 year plan</figcaption>
-</figure>
-
-<figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/intro_private_request.png" alt="Requests" width="300">
-  <figcaption>Requests</figcaption>
-</figure>
-
-##### Private interface - administration
-
-<figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/intro_private_manage_user.png" alt="Manage users" width="300">
-  <figcaption>Manage users</figcaption>
-</figure>
-
-<figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/intro_private_manage_course.png" alt="Manage courses" width="300">
-  <figcaption>Manage courses</figcaption>
-</figure>
-
-<figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/intro_private_manage_faculty.png" alt="Manage faculty" width="300">
-  <figcaption>Manage faculty</figcaption>
-</figure>
-
 ### GitHub
 
 * [Course planning kanban](https://github.com/seas-computing/course-planner/projects/1)
@@ -217,11 +160,11 @@ Ultimately, these are "visual rules" based on "superficial" usability; the user 
 </figure>
 
 <figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/ruleset-button_2.png" alt="Detail of the show/hide buttons in the Schedule interface" width="300">
+  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/ruleset-button_2.png" alt="Detail of the show/hide buttons in the Schedule interface" width="600">
   <figcaption>Detail of the show/hide buttons in the Schedule interface</figcaption>
 </figure>
 
 <figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/ruleset-button_3.png" alt="Detail of the Create new user button in the admin Mange Users interface" width="300">
+  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/ruleset-button_3.png" alt="Detail of the Create new user button in the admin Mange Users interface" width="600">
   <figcaption>Detail of the "Create new user" button in the admin Mange Users interface</figcaption>
 </figure>
