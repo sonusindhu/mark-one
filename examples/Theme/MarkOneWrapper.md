@@ -12,11 +12,18 @@ const BackgroundDiv = styled.div`
   };
   padding: ${({theme}) => (theme.ws.medium)};
   margin-top: ${({theme}) => (theme.ws.small)};
-  color: ${({theme, value}) => (
-    /dark/.test(value)
-    ? theme.color.text.light
-    : theme.color.text.dark)};
+  color: ${({theme, fontColor}) => (theme.color.text[fontColor])};
 `;
+const getFontColor = (shade, meaning) => {
+  if (
+    shade === 'accent' 
+    || (meaning === 'info' 
+      && shade === 'medium')
+  ) {
+    return 'light';
+  }
+  return /dark/.test(shade) ? 'light' : 'dark';
+}
 <div>
   {[
      'light',
@@ -26,13 +33,19 @@ const BackgroundDiv = styled.div`
      'darker',
      'accent',
   ].map((color) => (
-    <BackgroundDiv value={color}>Background: {color}</BackgroundDiv>
+    <BackgroundDiv
+      fontColor={getFontColor(color)}
+      value={color}
+    >
+      Background: {color}
+    </BackgroundDiv>
   ))}
   {['info', 'positive', 'negative'].map((meaning) => (
     ['light', 'medium', 'dark'].map((shade) => (
       <BackgroundDiv
         value={shade}
         modifier={meaning}
+        fontColor={getFontColor(shade, meaning)}
       >
         {meaning}: {shade}
       </BackgroundDiv>
