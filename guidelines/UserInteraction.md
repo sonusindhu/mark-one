@@ -51,7 +51,7 @@ The second area, Administration, manages the following content:
 * [Comparison study](https://rawgit.com/Harvard-University-iCommons/UX-Prototypes/master/evaluation/SEAS-coursePlanner/index.html)
 
 ### Rulesets
-[Calendar](calendar) | [Drop downs](drop-downs) | [Links and buttons](links-and-buttons)
+[Calendar](calendar) | [Drop downs](drop-downs) | [Links and buttons](links-and-buttons) | [Link and button styles](link-and-button-styles)
 
 Rule sets address patterns and exceptions. They improve productivity of implementation and they ensure consistency, which improves usability.
 
@@ -133,8 +133,8 @@ Links are used to connect content areas:
 * Content within the same page (anchor links)
 
 <figure>
-  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/ruleset-link.png" alt="Detail of the tab and drop down links in Schedule" width="300">
-  <figcaption>Detail of the tab and drop down links in Schedule</figcaption>
+  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/ruleset-link.png" alt="Detail of the tab and links in Course Planning and Course Administration" width="600">
+  <figcaption>Detail of the tab and links in Course Planning and Course Administration</figcaption>
 </figure>
 
 ___
@@ -151,7 +151,7 @@ Buttons are used to "process" information or to trigger changes of the content
 * Reveal hidden information*
 * Change the aspect of content (courses schedule)
 
-*It's open to discussion whether this should be an icon with the function of a link, since modals or side navs just reveal previously hidden content. But not in all cases.
+*It's an open to discussion whether this should be an icon with the function of a link, since modals or side navs just reveal previously hidden content. But not in all cases.
 Ultimately, these are "visual rules" based on "superficial" usability; the user is exposed to the same experience whether the action of one button streams data from the back-end and doing all kind of processing to finally display the result, while another just un-hides static information.
 
 <figure>
@@ -167,4 +167,23 @@ Ultimately, these are "visual rules" based on "superficial" usability; the user 
 <figure>
   <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/ruleset-button_3.png" alt="Detail of the Create new user button in the admin Mange Users interface" width="600">
   <figcaption>Detail of the "Create new user" button in the admin Mange Users interface</figcaption>
+</figure>
+
+##### Link and button styles
+
+Links and buttons with limited available space
+
+<figure>
+  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/ruleset-button_4.png" alt="Detail of Non-class Meetings interface with borderless icon links to modals" width="600">
+  <figcaption>Detail of Non-class Meetings interface with borderless icon-links to modals</figcaption>
+</figure>
+
+<figure>
+  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/ruleset-button_5.png" alt="Detail of Non-class Meetings modal with bordered icons" width="300">
+  <figcaption>Detail of Non-class Meetings modal with bordered icons</figcaption>
+</figure>
+
+<figure>
+  <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/ruleset-button_6.png" alt="Detail of icons that complement the function of the link (Settings, Fall 2019, Sprinfg 2020)" width="800">
+  <figcaption>Detail of icons that complement the function of the link (Settings, Fall 2019, Spring 2020)</figcaption>
 </figure>
