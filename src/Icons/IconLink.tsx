@@ -16,10 +16,17 @@ export interface IconLinkProps {
   alt: ReactText;
   /** Allows layering of Font Awesome icons, which is possible through nesting */
   children?: ReactNode;
+  /** Allows you to pass in style properties for the element */
+  theme?: object;
 }
 
 const StyledIconLink = styled.a`
-  cursor: pointer;
+  background: transparent;
+  color: ${({ theme }): string => (theme.color.background.medium)};
+  &:hover {
+    color: ${({ theme }): string => (theme.color.background.dark)};
+    cursor: pointer;
+  }
   display: block;
 `;
 
