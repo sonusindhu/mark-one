@@ -27,7 +27,7 @@ const StyledIconLink = styled.a`
     color: ${({ theme }): string => (theme.color.background.dark)};
     cursor: pointer;
   }
-  display: block;
+  display: inline-block;
 `;
 
 const IconLink: FunctionComponent<IconLinkProps> = (props): ReactElement => {
