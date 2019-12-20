@@ -79,6 +79,7 @@
     "webpack": "^4.41.2"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@openfonts/open-sans_all": "^1.43.0",
     "@openfonts/roboto-mono_all": "^1.43.0",
     "polished": "^3.4.1"
