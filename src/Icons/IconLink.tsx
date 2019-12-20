@@ -33,6 +33,7 @@ const StyledIconLink = styled.a`
 const IconLink: FunctionComponent<IconLinkProps> = (props): ReactElement => {
   const {
     clickHandler,
+    href,
     title,
     alt,
     children,
@@ -41,6 +42,7 @@ const IconLink: FunctionComponent<IconLinkProps> = (props): ReactElement => {
   return (
     <StyledIconLink
       onClick={clickHandler}
+      href={href}
       title={title}
       theme={theme}
       aria-label={alt}
