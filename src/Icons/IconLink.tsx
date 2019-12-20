@@ -3,20 +3,19 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'Theme';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 
 export interface IconLinkProps {
   /** Function to call on click event */
   clickHandler: MouseEventHandler;
-  /** Specifies the Font Awesome icon name */
-  icon: IconProp;
   /** Specifies the tooltip text */
   title: string;
   /** Specifies the alt text for screen readers */
   alt: string;
   /** Allows you to pass in style properties for the element */
   theme?: object;
+  /** Specifies the Font Awesome Icon(s) */
+  children: ReactElement<FontAwesomeIconProps>;
 }
 
 const StyledIconLink = styled.a`
@@ -32,9 +31,9 @@ const StyledIconLink = styled.a`
 const IconLink: FunctionComponent<IconLinkProps> = (props): ReactElement => {
   const {
     clickHandler,
-    icon,
     title,
     alt,
+    children,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
@@ -44,7 +43,7 @@ const IconLink: FunctionComponent<IconLinkProps> = (props): ReactElement => {
       theme={theme}
       aria-label={alt}
     >
-      <FontAwesomeIcon icon={icon} />
+      { children }
     </StyledIconLink>
   );
 };
