@@ -7,7 +7,9 @@ import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 
 export interface IconLinkProps {
   /** Function to call on click event */
-  clickHandler: MouseEventHandler;
+  clickHandler?: MouseEventHandler;
+  /** Specifies the URL the user will be directed to when the link is clicked */
+  href?: string;
   /** Specifies the tooltip text */
   title: string;
   /** Specifies the alt text for screen readers */
