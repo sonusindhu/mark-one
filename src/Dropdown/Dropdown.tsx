@@ -15,7 +15,8 @@ export interface DropdownProps {
 }
 
 const StyledDropdown = styled.select`
-
+  color: ${({ theme }): string => (theme.color.text.dark)};
+  width: 100%;
 `;
 
 const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
