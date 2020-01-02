@@ -1,7 +1,11 @@
 ```jsx
-<Dropdown onChangeHandler={function(){alert('You changed your selection')}}>
-  <option value="all">All</option>
-  <option value="fall">Fall</option>
-  <option value="spring">Spring</option>
+import { Dropdown, DropdownOption } from 'mark-one';
+<Dropdown
+  name="semesters"
+  onChangeHandler={function(){alert('You changed your selection')}}
+>
+  <DropdownOption value="all">All</DropdownOption>
+  <DropdownOption value="fall">Fall</DropdownOption>
+  <DropdownOption value="spring">Spring</DropdownOption>
 </Dropdown>
 ```
