@@ -6,6 +6,6 @@ import { Dropdown, DropdownOption } from 'mark-one';
 >
   <DropdownOption value="all">All</DropdownOption>
   <DropdownOption value="fall">Fall</DropdownOption>
-  <DropdownOption value="spring">Spring</DropdownOption>
+  <DropdownOption value="spring" selected>Spring</DropdownOption>
 </Dropdown>
 ```

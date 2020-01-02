@@ -9,6 +9,8 @@ export interface DropdownOptionProps {
   children: string;
   /** Text that represents the value of the dropdown option */
   value: string;
+  /** Specifies whether the option is the initial default selected option */
+  selected?: boolean;
 }
 
 const StyledDropdownOption = styled.option`
@@ -19,10 +21,12 @@ ReactElement => {
   const {
     children,
     value,
+    selected,
   } = props;
   return (
     <StyledDropdownOption
       value={value}
+      selected={selected}
     >
       {children}
     </StyledDropdownOption>
