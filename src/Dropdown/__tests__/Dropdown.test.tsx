@@ -3,6 +3,7 @@ import { render, fireEvent, cleanup } from 'test-utils';
 import { spy } from 'sinon';
 import assert from 'assert';
 import Dropdown from '../Dropdown';
+import DropdownOption from '../DropdownOption';
 
 describe('Dropdown', function () {
   let getByText;
@@ -11,9 +12,9 @@ describe('Dropdown', function () {
     clickSpy = spy();
     ({ getByText } = render(
       <Dropdown name="semesters" onChangeHandler={clickSpy}>
-        <option>All</option>
-        <option>Fall</option>
-        <option>Spring</option>
+        <DropdownOption value="all">All</DropdownOption>
+        <DropdownOption value="fall">Fall</DropdownOption>
+        <DropdownOption value="spring">Spring</DropdownOption>
       </Dropdown>
     ));
   });
