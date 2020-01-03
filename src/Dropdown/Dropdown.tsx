@@ -52,18 +52,3 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
 };
 
 export default Dropdown;
-
-/*
-<Dropdown options={[
-  {value: "all", label: "All"},
-  {value: "fall", label: "Fall"},
-  {value: "spring", label: "Spring"}
-
-]} value="fall" />
-*/
-
-/*
-  <StyledDropdown value={}>
-    props.options.map(x => <option value={x.value} selected={x.selected}>{x.label}</option>))
-  </StyledDropdown>
-*/
