@@ -3,30 +3,40 @@ import { render, fireEvent, cleanup } from 'test-utils';
 import { spy } from 'sinon';
 import assert from 'assert';
 import Dropdown from '../Dropdown';
-import DropdownOption from '../DropdownOption';
 
 describe('Dropdown', function () {
   let getByText;
-  let clickSpy;
+  let changeSpy;
   beforeEach(function () {
-    clickSpy = spy();
+    changeSpy = spy();
     ({ getByText } = render(
-      <Dropdown name="semesters" onChangeHandler={clickSpy}>
-        <DropdownOption value="all">All</DropdownOption>
-        <DropdownOption value="fall">Fall</DropdownOption>
-        <DropdownOption value="spring">Spring</DropdownOption>
-      </Dropdown>
+      <Dropdown
+        options={[
+          {
+            value: 'all', label: 'All',
+          },
+          {
+            value: 'fall', label: 'Fall',
+          },
+          {
+            value: 'spring', label: 'Spring',
+          },
+        ]}
+        value="fall"
+        name="semesters"
+        onChange={changeSpy}
+      />
     ));
   });
   afterEach(function () {
-    clickSpy.resetHistory();
+    changeSpy.resetHistory();
     cleanup();
   });
   it('renders', function () {
     getByText('Spring');
   });
-  it('calls the change handler when clicked', function () {
-    fireEvent.change(clickSpy);
-    assert.equal(clickSpy.callCount, 1);
+  it('calls the change handler when changed', function () {
+    fireEvent.change(document.getElementsByName('semesters')[0]);
+    assert.equal(changeSpy.callCount, 1);
   });
 });
