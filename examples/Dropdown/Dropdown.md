@@ -1,11 +1,26 @@
 ```jsx
-import { Dropdown, DropdownOption } from 'mark-one';
-<Dropdown
-  name="semesters"
-  onChangeHandler={function(){alert('You changed your selection')}}
->
-  <DropdownOption value="all">All</DropdownOption>
-  <DropdownOption value="fall">Fall</DropdownOption>
-  <DropdownOption value="spring" selected>Spring</DropdownOption>
-</Dropdown>
+      import { useState } from 'react';
+      function DropdownExample() {
+        const [value, setValue] = useState('fall');
+        return (<Dropdown
+          options={[
+            {
+              value: 'all', label: 'All',
+            },
+            {
+              value: 'fall', label: 'Fall',
+            },
+            {
+              value: 'spring', label: 'Spring',
+            },
+          ]}
+          value={value}
+          name="semesters"
+          onChange={function(event){
+            setValue(event.target.value);
+            alert('You changed the selection to ' + event.target.value);
+          }}
+        />);
+      }
+      <DropdownExample />
 ```
