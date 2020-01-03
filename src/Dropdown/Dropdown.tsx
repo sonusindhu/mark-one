@@ -6,15 +6,18 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'mark-one';
-import DropdownOption from './DropdownOption';
 
 export interface DropdownProps {
-  /** An array of <option> elements that define the selections in the dropdown */
-  children: Array<DropdownOption>;
   /** Function to call on change event */
-  onChangeHandler: ChangeEventHandler;
-  /** Text that represents the name value of the dropdown option */
+  onChange: ChangeEventHandler;
+  /** The name of the dropdown */
   name: string;
+  /** An array of objects with the properties 'label' and 'value' for each dropdown option */
+  options: Array<{label: string; value: string}>;
+  /** The currently selected dropdown value */
+  value?: string;
+  /** The dropdown value selected by default */
+  defaultValue?: string;
 }
 
 const StyledDropdown = styled.select`
@@ -24,18 +27,43 @@ const StyledDropdown = styled.select`
 
 const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
   const {
-    children,
-    onChangeHandler,
+    onChange,
+    name,
+    options,
+    value,
+    defaultValue,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
     <StyledDropdown
-      onChange={onChangeHandler}
+      onChange={onChange}
       theme={theme}
+      name={name}
+      value={value}
+      defaultValue={defaultValue}
     >
-      {children}
+      {options.map((x) => (
+        <option value={x.value}>
+          {x.label}
+        </option>
+      ))}
     </StyledDropdown>
   );
 };
 
 export default Dropdown;
+
+/*
+<Dropdown options={[
+  {value: "all", label: "All"},
+  {value: "fall", label: "Fall"},
+  {value: "spring", label: "Spring"}
+
+]} value="fall" />
+*/
+
+/*
+  <StyledDropdown value={}>
+    props.options.map(x => <option value={x.value} selected={x.selected}>{x.label}</option>))
+  </StyledDropdown>
+*/
