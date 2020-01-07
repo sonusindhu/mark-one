@@ -42,9 +42,9 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
       value={value}
       defaultValue={defaultValue}
     >
-      {options.map((dropdownItem) => (
-        <option value={dropdownItem.value}>
-          {dropdownItem.label}
+      {options.map((option) => (
+        <option value={option.value}>
+          {option.label}
         </option>
       ))}
     </StyledDropdown>
