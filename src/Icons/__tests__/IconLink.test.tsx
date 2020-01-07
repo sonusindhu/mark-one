@@ -1,19 +1,23 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from 'test-utils';
+import {
+  render,
+  fireEvent,
+  cleanup,
+} from 'test-utils';
 import { spy } from 'sinon';
-import assert from 'assert';
+import assert, { strictEqual } from 'assert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import IconLink from '../IconLink';
 
 describe('Icon Link', function () {
-  let getByTitle;
+  let getByTestId;
   let clickSpy;
   beforeEach(function () {
     clickSpy = spy();
-    ({ getByTitle } = render(
+    ({ getByTestId } = render(
       <IconLink title="Edit account information" alt="Edit account information" clickHandler={clickSpy}>
-        <FontAwesomeIcon icon={faEdit} />
+        <FontAwesomeIcon icon={faEdit} data-testid="test-icon" />
       </IconLink>
     ));
   });
@@ -22,10 +26,14 @@ describe('Icon Link', function () {
     cleanup();
   });
   it('renders', function () {
-    getByTitle('Edit account information');
+    getByTestId('test-icon');
   });
   it('calls the click handler when clicked', function () {
-    fireEvent.click(getByTitle('Edit account information'));
+    fireEvent.click(getByTestId('test-icon'));
     assert.equal(clickSpy.callCount, 1);
+  });
+  it('renders the correct icon', function () {
+    const iconName = getByTestId('test-icon').className.baseVal.split(' ')[1];
+    strictEqual(iconName, 'fa-edit');
   });
 });
