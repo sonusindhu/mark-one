@@ -25,3 +25,4 @@ jobs:
         target_branch: gh-pages
         on:
           branch: master
+  env: ESLINT_VERSION=6.5.1
