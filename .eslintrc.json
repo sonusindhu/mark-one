@@ -146,5 +146,21 @@
         "@typescript-eslint/no-object-literal-type-assertion": 0
       }
     }
-  ]
+  ],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": {
+          "resolve": {
+            "extensions": [
+              ".js",
+              ".jsx",
+              ".ts",
+              ".tsx"
+            ]
+          }
+        }
+      }
+    }
+  }
 }
