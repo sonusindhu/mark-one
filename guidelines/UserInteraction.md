@@ -175,7 +175,7 @@ Links and buttons with limited available space
 
 <figure>
   <img src="https://seas-computing.github.io/course-planner_ux/guidelines/img/ruleset-button_4.png" alt="Detail of Non-class Meetings interface with borderless icon links to modals" width="600">
-  <figcaption>Detail of Non-class Meetings interface with borderless icon-links to modals</figcaption>
+  <figcaption>Detail of Non-class Meetings interface with borderless iconlinks to modals</figcaption>
 </figure>
 
 <figure>
