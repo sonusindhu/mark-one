@@ -30,7 +30,7 @@ describe('Icon Link', function () {
   });
   it('calls the click handler when clicked', function () {
     fireEvent.click(getByTestId('test-icon'));
-    assert.equal(clickSpy.callCount, 1);
+    strictEqual(clickSpy.callCount, 1);
   });
   it('renders the correct icon', function () {
     const iconName = getByTestId('test-icon').className.baseVal.split(' ')[1];
