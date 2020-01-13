@@ -5,7 +5,7 @@ import {
   cleanup,
 } from 'test-utils';
 import { spy } from 'sinon';
-import assert, { strictEqual } from 'assert';
+import { strictEqual } from 'assert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import IconLink from '../IconLink';
