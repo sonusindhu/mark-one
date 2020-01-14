@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, cleanup } from 'test-utils';
 import { spy } from 'sinon';
-import assert, { strictEqual, deepStrictEqual } from 'assert';
+import { strictEqual, deepStrictEqual } from 'assert';
 import Dropdown from '../Dropdown';
 
 describe('Dropdown', function () {
