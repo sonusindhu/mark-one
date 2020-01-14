@@ -39,7 +39,7 @@ describe('Dropdown', function () {
   });
   it('calls the change handler when changed', function () {
     fireEvent.change(document.getElementsByName('semesters')[0]);
-    assert.equal(changeSpy.callCount, 1);
+    strictEqual(changeSpy.callCount, 1);
   });
   it('contains the expected elements', function () {
     const dropdownOptionsCount = getAllByRole('option').length;
