@@ -30,6 +30,8 @@
   },
   "homepage": "https://github.com/seas-computing/mark-one#readme",
   "devDependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "@testing-library/react": "^9.3.0",
     "@types/color-convert": "^1.9.0",
     "@types/jsdom": "^12.2.4",
@@ -78,6 +80,7 @@
     "webpack": "^4.41.2"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@openfonts/open-sans_all": "^1.43.0",
     "@openfonts/roboto-mono_all": "^1.43.0",
     "polished": "^3.4.1"
