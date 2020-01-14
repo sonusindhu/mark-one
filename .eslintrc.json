@@ -44,6 +44,12 @@
       "as-needed"
     ],
     "id-length": "off",
+    "import/extensions": ["error", "ignorePackages", {
+      "js": "never",
+      "jsx": "never",
+      "ts": "never",
+      "tsx": "never"
+    }],
     "import/no-extraneous-dependencies": [
       "error",
       {
@@ -140,5 +146,22 @@
         "@typescript-eslint/no-object-literal-type-assertion": 0
       }
     }
-  ]
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {},
+      "webpack": {
+        "config": {
+          "resolve": {
+            "extensions": [
+              ".js",
+              ".jsx",
+              ".ts",
+              ".tsx"
+            ]
+          }
+        }
+      }
+    }
+  }
 }
