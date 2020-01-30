@@ -3,9 +3,9 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'Theme';
-import BasicButton, { ButtonProps } from './BasicButton';
+import StyledButton, { ButtonProps } from './BasicButton';
 
-const StyledPrimaryButton = styled(BasicButton)`
+const StyledPrimaryButton = styled(StyledButton)`
   background: ${({ theme }): string => (theme.color.background.info.light)};
   color: ${({ theme }): string => (theme.color.text.light)};
 `;
