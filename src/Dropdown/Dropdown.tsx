@@ -5,7 +5,7 @@ import React, {
   ChangeEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from 'mark-one';
+import { BaseTheme } from '../Theme';
 
 export interface DropdownProps {
   /** Function to call on change event */

@@ -1,7 +1,7 @@
 import React, {
   ReactElement, ReactNode, FunctionComponent, useContext,
 } from 'react';
-import { BaseTheme } from 'mark-one';
+import { BaseTheme } from '../Theme';
 import styled, { ThemeContext } from 'styled-components';
 
 export interface TabListItemProps {
