@@ -2,7 +2,8 @@
   "name": "mark-one",
   "version": "0.0.1",
   "description": "A UI component library for building React Apps",
-  "main": "lib/index.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "styleguidist build",
     "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
