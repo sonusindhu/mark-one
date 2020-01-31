@@ -11,7 +11,8 @@ const StyledPrimaryButton = styled(StyledButton)`
   color: ${({ theme }): string => (theme.color.text.light)};
 `;
 
-const PrimaryButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
+const DangerButton: FunctionComponent<ButtonProps> = (props):
+ReactElement => {
   const {
     clickHandler,
     children,
@@ -29,4 +30,4 @@ const PrimaryButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
   );
 };
 
-export default PrimaryButton;
+export default DangerButton;
