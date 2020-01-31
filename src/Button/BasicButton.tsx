@@ -2,7 +2,7 @@ import React, {
   FunctionComponent, ReactElement, useContext,
 } from 'react';
 import { ThemeContext } from 'styled-components';
-import { BaseTheme } from 'mark-one';
+import { BaseTheme } from '../Theme';
 import { ButtonProps } from './ButtonProps';
 import { StyledButton } from './StyledButton';
 

@@ -2,8 +2,8 @@ import React, {
   FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from 'Theme';
 import { darken } from 'polished';
+import { BaseTheme } from '../Theme';
 import { StyledButton } from './StyledButton';
 import { ButtonProps } from './ButtonProps';
 
