@@ -3,7 +3,8 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'Theme';
-import StyledButton, { ButtonProps } from './BasicButton';
+import { StyledButton } from './StyledButton';
+import { ButtonProps } from './ButtonProps';
 
 const StyledPrimaryButton = styled(StyledButton)`
   background: ${({ theme }): string => (theme.color.background.info.light)};
@@ -19,7 +20,7 @@ const PrimaryButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
   const theme: BaseTheme = useContext(ThemeContext);
   return (
     <StyledPrimaryButton
-      clickHandler={clickHandler}
+      onClick={clickHandler}
       theme={theme}
       disabled={disabled}
     >
