@@ -1,3 +1,3 @@
 ```jsx
-<BorderlessButton clickHandler={function(){alert('You clicked the danger button')}}>Click Me!</BorderlessButton>
+<BorderlessButton clickHandler={function(){alert('You clicked the borderless button')}}>Click Me!</BorderlessButton>
 ```
