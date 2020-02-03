@@ -13,7 +13,7 @@ const Title = styled.h1`
 `;
 
 <Header>
-  <Logo 
+  <Logo
     image={logo}
     width="175px"
     href="#"

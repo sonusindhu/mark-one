@@ -2,8 +2,8 @@ import React, {
   FunctionComponent, ReactElement, useContext, MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from 'Theme';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import { BaseTheme } from '../Theme';
 
 export interface IconLinkProps {
   /** Function to call on click event */

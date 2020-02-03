@@ -1,7 +1,7 @@
 import React from 'react';
-import { PageBody } from 'mark-one';
 import { render } from 'test-utils';
 import { strictEqual } from 'assert';
+import { PageBody } from '..';
 
 describe('Page body', function () {
   it('does not require any content to be provided', function () {

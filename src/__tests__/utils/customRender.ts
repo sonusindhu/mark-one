@@ -4,7 +4,7 @@ import {
   RenderResult,
   RenderOptions,
 } from '@testing-library/react';
-import { MarkOneWrapper } from 'mark-one';
+import { MarkOneWrapper } from '../../Theme';
 
 /**
  * In order to use our theme context in tests, we need to wrap all of our

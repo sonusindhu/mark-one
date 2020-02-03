@@ -2,7 +2,7 @@ import React, {
   FunctionComponent, MouseEventHandler, ReactElement, ReactNode, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from 'mark-one';
+import { BaseTheme } from '../Theme';
 
 export interface TableHeadingCellProps {
   /** Text or components to be displayed in the table heading cell */

@@ -1,7 +1,7 @@
 import React from 'react';
 import { strictEqual } from 'assert';
 import { render } from 'test-utils';
-import { Logo } from 'mark-one';
+import { Logo } from '..';
 
 describe('Logo', function () {
   describe('image prop', function () {
