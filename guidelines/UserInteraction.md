@@ -3,7 +3,7 @@
 ### Overview
 A library of components and interaction rules consists of all the designed and styled parts of an interface and how they behave.
 
-Libraries foster consistentcy and productivity for development but also for the usability of the product.
+Libraries foster consistency and productivity for development but also for the usability of the product.
 
 A successful usability offers users:
 * Ease and competence in using the user interface during the first contact with the product.
