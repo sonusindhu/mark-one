@@ -38,7 +38,7 @@ Components for handling the layout and behavior of forms, such as field sets, co
 
 ### Inputs
 
-Text fields, checkboxes, radio buttons, text areas, select boxes, etc.
+Checkboxes, radio buttons, text areas, select boxes, etc.
 
 ### Indicators
 
