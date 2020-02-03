@@ -1,5 +1,5 @@
 ```jsx
-import { Table, TableCell, TableBody, TableRow, TableHeadingCell, TableHead } from 'mark-one';
+import { Table, TableCell, TableBody, TableRow, TableHeadingCell, TableHead } from '../../';
 <Table>
   <TableHead>
     <TableRow>

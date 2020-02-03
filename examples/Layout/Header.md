@@ -3,7 +3,7 @@ The Header uses flexbox for positioning, and accepts a `justify` prop that contr
 ```jsx
 import styled from 'styled-components';
 import logo from './H_SEAS_logo_RGB.svg';
-import { Logo } from 'mark-one';
+import { Logo } from '../../';
 
 const Title = styled.h1`
   font-size: ${({ theme }) => theme.font.title.size};
@@ -13,7 +13,7 @@ const Title = styled.h1`
 `;
 
 <Header>
-  <Logo 
+  <Logo
     image={logo}
     width="175px"
     href="#"
