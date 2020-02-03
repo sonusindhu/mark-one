@@ -29,6 +29,9 @@
       ],
       "test-utils": [
         "./__tests__/utils/index.ts"
+      ],
+      "mark-one": [
+        "./index.ts"
       ]
     }
   },

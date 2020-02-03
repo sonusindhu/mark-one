@@ -3,7 +3,7 @@ The following example shows the usage of the TabList and TabListItem components 
 The TabList component, along with the TabListItem components where the `isActive` prop is equal to false, are set up to have a background color `transparent`. Since the StyledNav has a background color of `theme.color.background.subtle` (from our MarkOneTheme), we see this background color across most of our tab list. When `isActive` is true for a TabListItem component, the background is `theme.color.background.light`.
 
 ```jsx
-import { TabListItem } from '../../';
+import { TabListItem } from 'mark-one';
 import styled from 'styled-components';
 
 const StyledNav = styled.nav`
@@ -41,7 +41,7 @@ const StyledLink = styled.a`
 ```
 The nav element in this example does not have a background color set, which is why the background color across the entire TabList defaults to the standard browser background color.
 ```jsx
-import { TabListItem } from '../../';
+import { TabListItem } from 'mark-one';
 import styled from 'styled-components';
 
 const StyledLink = styled.a`

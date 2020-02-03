@@ -1,5 +1,5 @@
 ```jsx
-import { PageBody } from '../../';
+import { PageBody } from 'mark-one';
 
 <PageBody>
   <h1>Hello world</h1>
