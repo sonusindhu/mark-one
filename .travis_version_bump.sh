@@ -23,7 +23,7 @@ if [[ "$TRAVIS_BRANCH" == develop ]]; then
 fi
 
 if [[ "$SEMVER" != "" ]]; then
-  npm version $SEMVER -m "automatic bump to %s"
+  npm version $SEMVER -m "automatic bump to %s [skip ci]"
 fi
 
 git push --tags origin HEAD:$TRAVIS_BRANCH
