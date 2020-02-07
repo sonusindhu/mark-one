@@ -11,7 +11,7 @@ A React UI library in development at the Harvard John A. Paulson School of Engin
 
 ## Installing
 
-> Project is unpublished, so this will not work yet
+> This project is currently under development, and all components are liable to change significantly between version. You should not use this in a production app unless you know what you're doing.
 
 Mark One can be installed from NPM:
 

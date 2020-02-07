@@ -4,12 +4,16 @@
   "description": "A UI component library for building React Apps",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*",
+    "CONTRIBUTING.MD",
+    "CODE_OF_CONDUCT.MD"
+  ],
   "scripts": {
     "build": "styleguidist build",
     "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "eslint --ext=ts,tsx,js ./src",
-    "prepublishOnly": "tsc",
-    "postinstall": "tsc",
+    "prepublishOnly": "tsc --project tsconfig.publish.json",
     "start": "styleguidist server",
     "test": "TS_NODE_TRANSPILE_ONLY=true nyc mocha",
     "test:watch": "TS_NODE_TRANSPILE_ONLY=true mocha --watch",
@@ -70,7 +74,7 @@
     "react": "^16.10.2",
     "react-docgen-typescript": "^1.15.0",
     "react-dom": "^16.10.2",
-    "react-styleguidist": "^9.2.0",
+    "react-styleguidist": "^10.6.1",
     "sinon": "^7.5.0",
     "style-loader": "^1.0.0",
     "styled-components": "^4.4.0",
