@@ -6,9 +6,9 @@ stages:
   - name: documentation
     if: branch = master AND type != pull_request
   - name: version_bump 
-    if: (branch = master OR branch = develop) AND type != pull_request
+    if: branch IN (master,develop) AND type != pull_request AND tag IS blank
   - name: npm_publish 
-    if: (branch = master OR branch = develop) AND type != pull_request
+    if: branch IN (master,develop)  AND type != pull_request AND tag IS present
 jobs:
   include:
     - stage: test
@@ -30,8 +30,6 @@ jobs:
           branch: master
     - stage: version_bump
       script: "./.travis_version_bump.sh"
-      on: 
-        tags: false
     - stage: npm_publish
       before_deploy: '[[ $TRAVIS_BRANCH == master ]] && NPM_TAG = latest || NPM_TAG = develop'
       deploy:
