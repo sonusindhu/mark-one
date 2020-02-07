@@ -4,6 +4,11 @@
   "description": "A UI component library for building React Apps",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*",
+    "CONTRIBUTING.MD",
+    "CODE_OF_CONDUCT.MD"
+  ],
   "scripts": {
     "build": "styleguidist build",
     "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
