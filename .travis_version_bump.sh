@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Set the user name and email to match the API token holder
 git config --global user.email $DEV_TEAM_EMAIL 
