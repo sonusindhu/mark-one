@@ -5,10 +5,8 @@ stages:
   - test
   - name: documentation
     if: branch = master AND type != pull_request
-  - name: version_bump 
-    if: branch IN (master,develop) AND type != pull_request
-  - name: npm_publish 
-    if: tag =~ /^v\d+\.\d+\.\d+\$/
+  - name: npm_deploy_develop
+    if: branch = develop AND type != pull_request
 jobs:
   include:
     - stage: test
@@ -28,14 +26,10 @@ jobs:
         target_branch: gh-pages
         on:
           branch: master
-    - stage: version_bump
-      script: "./.travis_version_bump.sh"
-    - stage: npm_publish
-      before_deploy: '[[ $TRAVIS_BRANCH == master ]] && NPM_TAG = latest || NPM_TAG = develop'
+    - stage: npm_deploy_develop
+      before_deploy: "./.travis_version_bump.sh"
       deploy:
         provider: npm
         email: $DEV_TEAM_EMAIL 
         api_key: $NPM_TOKEN
-        tag: $NPM_TAG
-        on:
-          tags: true
+        tag: develop
