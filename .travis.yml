@@ -23,6 +23,7 @@ jobs:
         provider: pages
         github_token: $GITHUB_TOKEN
         local_dir: ./styleguide
+        skip_cleanup: true
         target_branch: gh-pages
         on:
           branch: master
@@ -32,6 +33,7 @@ jobs:
         provider: npm
         email: $DEV_TEAM_EMAIL 
         api_key: $NPM_TOKEN
+        skip_cleanup: true
         tag: develop
         on:
           branch: develop
