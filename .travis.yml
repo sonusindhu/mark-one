@@ -33,3 +33,5 @@ jobs:
         email: $DEV_TEAM_EMAIL 
         api_key: $NPM_TOKEN
         tag: develop
+        on:
+          branch: develop
