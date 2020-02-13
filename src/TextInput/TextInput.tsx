@@ -11,6 +11,12 @@ export interface TextInputProps {
     onChange: ChangeEventHandler;
     /** The id of the text input field */
     id: string;
+    /** The name of the text input field*/
+    name: string;
+    /** The default value of the input field */
+    value?: string;
+    /** Specifies the type of input */
+    type?: string;
 }
 
 const StyledTextInput = styled.input`
@@ -24,15 +30,24 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
     const {
         onChange,
         id,
+        type,
     } = props;
     const theme: BaseTheme = useContext(ThemeContext);
     return (
-        <StyledTextInput
-            onChange={onChange}
-            id={id}
-        >
-        </StyledTextInput>
+        <>
+            <label htmlFor={id}></label>
+            <StyledTextInput
+                onChange={onChange}
+                id={id}
+                type={type}
+            >
+            </StyledTextInput>
+        </>
     )
+};
+
+TextInput.defaultProps = {
+    type: 'text',
 };
 
 export default TextInput;
