@@ -6,4 +6,5 @@ export * from './Tables';
 export * from './Layout';
 export * from './Dropdown';
 export * from './Icons';
+export * from './TextInput';
 export * from './Forms';
