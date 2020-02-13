@@ -31,6 +31,8 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
         onChange,
         id,
         type,
+        name,
+        value
     } = props;
     const theme: BaseTheme = useContext(ThemeContext);
     return (
@@ -39,6 +41,8 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
             <StyledTextInput
                 onChange={onChange}
                 id={id}
+                name={name}
+                value={value}
                 type={type}
             >
             </StyledTextInput>
