@@ -17,7 +17,7 @@ export interface TextInputProps {
   /** The placeholder value of the input field */
   placeholder?: string;
   /** Specifies the type of input */
-  type?: string;
+  type: string;
   /** The current value in the text input field */
   value: string;
 }
