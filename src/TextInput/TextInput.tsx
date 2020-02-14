@@ -1,22 +1,25 @@
 import React, {
-    ReactElement,
-    useContext,
-  } from 'react';
-import { ChangeEventHandler, FunctionComponent } from "react";
+  ReactElement,
+  useContext,
+  ChangeEventHandler, FunctionComponent,
+} from 'react';
+
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'Theme';
 
 export interface TextInputProps {
-    /** Function to call on change event */
-    onChange: ChangeEventHandler;
-    /** The id of the text input field */
-    id: string;
-    /** The name of the text input field*/
-    name: string;
-    /** The placeholder value of the input field */
-    placeholder?: string;
-    /** Specifies the type of input */
-    type?: string;
+  /** Function to call on change event */
+  onChange: ChangeEventHandler;
+  /** The id of the text input field */
+  id: string;
+  /** The name of the text input field */
+  name: string;
+  /** The placeholder value of the input field */
+  placeholder?: string;
+  /** Specifies the type of input */
+  type?: string;
+  /** The current value in the text input field */
+  value: string;
 }
 
 const StyledTextInput = styled.input`
@@ -27,31 +30,34 @@ const StyledTextInput = styled.input`
 `;
 
 const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
-    const {
-        onChange,
-        id,
-        type,
-        name,
-        placeholder
-    } = props;
-    const theme: BaseTheme = useContext(ThemeContext);
-    return (
-        <>
-            <label htmlFor={id}></label>
-            <StyledTextInput
-                onChange={onChange}
-                id={id}
-                name={name}
-                placeholder={placeholder}
-                type={type}
-            >
-            </StyledTextInput>
-        </>
-    )
+  const {
+    onChange,
+    id,
+    type,
+    name,
+    placeholder,
+    value,
+  } = props;
+  const theme: BaseTheme = useContext(ThemeContext);
+  return (
+    <>
+      <label htmlFor={id}>
+        <StyledTextInput
+          onChange={onChange}
+          id={id}
+          name={name}
+          placeholder={placeholder}
+          type={type}
+          theme={theme}
+          value={value}
+        />
+      </label>
+    </>
+  );
 };
 
 TextInput.defaultProps = {
-    type: 'text',
+  type: 'text',
 };
 
 export default TextInput;
