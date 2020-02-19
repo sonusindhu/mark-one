@@ -21,6 +21,8 @@ describe('Text input', function () {
     changeSpy.resetHistory();
     cleanup();
   });
+  // getByText method does not work with text fields, so we are using the below
+  // as an alternative way to test that the component renders
   it('renders', function () {
     const inputElement = document.getElementById('semester') as HTMLInputElement;
     strictEqual(!!inputElement, true);
