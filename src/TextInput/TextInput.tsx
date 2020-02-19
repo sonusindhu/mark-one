@@ -20,6 +20,8 @@ export interface TextInputProps {
   type?: string;
   /** The current value in the text input field */
   value: string;
+  /** The body of the error message, if applicable */
+  errorMessage?: string;
 }
 
 const StyledTextInput = styled.input`
