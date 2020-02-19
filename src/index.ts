@@ -6,4 +6,4 @@ export * from './Tables';
 export * from './Layout';
 export * from './Dropdown';
 export * from './Icons';
-export * from './ErrorMessage';
+export * from './ValidationErrorMessage';
