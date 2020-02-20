@@ -9,7 +9,7 @@ export interface ValidationErrorMessageProps {
   children: ReactNode;
 }
 
-const StyledValidationErrorMessage = styled.div`
+const StyledValidationErrorMessage = styled.span`
   color: ${({ theme }): string => (theme.color.text.negative)};
 `;
 
