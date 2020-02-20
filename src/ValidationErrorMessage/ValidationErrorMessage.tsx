@@ -11,6 +11,7 @@ export interface ValidationErrorMessageProps {
 
 const StyledValidationErrorMessage = styled.span`
   color: ${({ theme }): string => (theme.color.text.negative)};
+  font-size: 0.75em;
 `;
 
 const ValidationErrorMessage:
