@@ -1,26 +1,45 @@
 import React, {
-  FunctionComponent, ReactElement, useContext,
+  FunctionComponent, ReactElement, useContext, ReactNode, MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme';
 import { StyledButton } from './StyledButton';
-import { ButtonProps } from './ButtonProps';
+
+export interface BorderlessButtonProps {
+  /** Text or components to be displayed on the button */
+  children?: ReactNode;
+  /** Function to call on click event */
+  clickHandler: MouseEventHandler;
+  /** If true, button won't fire */
+  disabled?: boolean;
+  /** Allows you to pass in style properties for the element */
+  theme?: object;
+  /** Allows you to pass in a color property from the COLOR enum */
+  color?: COLOR;
+}
+
+enum COLOR {
+  LIGHT = 'light',
+  DARK = 'dark',
+}
 
 const StyledPrimaryButton = styled(StyledButton)`
-  background: ${({ theme }): string => (theme.color.background.info.medium)};
-  color: ${({ theme }): string => (theme.color.text.light)};
+  background: transparent;
   border-style: none;
+  color: ${({ theme, color }): string => (theme.color.text[color])};
   &:hover {
-    background: ${({ theme }): string => (theme.color.background.info.dark)};
+    background: transparent;
+    color: ${({ theme, color }): string => (theme.color.text[color])};
   }
 `;
 
-const BorderlessButton: FunctionComponent<ButtonProps> = (props):
+const BorderlessButton: FunctionComponent<BorderlessButtonProps> = (props):
 ReactElement => {
   const {
     clickHandler,
     children,
     disabled,
+    color,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
@@ -28,6 +47,7 @@ ReactElement => {
       onClick={clickHandler}
       theme={theme}
       disabled={disabled}
+      color={color}
     >
       { children }
     </StyledPrimaryButton>
