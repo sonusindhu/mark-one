@@ -23,7 +23,7 @@ enum COLOR {
   DARK = 'dark',
 }
 
-const StyledPrimaryButton = styled(StyledButton)`
+const StyledBorderlessButton = styled(StyledButton)`
   background: transparent;
   border-style: none;
   color: ${({ theme, color }): string => (theme.color.text[color])};
@@ -32,6 +32,10 @@ const StyledPrimaryButton = styled(StyledButton)`
     color: ${({ theme, color }): string => (theme.color.text[color])};
   }
 `;
+
+StyledBorderlessButton.defaultProps = {
+  color: 'dark',
+};
 
 const BorderlessButton: FunctionComponent<BorderlessButtonProps> = (props):
 ReactElement => {
@@ -43,14 +47,14 @@ ReactElement => {
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
-    <StyledPrimaryButton
+    <StyledBorderlessButton
       onClick={clickHandler}
       theme={theme}
       disabled={disabled}
       color={color}
     >
       { children }
-    </StyledPrimaryButton>
+    </StyledBorderlessButton>
   );
 };
 
