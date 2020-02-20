@@ -10,9 +10,14 @@ describe('Borderless Button', function () {
   beforeEach(function () {
     clickSpy = spy();
     ({ getByText } = render(
-      <BorderlessButton clickHandler={clickSpy}>
-        Click Me
-      </BorderlessButton>
+      <>
+        <BorderlessButton clickHandler={clickSpy}>
+          Click Me
+        </BorderlessButton>
+        <BorderlessButton disabled clickHandler={clickSpy}>
+          Not Clickable
+        </BorderlessButton>
+      </>
     ));
   });
   afterEach(function () {
@@ -24,5 +29,9 @@ describe('Borderless Button', function () {
   it('calls the click handler when clicked', function () {
     fireEvent.click(getByText('Click Me'));
     assert.strictEqual(clickSpy.callCount, 1);
+  });
+  it('does not call the click handler when button prop disabled is truthy', function () {
+    fireEvent.click(getByText('Not Clickable'));
+    assert.strictEqual(clickSpy.callCount, 0);
   });
 });

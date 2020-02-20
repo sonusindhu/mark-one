@@ -10,9 +10,14 @@ describe('Primary Button', function () {
   beforeEach(function () {
     clickSpy = spy();
     ({ getByText } = render(
-      <PrimaryButton clickHandler={clickSpy}>
-        Click Me
-      </PrimaryButton>
+      <>
+        <PrimaryButton clickHandler={clickSpy}>
+          Click Me
+        </PrimaryButton>
+        <PrimaryButton disabled clickHandler={clickSpy}>
+          Not Clickable
+        </PrimaryButton>
+      </>
     ));
   });
   afterEach(function () {
@@ -24,5 +29,9 @@ describe('Primary Button', function () {
   it('calls the click handler when clicked', function () {
     fireEvent.click(getByText('Click Me'));
     assert.strictEqual(clickSpy.callCount, 1);
+  });
+  it('does not call the click handler when button prop disabled is truthy', function () {
+    fireEvent.click(getByText('Not Clickable'));
+    assert.strictEqual(clickSpy.callCount, 0);
   });
 });
