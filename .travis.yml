@@ -4,7 +4,9 @@ node_js:
 stages:
   - test
   - name: documentation
-    if: branch = master
+    if: branch = master AND type != pull_request
+  - name: npm_deploy_develop
+    if: branch = develop AND type != pull_request
 jobs:
   include:
     - stage: test
@@ -19,9 +21,19 @@ jobs:
         - touch ./styleguide/.nojekyll
       deploy:
         provider: pages
-        skip_cleanup: true
         github_token: $GITHUB_TOKEN
         local_dir: ./styleguide
+        skip_cleanup: true
         target_branch: gh-pages
         on:
           branch: master
+    - stage: npm_deploy_develop
+      before_deploy: "./.travis_version_bump.sh"
+      deploy:
+        provider: npm
+        email: $DEV_TEAM_EMAIL 
+        api_key: $NPM_TOKEN
+        skip_cleanup: true
+        tag: develop
+        on:
+          branch: develop

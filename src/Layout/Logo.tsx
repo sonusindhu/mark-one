@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from 'mark-one';
+import { BaseTheme } from '../Theme';
 
 export interface LogoProps {
   /**

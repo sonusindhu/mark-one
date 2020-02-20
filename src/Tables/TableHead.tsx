@@ -2,7 +2,7 @@ import React, {
   FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from 'mark-one';
+import { BaseTheme } from '../Theme';
 import { TableRow } from './TableRow';
 
 export interface TableHeadProps {

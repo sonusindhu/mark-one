@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { BaseTheme } from 'mark-one';
+import { BaseTheme } from '.';
 import '@openfonts/open-sans_all';
 import '@openfonts/roboto-mono_all';
 
