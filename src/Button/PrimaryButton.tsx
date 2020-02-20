@@ -2,16 +2,17 @@ import React, {
   FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { darken } from 'polished';
 import { BaseTheme } from '../Theme';
 import { StyledButton } from './StyledButton';
 import { ButtonProps } from './ButtonProps';
 
 const StyledPrimaryButton = styled(StyledButton)`
-  background: ${({ theme }): string => (theme.color.background.info.light)};
+  background: ${({ theme }): string => (theme.color.background.info.medium)};
+  border-color: ${({ theme }): string => (theme.color.background.info.medium)};
   color: ${({ theme }): string => (theme.color.text.light)};
   &:hover {
-    background: ${({ theme }): string => (darken(0.2, theme.color.background.info.light))};
+    background: ${({ theme }): string => (theme.color.background.info.dark)};
+    border-color: ${({ theme }): string => (theme.color.background.info.dark)};
   }
 `;
 
