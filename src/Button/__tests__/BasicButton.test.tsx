@@ -1,12 +1,12 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from 'test-utils';
-import { spy } from 'sinon';
+import { render, fireEvent } from 'test-utils';
+import { spy, SinonSpy } from 'sinon';
 import assert from 'assert';
 import BasicButton from '../BasicButton';
 
 describe('Basic Button', function () {
   let getByText;
-  let clickSpy;
+  let clickSpy: SinonSpy;
   beforeEach(function () {
     clickSpy = spy();
     ({ getByText } = render(
@@ -17,13 +17,12 @@ describe('Basic Button', function () {
   });
   afterEach(function () {
     clickSpy.resetHistory();
-    cleanup();
   });
   it('renders', function () {
     getByText('Click You');
   });
   it('calls the click handler when clicked', function () {
     fireEvent.click(getByText('Click You'));
-    assert.equal(clickSpy.callCount, 1);
+    assert.strictEqual(clickSpy.callCount, 1);
   });
 });
