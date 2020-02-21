@@ -1,8 +1,25 @@
 import React from 'react';
-import { render, fireEvent } from 'test-utils';
-import { spy, SinonSpy } from 'sinon';
+import {
+  render,
+  fireEvent,
+  NormalizerFn,
+  Matcher,
+} from 'test-utils';
+import {
+  spy,
+  SinonSpy,
+} from 'sinon';
 import assert from 'assert';
 import DangerButton from '../DangerButton';
+
+type ReactGetByText = (
+  text: Matcher,
+  options?: {
+    selector?: string;
+    exact?: boolean;
+    ignore?: string|boolean;
+    normalizer?: NormalizerFn;
+  }) => HTMLElement;
 
 describe('Danger Button', function () {
   let getByText;

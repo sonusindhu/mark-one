@@ -1,8 +1,25 @@
 import React from 'react';
-import { render, fireEvent } from 'test-utils';
-import { spy, SinonSpy } from 'sinon';
+import {
+  render,
+  fireEvent,
+  NormalizerFn,
+  Matcher,
+} from 'test-utils';
+import {
+  spy,
+  SinonSpy,
+} from 'sinon';
 import assert from 'assert';
 import BorderlessButton from '../BorderlessButton';
+
+type ReactGetByText = (
+  text: Matcher,
+  options?: {
+    selector?: string;
+    exact?: boolean;
+    ignore?: string|boolean;
+    normalizer?: NormalizerFn;
+  }) => HTMLElement;
 
 describe('Borderless Button', function () {
   let getByText;
