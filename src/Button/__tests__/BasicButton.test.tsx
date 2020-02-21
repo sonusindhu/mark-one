@@ -24,31 +24,44 @@ type ReactGetByText = (
 describe('Basic Button', function () {
   let getByText: ReactGetByText;
   let clickSpy: SinonSpy;
-  beforeEach(function () {
-    clickSpy = spy();
-    ({ getByText } = render(
-      <>
+  context('when disabled prop is true', function () {
+    beforeEach(function () {
+      clickSpy = spy();
+      ({ getByText } = render(
         <BasicButton clickHandler={clickSpy}>
           Click You
         </BasicButton>
-        <BasicButton disabled clickHandler={clickSpy}>
+      ));
+    });
+    afterEach(function () {
+      clickSpy.resetHistory();
+    });
+    it('renders', function () {
+      getByText('Click You');
+    });
+    it('calls the click handler when clicked', function () {
+      fireEvent.click(getByText('Click You'));
+      assert.strictEqual(clickSpy.callCount, 1);
+    });
+  });
+  context('when disabled prop is false', function () {
+    beforeEach(function () {
+      clickSpy = spy();
+      ({ getByText } = render(
+        <BasicButton clickHandler={clickSpy} disabled>
           Not Clickable
         </BasicButton>
-      </>
-    ));
-  });
-  afterEach(function () {
-    clickSpy.resetHistory();
-  });
-  it('renders', function () {
-    getByText('Click You');
-  });
-  it('calls the click handler when clicked', function () {
-    fireEvent.click(getByText('Click You'));
-    assert.strictEqual(clickSpy.callCount, 1);
-  });
-  it('does not call the click handler when button prop disabled is truthy', function () {
-    fireEvent.click(getByText('Not Clickable'));
-    assert.strictEqual(clickSpy.callCount, 0);
+      ));
+    });
+    afterEach(function () {
+      clickSpy.resetHistory();
+    });
+    it('renders', function () {
+      getByText('Not Clickable');
+    });
+    it('does not call the click handler when clicked', function () {
+      fireEvent.click(getByText('Not Clickable'));
+      assert.strictEqual(clickSpy.callCount, 0);
+    });
   });
 });

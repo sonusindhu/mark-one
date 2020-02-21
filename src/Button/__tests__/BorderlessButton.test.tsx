@@ -22,33 +22,46 @@ type ReactGetByText = (
   }) => HTMLElement;
 
 describe('Borderless Button', function () {
-  let getByText;
+  let getByText: ReactGetByText;
   let clickSpy: SinonSpy;
-  beforeEach(function () {
-    clickSpy = spy();
-    ({ getByText } = render(
-      <>
+  context('when disabled prop is true', function () {
+    beforeEach(function () {
+      clickSpy = spy();
+      ({ getByText } = render(
         <BorderlessButton clickHandler={clickSpy}>
-          Click Me
+          Click You
         </BorderlessButton>
-        <BorderlessButton disabled clickHandler={clickSpy}>
+      ));
+    });
+    afterEach(function () {
+      clickSpy.resetHistory();
+    });
+    it('renders', function () {
+      getByText('Click You');
+    });
+    it('calls the click handler when clicked', function () {
+      fireEvent.click(getByText('Click You'));
+      assert.strictEqual(clickSpy.callCount, 1);
+    });
+  });
+  context('when disabled prop is false', function () {
+    beforeEach(function () {
+      clickSpy = spy();
+      ({ getByText } = render(
+        <BorderlessButton clickHandler={clickSpy} disabled>
           Not Clickable
         </BorderlessButton>
-      </>
-    ));
-  });
-  afterEach(function () {
-    clickSpy.resetHistory();
-  });
-  it('renders', function () {
-    getByText('Click Me');
-  });
-  it('calls the click handler when clicked', function () {
-    fireEvent.click(getByText('Click Me'));
-    assert.strictEqual(clickSpy.callCount, 1);
-  });
-  it('does not call the click handler when button prop disabled is truthy', function () {
-    fireEvent.click(getByText('Not Clickable'));
-    assert.strictEqual(clickSpy.callCount, 0);
+      ));
+    });
+    afterEach(function () {
+      clickSpy.resetHistory();
+    });
+    it('renders', function () {
+      getByText('Not Clickable');
+    });
+    it('does not call the click handler when clicked', function () {
+      fireEvent.click(getByText('Not Clickable'));
+      assert.strictEqual(clickSpy.callCount, 0);
+    });
   });
 });
