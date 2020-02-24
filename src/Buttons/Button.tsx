@@ -22,8 +22,6 @@ export interface ButtonProps {
   variant: VARIANT;
 }
 
-// If background is primary or danger, have light text (theme.color.text.light)
-// If background is light, have dark text (theme.color.text.base)
 const StyledButton = styled.button<ButtonProps>`
   background: ${({ theme, variant }): string => (theme.color.background[variant].medium)};
   border-color: ${({ theme, variant }): string => (theme.color.background[variant].medium)};
