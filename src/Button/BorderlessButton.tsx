@@ -1,57 +1,57 @@
 import React, {
-  FunctionComponent, ReactElement, useContext, ReactNode, MouseEventHandler,
+  FunctionComponent, ReactElement, useContext, MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { VARIANT } from 'Theme/MarkOneTheme';
+import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import { BaseTheme } from '../Theme';
-import { StyledButton } from './StyledButton';
 
 export interface BorderlessButtonProps {
-  /** Text or components to be displayed on the button */
-  children?: ReactNode;
+  /** Specifies the Font Awesome Icon(s) */
+  children: ReactElement<FontAwesomeIconProps>;
   /** Function to call on click event */
-  clickHandler: MouseEventHandler;
+  onClick: MouseEventHandler;
   /** If true, button won't fire */
   disabled?: boolean;
   /** Allows you to pass in style properties for the element */
   theme?: object;
   /** Allows you to pass in a color property from the COLOR enum */
-  color?: COLOR;
+  variant?: VARIANT;
 }
 
-enum COLOR {
-  LIGHT = 'light',
-  DARK = 'dark',
-}
-
-const StyledBorderlessButton = styled(StyledButton)`
+const StyledBorderlessButton = styled.button<BorderlessButtonProps>`
   background: transparent;
-  border-style: none;
-  color: ${({ theme, color }): string => (theme.color.text[color])};
+  border: none;
+  color: ${({ theme, variant }): string => (theme.color.background[variant].medium)};
+  cursor: pointer;
+  font-size: ${({ theme }): string => (theme.font.body.size)};
+  font-weight: ${({ theme }): string => (theme.font.body.weight)};
+  padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.small)};
   &:hover {
     background: transparent;
-    color: ${({ theme, color }): string => (theme.color.text[color])};
+    color: ${({ theme, variant }): string => (theme.color.background[variant].dark)};
   }
 `;
 
 StyledBorderlessButton.defaultProps = {
-  color: 'dark',
+  variant: VARIANT.BASE,
 };
 
 const BorderlessButton: FunctionComponent<BorderlessButtonProps> = (props):
 ReactElement => {
   const {
-    clickHandler,
+    onClick,
     children,
     disabled,
-    color,
+    variant,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
     <StyledBorderlessButton
-      onClick={clickHandler}
+      onClick={onClick}
       theme={theme}
       disabled={disabled}
-      color={color}
+      variant={variant}
     >
       { children }
     </StyledBorderlessButton>

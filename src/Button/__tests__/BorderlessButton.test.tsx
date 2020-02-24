@@ -10,6 +10,9 @@ import {
   SinonSpy,
 } from 'sinon';
 import assert from 'assert';
+import { VARIANT } from 'Theme/MarkOneTheme';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import BorderlessButton from '../BorderlessButton';
 
 type ReactGetByText = (
@@ -22,14 +25,17 @@ type ReactGetByText = (
   }) => HTMLElement;
 
 describe('Borderless Button', function () {
-  let getByText: ReactGetByText;
+  let getByTestId: ReactGetByText;
   let clickSpy: SinonSpy;
   context('when disabled prop is true', function () {
     beforeEach(function () {
       clickSpy = spy();
-      ({ getByText } = render(
-        <BorderlessButton clickHandler={clickSpy}>
-          Click You
+      ({ getByTestId } = render(
+        <BorderlessButton
+          onClick={clickSpy}
+          variant={VARIANT.BASE}
+        >
+          <FontAwesomeIcon icon={faArrowUp} data-testid="test-button" />
         </BorderlessButton>
       ));
     });
@@ -37,19 +43,23 @@ describe('Borderless Button', function () {
       clickSpy.resetHistory();
     });
     it('renders', function () {
-      getByText('Click You');
+      getByTestId('test-button');
     });
     it('calls the click handler when clicked', function () {
-      fireEvent.click(getByText('Click You'));
+      fireEvent.click(getByTestId('test-button'));
       assert.strictEqual(clickSpy.callCount, 1);
     });
   });
   context('when disabled prop is false', function () {
     beforeEach(function () {
       clickSpy = spy();
-      ({ getByText } = render(
-        <BorderlessButton clickHandler={clickSpy} disabled>
-          Not Clickable
+      ({ getByTestId } = render(
+        <BorderlessButton
+          onClick={clickSpy}
+          variant={VARIANT.BASE}
+          disabled
+        >
+          <FontAwesomeIcon icon={faArrowUp} data-testid="test-button" />
         </BorderlessButton>
       ));
     });
@@ -57,10 +67,10 @@ describe('Borderless Button', function () {
       clickSpy.resetHistory();
     });
     it('renders', function () {
-      getByText('Not Clickable');
+      getByTestId('test-button');
     });
     it('does not call the click handler when clicked', function () {
-      fireEvent.click(getByText('Not Clickable'));
+      fireEvent.click(getByTestId('test-button'));
       assert.strictEqual(clickSpy.callCount, 0);
     });
   });
