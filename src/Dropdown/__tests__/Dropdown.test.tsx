@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from 'test-utils';
+import { render, fireEvent } from 'test-utils';
 import { spy } from 'sinon';
 import { strictEqual, deepStrictEqual } from 'assert';
 import Dropdown from '../Dropdown';
@@ -32,7 +32,6 @@ describe('Dropdown', function () {
   });
   afterEach(function () {
     changeSpy.resetHistory();
-    cleanup();
   });
   it('renders', function () {
     getByText('Spring');

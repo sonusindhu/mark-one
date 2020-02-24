@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from 'test-utils';
+import { render, fireEvent } from 'test-utils';
 import { spy } from 'sinon';
 import assert from 'assert';
 import BasicButton from '../BasicButton';
@@ -17,7 +17,6 @@ describe('Basic Button', function () {
   });
   afterEach(function () {
     clickSpy.resetHistory();
-    cleanup();
   });
   it('renders', function () {
     getByText('Click You');

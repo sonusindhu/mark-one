@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from 'test-utils';
+import { render } from 'test-utils';
 import convert from 'color-convert';
 import { strictEqual } from 'assert';
 import TableCell from '../TableCell';
@@ -48,9 +48,6 @@ describe('Table Components', function () {
         </TableBody>
       </Table>
     ));
-  });
-  afterEach(function () {
-    cleanup();
   });
   describe('Table Cell', function () {
     it('contains text', function () {
