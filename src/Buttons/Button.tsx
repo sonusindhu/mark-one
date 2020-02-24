@@ -29,7 +29,7 @@ const StyledButton = styled.button<ButtonProps>`
   border-color: ${({ theme, variant }): string => (theme.color.background[variant].medium)};
   border-style: solid;
   border-width: 1px;
-  color: ${({ theme, variant }): string => (theme.color.text[variant])};
+  color: ${({ theme, variant }): string => (theme.color.background[variant].text)};
   cursor: pointer;
   font-size: ${({ theme }): string => (theme.font.body.size)};
   font-weight: ${({ theme }): string => (theme.font.body.weight)};
@@ -37,7 +37,7 @@ const StyledButton = styled.button<ButtonProps>`
   &:hover {
     background: ${({ theme, variant }): string => (theme.color.background[variant].dark)};
     border-color: ${({ theme, variant }): string => (theme.color.background[variant].dark)};
-    color: ${({ theme, variant }): string => (theme.color.text[variant])};
+    color: ${({ theme, variant }): string => (theme.color.background[variant].text)};
   }
 `;
 
@@ -45,7 +45,7 @@ StyledButton.defaultProps = {
   variant: VARIANT.BASE,
 };
 
-const BasicButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
+const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
   const {
     children,
     onClick,
@@ -65,8 +65,8 @@ const BasicButton: FunctionComponent<ButtonProps> = (props): ReactElement => {
   );
 };
 
-BasicButton.defaultProps = {
+Button.defaultProps = {
   children: '',
 };
 
-export default BasicButton;
+export default Button;

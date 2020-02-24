@@ -10,7 +10,8 @@ import {
   SinonSpy,
 } from 'sinon';
 import assert from 'assert';
-import BasicButton from '../BasicButton';
+import { VARIANT } from 'Theme/MarkOneTheme';
+import Button from '../Button';
 
 type ReactGetByText = (
   text: Matcher,
@@ -21,16 +22,19 @@ type ReactGetByText = (
     normalizer?: NormalizerFn;
   }) => HTMLElement;
 
-describe('Basic Button', function () {
+describe('Button', function () {
   let getByText: ReactGetByText;
   let clickSpy: SinonSpy;
-  context('when disabled prop is true', function () {
+  context('when disabled prop is false', function () {
     beforeEach(function () {
       clickSpy = spy();
       ({ getByText } = render(
-        <BasicButton clickHandler={clickSpy}>
+        <Button
+          onClick={clickSpy}
+          variant={VARIANT.BASE}
+        >
           Click You
-        </BasicButton>
+        </Button>
       ));
     });
     afterEach(function () {
@@ -44,13 +48,17 @@ describe('Basic Button', function () {
       assert.strictEqual(clickSpy.callCount, 1);
     });
   });
-  context('when disabled prop is false', function () {
+  context('when disabled prop is true', function () {
     beforeEach(function () {
       clickSpy = spy();
       ({ getByText } = render(
-        <BasicButton clickHandler={clickSpy} disabled>
+        <Button
+          onClick={clickSpy}
+          variant={VARIANT.BASE}
+          disabled
+        >
           Not Clickable
-        </BasicButton>
+        </Button>
       ));
     });
     afterEach(function () {

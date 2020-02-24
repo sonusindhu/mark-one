@@ -15,8 +15,8 @@ export interface BorderlessButtonProps {
   disabled?: boolean;
   /** Allows you to pass in style properties for the element */
   theme?: object;
-  /** Allows you to pass in a color property from the COLOR enum */
-  variant?: VARIANT;
+  /** Allows you to pass in a variant property from the VARIANT enum */
+  variant: VARIANT;
 }
 
 const StyledBorderlessButton = styled.button<BorderlessButtonProps>`

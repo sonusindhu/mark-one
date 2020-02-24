@@ -1,4 +1,4 @@
-export * from './Button';
+export * from './Buttons';
 export * from './Layout';
 export * from './Tabs';
 export * from './Theme';
