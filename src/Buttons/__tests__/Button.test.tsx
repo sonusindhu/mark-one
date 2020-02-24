@@ -2,8 +2,8 @@ import React from 'react';
 import {
   render,
   fireEvent,
-  NormalizerFn,
-  Matcher,
+  BoundFunction,
+  GetByText,
 } from 'test-utils';
 import {
   spy,
@@ -13,17 +13,8 @@ import assert from 'assert';
 import { VARIANT } from 'Theme/MarkOneTheme';
 import Button from '../Button';
 
-type ReactGetByText = (
-  text: Matcher,
-  options?: {
-    selector?: string;
-    exact?: boolean;
-    ignore?: string|boolean;
-    normalizer?: NormalizerFn;
-  }) => HTMLElement;
-
 describe('Button', function () {
-  let getByText: ReactGetByText;
+  let getByText: BoundFunction<GetByText>;
   let clickSpy: SinonSpy;
   context('when disabled prop is false', function () {
     beforeEach(function () {

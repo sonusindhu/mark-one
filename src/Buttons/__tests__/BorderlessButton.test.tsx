@@ -2,8 +2,8 @@ import React from 'react';
 import {
   render,
   fireEvent,
-  NormalizerFn,
-  Matcher,
+  BoundFunction,
+  GetByBoundAttribute,
 } from 'test-utils';
 import {
   spy,
@@ -15,17 +15,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import BorderlessButton from '../BorderlessButton';
 
-type ReactGetByText = (
-  text: Matcher,
-  options?: {
-    selector?: string;
-    exact?: boolean;
-    ignore?: string|boolean;
-    normalizer?: NormalizerFn;
-  }) => HTMLElement;
-
 describe('Borderless Button', function () {
-  let getByTestId: ReactGetByText;
+  let getByTestId: BoundFunction<GetByBoundAttribute>;
   let clickSpy: SinonSpy;
   context('when disabled prop is false', function () {
     beforeEach(function () {
