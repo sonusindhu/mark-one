@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   render,
-  cleanup,
   Matcher,
   NormalizerFn,
 } from 'test-utils';
