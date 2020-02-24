@@ -27,7 +27,7 @@ type ReactGetByText = (
 describe('Borderless Button', function () {
   let getByTestId: ReactGetByText;
   let clickSpy: SinonSpy;
-  context('when disabled prop is true', function () {
+  context('when disabled prop is false', function () {
     beforeEach(function () {
       clickSpy = spy();
       ({ getByTestId } = render(
@@ -50,7 +50,7 @@ describe('Borderless Button', function () {
       assert.strictEqual(clickSpy.callCount, 1);
     });
   });
-  context('when disabled prop is false', function () {
+  context('when disabled prop is true', function () {
     beforeEach(function () {
       clickSpy = spy();
       ({ getByTestId } = render(
