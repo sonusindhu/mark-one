@@ -25,9 +25,6 @@ describe('Validation Error Message', function () {
       </ValidationErrorMessage>
     ));
   });
-  afterEach(function () {
-    cleanup();
-  });
   it('renders', function () {
     getByText('Error: This entry may only contain numbers.');
   });
