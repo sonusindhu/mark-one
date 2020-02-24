@@ -39,6 +39,20 @@ enum WEIGHT {
   BOLD = '600',
 }
 
+export enum VARIANT {
+  BASE = 'base',
+  INFO = 'info',
+  POSITIVE = 'positive',
+  PRIMARY = 'positive',
+  NEGATIVE = 'negative',
+  SECONDARY = 'base',
+  DANGER = 'negative',
+  DEFAULT = 'base',
+  LIGHT = 'light',
+  DARK = 'dark',
+}
+
+
 const WHITE = '#fefefe';
 const BLACK = '#181818';
 
@@ -51,6 +65,11 @@ const MarkOneTheme: BaseTheme = {
       dark: '#93a1ad',
       darker: darken(0.75, WHITE),
       accent: '#a51c30',
+      base: {
+        light: WHITE,
+        medium: darken(0.175, WHITE),
+        dark: '#93a1ad',
+      },
       info: {
         light: '#95b5df',
         medium: '#4e88c7',
@@ -68,6 +87,7 @@ const MarkOneTheme: BaseTheme = {
       },
     },
     text: {
+      base: BLACK,
       light: lighten(0.9, BLACK),
       medium: lighten(0.35, BLACK),
       dark: BLACK,
