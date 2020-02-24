@@ -2,6 +2,7 @@
 import { VARIANT } from 'Theme/MarkOneTheme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+
 <div>
   <BorderlessButton
     onClick={function() {
