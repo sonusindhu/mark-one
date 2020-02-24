@@ -52,7 +52,6 @@ export enum VARIANT {
   DARK = 'dark',
 }
 
-
 const WHITE = '#fefefe';
 const BLACK = '#181818';
 
