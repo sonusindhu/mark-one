@@ -1,4 +1,5 @@
-import { cleanup } from '@testing-library/react';
-process.env.RTL_SKIP_AUTO_CLEANUP = 'true';
-
-afterEach(cleanup);
+after(function () {
+  Object.keys(require.cache).forEach((key) => {
+    delete require.cache[key];
+  })
+});
