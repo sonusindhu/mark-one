@@ -24,6 +24,7 @@ export interface ButtonProps {
 
 const StyledButton = styled.button<ButtonProps>`
   background: ${({ theme, variant }): string => (theme.color.background[variant].medium)};
+  border: none;
   color: ${({ theme, variant }): string => (theme.color.background[variant].text)};
   cursor: pointer;
   font-size: ${({ theme }): string => (theme.font.body.size)};
@@ -31,6 +32,7 @@ const StyledButton = styled.button<ButtonProps>`
   padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.small)};
   &:hover {
     background: ${({ theme, variant }): string => (theme.color.background[variant].dark)};
+    border: none;
     color: ${({ theme, variant }): string => (theme.color.background[variant].text)};
   }
 `;
