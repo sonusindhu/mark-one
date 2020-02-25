@@ -107,6 +107,11 @@ const MarkOneTheme: BaseTheme = {
       size: '1.33em',
       weight: WEIGHT.LIGHT,
     },
+    error: {
+      family: FONT.SANS,
+      size: '0.7em',
+      weight: WEIGHT.BOLD,
+    },
   },
   shadow: {
     xlight: '0 2px 4px rgba(0,0,0,0.24)',
