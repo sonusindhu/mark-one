@@ -1,1 +1,1 @@
-> This compoment does not have a usage example
+> This component does not have a usage example
