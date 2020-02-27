@@ -3,9 +3,9 @@ import React, {
   useContext,
   ChangeEventHandler, FunctionComponent,
 } from 'react';
-
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from 'Theme';
+import ValidationErrorMessage from './ValidationErrorMessage';
 
 export interface TextInputProps {
   /** Function to call on change event */
@@ -26,8 +26,8 @@ export interface TextInputProps {
 
 const StyledTextInput = styled.input`
     border: ${({ theme }): string => (theme.border.light)};
-    border-radius: .25rem;
     display: block;
+    height: 20px;
     width: 100%;
 `;
 
@@ -39,6 +39,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
     name,
     placeholder,
     value,
+    errorMessage,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
@@ -54,6 +55,9 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
           value={value}
         />
       </label>
+      <ValidationErrorMessage>
+        {errorMessage}
+      </ValidationErrorMessage>
     </>
   );
 };
