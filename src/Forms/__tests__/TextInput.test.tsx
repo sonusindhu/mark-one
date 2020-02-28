@@ -13,6 +13,7 @@ describe('Text input', function () {
         id="semester"
         name="semester"
         value="Spring"
+        errorMessage="Error: Please enter a valid ID"
         onChange={changeSpy}
       />
     );
@@ -28,7 +29,7 @@ describe('Text input', function () {
     strictEqual(!!inputElement, true);
   });
   it('calls the change handler when changed', function () {
-    fireEvent.change(document.getElementsByName('semester')[0], {
+    fireEvent.change(document.getElementById('semester'), {
       target: {
         value: 'Fall',
       },
@@ -36,7 +37,7 @@ describe('Text input', function () {
     strictEqual(changeSpy.callCount, 1);
   });
   it('renders the correct default value', function () {
-    const inputField = document.getElementsByName('semester')[0] as HTMLInputElement;
+    const inputField = document.getElementById('semester') as HTMLInputElement;
     const defaultValue = inputField.value;
     strictEqual(defaultValue, 'Spring');
   });
