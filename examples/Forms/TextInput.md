@@ -8,7 +8,7 @@ The following is an example of the TextInput component that includes the optiona
       name="example"
       id="example"
       errorMessage="Error: Please enter a valid ID"
-      onChange={function(event){
+      onChange={(event) => {
         setValue(event.target.value);
       }}
     />);
@@ -25,7 +25,7 @@ The following is an example of the TextInput component that does not include the
       value={value}
       name="example"
       id="example"
-      onChange={function(event){
+      onChange={(event) => {
         setValue(event.target.value);
       }}
     />);
