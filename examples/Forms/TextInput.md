@@ -1,7 +1,7 @@
 The following is an example of the TextInput component that includes the optional `errorMessage` property. 
 ```jsx
   import { useState } from 'react';
-  function TextInputExample() {
+  const TextInputExample = () => {
     const [value, setValue] = useState('59390');
     return (<TextInput
       value={value}
@@ -10,7 +10,6 @@ The following is an example of the TextInput component that includes the optiona
       errorMessage="Error: Please enter a valid ID"
       onChange={function(event){
         setValue(event.target.value);
-        alert('You changed the selection to ' + event.target.value);
       }}
     />);
   }
@@ -20,7 +19,7 @@ The following is an example of the TextInput component that includes the optiona
 The following is an example of the TextInput component that does not include the optional `errorMessage` property. 
 ```jsx
   import { useState } from 'react';
-  function TextInputExample() {
+  const TextInputExample = () => {
     const [value, setValue] = useState('Some valid input');
     return (<TextInput
       value={value}
@@ -28,7 +27,6 @@ The following is an example of the TextInput component that does not include the
       id="example"
       onChange={function(event){
         setValue(event.target.value);
-        alert('You changed the selection to ' + event.target.value);
       }}
     />);
   }
