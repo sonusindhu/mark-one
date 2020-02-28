@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  cleanup,
-} from 'test-utils';
+import { render, fireEvent } from 'test-utils';
 import { spy } from 'sinon';
 import { strictEqual } from 'assert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,7 +19,6 @@ describe('Icon Link', function () {
   });
   afterEach(function () {
     clickSpy.resetHistory();
-    cleanup();
   });
   it('renders', function () {
     getByTestId('test-icon');
