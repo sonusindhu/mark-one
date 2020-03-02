@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from 'test-utils';
+import { render, fireEvent } from 'test-utils';
 import { spy } from 'sinon';
 import { strictEqual } from 'assert';
 import TextInput from '../TextInput';

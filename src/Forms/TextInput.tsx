@@ -57,10 +57,13 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
           theme={theme}
           value={value}
         />
+        {errorMessage
+        && (
+          <ValidationErrorMessage>
+            {errorMessage}
+          </ValidationErrorMessage>
+        )}
       </label>
-      <ValidationErrorMessage>
-        {errorMessage}
-      </ValidationErrorMessage>
     </>
   );
 };
