@@ -5,8 +5,8 @@ import React, {
   ReactNode,
   MouseEventHandler,
 } from 'react';
-import { VARIANT } from 'Theme/MarkOneTheme';
 import styled, { ThemeContext } from 'styled-components';
+import { VARIANT } from '../Theme/MarkOneTheme';
 import { BaseTheme } from '../Theme';
 
 export interface ButtonProps {

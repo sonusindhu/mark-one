@@ -2,8 +2,8 @@ import React, {
   FunctionComponent, ReactElement, useContext, MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { VARIANT } from 'Theme/MarkOneTheme';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import { VARIANT } from '../Theme/MarkOneTheme';
 import { BaseTheme } from '../Theme';
 
 export interface BorderlessButtonProps {
