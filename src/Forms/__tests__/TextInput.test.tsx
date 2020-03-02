@@ -18,10 +18,6 @@ describe('Text input', function () {
       />
     );
   });
-  afterEach(function () {
-    changeSpy.resetHistory();
-    cleanup();
-  });
   // getByText method does not work with text fields, so we are using the below
   // as an alternative way to test that the component renders
   it('renders', function () {
