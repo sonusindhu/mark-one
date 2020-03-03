@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from 'test-utils';
+import { render, fireEvent, getByRole } from 'test-utils';
 import { spy } from 'sinon';
 import { strictEqual } from 'assert';
 import TextInput from '../TextInput';
@@ -36,5 +36,10 @@ describe('Text input', function () {
     const inputField = document.getElementById('semester') as HTMLInputElement;
     const defaultValue = inputField.value;
     strictEqual(defaultValue, 'Spring');
+  });
+  it('renders the error message', function () {
+    const inputField = document.getElementById('semester') as HTMLInputElement;
+    const errorMessage = getByRole(inputField.parentNode as HTMLElement, 'alert');
+    strictEqual(errorMessage.textContent.trim(), 'Error: Please enter a valid ID');
   });
 });
