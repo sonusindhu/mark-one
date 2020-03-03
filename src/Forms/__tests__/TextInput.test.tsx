@@ -6,41 +6,78 @@ import TextInput from '../TextInput';
 
 describe('Text input', function () {
   let changeSpy;
-  beforeEach(function () {
-    changeSpy = spy();
-    render(
-      <TextInput
-        id="semester"
-        name="semester"
-        value="Spring"
-        errorMessage="Error: Please enter a valid ID"
-        label="semester"
-        onChange={changeSpy}
-      />
-    );
-  });
-  // getByText method does not work with text fields, so we are using the below
-  // as an alternative way to test that the component renders
-  it('renders', function () {
-    const inputElement = document.getElementById('semester') as HTMLInputElement;
-    strictEqual(!!inputElement, true);
-  });
-  it('calls the change handler when changed', function () {
-    fireEvent.change(document.getElementById('semester'), {
-      target: {
-        value: 'Fall',
-      },
+  context('when errorMessage prop is present', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Spring"
+          errorMessage="Error: Please enter a valid ID"
+          label="semester"
+          onChange={changeSpy}
+        />
+      );
     });
-    strictEqual(changeSpy.callCount, 1);
+    // getByText method does not work with text fields, so we are using the below
+    // as an alternative way to test that the component renders
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('calls the change handler when changed', function () {
+      fireEvent.change(document.getElementById('semester'), {
+        target: {
+          value: 'Fall',
+        },
+      });
+      strictEqual(changeSpy.callCount, 1);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Spring');
+    });
+    it('renders the error message', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const errorMessage = getByRole(inputField.parentNode as HTMLElement, 'alert');
+      strictEqual(errorMessage.textContent.trim(), 'Error: Please enter a valid ID');
+    });
   });
-  it('renders the correct default value', function () {
-    const inputField = document.getElementById('semester') as HTMLInputElement;
-    const defaultValue = inputField.value;
-    strictEqual(defaultValue, 'Spring');
-  });
-  it('renders the error message', function () {
-    const inputField = document.getElementById('semester') as HTMLInputElement;
-    const errorMessage = getByRole(inputField.parentNode as HTMLElement, 'alert');
-    strictEqual(errorMessage.textContent.trim(), 'Error: Please enter a valid ID');
+  context('when errorMessage prop is not present', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Spring"
+          label="semester"
+          onChange={changeSpy}
+        />
+      );
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('calls the change handler when changed', function () {
+      fireEvent.change(document.getElementById('semester'), {
+        target: {
+          value: 'Fall',
+        },
+      });
+      strictEqual(changeSpy.callCount, 1);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Spring');
+    });
+    it('does not render the error message', function () {
+      const errorField = document.querySelectorAll('span') as NodeList;
+      strictEqual(errorField.length, 0);
+    });
   });
 });
