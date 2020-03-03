@@ -14,6 +14,7 @@ describe('Text input', function () {
         name="semester"
         value="Spring"
         errorMessage="Error: Please enter a valid ID"
+        label="semester"
         onChange={changeSpy}
       />
     );

@@ -25,6 +25,8 @@ export interface TextInputProps {
   fontSize?: string;
   /** The body of the error message, if applicable */
   errorMessage?: string;
+  /** Specifies the label text */
+  label: string;
 }
 
 const StyledTextInput = styled.input`
@@ -43,11 +45,13 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
     placeholder,
     value,
     errorMessage,
+    label,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
     <>
       <label htmlFor={id}>
+        {label}
         <StyledTextInput
           onChange={onChange}
           id={id}
