@@ -10,9 +10,9 @@ import {
   SinonSpy,
 } from 'sinon';
 import assert from 'assert';
-import { VARIANT } from 'Theme/MarkOneTheme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { VARIANT } from '../../Theme/MarkOneTheme';
 import BorderlessButton from '../BorderlessButton';
 
 describe('Borderless Button', function () {

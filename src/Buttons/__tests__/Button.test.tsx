@@ -10,7 +10,7 @@ import {
   SinonSpy,
 } from 'sinon';
 import assert from 'assert';
-import { VARIANT } from 'Theme/MarkOneTheme';
+import { VARIANT } from '../../Theme/MarkOneTheme';
 import Button from '../Button';
 
 describe('Button', function () {
