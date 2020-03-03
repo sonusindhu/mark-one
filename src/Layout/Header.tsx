@@ -26,7 +26,6 @@ export interface HeaderProps {
 const Header = styled.header<HeaderProps>`
   align-items: flex-end;
   background-color: ${({ background }): string => background};
-  box-shadow: ${({ theme }): string => theme.shadow.light};
   display: flex;
   justify-content: ${({ justify }): string => justify};
   padding: ${({ theme }): string => `${theme.ws.medium} ${theme.ws.small}`};
