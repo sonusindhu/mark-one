@@ -19,6 +19,8 @@ export interface TableCellProps {
   children: ReactNode;
   /** Allows you to pass in a alignment property from the ALIGN enum */
   alignment?: ALIGN;
+  /** Specifies the background color of the table cell */
+  backgroundColor?: string;
 }
 
 const StyledCell = styled.td<TableCellProps>`
@@ -28,6 +30,7 @@ const StyledCell = styled.td<TableCellProps>`
   font-size: ${({ theme }): string => (theme.font.data.size)};
   padding: ${({ theme }): string => (theme.ws.xsmall)};
   text-align: ${({ alignment }): string => alignment};
+  background-color: ${({ backgroundColor }): string => backgroundColor};
 `;
 
 StyledCell.defaultProps = {
@@ -38,12 +41,14 @@ const TableCell: FunctionComponent<TableCellProps> = (props): ReactElement => {
   const {
     children,
     alignment,
+    backgroundColor,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
     <StyledCell
       theme={theme}
       alignment={alignment}
+      backgroundColor={backgroundColor}
     >
       {children}
     </StyledCell>
