@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'test-utils';
 import convert from 'color-convert';
 import { strictEqual } from 'assert';
-import TableCell from '../TableCell';
+import TableCell, { ALIGN } from '../TableCell';
 import TableBody from '../TableBody';
 import TableHead from '../TableHead';
 import TableHeadingCell from '../TableHeadingCell';
@@ -31,19 +31,19 @@ describe('Table Components', function () {
             <TableCell>Bernstein</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>2</TableCell>
-            <TableCell>Jess</TableCell>
-            <TableCell>Win</TableCell>
+            <TableCell alignment={ALIGN.LEFT}>2</TableCell>
+            <TableCell alignment={ALIGN.LEFT}>Jess</TableCell>
+            <TableCell alignment={ALIGN.LEFT}>Win</TableCell>
           </TableRow>
           <TableRow isStriped>
-            <TableCell>3</TableCell>
-            <TableCell>Sam</TableCell>
-            <TableCell>Anderson</TableCell>
+            <TableCell alignment={ALIGN.CENTER}>3</TableCell>
+            <TableCell alignment={ALIGN.CENTER}>Sam</TableCell>
+            <TableCell alignment={ALIGN.CENTER}>Anderson</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>4</TableCell>
-            <TableCell>Judy</TableCell>
-            <TableCell>Monson</TableCell>
+            <TableCell alignment={ALIGN.RIGHT}>4</TableCell>
+            <TableCell alignment={ALIGN.RIGHT}>Judy</TableCell>
+            <TableCell alignment={ALIGN.RIGHT}>Monson</TableCell>
           </TableRow>
         </TableBody>
       </Table>
@@ -52,6 +52,22 @@ describe('Table Components', function () {
   describe('Table Cell', function () {
     it('contains text', function () {
       getByText('1');
+    });
+    it('defaults to left text-align when alignment prop is unspecified', function () {
+      const style = window.getComputedStyle(getByText('1'));
+      strictEqual(style.textAlign, 'left');
+    });
+    it('has a value of left for text-align when alignment prop is ALIGN.LEFT', function () {
+      const style = window.getComputedStyle(getByText('2'));
+      strictEqual(style.textAlign, 'left');
+    });
+    it('has a value of center for text-align when alignment prop is ALIGN.CENTER', function () {
+      const style = window.getComputedStyle(getByText('3'));
+      strictEqual(style.textAlign, 'center');
+    });
+    it('has a value of right for text-align when alignment prop is ALIGN.RIGHT', function () {
+      const style = window.getComputedStyle(getByText('4'));
+      strictEqual(style.textAlign, 'right');
     });
   });
   describe('Table Heading Cell', function () {
@@ -90,10 +106,10 @@ describe('Table Components', function () {
           </TableHead>
           <TableBody isScrollable={false} data-testid="tbody">
             <TableRow>
-              <TableCell>1</TableCell>
+              <TableCell alignment={ALIGN.RIGHT}>1</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>3</TableCell>
+              <TableCell alignment={ALIGN.RIGHT}>3</TableCell>
             </TableRow>
           </TableBody>
         </Table>
@@ -111,10 +127,10 @@ describe('Table Components', function () {
           </TableHead>
           <TableBody data-testid="tbody">
             <TableRow>
-              <TableCell>2</TableCell>
+              <TableCell alignment={ALIGN.LEFT}>2</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>4</TableCell>
+              <TableCell alignment={ALIGN.LEFT}>4</TableCell>
             </TableRow>
           </TableBody>
         </Table>

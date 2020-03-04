@@ -14,7 +14,6 @@ export interface TableProps {
 const StyledTable = styled.table`
     border: ${({ theme }): string => (theme.border.light)};
     border-collapse: collapse;
-    margin: ${({ theme }): string => (theme.ws.small)};
     padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.small)};
     width: 100%;
 `;

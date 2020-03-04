@@ -9,7 +9,9 @@ export interface PageBodyProps {
   theme: BaseTheme;
 }
 
-const PageBody = styled.main<PageBodyProps>``;
+const PageBody = styled.main<PageBodyProps>`
+  margin: ${({ theme }): string => (theme.ws.small)};
+`;
 
 declare type PageBody = ReactElement<PageBodyProps>;
 
