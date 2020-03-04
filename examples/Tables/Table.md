@@ -156,7 +156,7 @@ import {
       <TableCell>Glenn</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell backgroundColor={'#ffdd2e'}>2</TableCell>
+      <TableCell backgroundColor='#ffdd2e'>2</TableCell>
       <TableCell>Jack</TableCell>
       <TableCell>Thompson</TableCell>
     </TableRow>

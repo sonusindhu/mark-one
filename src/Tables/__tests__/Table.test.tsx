@@ -26,7 +26,7 @@ describe('Table Components', function () {
         </TableHead>
         <TableBody isScrollable data-testid="tableBody">
           <TableRow isStriped data-testid="firstStripedRow">
-            <TableCell>1</TableCell>
+            <TableCell backgroundColor="rgb(135, 255, 0)">1</TableCell>
             <TableCell>Lucy</TableCell>
             <TableCell>Bernstein</TableCell>
           </TableRow>
@@ -68,6 +68,10 @@ describe('Table Components', function () {
     it('has a value of right for text-align when alignment prop is ALIGN.RIGHT', function () {
       const style = window.getComputedStyle(getByText('4'));
       strictEqual(style.textAlign, 'right');
+    });
+    it('renders the correct background color', function () {
+      const style = window.getComputedStyle(getByText('1'));
+      strictEqual(style.backgroundColor, 'rgb(135, 255, 0)');
     });
   });
   describe('Table Heading Cell', function () {
