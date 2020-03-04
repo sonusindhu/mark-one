@@ -17,7 +17,7 @@ export interface TableCellProps {
   /** Text or components to be displayed in the cell */
   children: ReactNode;
   /** Allows you to pass in a alignment property from the ALIGN enum */
-  alignment: ALIGN;
+  alignment?: ALIGN;
 }
 
 const StyledCell = styled.td<TableCellProps>`

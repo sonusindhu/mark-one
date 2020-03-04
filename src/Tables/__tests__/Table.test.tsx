@@ -26,9 +26,9 @@ describe('Table Components', function () {
         </TableHead>
         <TableBody isScrollable data-testid="tableBody">
           <TableRow isStriped data-testid="firstStripedRow">
-            <TableCell alignment={ALIGN.LEFT}>1</TableCell>
-            <TableCell alignment={ALIGN.LEFT}>Lucy</TableCell>
-            <TableCell alignment={ALIGN.LEFT}>Bernstein</TableCell>
+            <TableCell>1</TableCell>
+            <TableCell>Lucy</TableCell>
+            <TableCell>Bernstein</TableCell>
           </TableRow>
           <TableRow>
             <TableCell alignment={ALIGN.LEFT}>2</TableCell>
@@ -36,14 +36,14 @@ describe('Table Components', function () {
             <TableCell alignment={ALIGN.LEFT}>Win</TableCell>
           </TableRow>
           <TableRow isStriped>
-            <TableCell alignment={ALIGN.LEFT}>3</TableCell>
-            <TableCell alignment={ALIGN.LEFT}>Sam</TableCell>
-            <TableCell alignment={ALIGN.LEFT}>Anderson</TableCell>
+            <TableCell alignment={ALIGN.CENTER}>3</TableCell>
+            <TableCell alignment={ALIGN.CENTER}>Sam</TableCell>
+            <TableCell alignment={ALIGN.CENTER}>Anderson</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell alignment={ALIGN.LEFT}>4</TableCell>
-            <TableCell alignment={ALIGN.LEFT}>Judy</TableCell>
-            <TableCell alignment={ALIGN.LEFT}>Monson</TableCell>
+            <TableCell alignment={ALIGN.RIGHT}>4</TableCell>
+            <TableCell alignment={ALIGN.RIGHT}>Judy</TableCell>
+            <TableCell alignment={ALIGN.RIGHT}>Monson</TableCell>
           </TableRow>
         </TableBody>
       </Table>
@@ -52,6 +52,22 @@ describe('Table Components', function () {
   describe('Table Cell', function () {
     it('contains text', function () {
       getByText('1');
+    });
+    it('defaults to left text-align when alignment prop is unspecified', function () {
+      const style = window.getComputedStyle(getByText('1'));
+      strictEqual(style.textAlign, 'left');
+    });
+    it('has a value of left for text-align when alignment prop is ALIGN.LEFT', function () {
+      const style = window.getComputedStyle(getByText('2'));
+      strictEqual(style.textAlign, 'left');
+    });
+    it('has a value of center for text-align when alignment prop is ALIGN.CENTER', function () {
+      const style = window.getComputedStyle(getByText('3'));
+      strictEqual(style.textAlign, 'center');
+    });
+    it('has a value of right for text-align when alignment prop is ALIGN.RIGHT', function () {
+      const style = window.getComputedStyle(getByText('4'));
+      strictEqual(style.textAlign, 'right');
     });
   });
   describe('Table Heading Cell', function () {
