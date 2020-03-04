@@ -19,6 +19,7 @@ export interface BaseTheme extends DefaultTheme {
   color?: {
     background?: ColorRange;
     text?: ColorRange;
+    area?: ColorRange;
   };
   font?: {
     [key: string]: FontSpec;
@@ -97,6 +98,20 @@ const MarkOneTheme: BaseTheme = {
       info: '#4e88c7',
       positive: '#4db848',
       negative: '#ff4040',
+    },
+    area: {
+      acs: '#ed1b35',
+      am: '#00afac',
+      ap: '#cbdb2a',
+      be: '#fbb216',
+      cs: '#5798e1',
+      ee: '#ffdd2e',
+      ese: '#57c5d7',
+      general: '#ffffff',
+      matme: '#b88abe',
+      mde: '#ffffff',
+      msmba: '#ffffff',
+      sem: '#ffffff',
     },
   },
   font: {
