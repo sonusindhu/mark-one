@@ -130,7 +130,7 @@ import {
 </Table>
 ```
 
-The following is an example of the `Table` component in which the `alignment` is not set. In this case, the `alignment` property defaults to `ALIGN.LEFT` per our default props.
+The following is an example of the `Table` component in which the `alignment` is not set. In this case, the `alignment` property defaults to `ALIGN.LEFT` per our default props. This example also shows the `backgroundColor` property set to the value `#ffdd2e` for a `TableCell.`
 ```jsx
 import {
   ALIGN,
@@ -156,7 +156,7 @@ import {
       <TableCell>Glenn</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell>2</TableCell>
+      <TableCell backgroundColor={'#ffdd2e'}>2</TableCell>
       <TableCell>Jack</TableCell>
       <TableCell>Thompson</TableCell>
     </TableRow>
