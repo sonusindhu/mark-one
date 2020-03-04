@@ -7,6 +7,7 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme';
 
+/** Represents the possible values for TableCell's text-align property */
 export enum ALIGN {
   LEFT = 'left',
   RIGHT = 'right',
