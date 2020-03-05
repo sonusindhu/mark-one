@@ -13,6 +13,7 @@ type FontSpec = {
   family?: string;
   size?: string;
   weight?: string;
+  color?: string;
 }
 
 export interface BaseTheme extends DefaultTheme {
@@ -144,6 +145,7 @@ const MarkOneTheme: BaseTheme = {
       family: FONT.SANS,
       size: '1.33em',
       weight: WEIGHT.LIGHT,
+      color: lighten(0.35, BLACK),
     },
     error: {
       family: FONT.SANS,

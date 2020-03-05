@@ -10,6 +10,7 @@ const Heading = styled.h1`
   font-family: ${({ theme }): string => theme.font.heading.family};
   font-size: ${({ theme }): string => theme.font.heading.size};
   font-weight: ${({ theme }): string => theme.font.heading.weight};
+  color: ${({ theme }): string => theme.font.heading.color};
 `;
 
 const HeadingOne: FunctionComponent = (props): ReactElement => {
