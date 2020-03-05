@@ -19,7 +19,7 @@ export interface BaseTheme extends DefaultTheme {
   color?: {
     background?: ColorRange;
     text?: ColorRange;
-    area?: ColorRange;
+    area?: { [key: string]: string };
   };
   font?: {
     [key: string]: FontSpec;
