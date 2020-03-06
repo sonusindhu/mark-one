@@ -37,6 +37,8 @@ export interface TextInputProps {
   labelPosition?: POSITION;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
+  /** If true, text input field will be disabled */
+  disabled?: boolean;
 }
 
 const StyledTextInput = styled.input<TextInputProps>`
@@ -56,6 +58,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
     label,
     labelPosition,
     isLabelVisible,
+    disabled,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   const input = (
@@ -70,6 +73,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
       label={label}
       labelPosition={labelPosition}
       isLabelVisible={isLabelVisible}
+      disabled={disabled}
     />
   );
   if (!isLabelVisible) {
@@ -127,6 +131,7 @@ TextInput.defaultProps = {
   type: 'text',
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
+  disabled: false,
 };
 
 export default TextInput;

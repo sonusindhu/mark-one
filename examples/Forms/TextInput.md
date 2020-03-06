@@ -107,3 +107,22 @@ The following is an example of the TextInput component with the `isLabelVisible`
   }
   <TextInputExample />
 ```
+
+The following is an example of the TextInput component with the `disabled` prop set to `true.`
+```jsx
+  import { useState } from 'react';
+  const TextInputExample = () => {
+    const [value, setValue] = useState('Some valid input');
+    return (<TextInput
+      value={value}
+      name="example"
+      id="example"
+      label="Description:"
+      disabled="disabled"
+      onChange={(event) => {
+        setValue(event.target.value);
+      }}
+    />);
+  }
+  <TextInputExample />
+```
