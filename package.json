@@ -39,6 +39,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "@testing-library/react": "^9.3.0",
+    "@testing-library/user-event": "^10.0.0",
     "@types/color-convert": "^1.9.0",
     "@types/jsdom": "^12.2.4",
     "@types/mocha": "^5.2.7",
@@ -89,6 +90,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@openfonts/open-sans_all": "^1.43.0",
     "@openfonts/roboto-mono_all": "^1.43.0",
+    "aria-query": "^4.0.2",
     "polished": "^3.4.1"
   },
   "peerDependencies": {
