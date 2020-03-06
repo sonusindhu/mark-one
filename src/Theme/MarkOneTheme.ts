@@ -108,7 +108,7 @@ const MarkOneTheme: BaseTheme = {
       ee: '#f9df57',
       ese: '#75c3d5',
       general: '#95b5df',
-      matme: '#b18cbb',
+      'mat & me': '#b18cbb',
       mde: '#c0c0c0',
       msmba: '#946eb7',
       sem: '#ec8f9c',
