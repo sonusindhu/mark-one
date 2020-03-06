@@ -54,13 +54,6 @@ The following is an example of the TextInput component with the `labelPosition` 
 The following is an example of the TextInput component with the `labelPosition` set to `POSITION.LEFT.`
 ```jsx
   import { useState } from 'react';
-
-  /** Represents the possible values for TextInput's label positioning */
-  const POSITION = {
-    LEFT: 'left',
-    TOP: 'top',
-  }
-
   const TextInputExample = () => {
     const [value, setValue] = useState('Some valid input');
     return (<TextInput
@@ -68,7 +61,7 @@ The following is an example of the TextInput component with the `labelPosition` 
       name="example"
       id="example"
       label="Description:"
-      labelPosition={POSITION.LEFT}
+      labelPosition="left"
       onChange={(event) => {
         setValue(event.target.value);
       }}
@@ -80,13 +73,6 @@ The following is an example of the TextInput component with the `labelPosition` 
 The following is an example of the TextInput component with the `labelPosition` set to `POSITION.TOP.`
 ```jsx
   import { useState } from 'react';
-
-  /** Represents the possible values for TextInput's label positioning */
-  const POSITION = {
-    LEFT: 'left',
-    TOP: 'top',
-  }
-
   const TextInputExample = () => {
     const [value, setValue] = useState('Some valid input');
     return (<TextInput
@@ -94,7 +80,7 @@ The following is an example of the TextInput component with the `labelPosition` 
       name="example"
       id="example"
       label="Description:"
-      labelPosition={POSITION.TOP}
+      labelPosition="top"
       onChange={(event) => {
         setValue(event.target.value);
       }}
