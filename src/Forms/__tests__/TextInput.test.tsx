@@ -9,7 +9,13 @@ import {
 } from 'test-utils';
 import { spy } from 'sinon';
 import { strictEqual } from 'assert';
+import userEvent from '@testing-library/user-event';
 import TextInput from '../TextInput';
+
+enum POSITION {
+  TOP = 'top',
+  LEFT = 'left',
+}
 
 describe('Text input', function () {
   let getByText: BoundFunction<GetByText>;
@@ -158,6 +164,90 @@ describe('Text input', function () {
     it('the label value is hidden in the UI', function () {
       const style = window.getComputedStyle(getByText('invisibleLabel'));
       strictEqual(style.display, 'none');
+    });
+  });
+  context('when disabled prop is true', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      ({ getByText } = render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Fall"
+          label="visibleLabel"
+          disabled
+          onChange={changeSpy}
+        />
+      ));
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Fall');
+    });
+    it('does not call the change handler when user tries to change the input', function () {
+      userEvent.type(document.getElementById('semester'), 'Spring');
+      strictEqual(changeSpy.callCount, 0);
+    });
+  });
+  context('when labelPosition prop is equal to POSITION.TOP', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      ({ getByText } = render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Fall"
+          label="visibleLabel"
+          labelPosition={POSITION.TOP}
+          onChange={changeSpy}
+        />
+      ));
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Fall');
+    });
+    it('positions the label above the text input field', function () {
+      const style = window.getComputedStyle(getByText('visibleLabel').parentNode as HTMLElement);
+      strictEqual(style['flex-direction'], 'column');
+    });
+  });
+  context('when labelPosition prop is equal to POSITION.LEFT', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      ({ getByText } = render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Fall"
+          label="visibleLabel"
+          labelPosition={POSITION.LEFT}
+          onChange={changeSpy}
+        />
+      ));
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Fall');
+    });
+    it('positions the label to the left of the text input field', function () {
+      const style = window.getComputedStyle(getByText('visibleLabel').parentNode as HTMLElement);
+      strictEqual(style['flex-direction'], 'row');
     });
   });
 });

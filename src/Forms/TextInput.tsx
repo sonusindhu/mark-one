@@ -44,7 +44,6 @@ export interface TextInputProps {
 const StyledTextInput = styled.input<TextInputProps>`
   border: ${({ theme }): string => (theme.border.light)};
   margin: 2px;
-  width: 100%;
 `;
 
 const StyledLabelText = styled.span<{isLabelVisible: boolean}>`
