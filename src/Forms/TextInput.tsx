@@ -72,6 +72,22 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
       isLabelVisible={isLabelVisible}
     />
   );
+  if (!isLabelVisible) {
+    return (
+      <>
+        <label htmlFor={id}>
+          <br />
+          {input}
+          {errorMessage
+          && (
+            <ValidationErrorMessage>
+              {errorMessage}
+            </ValidationErrorMessage>
+          )}
+        </label>
+      </>
+    );
+  }
   if (labelPosition === 'left') {
     return (
       <>

@@ -88,3 +88,22 @@ The following is an example of the TextInput component with the `labelPosition` 
   }
   <TextInputExample />
 ```
+
+The following is an example of the TextInput component with the `isLabelVisible` prop set to `false.`
+```jsx
+  import { useState } from 'react';
+  const TextInputExample = () => {
+    const [value, setValue] = useState('Some valid input');
+    return (<TextInput
+      value={value}
+      name="example"
+      id="example"
+      label="Description:"
+      isLabelVisible={false}
+      onChange={(event) => {
+        setValue(event.target.value);
+      }}
+    />);
+  }
+  <TextInputExample />
+```
