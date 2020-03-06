@@ -42,8 +42,18 @@ export interface TextInputProps {
 }
 
 const StyledTextInput = styled.input<TextInputProps>`
-    border: ${({ theme }): string => (theme.border.light)};
-    margin: 2px;
+  border: ${({ theme }): string => (theme.border.light)};
+  margin: 2px;
+  width: 100%;
+`;
+
+const StyledLabelText = styled.span<{isLabelVisible: boolean}>`
+  display: ${({ isLabelVisible }): string => (isLabelVisible ? 'inline' : 'none')};
+`;
+
+const StyledLabel = styled.label<{labelPosition: POSITION}>`
+  display: flex;
+  flex-direction: ${({ labelPosition }): string => (labelPosition === POSITION.TOP ? 'column' : 'row')};
 `;
 
 const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
@@ -61,70 +71,28 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
     disabled,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
-  const input = (
-    <StyledTextInput
-      onChange={onChange}
-      id={id}
-      name={name}
-      placeholder={placeholder}
-      type={type}
-      theme={theme}
-      value={value}
-      label={label}
-      labelPosition={labelPosition}
-      isLabelVisible={isLabelVisible}
-      disabled={disabled}
-    />
+  return (
+    <StyledLabel htmlFor={id} labelPosition={labelPosition}>
+      <StyledLabelText isLabelVisible={isLabelVisible}>{label}</StyledLabelText>
+      <StyledTextInput
+        onChange={onChange}
+        id={id}
+        name={name}
+        placeholder={placeholder}
+        type={type}
+        theme={theme}
+        value={value}
+        label={label}
+        disabled={disabled}
+      />
+      {errorMessage
+      && (
+        <ValidationErrorMessage>
+          {errorMessage}
+        </ValidationErrorMessage>
+      )}
+    </StyledLabel>
   );
-  if (!isLabelVisible) {
-    return (
-      <>
-        <label htmlFor={id}>
-          <br />
-          {input}
-          {errorMessage
-          && (
-            <ValidationErrorMessage>
-              {errorMessage}
-            </ValidationErrorMessage>
-          )}
-        </label>
-      </>
-    );
-  }
-  if (labelPosition === 'left') {
-    return (
-      <>
-        <label htmlFor={id}>
-          {label}
-          {input}
-          {errorMessage
-          && (
-            <ValidationErrorMessage>
-              {errorMessage}
-            </ValidationErrorMessage>
-          )}
-        </label>
-      </>
-    );
-  }
-  if (labelPosition === 'top') {
-    return (
-      <>
-        <label htmlFor={id}>
-          {label}
-          <br />
-          {input}
-          {errorMessage
-          && (
-            <ValidationErrorMessage>
-              {errorMessage}
-            </ValidationErrorMessage>
-          )}
-        </label>
-      </>
-    );
-  }
 };
 
 TextInput.defaultProps = {
@@ -134,4 +102,5 @@ TextInput.defaultProps = {
   disabled: false,
 };
 
+/** @component */
 export default TextInput;
