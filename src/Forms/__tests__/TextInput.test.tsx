@@ -1,10 +1,19 @@
 import React from 'react';
-import { render, fireEvent, getByRole } from 'test-utils';
+import {
+  render,
+  fireEvent,
+  getByRole,
+  BoundFunction,
+  GetByText,
+  QueryByText,
+} from 'test-utils';
 import { spy } from 'sinon';
 import { strictEqual } from 'assert';
 import TextInput from '../TextInput';
 
 describe('Text input', function () {
+  let getByText: BoundFunction<GetByText>;
+  let queryByText: BoundFunction<QueryByText>;
   let changeSpy;
   context('when errorMessage prop is present', function () {
     beforeEach(function () {
@@ -48,7 +57,7 @@ describe('Text input', function () {
   context('when errorMessage prop is not present', function () {
     beforeEach(function () {
       changeSpy = spy();
-      render(
+      ({ queryByText } = render(
         <TextInput
           id="semester"
           name="semester"
@@ -56,7 +65,7 @@ describe('Text input', function () {
           label="semester"
           onChange={changeSpy}
         />
-      );
+      ));
     });
     it('renders', function () {
       const inputElement = document.getElementById('semester') as HTMLInputElement;
@@ -76,8 +85,79 @@ describe('Text input', function () {
       strictEqual(defaultValue, 'Spring');
     });
     it('does not render the error message', function () {
-      const errorField = document.querySelectorAll('span') as NodeList;
-      strictEqual(errorField.length, 0);
+      const errorField = queryByText('error');
+      strictEqual(errorField, null);
+    });
+  });
+  context('when isLabelVisible prop is true', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      ({ getByText } = render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Spring"
+          label="visibleLabel"
+          isLabelVisible
+          onChange={changeSpy}
+        />
+      ));
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('calls the change handler when changed', function () {
+      fireEvent.change(document.getElementById('semester'), {
+        target: {
+          value: 'Fall',
+        },
+      });
+      strictEqual(changeSpy.callCount, 1);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Spring');
+    });
+    it('has a visible label', function () {
+      getByText('visibleLabel');
+    });
+  });
+  context('when isLabelVisible prop is false', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      ({ getByText } = render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Spring"
+          label="invisibleLabel"
+          isLabelVisible={false}
+          onChange={changeSpy}
+        />
+      ));
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('calls the change handler when changed', function () {
+      fireEvent.change(document.getElementById('semester'), {
+        target: {
+          value: 'Fall',
+        },
+      });
+      strictEqual(changeSpy.callCount, 1);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Spring');
+    });
+    it('the label value is hidden in the UI', function () {
+      const style = window.getComputedStyle(getByText('invisibleLabel'));
+      strictEqual(style.display, 'none');
     });
   });
 });
