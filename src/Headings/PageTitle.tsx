@@ -7,10 +7,10 @@ import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme';
 
 const Heading = styled.h1`
-  font-family: ${({ theme }): string => theme.font.heading.family};
-  font-size: ${({ theme }): string => theme.font.heading.size};
-  font-weight: ${({ theme }): string => theme.font.heading.weight};
-  color: ${({ theme }): string => theme.font.heading.color};
+  font-family: ${({ theme }): string => theme.font.title.family};
+  font-size: ${({ theme }): string => theme.font.title.size};
+  font-weight: ${({ theme }): string => theme.font.title.weight};
+  color: ${({ theme }): string => theme.font.title.color};
 `;
 
 const PageTitle: FunctionComponent = (props): ReactElement => {

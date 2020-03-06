@@ -140,12 +140,12 @@ const MarkOneTheme: BaseTheme = {
       family: FONT.SANS,
       size: '1.66em',
       weight: WEIGHT.MEDIUM,
+      color: lighten(0.35, BLACK),
     },
     heading: {
       family: FONT.SANS,
       size: '1.33em',
       weight: WEIGHT.LIGHT,
-      color: lighten(0.35, BLACK),
     },
     error: {
       family: FONT.SANS,
