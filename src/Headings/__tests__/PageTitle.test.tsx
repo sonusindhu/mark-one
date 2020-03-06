@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from 'test-utils';
-import { HeadingOne } from '..';
+import { PageTitle } from '..';
 
-describe('Level 1 heading', function () {
+describe('Page title', function () {
   it('renders any text provided', function () {
     const {
       findByText,
-    } = render(<HeadingOne>Hello World</HeadingOne>);
+    } = render(<PageTitle>Hello World</PageTitle>);
 
     findByText('Hello World');
   });

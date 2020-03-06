@@ -13,7 +13,7 @@ const Heading = styled.h1`
   color: ${({ theme }): string => theme.font.heading.color};
 `;
 
-const HeadingOne: FunctionComponent = (props): ReactElement => {
+const PageTitle: FunctionComponent = (props): ReactElement => {
   const {
     children,
   } = props;
@@ -27,8 +27,8 @@ const HeadingOne: FunctionComponent = (props): ReactElement => {
   );
 };
 
-HeadingOne.defaultProps = {
+PageTitle.defaultProps = {
   children: '',
 };
 
-export default HeadingOne;
+export default PageTitle;
