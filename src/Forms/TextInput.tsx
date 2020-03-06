@@ -9,7 +9,7 @@ import { BaseTheme } from 'Theme';
 import ValidationErrorMessage from './ValidationErrorMessage';
 
 /** Represents the possible values for TextInput's label positioning */
-export enum POSITION {
+enum POSITION {
   TOP = 'top',
   LEFT = 'left',
 }
@@ -41,9 +41,6 @@ export interface TextInputProps {
 
 const StyledTextInput = styled.input<TextInputProps>`
     border: ${({ theme }): string => (theme.border.light)};
-    display: block;
-    height: 20px;
-    width: 100%;
 `;
 
 const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
