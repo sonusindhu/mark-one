@@ -2,9 +2,15 @@ import React, {
   FunctionComponent,
   ReactElement,
   useContext,
+  ReactNode,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme';
+
+export interface PageHeadingProps {
+  /** Page heading text */
+  children: ReactNode;
+}
 
 const Heading = styled.h1`
   font-family: ${({ theme }): string => theme.font.title.family};
@@ -13,7 +19,8 @@ const Heading = styled.h1`
   color: ${({ theme }): string => theme.font.title.color};
 `;
 
-const PageTitle: FunctionComponent = (props): ReactElement => {
+const PageTitle: FunctionComponent<PageHeadingProps> = (props):
+ReactElement => {
   const {
     children,
   } = props;
