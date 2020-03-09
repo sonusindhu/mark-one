@@ -122,9 +122,8 @@ describe('Text input', function () {
       strictEqual(changeSpy.callCount, 1);
     });
     it('renders the correct default value', function () {
-      const inputField = document.getElementById('semester') as HTMLInputElement;
-      const defaultValue = inputField.value;
-      strictEqual(defaultValue, 'Spring');
+      const { value } = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(value, 'Spring');
     });
     it('has a visible label', function () {
       getByText('visibleLabel');
@@ -157,9 +156,8 @@ describe('Text input', function () {
       strictEqual(changeSpy.callCount, 1);
     });
     it('renders the correct default value', function () {
-      const inputField = document.getElementById('semester') as HTMLInputElement;
-      const defaultValue = inputField.value;
-      strictEqual(defaultValue, 'Spring');
+      const { value } = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(value, 'Spring');
     });
     it('the label value is hidden in the UI', function () {
       const style = window.getComputedStyle(getByText('invisibleLabel'));
@@ -185,9 +183,8 @@ describe('Text input', function () {
       strictEqual(!!inputElement, true);
     });
     it('renders the correct default value', function () {
-      const inputField = document.getElementById('semester') as HTMLInputElement;
-      const defaultValue = inputField.value;
-      strictEqual(defaultValue, 'Fall');
+      const { value } = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(value, 'Fall');
     });
     it('does not call the change handler when user tries to change the input', function () {
       userEvent.type(document.getElementById('semester'), 'Spring');
@@ -213,9 +210,8 @@ describe('Text input', function () {
       strictEqual(!!inputElement, true);
     });
     it('renders the correct default value', function () {
-      const inputField = document.getElementById('semester') as HTMLInputElement;
-      const defaultValue = inputField.value;
-      strictEqual(defaultValue, 'Fall');
+      const { value } = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(value, 'Fall');
     });
     it('positions the label above the text input field', function () {
       const style = window.getComputedStyle(getByText('visibleLabel').parentNode as HTMLElement);
@@ -241,9 +237,8 @@ describe('Text input', function () {
       strictEqual(!!inputElement, true);
     });
     it('renders the correct default value', function () {
-      const inputField = document.getElementById('semester') as HTMLInputElement;
-      const defaultValue = inputField.value;
-      strictEqual(defaultValue, 'Fall');
+      const { value } = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(value, 'Fall');
     });
     it('positions the label to the left of the text input field', function () {
       const style = window.getComputedStyle(getByText('visibleLabel').parentNode as HTMLElement);
