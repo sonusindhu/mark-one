@@ -2,7 +2,7 @@ The following is an example of the TextInput component that includes the optiona
 ```jsx
   import { useState } from 'react';
   const TextInputExample = () => {
-    const [value, setValue] = useState('59390');
+    const [value, setValue] = useState('Invalid value');
     return (<TextInput
       value={value}
       name="example"
