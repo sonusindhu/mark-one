@@ -55,6 +55,10 @@ const StyledLabel = styled.label<{labelPosition: POSITION}>`
   flex-direction: ${({ labelPosition }): string => (labelPosition === POSITION.TOP ? 'column' : 'row')};
 `;
 
+/**
+ * A text input component that incorporates a styled label, styled label text,
+ * and an error message component
+ */
 const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
   const {
     onChange,
