@@ -19,6 +19,11 @@ const Heading = styled.h1`
   color: ${({ theme }): string => theme.font.title.color};
 `;
 
+/**
+ * @component PageTitle
+ * Page title component, used for application or page titles. Only one instance
+ * of this component should ever exist on any given page, for semantic reasons.
+ */
 const PageTitle: FunctionComponent<PageHeadingProps> = (props):
 ReactElement => {
   const {
