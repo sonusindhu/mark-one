@@ -43,7 +43,6 @@ export interface TextInputProps {
 
 const StyledTextInput = styled.input<TextInputProps>`
   border: ${({ theme }): string => (theme.border.light)};
-  margin: 2px;
 `;
 
 const StyledLabelText = styled.span<{isLabelVisible: boolean}>`
@@ -51,8 +50,10 @@ const StyledLabelText = styled.span<{isLabelVisible: boolean}>`
 `;
 
 const StyledLabel = styled.label<{labelPosition: POSITION}>`
+  align-items: baseline;
   display: flex;
   flex-direction: ${({ labelPosition }): string => (labelPosition === POSITION.TOP ? 'column' : 'row')};
+  margin: ${({ theme }): string => (theme.ws.small)};
 `;
 
 /**
