@@ -7,3 +7,4 @@ export * from './Layout';
 export * from './Dropdown';
 export * from './Icons';
 export * from './Forms';
+export * from './Headings';
