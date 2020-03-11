@@ -5,20 +5,17 @@ import React, {
   FunctionComponent,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from 'Theme';
+import { BaseTheme } from '../Theme/index';
 import ValidationErrorMessage from './ValidationErrorMessage';
-
-/** Represents the possible values for TextInput's label positioning */
-enum POSITION {
-  TOP = 'top',
-  LEFT = 'left',
-}
+import Label from './Label';
 
 export interface TextInputProps {
+  /** The id of the label tied to this text input field */
+  id: string;
+  /** Specifies the label text */
+  label: string;
   /** Function to call on change event */
   onChange: ChangeEventHandler;
-  /** The id of the text input field */
-  id: string;
   /** The name of the text input field */
   name: string;
   /** The placeholder value of the input field */
@@ -31,12 +28,6 @@ export interface TextInputProps {
   fontSize?: string;
   /** The body of the error message, if applicable */
   errorMessage?: string;
-  /** Specifies the label text */
-  label: string;
-  /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
-  /** If true, label will be visible */
-  isLabelVisible?: boolean;
   /** If true, text input field will be disabled */
   disabled?: boolean;
 }
@@ -46,39 +37,28 @@ const StyledTextInput = styled.input<TextInputProps>`
   width: 100%;
 `;
 
-const StyledLabelText = styled.span<{isLabelVisible: boolean}>`
-  display: ${({ isLabelVisible }): string => (isLabelVisible ? 'inline' : 'none')};
-`;
-
-const StyledLabel = styled.label<{labelPosition: POSITION}>`
-  align-items: baseline; 
-  display: flex;
-  flex-direction: ${({ labelPosition }): string => (labelPosition === POSITION.TOP ? 'column' : 'row')};
-  margin: ${({ theme }): string => (theme.ws.small)};
-`;
-
 /**
  * A text input component that incorporates a styled label, styled label text,
  * and an error message component
  */
 const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
   const {
-    onChange,
     id,
+    onChange,
     type,
     name,
     placeholder,
     value,
     errorMessage,
-    label,
-    labelPosition,
-    isLabelVisible,
     disabled,
+    label,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
-    <StyledLabel htmlFor={id} labelPosition={labelPosition}>
-      <StyledLabelText isLabelVisible={isLabelVisible}>{label}</StyledLabelText>
+    <Label
+      htmlFor={id}
+      label={label}
+    >
       <StyledTextInput
         onChange={onChange}
         id={id}
@@ -87,8 +67,8 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
         type={type}
         theme={theme}
         value={value}
-        label={label}
         disabled={disabled}
+        label={label}
       />
       {errorMessage
       && (
@@ -96,14 +76,12 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
           {errorMessage}
         </ValidationErrorMessage>
       )}
-    </StyledLabel>
+    </Label>
   );
 };
 
 TextInput.defaultProps = {
   type: 'text',
-  labelPosition: POSITION.LEFT,
-  isLabelVisible: true,
   disabled: false,
 };
 
