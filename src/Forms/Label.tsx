@@ -36,14 +36,27 @@ export interface LabelProps {
 }
 
 const StyledLabel = styled.label<StyledLabelProps>`
-  align-items: baseline; 
-  display: flex;
-  flex-direction: ${({ labelPosition }): string => (labelPosition === POSITION.TOP ? 'column' : 'row')};
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid template-rows: ${({ labelPosition }): string => (
+    labelPosition === POSITION.TOP
+      ? 'repeat(3, 1fr)'
+      : 'repeat(2, 1fr)'
+  )};
+  grid-template-areas: ${({ labelPosition }): string => (
+    labelPosition === POSITION.TOP
+      ? `"l l l"
+        "i i i"
+        "e e e"`
+      : `"l i i"
+        ". e e"`
+  )};
   margin: ${({ theme }): string => (theme.ws.small)};
 `;
 
 const StyledLabelText = styled.span<StyledLabelTextProps>`
   display: ${({ isLabelVisible }): string => (isLabelVisible ? 'inline' : 'none')};
+  grid-area: l;
 `;
 
 const Label: FunctionComponent<LabelProps> = (props): ReactElement => {

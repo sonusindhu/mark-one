@@ -14,6 +14,7 @@ const StyledValidationErrorMessage = styled.span`
   font-family: ${({ theme }): string => (theme.font.error.family)};
   font-size: ${({ theme }): string => (theme.font.error.size)};
   font-weight: ${({ theme }): string => (theme.font.error.weight)};
+  grid-area: e;
 `;
 
 const ValidationErrorMessage:
