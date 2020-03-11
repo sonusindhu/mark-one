@@ -24,7 +24,7 @@ export interface HeaderProps {
  */
 
 const Header = styled.header<HeaderProps>`
-  align-items: flex-end;
+  align-items: baseline;
   background-color: ${({ background }): string => background};
   display: flex;
   justify-content: ${({ justify }): string => justify};
