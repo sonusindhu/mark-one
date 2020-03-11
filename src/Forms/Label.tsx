@@ -38,7 +38,7 @@ export interface LabelProps {
 const StyledLabel = styled.label<StyledLabelProps>`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid template-rows: ${({ labelPosition }): string => (
+  grid-template-rows: ${({ labelPosition }): string => (
     labelPosition === POSITION.TOP
       ? 'repeat(3, 1fr)'
       : 'repeat(2, 1fr)'
