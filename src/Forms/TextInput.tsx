@@ -7,7 +7,7 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme/index';
 import ValidationErrorMessage from './ValidationErrorMessage';
-import Label from './Label';
+import Label, { POSITION } from './Label';
 
 export interface TextInputProps {
   /** The id of the label tied to this text input field */
@@ -30,6 +30,10 @@ export interface TextInputProps {
   errorMessage?: string;
   /** If true, text input field will be disabled */
   disabled?: boolean;
+  /** Allows you to pass in a label position property from the POSITION enum */
+  labelPosition?: POSITION;
+  /** If true, label will be visible */
+  isLabelVisible?: boolean;
 }
 
 const StyledTextInput = styled.input<TextInputProps>`
@@ -53,12 +57,16 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
     errorMessage,
     disabled,
     label,
+    labelPosition,
+    isLabelVisible,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
     <Label
       htmlFor={id}
       label={label}
+      labelPosition={labelPosition}
+      isLabelVisible={isLabelVisible}
     >
       <StyledTextInput
         onChange={onChange}
@@ -84,6 +92,8 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
 TextInput.defaultProps = {
   type: 'text',
   disabled: false,
+  labelPosition: POSITION.LEFT,
+  isLabelVisible: true,
 };
 
 /** @component */

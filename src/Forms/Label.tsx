@@ -6,8 +6,8 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme/index';
 
-/** Represents the possible values for the label's positioning */
-enum POSITION {
+/** An enum that represents the possible values for the label's positioning */
+export enum POSITION {
   TOP = 'top',
   LEFT = 'left',
 }
