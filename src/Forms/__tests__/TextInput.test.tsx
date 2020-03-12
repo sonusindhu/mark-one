@@ -215,7 +215,7 @@ describe('Text input', function () {
     });
     it('positions the label above the text input field', function () {
       const style = window.getComputedStyle(getByText('visibleLabel').parentNode as HTMLElement);
-      strictEqual(style['flex-direction'], 'column');
+      strictEqual(style['grid-template-areas'], '"l l l" "i i i" "e e e"');
     });
   });
   context('when labelPosition prop is equal to POSITION.LEFT', function () {
@@ -242,7 +242,7 @@ describe('Text input', function () {
     });
     it('positions the label to the left of the text input field', function () {
       const style = window.getComputedStyle(getByText('visibleLabel').parentNode as HTMLElement);
-      strictEqual(style['flex-direction'], 'row');
+      strictEqual(style['grid-template-areas'], '"l i i" ". e e"');
     });
   });
 });
