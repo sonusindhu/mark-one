@@ -1,4 +1,4 @@
-The following is an example of the TextInput component with the `labelPosition` prop not set. In this case, `labelPosition` defaults to `POSITION.LEFT.`
+Label example: The optional `labelPosition` prop defaults to `POSITION.LEFT.`
 ```jsx
   import { useState } from 'react';
   const TextInputExample = () => {
@@ -16,7 +16,7 @@ The following is an example of the TextInput component with the `labelPosition` 
   <TextInputExample />
 ```
 
-The following is an example of the TextInput component with the `labelPosition` set to `POSITION.LEFT.`
+Label example: The prop `labelPosition` is set to `POSITION.LEFT.`
 ```jsx
   import { useState } from 'react';
   const TextInputExample = () => {
@@ -35,7 +35,7 @@ The following is an example of the TextInput component with the `labelPosition` 
   <TextInputExample />
 ```
 
-The following is an example of the TextInput component with the `labelPosition` set to `POSITION.TOP.`
+Label example: The prop `labelPosition` is set to `POSITION.TOP.`
 ```jsx
   import { useState } from 'react';
   const TextInputExample = () => {
@@ -54,7 +54,7 @@ The following is an example of the TextInput component with the `labelPosition` 
   <TextInputExample />
 ```
 
-The following is an example of the TextInput component with the `isLabelVisible` prop set to `false.`
+Label example: The `isLabelVisible` prop is set to `false.`
 ```jsx
   import { useState } from 'react';
   const TextInputExample = () => {
@@ -73,7 +73,7 @@ The following is an example of the TextInput component with the `isLabelVisible`
   <TextInputExample />
 ```
 
-The following is an example of the TextInput component with the `disabled` prop set to `true.`
+Text Input example: The `disabled` prop set to `true.`
 ```jsx
   import { useState } from 'react';
   const TextInputExample = () => {
@@ -92,7 +92,7 @@ The following is an example of the TextInput component with the `disabled` prop 
   <TextInputExample />
 ```
 
-The following is an example of the TextInput component that does not include the optional `errorMessage` property. The `labelPosition` prop is not set and defaults to `POSITION.LEFT.`
+Error Message example: The optional `errorMessage` prop is not set.
 ```jsx
   import { useState } from 'react';
   const TextInputExample = () => {
@@ -110,7 +110,7 @@ The following is an example of the TextInput component that does not include the
   <TextInputExample />
 ```
 
-The following is an example of the TextInput component that includes the optional `errorMessage` property. The `labelPosition` prop is not set and defaults to `POSITION.LEFT.`
+Error Message example: The optional `errorMessage` property is set, and the `labelPosition` prop defaults to `POSITION.LEFT.`
 ```jsx
   import { useState } from 'react';
   const TextInputExample = () => {
@@ -129,7 +129,7 @@ The following is an example of the TextInput component that includes the optiona
   <TextInputExample />
 ```
 
-The following is an example of the TextInput component that includes the optional `errorMessage` property. The `labelPosition` is set to `POSITION.TOP.`
+Error Message example: The optional `errorMessage` property is set, and the `labelPosition` prop is set to `POSITION.TOP.`
 ```jsx
   import { useState } from 'react';
   const TextInputExample = () => {
