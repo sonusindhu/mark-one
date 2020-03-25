@@ -3,9 +3,10 @@ import React, {
   ReactElement,
   ReactNode,
   useContext,
+  MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link as ReactLink } from 'react-router-dom';
 import { BaseTheme } from '../Theme';
 
 export interface LinkProps {
@@ -13,26 +14,36 @@ export interface LinkProps {
   children: ReactNode;
   /** A string that represents the link path */
   to: string;
+  /** Function to call on click event */
+  onClick: MouseEventHandler;
 }
 
-const StyledTabLink = styled(Link)`
+const StyledLink = styled(ReactLink)`
   text-decoration: none;
+  color: ${({ theme }): string => (theme.color.background.info.medium)};
+  &:hover {
+    text-decoration: underline;
+    color: ${({ theme }): string => (theme.color.background.info.dark)};
+  }
 `;
 
-const TabLink: FunctionComponent<LinkProps> = (props): ReactElement => {
+const Link:
+FunctionComponent<LinkProps> = (props): ReactElement => {
   const {
     children,
     to,
+    onClick,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
-    <StyledTabLink
+    <StyledLink
       to={to}
       theme={theme}
+      onClick={onClick}
     >
       { children }
-    </StyledTabLink>
+    </StyledLink>
   );
 };
 
-export default TabLink;
+export default Link;
