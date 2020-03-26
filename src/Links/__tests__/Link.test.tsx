@@ -1,7 +1,8 @@
 import React from 'react';
-import { render } from 'test-utils';
+import { render, fireEvent } from 'test-utils';
 import { spy } from 'sinon';
 import { MemoryRouter } from 'react-router-dom';
+import { strictEqual } from 'assert';
 import Link from '../Link';
 
 describe('Link', function () {
@@ -22,5 +23,13 @@ describe('Link', function () {
   });
   it('renders', function () {
     getByText('Test Link');
+  });
+  it('calls the click handler when clicked', function () {
+    fireEvent.click(getByText('Test Link'));
+    strictEqual(clickSpy.callCount, 1);
+  });
+  it('renders without an underline', function () {
+    const style = window.getComputedStyle(getByText('Test Link'));
+    strictEqual(style.textDecoration, 'none');
   });
 });
