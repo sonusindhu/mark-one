@@ -1,15 +1,16 @@
 import React from 'react';
-import { render } from 'test-utils';
-import { spy } from 'sinon';
+import {
+  render,
+  BoundFunction,
+  GetByText,
+} from 'test-utils';
 import { MemoryRouter } from 'react-router-dom';
 import { strictEqual } from 'assert';
 import Link from '../Link';
 
 describe('Link', function () {
-  let getByText;
-  let clickSpy;
+  let getByText: BoundFunction<GetByText>;
   beforeEach(function () {
-    clickSpy = spy();
     ({ getByText } = render(
       <MemoryRouter>
         <Link to="/">
@@ -17,9 +18,6 @@ describe('Link', function () {
         </Link>
       </MemoryRouter>
     ));
-  });
-  afterEach(function () {
-    clickSpy.resetHistory();
   });
   it('renders', function () {
     getByText('Test Link');
