@@ -1,19 +1,14 @@
 import React, {
   FunctionComponent,
   ReactElement,
-  ReactNode,
   useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { Link as ReactLink } from 'react-router-dom';
+import {
+  Link as ReactLink,
+  LinkProps,
+} from 'react-router-dom';
 import { BaseTheme } from '../Theme';
-
-export interface LinkProps {
-  /** Text or components to be displayed as a representation of the link */
-  children: ReactNode;
-  /** A string that represents the link path */
-  to: string;
-}
 
 const StyledLink = styled(ReactLink)`
   text-decoration: none;
