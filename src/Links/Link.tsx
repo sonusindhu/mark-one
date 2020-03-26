@@ -29,14 +29,12 @@ FunctionComponent<LinkProps> = (props): ReactElement => {
   const {
     children,
     to,
-    onClick,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
     <StyledLink
       to={to}
       theme={theme}
-      onClick={onClick}
     >
       { children }
     </StyledLink>

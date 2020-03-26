@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from 'test-utils';
+import { render } from 'test-utils';
 import { spy } from 'sinon';
 import { MemoryRouter } from 'react-router-dom';
 import { strictEqual } from 'assert';
@@ -12,7 +12,7 @@ describe('Link', function () {
     clickSpy = spy();
     ({ getByText } = render(
       <MemoryRouter>
-        <Link to="/" onClick={clickSpy}>
+        <Link to="/">
           Test Link
         </Link>
       </MemoryRouter>
