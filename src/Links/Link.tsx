@@ -3,7 +3,6 @@ import React, {
   ReactElement,
   ReactNode,
   useContext,
-  MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { Link as ReactLink } from 'react-router-dom';
@@ -14,8 +13,6 @@ export interface LinkProps {
   children: ReactNode;
   /** A string that represents the link path */
   to: string;
-  /** Function to call on click event */
-  onClick: MouseEventHandler;
 }
 
 const StyledLink = styled(ReactLink)`

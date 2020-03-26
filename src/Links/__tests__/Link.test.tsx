@@ -24,10 +24,6 @@ describe('Link', function () {
   it('renders', function () {
     getByText('Test Link');
   });
-  it('calls the click handler when clicked', function () {
-    fireEvent.click(getByText('Test Link'));
-    strictEqual(clickSpy.callCount, 1);
-  });
   it('renders without an underline', function () {
     const style = window.getComputedStyle(getByText('Test Link'));
     strictEqual(style.textDecoration, 'none');
