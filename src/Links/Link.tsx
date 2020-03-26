@@ -22,6 +22,10 @@ const StyledLink = styled(ReactLink)`
     text-decoration: underline;
     color: ${({ theme }): string => (theme.color.background.info.dark)};
   }
+  &:visited {
+    text-decoration: none;
+    color: ${({ theme }): string => (theme.color.background.info.medium)};
+  }
 `;
 
 const Link:
