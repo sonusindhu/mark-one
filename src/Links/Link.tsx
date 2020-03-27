@@ -23,6 +23,9 @@ const StyledLink = styled(ReactLink)`
   }
 `;
 
+/**
+ * An extension of the default React Router Link component with styles overriden
+ */
 const Link:
 FunctionComponent<LinkProps> = (props): ReactElement => {
   const {
