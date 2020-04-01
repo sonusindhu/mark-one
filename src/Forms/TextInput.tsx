@@ -40,7 +40,6 @@ const StyledTextInput = styled.input<TextInputProps>`
   border: ${({ theme }): string => (theme.border.hairline)};
   width: 100%;
   padding: .5em 0em .5em .5em;
-  align-items: baseline;
   grid-area: i;
 `;
 
