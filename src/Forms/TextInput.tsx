@@ -37,8 +37,9 @@ export interface TextInputProps {
 }
 
 const StyledTextInput = styled.input<TextInputProps>`
-  border: ${({ theme }): string => (theme.border.light)};
+  border: ${({ theme }): string => (theme.border.hairline)};
   width: 100%;
+  padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.zero + ' ' + theme.ws.xsmall + ' ' + theme.ws.xsmall)};
   grid-area: i;
 `;
 
