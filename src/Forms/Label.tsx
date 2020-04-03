@@ -61,7 +61,7 @@ const StyledLabel = styled.label<StyledLabelProps>`
     generateGrid(labelPosition, isLabelVisible)
   )};
   margin: ${({ theme }): string => (theme.ws.small)};
-  align-items: end;
+  align-items: baseline;
   gap: ${({ theme }): string => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
 `;
 
