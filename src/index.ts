@@ -8,3 +8,4 @@ export * from './Dropdown';
 export * from './Icons';
 export * from './Forms';
 export * from './Headings';
+export * from './Modals';
