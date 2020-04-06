@@ -10,8 +10,6 @@ interface ModalFooterProps {
 
 
 const styledModalFooter = styled.div<ModalFooterProps>`
-  background-color: ${({ theme }): string => (theme.color.background.subtle)};
-  border-top: ${({ theme }): string => (theme.border.light)};
   display: flex;
   flex-direction: reverse-row;
   justify-content: space-between;
