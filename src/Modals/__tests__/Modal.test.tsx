@@ -52,7 +52,6 @@ describe('Modal', function () {
           <div>
             <button
               type="button"
-              data-testid="open-button"
               onClick={() => { setModalOpen(!modalOpen); }}
             >
               Toggle Modal
@@ -71,8 +70,8 @@ describe('Modal', function () {
     });
     context('When the modal changes from closed to open', function () {
       beforeEach(function () {
-        const { getByTestId } = render(<ModalOpener />);
-        fireEvent.click(getByTestId('open-button'));
+        const { getByText } = render(<ModalOpener />);
+        fireEvent.click(getByText('Toggle Modal'));
       });
       it('Should call the onOpen handler', function () {
         strictEqual(onOpenStub.callCount, 1);
@@ -83,8 +82,8 @@ describe('Modal', function () {
     });
     context('When the modal is open and is unmounted', function () {
       beforeEach(function () {
-        const { getByTestId } = render(<ModalOpener />);
-        fireEvent.click(getByTestId('open-button'));
+        const { getByText } = render(<ModalOpener />);
+        fireEvent.click(getByText('Toggle Modal'));
         onOpenStub.resetHistory();
         onCloseStub.resetHistory();
         cleanup();
@@ -98,11 +97,12 @@ describe('Modal', function () {
     });
     context('When the modal changes from open to closed', function () {
       beforeEach(function () {
-        const { getByTestId } = render(<ModalOpener />);
-        fireEvent.click(getByTestId('open-button'));
+        const { getByText } = render(<ModalOpener />);
+        const toggleButton = getByText('Toggle Modal');
+        fireEvent.click(toggleButton);
         onOpenStub.resetHistory();
         onCloseStub.resetHistory();
-        fireEvent.click(getByTestId('open-button'));
+        fireEvent.click(toggleButton);
       });
       it('Should not call the onOpen handler', function () {
         strictEqual(onOpenStub.callCount, 0);
@@ -113,8 +113,8 @@ describe('Modal', function () {
     });
     context('When the backdrop is clicked', function () {
       beforeEach(function () {
-        const { getByTestId } = render(<ModalOpener />);
-        fireEvent.click(getByTestId('open-button'));
+        const { getByText } = render(<ModalOpener />);
+        fireEvent.click(getByText('Toggle Modal'));
         const backdrop = document.querySelector('.modal-fade-enter');
         fireEvent.click(backdrop);
       });
@@ -124,8 +124,8 @@ describe('Modal', function () {
     });
     context('When the modal is clicked', function () {
       beforeEach(function () {
-        const { getByTestId, getByText } = render(<ModalOpener />);
-        fireEvent.click(getByTestId('open-button'));
+        const { getByText } = render(<ModalOpener />);
+        fireEvent.click(getByText('Toggle Modal'));
         fireEvent.click(getByText('Contents'));
       });
       it('Should not call the closeHandler', function () {
