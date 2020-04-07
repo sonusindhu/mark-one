@@ -6,7 +6,7 @@ The `isVisible` prop will be used by the parent component to control whether or 
 
 ```jsx
 import { useState } from 'react';
-import { Button } from 'mark-one';
+import { Button, ModalFooter } from 'mark-one';
 
 const TestModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -20,9 +20,11 @@ const TestModal = () => {
         isVisible={modalVisible}
       >
         <div>This can be any arbitrary content</div>
-        <Button onClick={() => setModalVisible(false)}>
-          Close Modal
-        </Button>
+        <ModalFooter>
+          <Button onClick={() => setModalVisible(false)}>
+            Close Modal
+          </Button>
+        </ModalFooter>
       </Modal>
     </div>
   );
@@ -37,7 +39,7 @@ You can also pass in onOpen and onClose handlers that will be called when the mo
 
 ```jsx
 import { useState } from 'react';
-import { Button, TextInput } from 'mark-one';
+import { Button, TextInput, ModalFooter } from 'mark-one';
 
 const TestModal = () => {
   const [modalCount, setModalCount] = useState(0);
@@ -67,10 +69,12 @@ const TestModal = () => {
               }} 
             />
           </div>
+        </div>
+        <ModalFooter>
           <Button onClick={() => setModalVisible(false)}>
             Close Modal
           </Button>
-        </div>
+        </ModalFooter>
       </Modal>
       <p>
         <strong>
