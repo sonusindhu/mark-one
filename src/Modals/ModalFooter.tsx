@@ -11,7 +11,7 @@ interface ModalFooterProps {
 
 const styledModalFooter = styled.div<ModalFooterProps>`
   display: flex;
-  flex-direction: reverse-row;
+  flex-direction: row-reverse;
   justify-content: space-between;
   padding: ${({ theme }): string => `${theme.ws.small} ${theme.ws.medium}`};
   width: 100%;
