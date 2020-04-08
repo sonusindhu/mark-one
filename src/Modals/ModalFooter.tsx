@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled, { withTheme } from 'styled-components';
 
 interface ModalFooterProps {
@@ -17,12 +17,9 @@ const styledModalFooter = styled.div<ModalFooterProps>`
   width: 100%;
 `;
 
-declare type ModalFooter = ReactElement<ModalFooterProps>;
-
 /**
  * @component ModalFooter
- * Used within the [[Modal]] component to render a separated bottom section,
+ * Used within the Modal component to render a separated bottom section,
  * typically containing buttons for save, cancel, etc.
  */
-export const ModalFooter = withTheme(styledModalFooter);
-export default ModalFooter;
+export default withTheme(styledModalFooter);
