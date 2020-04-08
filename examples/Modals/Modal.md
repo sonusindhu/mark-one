@@ -6,85 +6,78 @@ The `isVisible` prop will be used by the parent component to control whether or 
 
 ```jsx
 import { useState } from 'react';
-import { Button, ModalFooter } from 'mark-one';
+import { Button, ModalHeader, ModalFooter } from 'mark-one';
 
-const TestModal = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  return (
-    <div>
-      <Button onClick={() => {setModalVisible(true)}}>
-        Open Modal
+const [modalVisible, setModalVisible] = useState(false);
+
+<div>
+  <Button onClick={() => {setModalVisible(true)}}>
+    Open Modal
+  </Button>
+  <Modal
+    closeHandler={() => {setModalVisible(false)}}
+    isVisible={modalVisible}
+  >
+    <ModalHeader>Modal Example 1</ModalHeader>
+    <div>This can be any arbitrary content</div>
+    <ModalFooter>
+      <Button onClick={() => setModalVisible(false)}>
+        Close Modal
       </Button>
-      <Modal
-        closeHandler={() => {setModalVisible(false)}}
-        isVisible={modalVisible}
-      >
-        <div>This can be any arbitrary content</div>
-        <ModalFooter>
-          <Button onClick={() => setModalVisible(false)}>
-            Close Modal
-          </Button>
-        </ModalFooter>
-      </Modal>
-    </div>
-  );
-}
-
-<TestModal />
+    </ModalFooter>
+  </Modal>
+</div>
 ```
 
 ### Open/Close handlers
 
-You can also pass in onOpen and onClose handlers that will be called when the modal is opened and closed. These can be used for cases where you need to fetch some data in the background on open, or if you want to clear the values from a form on close:
+You can also pass in `onOpen` and `onClose` handlers that will be called when the modal is opened and closed. These can be used for cases where you need to fetch some data in the background on open, or if you want to clear the values from a form on close:
 
 ```jsx
 import { useState } from 'react';
-import { Button, TextInput, ModalFooter } from 'mark-one';
+import { Button, TextInput, ModalHeader, ModalFooter } from 'mark-one';
 
-const TestModal = () => {
-  const [modalCount, setModalCount] = useState(0);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [formValue, setFormValue] = useState('');
-  return (
+const [modalCount, setModalCount] = useState(0);
+const [modalVisible, setModalVisible] = useState(false);
+const [formValue, setFormValue] = useState('');
+
+<div>
+  <Button onClick={() => {setModalVisible(true)}}>
+    Open Modal
+  </Button>
+  <Modal
+    onOpen={() => {setModalCount(modalCount + 1)}}
+    onClose={() => { setFormValue('') }}
+    closeHandler={() => {setModalVisible(false)}}
+    isVisible={modalVisible}
+  >
+    <ModalHeader
+      closeButtonHandler={()=> {setModalVisible(false)}}
+    >
+      Modal Example 2
+    </ModalHeader>
     <div>
-      <Button onClick={() => {setModalVisible(true)}}>
-        Open Modal
-      </Button>
-      <Modal
-        onOpen={() => {setModalCount(modalCount + 1)}}
-        onClose={() => { setFormValue('') }}
-        closeHandler={() => {setModalVisible(false)}}
-        isVisible={modalVisible}
-      >
-        <div>
-          <div>
-            Any text entered here will be cleared when the modal closes
-          </div>
-          <div>
-            <TextInput 
-              label="Enter text:"
-              value={formValue}
-              onChange={(evt) => {
-                setFormValue(evt.target.value); 
-              }} 
-            />
-          </div>
-        </div>
-        <ModalFooter>
-          <Button onClick={() => setModalVisible(false)}>
-            Close Modal
-          </Button>
-        </ModalFooter>
-      </Modal>
-      <p>
-        <strong>
-          Modal open count: {modalCount}
-        </strong>
-      </p>
+      Any text entered here will be cleared when the modal closes
     </div>
-  );
-}
-
-<TestModal />
+    <div>
+      <TextInput
+        label="Enter text:"
+        value={formValue}
+        onChange={(evt) => {
+          setFormValue(evt.target.value);
+        }}
+      />
+    </div>
+    <ModalFooter>
+      <Button onClick={() => setModalVisible(false)}>
+        Close Modal
+      </Button>
+    </ModalFooter>
+  </Modal>
+  <p>
+    <strong>
+      Modal open count: {modalCount}
+    </strong>
+  </p>
+</div>
 ```
-
