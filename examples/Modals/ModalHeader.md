@@ -4,7 +4,12 @@ This is a utility component for adding a header to the `<Modal>`. The text insid
 
 ```jsx
 import { useState } from 'react';
-import { Button, Modal, ModalFooter } from 'mark-one';
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalFooter,
+} from 'mark-one';
 
 const [modalVisible, setModalVisible] = useState(false);
 
@@ -17,9 +22,11 @@ const [modalVisible, setModalVisible] = useState(false);
     isVisible={modalVisible}
   >
     <ModalHeader>Modal Header without Close</ModalHeader>
-    <div>
-      This can be any arbitrary content
-    </div>
+    <ModalBody>
+      <div>
+        This can be any arbitrary content
+      </div>
+    </ModalBody>
     <ModalFooter>
       <Button onClick={() => setModalVisible(false)}>
         Close Modal
@@ -33,7 +40,11 @@ const [modalVisible, setModalVisible] = useState(false);
 
 ```jsx
 import { useState } from 'react';
-import { Button, Modal } from 'mark-one';
+import {
+  Button,
+  Modal,
+  ModalBody,
+} from 'mark-one';
 
 const [modalVisible, setModalVisible] = useState(false);
 
@@ -50,9 +61,11 @@ const [modalVisible, setModalVisible] = useState(false);
     >
       Modal Header with Close Button →
     </ModalHeader>
-    <div>
-      This can be any arbitrary content
-    </div>
+    <ModalBody>
+      <div>
+        This can be any arbitrary content
+      </div>
+    </ModalBody>
   </Modal>
 </div>
 ```

@@ -6,7 +6,12 @@ The `isVisible` prop will be used by the parent component to control whether or 
 
 ```jsx
 import { useState } from 'react';
-import { Button, ModalHeader, ModalFooter } from 'mark-one';
+import { 
+  Button,
+  ModalBody,
+  ModalHeader,
+  ModalFooter,
+} from 'mark-one';
 
 const [modalVisible, setModalVisible] = useState(false);
 
@@ -19,7 +24,9 @@ const [modalVisible, setModalVisible] = useState(false);
     isVisible={modalVisible}
   >
     <ModalHeader>Modal Example 1</ModalHeader>
-    <div>This can be any arbitrary content</div>
+    <ModalBody>
+      <div>This can be any arbitrary content</div>
+    </ModalBody>
     <ModalFooter>
       <Button onClick={() => setModalVisible(false)}>
         Close Modal
@@ -35,7 +42,13 @@ You can also pass in `onOpen` and `onClose` handlers that will be called when th
 
 ```jsx
 import { useState } from 'react';
-import { Button, TextInput, ModalHeader, ModalFooter } from 'mark-one';
+import { 
+  Button,
+  ModalBody,
+  ModalHeader,
+  ModalFooter,
+  TextInput,
+} from 'mark-one';
 
 const [modalCount, setModalCount] = useState(0);
 const [modalVisible, setModalVisible] = useState(false);
@@ -56,18 +69,20 @@ const [formValue, setFormValue] = useState('');
     >
       Modal Example 2
     </ModalHeader>
-    <div>
-      Any text entered here will be cleared when the modal closes
-    </div>
-    <div>
-      <TextInput
-        label="Enter text:"
-        value={formValue}
-        onChange={(evt) => {
-          setFormValue(evt.target.value);
-        }}
-      />
-    </div>
+    <ModalBody>
+      <div>
+        Any text entered here will be cleared when the modal closes
+      </div>
+      <div>
+        <TextInput
+          label="Enter text:"
+          value={formValue}
+          onChange={(evt) => {
+            setFormValue(evt.target.value);
+          }}
+        />
+      </div>
+    </ModalBody>
     <ModalFooter>
       <Button onClick={() => setModalVisible(false)}>
         Close Modal
