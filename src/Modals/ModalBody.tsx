@@ -4,7 +4,7 @@ import { BaseTheme } from 'Theme';
 
 interface ModalBodyProps {
   /**
-   * the content of the Modal Footer
+   * the content of the Modal Body
    */
   children: ReactNode;
   /**
