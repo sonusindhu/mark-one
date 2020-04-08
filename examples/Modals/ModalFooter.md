@@ -2,7 +2,12 @@ This is a utility component for adding a footer row to the `<Modal>`. It's set u
 
 ```jsx
 import { useState } from 'react';
-import { Button, Modal, ModalHeader } from 'mark-one';
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalHeader,
+} from 'mark-one';
 
 const [modalVisible, setModalVisible] = useState(false);
 
@@ -15,9 +20,11 @@ const [modalVisible, setModalVisible] = useState(false);
     isVisible={modalVisible}
   >
     <ModalHeader>Modal Footer Example</ModalHeader>
-    <div>
-      This can be any arbitrary content
-    </div>
+    <ModalBody>
+      <div>
+        This can be any arbitrary content
+      </div>
+    </ModalBody>
     <ModalFooter>
       <Button onClick={() => setModalVisible(false)}>
         One
