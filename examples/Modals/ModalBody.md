@@ -2,12 +2,7 @@ This is a very basic component that just adds padding to make the main content o
 
 ```jsx
 import { useState } from 'react';
-import {
-  Button,
-  Modal,
-  ModalFooter,
-  ModalHeader,
-} from 'mark-one';
+import { Button, Modal } from 'mark-one';
 
 const [modalVisible, setModalVisible] = useState(false);
 
