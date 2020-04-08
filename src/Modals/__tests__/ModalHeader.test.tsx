@@ -37,11 +37,11 @@ describe('Modal Header', function () {
         // failed, but this works fine
         strictEqual(closeButton === null, false);
       });
-      it('Should call the handler when the button is clicked', function () {
+      it('Should call the closeButtonHandler when the button is clicked', function () {
         const closeButton = queryByTitle('Close Modal');
-        strictEqual(cbHandler.callCount, 0);
+        const callCountBefore = cbHandler.callCount;
         fireEvent.click(closeButton);
-        strictEqual(cbHandler.callCount, 1);
+        strictEqual(cbHandler.callCount, callCountBefore + 1);
       });
     });
     context('When no handler is passed in', function () {
