@@ -5,11 +5,11 @@ import React, {
   useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BorderlessButton } from 'Buttons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { VARIANT, BaseTheme } from 'Theme';
-import { SectionHeading } from 'Headings';
+import { BorderlessButton } from '../Buttons';
+import { VARIANT, BaseTheme } from '../Theme';
+import { SectionHeading } from '../Headings';
 
 interface ModalHeaderProps {
   /**
