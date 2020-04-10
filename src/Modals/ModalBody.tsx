@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from 'Theme';
+import { BaseTheme } from '../Theme';
 
 interface ModalBodyProps {
   /**
