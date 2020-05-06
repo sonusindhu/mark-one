@@ -7,7 +7,9 @@ import { TableRow } from './TableRow';
 
 export interface TableHeadProps {
   /** Our TableRow functional component serves as the children for TableHead */
-  children: TableRow;
+  children: TableRow | TableRow[];
+  /** The application theme */
+  theme: BaseTheme;
 }
 
 const StyledTableHead = styled.thead`
