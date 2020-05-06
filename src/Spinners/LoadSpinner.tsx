@@ -1,10 +1,10 @@
 import React, {
-  FunctionComponent, ReactElement, useContext
+  FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { BaseTheme } from '../Theme';
 
 
 export interface LoadSpinnerProps {
@@ -24,14 +24,15 @@ const StyledLoadSpinner = styled.div`
   display: inline-block;
 `;
 
-const LoadSpinner: FunctionComponent<LoadSpinnerProps> = (props): ReactElement => {
+const LoadSpinner: FunctionComponent<LoadSpinnerProps> = (props):
+ReactElement => {
   const {
     children,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
-    <StyledLoadSpinner theme={theme} >
-      <FontAwesomeIcon icon={faSpinner} spin/>
+    <StyledLoadSpinner theme={theme}>
+      <FontAwesomeIcon icon={faSpinner} spin />
       <div>
         { children }
       </div>

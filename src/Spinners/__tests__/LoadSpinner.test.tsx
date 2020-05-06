@@ -6,9 +6,8 @@ describe('Testing Data Loading Spinner', function () {
   let getByTestId;
   let getByText;
   beforeEach(function () {
-
-    ({ getByTestId, getByText} = render(
-      <LoadSpinner >
+    ({ getByTestId, getByText } = render(
+      <LoadSpinner>
         <div data-testid="test-spinner"> Data Loading  </div>
       </LoadSpinner>
     ));
@@ -20,7 +19,5 @@ describe('Testing Data Loading Spinner', function () {
 
   it('renders value', function () {
     getByText('Data Loading');
-    //container.contains('')
   });
-
 });
