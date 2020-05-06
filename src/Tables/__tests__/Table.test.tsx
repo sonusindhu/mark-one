@@ -75,8 +75,29 @@ describe('Table Components', function () {
     });
   });
   describe('Table Heading Cell', function () {
-    it('contains text', function () {
-      getByText('ID');
+    beforeEach(function () {
+      ({ getByText } = render(
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeadingCell backgroundColor="rgb(123, 123, 123)">With Background</TableHeadingCell>
+              <TableHeadingCell>Without Background</TableHeadingCell>
+            </TableRow>
+          </TableHead>
+        </Table>
+      ));
+    });
+    it('Renders with the passed background color', function () {
+      const style = window.getComputedStyle(getByText('With Background'));
+      strictEqual(style.backgroundColor, 'rgb(123, 123, 123)');
+    });
+    it('defaults to medium with no background color', function () {
+      const style = window.getComputedStyle(getByText('Without Background'));
+      const [red, green, blue] = convert.hex.rgb(
+        MarkOneTheme.color.background.medium as string
+      );
+      const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
+      strictEqual(style.backgroundColor, convertExpectedToRGB);
     });
   });
   describe('Table Row', function () {

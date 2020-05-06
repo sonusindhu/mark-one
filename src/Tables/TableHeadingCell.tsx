@@ -5,6 +5,8 @@ import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme';
 
 export interface TableHeadingCellProps {
+  /** Specifies the background color of the table cell */
+  backgroundColor?: string;
   /** Text or components to be displayed in the table heading cell */
   children: ReactNode;
   /** Function to call on click event */
@@ -13,7 +15,10 @@ export interface TableHeadingCellProps {
   scope: 'row' | 'col' | 'rowgroup' | 'colgroup' | 'auto';
 }
 
-const StyledTableHeadingCell = styled.th`
+const StyledTableHeadingCell = styled.th<TableHeadingCellProps>`
+  background-color: ${({ theme, backgroundColor }): string => (
+    backgroundColor || theme.color.background.medium
+  )};
   border: ${({ theme }): string => (theme.border.light)};
   font-weight: ${({ theme }): string => (theme.font.bold.weight)};
   text-align: 'center';
