@@ -113,6 +113,55 @@ describe('Table Components', function () {
       const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
       strictEqual(style.backgroundColor, convertExpectedToRGB);
     });
+    describe('noHighlight prop', function () {
+      beforeEach(function () {
+        ({ getByText } = render(
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableHeadingCell>Regular</TableHeadingCell>
+              </TableRow>
+              <TableRow noHighlight>
+                <TableHeadingCell>noHighlight</TableHeadingCell>
+              </TableRow>
+            </TableHead>
+          </Table>
+        ));
+      });
+      it('Should not have a :hover css class with noHighlight', function () {
+        const noHighlight = getByText('noHighlight');
+        const allSheets = Array.from(document.styleSheets);
+        const sheet = allSheets[allSheets.length - 1] as CSSStyleSheet;
+        const rules = sheet.cssRules;
+        const parentClasses = noHighlight.parentElement.classList;
+        const maybeHoverClasses = Array.from(parentClasses)
+          .map((className) => `.${className}:hover`);
+        const hoverRule = Array.from(rules)
+          .find(({ selectorText }: CSSStyleRule) => (
+            maybeHoverClasses.includes(selectorText)
+          ));
+        strictEqual(hoverRule, undefined);
+      });
+      it('Should have a :hover rule without noHighlight', function () {
+        const regular = getByText('Regular');
+        const allSheets = Array.from(document.styleSheets);
+        const sheet = allSheets[allSheets.length - 1] as CSSStyleSheet;
+        const rules = sheet.cssRules;
+        const parentClasses = regular.parentElement.classList;
+        const maybeHoverClasses = Array.from(parentClasses)
+          .map((className) => `.${className}:hover`);
+        const hoverRule = Array.from(rules)
+          .find(({ selectorText }: CSSStyleRule) => (
+            maybeHoverClasses.includes(selectorText)
+          ));
+        strictEqual(
+          hoverRule
+            .cssText
+            .includes(`background: ${MarkOneTheme.color.background.medium}`),
+          true
+        );
+      });
+    });
   });
   describe('Table Body', function () {
     it('sets CSS overflow to scroll when isScrollable prop is true', function () {
