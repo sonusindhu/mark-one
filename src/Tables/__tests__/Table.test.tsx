@@ -1,5 +1,7 @@
 import React from 'react';
-import { render } from 'test-utils';
+import {
+  render, GetByText, BoundFunction, GetByBoundAttribute, AllByRole,
+} from 'test-utils';
 import convert from 'color-convert';
 import { strictEqual } from 'assert';
 import TableCell, { ALIGN } from '../TableCell';
@@ -11,9 +13,9 @@ import Table from '../Table';
 import MarkOneTheme from '../../Theme/MarkOneTheme';
 
 describe('Table Components', function () {
-  let getByText;
-  let getAllByRole;
-  let getByTestId;
+  let getByText: BoundFunction<GetByText>;
+  let getAllByRole: BoundFunction<AllByRole>;
+  let getByTestId: BoundFunction<GetByBoundAttribute>;
   beforeEach(function () {
     ({ getByText, getAllByRole, getByTestId } = render(
       <Table>
