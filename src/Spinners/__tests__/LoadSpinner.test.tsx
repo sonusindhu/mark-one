@@ -1,20 +1,26 @@
 import React from 'react';
 import { render } from 'test-utils';
-import { strictEqual } from 'assert';
 import LoadSpinner from '../LoadSpinner';
 
-describe('Load Spinner', function () {
+describe('Testing Data Loading Spinner', function () {
   let getByTestId;
+  let getByText;
   beforeEach(function () {
-    ({ getByTestId } = render(
+
+    ({ getByTestId, getByText} = render(
       <LoadSpinner >
-        <p>Test</p>
+        <div data-testid="test-spinner"> Data Loading  </div>
       </LoadSpinner>
     ));
   });
 
   it('renders', function () {
-    //getByTestId('test-icon');
+    getByTestId('test-spinner');
+  });
+
+  it('renders value', function () {
+    getByText('Data Loading');
+    //container.contains('')
   });
 
 });
