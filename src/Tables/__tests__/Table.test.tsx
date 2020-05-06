@@ -52,9 +52,6 @@ describe('Table Components', function () {
     ));
   });
   describe('Table Cell', function () {
-    it('contains text', function () {
-      getByText('1');
-    });
     it('defaults to left text-align when alignment prop is unspecified', function () {
       const style = window.getComputedStyle(getByText('1'));
       strictEqual(style.textAlign, 'left');
