@@ -13,7 +13,8 @@ export interface TableBodyProps {
   isScrollable?: boolean;
 }
 
-const TableBody = styled.tbody<TableBodyProps>`
+const StyledTableBody = styled.tbody<TableBodyProps>`
+  border: ${({ theme }): string => (theme.border.light)};
   overflow: ${({ isScrollable }): string => (isScrollable ? 'scroll' : 'visible')};
 `;
 
