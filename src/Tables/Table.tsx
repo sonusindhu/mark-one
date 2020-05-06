@@ -7,8 +7,13 @@ import TableHead from './TableHead';
 import { TableBody } from './TableBody';
 
 export interface TableProps {
-  /** Internal table components like <thead> and <tbody> including their respective child components */
-  children: Array<TableHead | TableBody>;
+  /**
+  * Internal table components like <thead>, <tbody>, <col>. and <colgroup>
+  * including their respective child components
+  */
+  children: Array<typeof TableHead | typeof TableBody | HTMLTableColElement>;
+  /** The application theme */
+  theme: BaseTheme;
 }
 
 const StyledTable = styled.table`
