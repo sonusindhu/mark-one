@@ -1,8 +1,8 @@
-import React, {
-  FunctionComponent, MouseEventHandler, ReactElement, ReactNode, useContext,
+import {
+  MouseEventHandler,
+  ReactNode,
 } from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import styled, { withTheme } from 'styled-components';
 
 export interface TableHeadingCellProps {
   /** Specifies the background color of the table cell */
@@ -27,25 +27,14 @@ const StyledTableHeadingCell = styled.th<TableHeadingCellProps>`
   font-weight: ${({ theme }): string => (theme.font.bold.weight)};
   text-align: 'center';
 `;
-const TableHeadingCell: FunctionComponent<TableHeadingCellProps> = (props):
-ReactElement => {
-  const {
-    children,
-    clickHandler,
-    scope,
-  } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
-  return (
-    <StyledTableHeadingCell
-      onClick={clickHandler}
-      theme={theme}
-      scope={scope}
-    >
-      {children}
-    </StyledTableHeadingCell>
-  );
-};
 
-declare type TableHeadingCell = ReactElement<TableHeadingCellProps>;
+/**
+ * @component
+ * Used to render a single cell within the TableHead section on a table.
+ * Inteded for column headers only; There is also a TableRowHeadingCell for
+ * row heading components.
+ */
+
+const TableHeadingCell = withTheme(StyledTableHeadingCell);
 
 export default TableHeadingCell;

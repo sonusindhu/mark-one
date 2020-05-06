@@ -1,7 +1,5 @@
-import {
-  ReactElement,
-} from 'react';
 import styled, { withTheme } from 'styled-components';
+import { BaseTheme } from 'Theme';
 import { TableRow } from './TableRow';
 
 export interface TableBodyProps {
@@ -11,6 +9,8 @@ export interface TableBodyProps {
    * body does not fit within the table body
    */
   isScrollable?: boolean;
+  /** The application theme */
+  theme: BaseTheme;
 }
 
 const StyledTableBody = styled.tbody<TableBodyProps>`
@@ -18,10 +18,14 @@ const StyledTableBody = styled.tbody<TableBodyProps>`
   overflow: ${({ isScrollable }): string => (isScrollable ? 'scroll' : 'visible')};
 `;
 
+/**
+ * @component
+ * Renders a <tbody> component for use inside the <Table> component.
+ */
+const TableBody = withTheme(StyledTableBody);
+
 TableBody.defaultProps = {
   isScrollable: false,
 };
 
-export type TableBody = ReactElement<TableBodyProps>;
-
-export default withTheme(TableBody);
+export default TableBody;

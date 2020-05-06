@@ -1,8 +1,5 @@
-import React, {
-  FunctionComponent, ReactElement, useContext,
-} from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import styled, { withTheme } from 'styled-components';
+import { BaseTheme } from 'Theme';
 import { TableRow } from './TableRow';
 
 export interface TableHeadProps {
@@ -16,18 +13,11 @@ const StyledTableHead = styled.thead`
   background-color: ${({ theme }): string => (theme.color.background.medium)};
 `;
 
-const TableHead: FunctionComponent<TableHeadProps> = (props): ReactElement => {
-  const {
-    children,
-  } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
-  return (
-    <StyledTableHead theme={theme}>
-      {children}
-    </StyledTableHead>
-  );
-};
+/**
+ * @component
+ * Renders a <thead> component to be used inside of a <Table>
+ */
 
-declare type TableHead = ReactElement<TableHeadProps>;
+const TableHead = withTheme(StyledTableHead);
 
 export default TableHead;

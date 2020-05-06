@@ -2,6 +2,7 @@ import {
   ReactElement, ReactNode,
 } from 'react';
 import styled, { withTheme } from 'styled-components';
+import { BaseTheme } from 'Theme';
 
 export interface TableRowProps {
   /** Cell components to be displayed in the row */
@@ -36,6 +37,12 @@ const TableRow = styled.tr<TableRowProps>`
 TableRow.defaultProps = {
   isStriped: false,
 };
+
+/**
+ * @component
+ * Renders a <tr> element, for use inside the TableHead and TableBody
+ * components.
+ */
 
 export type TableRow = ReactElement<TableRowProps>;
 

@@ -1,10 +1,7 @@
-import React, {
-  FunctionComponent, ReactElement, useContext,
-} from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import styled, { withTheme } from 'styled-components';
+import { BaseTheme } from 'Theme';
 import TableHead from './TableHead';
-import { TableBody } from './TableBody';
+import TableBody from './TableBody';
 
 export interface TableProps {
   /**
@@ -22,16 +19,11 @@ const StyledTable = styled.table`
     width: 100%;
 `;
 
-const Table: FunctionComponent<TableProps> = (props): ReactElement => {
-  const {
-    children,
-  } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
-  return (
-    <StyledTable theme={theme}>
-      {children}
-    </StyledTable>
-  );
-};
+/**
+ * @component
+ * Renders a simple, full-width <table>
+ */
+
+const Table = withTheme(StyledTable);
 
 export default Table;
