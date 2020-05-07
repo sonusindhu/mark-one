@@ -78,6 +78,12 @@ module.exports = {
   propsParser: rdts.withCustomConfig(
     './tsconfig.json',
     {
+      propFilter: (prop, component) => {
+        if (prop.parent) {
+          return !prop.parent.fileName.includes('node_modules')
+        }
+        return true
+      },
       componentNameResolver: (exp, source) => (
         rdts.getDefaultExportForFile(source)
       ),
