@@ -6,12 +6,10 @@ describe('LoadSpinner', function () {
   let getByText;
   beforeEach(function () {
     ({ getByText } = render(
-      <LoadSpinner>
-        <div data-testid="test-spinner"> Data Loading  </div>
-      </LoadSpinner>
+      <LoadSpinner textMsg='Loading Data' />  
     ));
   });
   it('renders value', function () {
-    getByText('Data Loading');
+    getByText('Loading Data');
   });
 });
