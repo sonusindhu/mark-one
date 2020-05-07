@@ -1,6 +1,7 @@
 import {
   MouseEventHandler,
   ReactNode,
+  ReactElement,
 } from 'react';
 import styled, { withTheme } from 'styled-components';
 
@@ -36,5 +37,7 @@ const StyledTableHeadingCell = styled.th<TableHeadingCellProps>`
  */
 
 const TableHeadingCell = withTheme(StyledTableHeadingCell);
+
+declare type TableHeadingCell = ReactElement<TableHeadingCellProps>;
 
 export default TableHeadingCell;

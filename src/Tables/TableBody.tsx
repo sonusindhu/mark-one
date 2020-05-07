@@ -1,6 +1,7 @@
+import { ReactElement } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { BaseTheme } from 'Theme';
-import { TableRow } from './TableRow';
+import TableRow from './TableRow';
 
 export interface TableBodyProps {
   /** Our TableRow functional component serves as the children for TableBody */
@@ -27,5 +28,7 @@ const TableBody = withTheme(StyledTableBody);
 TableBody.defaultProps = {
   isScrollable: false,
 };
+
+declare type TableBody = ReactElement<TableBodyProps>;
 
 export default TableBody;

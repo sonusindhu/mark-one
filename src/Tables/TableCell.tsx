@@ -1,6 +1,4 @@
-import {
-  ReactNode,
-} from 'react';
+import { ReactNode, ReactElement } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { BaseTheme } from 'Theme';
 
@@ -45,5 +43,7 @@ StyledCell.defaultProps = {
  */
 
 const TableCell = withTheme(StyledCell);
+
+declare type TableCell = ReactElement<TableCellProps>;
 
 export default TableCell;

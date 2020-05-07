@@ -21,7 +21,7 @@ export interface TableRowProps {
   theme: BaseTheme;
 }
 
-const TableRow = styled.tr<TableRowProps>`
+const StyledTableRow = styled.tr<TableRowProps>`
   background: ${({ theme, isStriped }): string => (
     isStriped
       ? theme.color.background.subtle
@@ -34,7 +34,7 @@ const TableRow = styled.tr<TableRowProps>`
   }
 `;
 
-TableRow.defaultProps = {
+StyledTableRow.defaultProps = {
   isStriped: false,
 };
 
@@ -44,6 +44,8 @@ TableRow.defaultProps = {
  * components.
  */
 
-export type TableRow = ReactElement<TableRowProps>;
+const TableRow = withTheme(StyledTableRow);
 
-export default withTheme(TableRow);
+declare type TableRow = ReactElement<TableRowProps>;
+
+export default TableRow;

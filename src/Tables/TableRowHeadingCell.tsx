@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, ReactElement } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { ALIGN } from './TableCell';
 
@@ -33,5 +33,7 @@ const StyledTableHeadingCell = styled.th<TableRowHeadingCellProps>`
  * component, for use as a row-level header.
  */
 const TableRowHeadingCell = withTheme(StyledTableHeadingCell);
+
+declare type TableRowHeadingCell = ReactElement<TableRowHeadingCellProps>;
 
 export default TableRowHeadingCell;
