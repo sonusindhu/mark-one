@@ -6,24 +6,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { BaseTheme } from '../Theme';
 
-
 export interface LoadSpinnerProps {
-  /** Allows you to pass in style properties for the element */
-  theme?: object;
   /** Specifies the text under the spinner */
   children: ReactElement;
 }
 
 const StyledLoadSpinner = styled.div`
   background: transparent;
-  color: ${({ theme }): string => (theme.color.background.dark)};
-  &:hover {
-    color: ${({ theme }): string => (theme.color.background.darker)};
-  }
+  color: ${({ theme }): string => (theme.color.background.darker)};
   font: ${({ theme }): string => (theme.font.heading)};
   display: inline-block;
 `;
 
+/**
+ * Data load spinner component with styled text under the spinner
+ */
 const LoadSpinner: FunctionComponent<LoadSpinnerProps> = (props):
 ReactElement => {
   const {
