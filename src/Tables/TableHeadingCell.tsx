@@ -2,8 +2,10 @@ import {
   MouseEventHandler,
   ReactNode,
   ReactElement,
+  ForwardRefExoticComponent,
 } from 'react';
 import styled, { withTheme } from 'styled-components';
+import { BaseTheme } from 'Theme';
 
 export interface TableHeadingCellProps {
   /** Specifies the background color of the table cell */
@@ -17,7 +19,9 @@ export interface TableHeadingCellProps {
   /** Handles cells that span multiple rows */
   rowSpan?: number;
   /** Specifies the group of cells that the table heading refers to */
-  scope: 'col' | 'colgroup' | 'auto';
+  scope?: 'col' | 'colgroup' | 'auto';
+  /** The application theme */
+  theme?: BaseTheme;
 }
 
 const StyledTableHeadingCell = styled.th<TableHeadingCellProps>`
@@ -36,7 +40,9 @@ const StyledTableHeadingCell = styled.th<TableHeadingCellProps>`
  * row heading components.
  */
 
-const TableHeadingCell = withTheme(StyledTableHeadingCell);
+const TableHeadingCell: ForwardRefExoticComponent<
+TableHeadingCellProps
+> = withTheme(StyledTableHeadingCell);
 
 declare type TableHeadingCell = ReactElement<TableHeadingCellProps>;
 

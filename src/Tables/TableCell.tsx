@@ -1,4 +1,4 @@
-import { ReactNode, ReactElement } from 'react';
+import { ReactNode, ReactElement, ForwardRefExoticComponent } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { BaseTheme } from 'Theme';
 
@@ -12,7 +12,7 @@ export enum ALIGN {
 export interface TableCellProps {
   /**
    * Allows you to pass in a alignment property from the ALIGN enum.
-   * Defaults to LEFT
+   * Defaults to ALIGN.LEFT
    */
   alignment?: ALIGN;
   /** Specifies the background color of the table cell */
@@ -20,7 +20,7 @@ export interface TableCellProps {
   /** Text or components to be displayed in the cell */
   children: ReactNode;
   /** The application theme */
-  theme: BaseTheme;
+  theme?: BaseTheme;
 }
 
 const StyledCell = styled.td<TableCellProps>`
@@ -41,8 +41,8 @@ StyledCell.defaultProps = {
  * @component
  * Renders a single <td> element, for use inside of a <TableRow>
  */
-
-const TableCell = withTheme(StyledCell);
+const TableCell:
+ForwardRefExoticComponent<TableCellProps> = withTheme(StyledCell);
 
 declare type TableCell = ReactElement<TableCellProps>;
 

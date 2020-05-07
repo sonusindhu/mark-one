@@ -1,5 +1,8 @@
-import { ReactNode, ReactElement } from 'react';
-import styled, { withTheme } from 'styled-components';
+import {
+  ReactNode, ReactElement, RefForwardingComponent, ForwardRefExoticComponent,
+} from 'react';
+import styled, { withTheme, StyledComponent } from 'styled-components';
+import { BaseTheme } from 'Theme';
 import { ALIGN } from './TableCell';
 
 export interface TableRowHeadingCellProps {
@@ -15,6 +18,8 @@ export interface TableRowHeadingCellProps {
   rowSpan?: number;
   /** Specifies the group of cells that the row heading refers to */
   scope: 'row' | 'rowgroup' | 'auto';
+  /** The application theme */
+  theme?: BaseTheme;
 }
 
 const StyledTableHeadingCell = styled.th<TableRowHeadingCellProps>`
@@ -32,7 +37,9 @@ const StyledTableHeadingCell = styled.th<TableRowHeadingCellProps>`
  * Renders a <th> element that is stylistically similar to the TableCell
  * component, for use as a row-level header.
  */
-const TableRowHeadingCell = withTheme(StyledTableHeadingCell);
+const TableRowHeadingCell: ForwardRefExoticComponent<
+TableRowHeadingCellProps
+> = withTheme(StyledTableHeadingCell);
 
 declare type TableRowHeadingCell = ReactElement<TableRowHeadingCellProps>;
 

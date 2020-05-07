@@ -1,12 +1,20 @@
 import {
-  ReactElement, ReactNode,
+  ReactElement, ForwardRefExoticComponent,
 } from 'react';
 import styled, { withTheme } from 'styled-components';
 import { BaseTheme } from 'Theme';
+import TableRowHeadingCell from './TableRowHeadingCell';
+import TableCell from './TableCell';
+import TableHeadingCell from './TableHeadingCell';
+import TableHeadingSpacer from './TableHeadingSpacer';
 
 export interface TableRowProps {
   /** Cell components to be displayed in the row */
-  children: ReactNode;
+  children: (
+    TableCell | TableHeadingCell| TableRowHeadingCell | TableHeadingSpacer
+  ) | (
+    TableCell | TableHeadingCell| TableRowHeadingCell | TableHeadingSpacer
+  )[];
   /**
    * Controls whether the background of the row has a darker background color
    * Inteded for use in long tables that help differentiate even/odd rows
@@ -18,7 +26,7 @@ export interface TableRowProps {
    */
   noHighlight?: boolean;
   /** The application theme */
-  theme: BaseTheme;
+  theme?: BaseTheme;
 }
 
 const StyledTableRow = styled.tr<TableRowProps>`
@@ -44,7 +52,8 @@ StyledTableRow.defaultProps = {
  * components.
  */
 
-const TableRow = withTheme(StyledTableRow);
+const TableRow:
+ForwardRefExoticComponent<TableRowProps> = withTheme(StyledTableRow);
 
 declare type TableRow = ReactElement<TableRowProps>;
 
