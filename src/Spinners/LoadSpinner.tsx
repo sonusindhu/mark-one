@@ -1,19 +1,20 @@
 import React, {
-  FunctionComponent, ReactElement, useContext,
+  FunctionComponent, ReactElement,
 } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-import { BaseTheme } from '../Theme';
 import LoadSpinnerText from './LoadSpinnerText';
 
 export interface LoadSpinnerProps {
   /** Specifies the text under the spinner */
-  textMsg: string;
+  children: string;
+  /** Specifies the color of text under the spinner */
+  color?: string;
 }
 
 const StyledLoadSpinner = styled.div`
-  background: gray;
+  background: transparent;
   color: lightblue;
   display: inline-block;
   text-align:center;
@@ -27,13 +28,15 @@ const StyledLoadSpinner = styled.div`
 const LoadSpinner: FunctionComponent<LoadSpinnerProps> = (props):
 ReactElement => {
   const {
-    textMsg,
+    children,
+    color,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
   return (
-    <StyledLoadSpinner theme={theme}>
+    <StyledLoadSpinner role="alert">
       <FontAwesomeIcon icon={faCircleNotch} size="8x" spin />
-      <LoadSpinnerText textMsg={textMsg} />
+      <LoadSpinnerText color={color}>
+        {children}
+      </LoadSpinnerText>
     </StyledLoadSpinner>
   );
 };

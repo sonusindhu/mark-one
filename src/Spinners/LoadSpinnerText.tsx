@@ -6,12 +6,14 @@ import { BaseTheme } from '../Theme';
 
 export interface LoadSpinnerTextProps {
   /** Specifies the text under the spinner */
-  textMsg: string;
+  children: string;
+  /** Specifies the color of the text under the spinner */
+  color?: string;
 }
 
 const StyledLoadSpinnerText = styled.div`
   background: transparent;
-  color: white;
+  color: ${({ color }): string => (color)};
   font: ${({ theme }): string => (theme.font.heading)};
   margin-top: ${({ theme }): string => (theme.ws.large)};
   margin-bottom: ${({ theme }): string => (theme.ws.medium)};
@@ -23,13 +25,17 @@ const StyledLoadSpinnerText = styled.div`
  */
 const LoadSpinnerText: FunctionComponent<LoadSpinnerTextProps> = (props):
 ReactElement => {
-  const { textMsg } = props;
+  const { children, color } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
-    <StyledLoadSpinnerText theme={theme}>
-      { textMsg }
+    <StyledLoadSpinnerText theme={theme} color={color}>
+      { children }
     </StyledLoadSpinnerText>
   );
+};
+
+LoadSpinnerText.defaultProps = {
+  color: 'black',
 };
 
 export default LoadSpinnerText;
