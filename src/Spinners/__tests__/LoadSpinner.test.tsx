@@ -6,7 +6,7 @@ describe('LoadSpinner', function () {
   let getByText;
   beforeEach(function () {
     ({ getByText } = render(
-      <LoadSpinner textMsg='Loading Data' />  
+      <LoadSpinner textMsg="Loading Data" />
     ));
   });
   it('renders value', function () {
