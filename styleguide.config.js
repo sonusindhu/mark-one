@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const rdts = require('react-docgen-typescript');
 
 const guidelinesSections = fs.readdirSync(
   path.join(__dirname, 'guidelines'),
@@ -74,8 +75,13 @@ module.exports = {
     }
   },
   pagePerSection: true,
-  propsParser: require('react-docgen-typescript').withCustomConfig(
-    './tsconfig.json'
+  propsParser: rdts.withCustomConfig(
+    './tsconfig.json',
+    {
+      componentNameResolver: (exp, source) => (
+        rdts.getDefaultExportForFile(source)
+      ),
+    }
   ).parse,
   sections,
   styleguideComponents: {
