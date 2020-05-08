@@ -1,33 +1,33 @@
-import React, {
-  FunctionComponent, ReactElement, useContext,
-} from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import styled, { withTheme } from 'styled-components';
+import { BaseTheme } from 'Theme';
+import { ReactElement, ForwardRefExoticComponent } from 'react';
 import TableHead from './TableHead';
-import { TableBody } from './TableBody';
+import TableBody from './TableBody';
 
 export interface TableProps {
-  /** Internal table components like <thead> and <tbody> including their respective child components */
-  children: Array<TableHead | TableBody>;
+  /**
+  * Internal table components like <thead>, <tbody>, <col>. and <colgroup>
+  * including their respective child components
+  */
+  children: (TableHead | TableBody | HTMLTableColElement)
+  | (TableHead | TableBody | HTMLTableColElement)[];
+  /** The application theme */
+  theme?: BaseTheme;
 }
 
 const StyledTable = styled.table`
-    border: ${({ theme }): string => (theme.border.light)};
     border-collapse: collapse;
     padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.small)};
     width: 100%;
 `;
 
-const Table: FunctionComponent<TableProps> = (props): ReactElement => {
-  const {
-    children,
-  } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
-  return (
-    <StyledTable theme={theme}>
-      {children}
-    </StyledTable>
-  );
-};
+/**
+ * @component
+ * Renders a simple, full-width <table>
+ */
+
+const Table: ForwardRefExoticComponent<TableProps> = withTheme(StyledTable);
+
+declare type Table = ReactElement<TableProps>;
 
 export default Table;

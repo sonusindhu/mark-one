@@ -1,5 +1,7 @@
 import React from 'react';
-import { render } from 'test-utils';
+import {
+  render, GetByText, BoundFunction, GetByBoundAttribute, AllByRole,
+} from 'test-utils';
 import convert from 'color-convert';
 import { strictEqual } from 'assert';
 import TableCell, { ALIGN } from '../TableCell';
@@ -11,9 +13,9 @@ import Table from '../Table';
 import MarkOneTheme from '../../Theme/MarkOneTheme';
 
 describe('Table Components', function () {
-  let getByText;
-  let getAllByRole;
-  let getByTestId;
+  let getByText: BoundFunction<GetByText>;
+  let getAllByRole: BoundFunction<AllByRole>;
+  let getByTestId: BoundFunction<GetByBoundAttribute>;
   beforeEach(function () {
     ({ getByText, getAllByRole, getByTestId } = render(
       <Table>
@@ -50,9 +52,6 @@ describe('Table Components', function () {
     ));
   });
   describe('Table Cell', function () {
-    it('contains text', function () {
-      getByText('1');
-    });
     it('defaults to left text-align when alignment prop is unspecified', function () {
       const style = window.getComputedStyle(getByText('1'));
       strictEqual(style.textAlign, 'left');
@@ -75,8 +74,29 @@ describe('Table Components', function () {
     });
   });
   describe('Table Heading Cell', function () {
-    it('contains text', function () {
-      getByText('ID');
+    beforeEach(function () {
+      ({ getByText } = render(
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeadingCell backgroundColor="rgb(123, 123, 123)">With Background</TableHeadingCell>
+              <TableHeadingCell>Without Background</TableHeadingCell>
+            </TableRow>
+          </TableHead>
+        </Table>
+      ));
+    });
+    it('Renders with the passed background color', function () {
+      const style = window.getComputedStyle(getByText('With Background'));
+      strictEqual(style.backgroundColor, 'rgb(123, 123, 123)');
+    });
+    it('defaults to medium with no background color', function () {
+      const style = window.getComputedStyle(getByText('Without Background'));
+      const [red, green, blue] = convert.hex.rgb(
+        MarkOneTheme.color.background.medium as string
+      );
+      const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
+      strictEqual(style.backgroundColor, convertExpectedToRGB);
     });
   });
   describe('Table Row', function () {
@@ -92,6 +112,55 @@ describe('Table Components', function () {
       );
       const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
       strictEqual(style.backgroundColor, convertExpectedToRGB);
+    });
+    describe('noHighlight prop', function () {
+      beforeEach(function () {
+        ({ getByText } = render(
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableHeadingCell>Regular</TableHeadingCell>
+              </TableRow>
+              <TableRow noHighlight>
+                <TableHeadingCell>noHighlight</TableHeadingCell>
+              </TableRow>
+            </TableHead>
+          </Table>
+        ));
+      });
+      it('Should not have a :hover css class with noHighlight', function () {
+        const noHighlight = getByText('noHighlight');
+        const allSheets = Array.from(document.styleSheets);
+        const sheet = allSheets[allSheets.length - 1] as CSSStyleSheet;
+        const rules = sheet.cssRules;
+        const parentClasses = noHighlight.parentElement.classList;
+        const maybeHoverClasses = Array.from(parentClasses)
+          .map((className) => `.${className}:hover`);
+        const hoverRule = Array.from(rules)
+          .find(({ selectorText }: CSSStyleRule) => (
+            maybeHoverClasses.includes(selectorText)
+          ));
+        strictEqual(hoverRule, undefined);
+      });
+      it('Should have a :hover rule without noHighlight', function () {
+        const regular = getByText('Regular');
+        const allSheets = Array.from(document.styleSheets);
+        const sheet = allSheets[allSheets.length - 1] as CSSStyleSheet;
+        const rules = sheet.cssRules;
+        const parentClasses = regular.parentElement.classList;
+        const maybeHoverClasses = Array.from(parentClasses)
+          .map((className) => `.${className}:hover`);
+        const hoverRule = Array.from(rules)
+          .find(({ selectorText }: CSSStyleRule) => (
+            maybeHoverClasses.includes(selectorText)
+          ));
+        strictEqual(
+          hoverRule
+            .cssText
+            .includes(`background: ${MarkOneTheme.color.background.medium}`),
+          true
+        );
+      });
     });
   });
   describe('Table Body', function () {

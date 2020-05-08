@@ -173,3 +173,96 @@ import {
   </TableBody>
 </Table>
 ```
+
+### More Complex Layouts
+
+Some tables may require more complex layouts, such as cells that span multiple columns/rows or layered, hierarchical headers. For example:
+
+```tsx
+import {
+  ALIGN,
+  Table,
+  TableCell,
+  TableBody,
+  TableRow,
+  TableRowHeadingCell,
+  TableHeadingCell,
+  TableHeadingSpacer,
+  TableHead,
+} from 'mark-one';
+
+<Table>
+  <col />
+  <colgroup span="4" />
+  <colgroup span="4" />
+  <TableHead>
+    <TableRow noHighlight>
+      <TableHeadingSpacer />
+      <TableHeadingCell
+        backgroundColor="transparent"
+        colSpan="4"
+        scope="colgroup"
+      >
+        Fall 2019
+      </TableHeadingCell>
+      <TableHeadingCell
+        backgroundColor="transparent"
+        colSpan="4"
+        scope="colgroup"
+      >
+        Spring 2020
+      </TableHeadingCell>
+    </TableRow>
+    <TableRow>
+      <TableHeadingCell scope="col" rowSpan="2">Course</TableHeadingCell>
+      <TableHeadingCell scope="col" rowSpan="2">Offered</TableHeadingCell>
+      <TableHeadingCell colSpan="3">Enrollment</TableHeadingCell>
+      <TableHeadingCell scope="col" rowSpan="2">Offered</TableHeadingCell>
+      <TableHeadingCell colSpan="3">Enrollment</TableHeadingCell>
+    </TableRow>
+    <TableRow>
+      <TableHeadingCell scope="col">Pre</TableHeadingCell>
+      <TableHeadingCell scope="col">Study</TableHeadingCell>
+      <TableHeadingCell scope="col">Actual</TableHeadingCell>
+      <TableHeadingCell scope="col">Pre</TableHeadingCell>
+      <TableHeadingCell scope="col">Study</TableHeadingCell>
+      <TableHeadingCell scope="col">Actual</TableHeadingCell>
+    </TableRow>
+  </TableHead>
+  <TableBody>
+    <TableRow>
+      <TableRowHeadingCell scope="row">CS 50</TableRowHeadingCell>
+      <TableCell>YES</TableCell>
+      <TableCell>600</TableCell>
+      <TableCell>480</TableCell>
+      <TableCell>300</TableCell>
+      <TableCell>NO</TableCell>
+      <TableCell />
+      <TableCell />
+      <TableCell />
+    </TableRow>
+    <TableRow isStriped>
+      <TableRowHeadingCell scope="row">CS 51</TableRowHeadingCell>
+      <TableCell>NO</TableCell>
+      <TableCell />
+      <TableCell />
+      <TableCell />
+      <TableCell>YES</TableCell>
+      <TableCell>185</TableCell>
+      <TableCell>140</TableCell>
+      <TableCell>120</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableRowHeadingCell scope="row">ES 100</TableRowHeadingCell>
+      <TableCell>YES</TableCell>
+      <TableCell>250</TableCell>
+      <TableCell>175</TableCell>
+      <TableCell>80</TableCell>
+      <TableCell>YES</TableCell>
+      <TableCell>300</TableCell>
+      <TableCell>150</TableCell>
+      <TableCell>100</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+```

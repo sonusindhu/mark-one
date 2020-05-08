@@ -1,30 +1,26 @@
-import React, {
-  FunctionComponent, ReactElement, useContext,
-} from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
-import { TableRow } from './TableRow';
+import styled, { withTheme } from 'styled-components';
+import { BaseTheme } from 'Theme';
+import { ReactElement, ForwardRefExoticComponent } from 'react';
+import TableRow from './TableRow';
 
 export interface TableHeadProps {
   /** Our TableRow functional component serves as the children for TableHead */
-  children: TableRow;
+  children: TableRow | TableRow[];
+  /** The application theme */
+  theme?: BaseTheme;
 }
 
 const StyledTableHead = styled.thead`
   background-color: ${({ theme }): string => (theme.color.background.medium)};
 `;
 
-const TableHead: FunctionComponent<TableHeadProps> = (props): ReactElement => {
-  const {
-    children,
-  } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
-  return (
-    <StyledTableHead theme={theme}>
-      {children}
-    </StyledTableHead>
-  );
-};
+/**
+ * @component
+ * Renders a <thead> component to be used inside of a <Table>
+ */
+
+const TableHead:
+ForwardRefExoticComponent<TableHeadProps> = withTheme(StyledTableHead);
 
 declare type TableHead = ReactElement<TableHeadProps>;
 
