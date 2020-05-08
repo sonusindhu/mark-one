@@ -1,8 +1,8 @@
 import {
-  ReactNode, ReactElement, RefForwardingComponent, ForwardRefExoticComponent,
+  ReactNode, ReactElement, ForwardRefExoticComponent,
 } from 'react';
-import styled, { withTheme, StyledComponent } from 'styled-components';
-import { BaseTheme } from 'Theme';
+import styled, { withTheme } from 'styled-components';
+import { BaseTheme } from '../Theme';
 import { ALIGN } from './TableCell';
 
 export interface TableRowHeadingCellProps {
