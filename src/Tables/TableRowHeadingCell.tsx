@@ -13,9 +13,9 @@ export interface TableRowHeadingCellProps {
   /** Text or components to be displayed in the table heading cell */
   children: ReactNode;
   /** Handles cells that span multiple columns */
-  colSpan?: string;
+  colSpan?: string | number;
   /** Handles cells that span multiple rows */
-  rowSpan?: string;
+  rowSpan?: string | number;
   /** Specifies the group of cells that the row heading refers to */
   scope: 'row' | 'rowgroup' | 'auto';
   /** The application theme */
