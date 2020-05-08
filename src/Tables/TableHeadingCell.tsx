@@ -15,9 +15,9 @@ export interface TableHeadingCellProps {
   /** Function to call on click event */
   clickHandler?: MouseEventHandler;
   /** Handles cells that span multiple columns */
-  colSpan?: number;
+  colSpan?: string;
   /** Handles cells that span multiple rows */
-  rowSpan?: number;
+  rowSpan?: string;
   /** Specifies the group of cells that the table heading refers to */
   scope?: 'col' | 'colgroup' | 'auto';
   /** The application theme */
