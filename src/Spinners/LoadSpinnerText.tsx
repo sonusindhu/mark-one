@@ -17,7 +17,6 @@ const StyledLoadSpinnerText = styled.div`
   font: ${({ theme }): string => (theme.font.heading)};
   margin-top: ${({ theme }): string => (theme.ws.large)};
   margin-bottom: ${({ theme }): string => (theme.ws.medium)};
-  display: block;
 `;
 
 /**

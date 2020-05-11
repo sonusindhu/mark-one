@@ -17,8 +17,9 @@ export interface LoadSpinnerProps {
 const StyledLoadSpinner = styled.div`
   background: transparent;
   color: ${({ theme }): string => (theme.color.background.info.medium)};
-  display: inline-block;
-  text-align:center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   width:100%;
 `;
 
