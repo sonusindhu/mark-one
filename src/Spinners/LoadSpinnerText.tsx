@@ -4,19 +4,25 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme';
 
+export enum SPINNER_TEXT {
+  LIGHT = 'light',
+  DARK = 'dark',
+}
+
 export interface LoadSpinnerTextProps {
   /** Specifies the text under the spinner */
   children: string;
   /** Specifies the color of the text under the spinner */
-  color?: string;
+  color?: SPINNER_TEXT;
 }
 
 const StyledLoadSpinnerText = styled.div`
   background: transparent;
-  color: ${({ color }): string => (color)};
-  font: ${({ theme }): string => (theme.font.heading)};
+  color: ${({ color, theme }): string => theme.color.text[color]};
+  font-family: ${({ theme }): string => (theme.font.heading.family)};
+  font-weight: ${({ theme }): string => (theme.font.heading.weight)};
+  font-size: ${({ theme }): string => (theme.font.heading.size)};
   margin-top: ${({ theme }): string => (theme.ws.large)};
-  margin-bottom: ${({ theme }): string => (theme.ws.medium)};
 `;
 
 /**
@@ -34,7 +40,7 @@ ReactElement => {
 };
 
 LoadSpinnerText.defaultProps = {
-  color: 'black',
+  color: SPINNER_TEXT.DARK,
 };
 
 export default LoadSpinnerText;

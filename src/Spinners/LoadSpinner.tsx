@@ -4,14 +4,14 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-import LoadSpinnerText from './LoadSpinnerText';
 import { BaseTheme } from 'Theme';
+import LoadSpinnerText, { SPINNER_TEXT } from './LoadSpinnerText';
 
 export interface LoadSpinnerProps {
   /** Specifies the text under the spinner */
   children: string;
   /** Specifies the color of text under the spinner */
-  color?: string;
+  color?: SPINNER_TEXT;
 }
 
 const StyledLoadSpinner = styled.div`

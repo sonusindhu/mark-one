@@ -5,9 +5,9 @@ A load spinner component that can be used to show the loading state of the data.
 </LoadSpinner>
 ```
 
-To style the text to have a dark blue color instead of the default black color.
+To style the text to have a dark light color.
 ```jsx
-<LoadSpinner color='darkblue'>
+<LoadSpinner color='light'>
   Loading Data
 </LoadSpinner>
 ```
