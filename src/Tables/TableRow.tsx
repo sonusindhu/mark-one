@@ -2,7 +2,7 @@ import {
   ReactElement, ForwardRefExoticComponent,
 } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from 'Theme';
+import { BaseTheme } from '../Theme';
 import TableRowHeadingCell from './TableRowHeadingCell';
 import TableCell from './TableCell';
 import TableHeadingCell from './TableHeadingCell';

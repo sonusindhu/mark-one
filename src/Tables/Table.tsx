@@ -1,6 +1,6 @@
 import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from 'Theme';
 import { ReactElement, ForwardRefExoticComponent } from 'react';
+import { BaseTheme } from '../Theme';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 

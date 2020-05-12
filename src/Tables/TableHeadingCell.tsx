@@ -5,7 +5,7 @@ import {
   ForwardRefExoticComponent,
 } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from 'Theme';
+import { BaseTheme } from '../Theme';
 
 export interface TableHeadingCellProps {
   /** Specifies the background color of the table cell */
@@ -15,9 +15,9 @@ export interface TableHeadingCellProps {
   /** Function to call on click event */
   clickHandler?: MouseEventHandler;
   /** Handles cells that span multiple columns */
-  colSpan?: number;
+  colSpan?: string | number;
   /** Handles cells that span multiple rows */
-  rowSpan?: number;
+  rowSpan?: string | number;
   /** Specifies the group of cells that the table heading refers to */
   scope?: 'col' | 'colgroup' | 'auto';
   /** The application theme */
