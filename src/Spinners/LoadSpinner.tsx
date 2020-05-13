@@ -11,7 +11,7 @@ export interface LoadSpinnerProps {
   /** Specifies the text under the spinner */
   children: string;
   /** Specifies the color of text under the spinner */
-  color?: SPINNER_TEXT;
+  textColor?: SPINNER_TEXT;
 }
 
 const StyledLoadSpinner = styled.div`
@@ -30,14 +30,14 @@ const LoadSpinner: FunctionComponent<LoadSpinnerProps> = (props):
 ReactElement => {
   const {
     children,
-    color,
+    textColor,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
 
   return (
     <StyledLoadSpinner role="alert" theme={theme}>
       <FontAwesomeIcon icon={faCircleNotch} size="8x" spin />
-      <LoadSpinnerText color={color}>
+      <LoadSpinnerText color={textColor}>
         {children}
       </LoadSpinnerText>
     </StyledLoadSpinner>
