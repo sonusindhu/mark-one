@@ -5,7 +5,7 @@ A load spinner component that can be used to show the loading state of the data.
 </LoadSpinner>
 ```
 
-To style the text to have a dark light color.
+To style the text to have a light color. Note that a dark background is used to show the light text.
 ```jsx
 import { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
