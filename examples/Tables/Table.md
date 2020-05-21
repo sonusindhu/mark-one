@@ -178,7 +178,7 @@ import {
 
 Some tables may require more complex layouts, such as cells that span multiple columns/rows, or layered headers. For example:
 
-```tsx
+```jsx
 import {
   ALIGN,
   Table,
