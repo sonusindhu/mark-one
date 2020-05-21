@@ -2,6 +2,6 @@ Renders a styled `<h2>` element for denoting the start of a new main section wit
 
 For accessibility, The `<SectionHeading>` should be below the `<PageTitle>` in the DOM, and should not be ordered within other heading elements.
 
-```tsx
+```jsx
 <SectionHeading>Section Heading</SectionHeading>
 ```

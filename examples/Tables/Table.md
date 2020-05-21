@@ -176,9 +176,9 @@ import {
 
 ### More Complex Layouts
 
-Some tables may require more complex layouts, such as cells that span multiple columns/rows or layered, hierarchical headers. For example:
+Some tables may require more complex layouts, such as cells that span multiple columns/rows, or layered headers. For example:
 
-```tsx
+```jsx
 import {
   ALIGN,
   Table,
@@ -188,6 +188,8 @@ import {
   TableRowHeadingCell,
   TableHeadingCell,
   TableHeadingSpacer,
+  TableCellList,
+  TableCellListItem,
   TableHead,
 } from 'mark-one';
 
@@ -215,9 +217,9 @@ import {
     </TableRow>
     <TableRow>
       <TableHeadingCell scope="col" rowSpan="2">Course</TableHeadingCell>
-      <TableHeadingCell scope="col" rowSpan="2">Offered</TableHeadingCell>
+      <TableHeadingCell scope="col" rowSpan="2">Instructors</TableHeadingCell>
       <TableHeadingCell colSpan="3">Enrollment</TableHeadingCell>
-      <TableHeadingCell scope="col" rowSpan="2">Offered</TableHeadingCell>
+      <TableHeadingCell scope="col" rowSpan="2">Instructors</TableHeadingCell>
       <TableHeadingCell colSpan="3">Enrollment</TableHeadingCell>
     </TableRow>
     <TableRow>
@@ -232,33 +234,60 @@ import {
   <TableBody>
     <TableRow>
       <TableRowHeadingCell scope="row">CS 50</TableRowHeadingCell>
-      <TableCell>YES</TableCell>
+      <TableCell>
+        <TableCellList>
+          <TableCellListItem>
+            Glenn, Kristin
+          </TableCellListItem>
+          <TableCellListItem>
+            Thompson, Jack
+          </TableCellListItem>
+        </TableCellList>
+      </TableCell>
       <TableCell>600</TableCell>
       <TableCell>480</TableCell>
       <TableCell>300</TableCell>
-      <TableCell>NO</TableCell>
+      <TableCell></TableCell>
       <TableCell />
       <TableCell />
       <TableCell />
     </TableRow>
     <TableRow isStriped>
       <TableRowHeadingCell scope="row">CS 51</TableRowHeadingCell>
-      <TableCell>NO</TableCell>
+      <TableCell></TableCell>
       <TableCell />
       <TableCell />
       <TableCell />
-      <TableCell>YES</TableCell>
+      <TableCell>
+        <TableCellList>
+          <TableCellListItem>
+            Michaels, Lianne
+          </TableCellListItem>
+        </TableCellList>
+      </TableCell>
       <TableCell>185</TableCell>
       <TableCell>140</TableCell>
       <TableCell>120</TableCell>
     </TableRow>
     <TableRow>
       <TableRowHeadingCell scope="row">ES 100</TableRowHeadingCell>
-      <TableCell>YES</TableCell>
+      <TableCell>
+        <TableCellList>
+          <TableCellListItem>
+            Hines, Gabriela
+          </TableCellListItem>
+        </TableCellList>
+      </TableCell>
       <TableCell>250</TableCell>
       <TableCell>175</TableCell>
       <TableCell>80</TableCell>
-      <TableCell>YES</TableCell>
+      <TableCell>
+        <TableCellList>
+          <TableCellListItem>
+            Hines, Gabriela
+          </TableCellListItem>
+        </TableCellList>
+      </TableCell>
       <TableCell>300</TableCell>
       <TableCell>150</TableCell>
       <TableCell>100</TableCell>
