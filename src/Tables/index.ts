@@ -1,5 +1,5 @@
 export { default as Table } from './Table';
-export { default as TableCell, ALIGN } from './TableCell';
+export { default as TableCell, ALIGN, VALIGN } from './TableCell';
 export { default as TableCellList } from './TableCellList';
 export { default as TableCellListItem } from './TableCellListItem';
 export { default as TableRow } from './TableRow';
