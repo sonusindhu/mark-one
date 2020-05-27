@@ -15,7 +15,6 @@ export interface TableCellListProps {
 
 const TableCellList = styled.ol<TableCellListProps>`
   list-style: none;
-  padding: ${({ theme }): string => (theme.ws.xsmall)};
 `;
 
 /**
