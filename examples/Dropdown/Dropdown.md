@@ -15,6 +15,7 @@
             },
           ]}
           value={value}
+          id="semesters"
           name="semesters"
           onChange={function(event){
             setValue(event.target.value);

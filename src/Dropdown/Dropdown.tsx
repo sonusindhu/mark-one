@@ -8,6 +8,8 @@ import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme';
 
 export interface DropdownProps {
+  /** The id of the label tied to this dropdown field */
+  id: string;
   /** Function to call on change event */
   onChange: ChangeEventHandler;
   /** The name of the dropdown */
@@ -27,6 +29,7 @@ const StyledDropdown = styled.select`
 
 const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
   const {
+    id,
     onChange,
     name,
     options,
@@ -36,6 +39,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
   const theme: BaseTheme = useContext(ThemeContext);
   return (
     <StyledDropdown
+      id={id}
       onChange={onChange}
       theme={theme}
       name={name}
