@@ -1,13 +1,12 @@
 ```jsx
       import { useState } from 'react';
-      import { Label } from 'mark-one';
       function DropdownExample() {
         const [value, setValue] = useState('fall');
         return (
-          <Label
+          <label
             htmlFor="semesters"
-            label="Semester:"
           >
+          Semester:
           <Dropdown
           options={[
             {
@@ -28,7 +27,7 @@
             alert('You changed the selection to ' + event.target.value);
           }}
         />
-        </Label>
+        </label>
         );
       }
       <DropdownExample />
