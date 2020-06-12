@@ -23,6 +23,7 @@ describe('Dropdown', function () {
     changeSpy = spy();
     ({ getByText, getAllByRole } = render(
       <Dropdown
+        id="semesters"
         options={options}
         value="fall"
         name="semesters"

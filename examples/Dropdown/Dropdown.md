@@ -2,7 +2,12 @@
       import { useState } from 'react';
       function DropdownExample() {
         const [value, setValue] = useState('fall');
-        return (<Dropdown
+        return (
+          <label
+            htmlFor="semesters"
+          >
+          Semester:
+          <Dropdown
           options={[
             {
               value: 'all', label: 'All',
@@ -15,12 +20,15 @@
             },
           ]}
           value={value}
+          id="semesters"
           name="semesters"
           onChange={function(event){
             setValue(event.target.value);
             alert('You changed the selection to ' + event.target.value);
           }}
-        />);
+        />
+        </label>
+        );
       }
       <DropdownExample />
 ```
