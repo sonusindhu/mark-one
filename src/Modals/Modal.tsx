@@ -72,10 +72,6 @@ const ModalBackdrop = styled.div`
 
 export interface ModalProps {
   /**
-   * The id of the modal
-   */
-  id: string;
-  /**
    * The content to be displayed within the modal
    */
   children: ReactNode;
@@ -137,7 +133,6 @@ const Modal: FunctionComponent<ModalProps> = ({
   children,
   closeHandler,
   ariaLabelledBy,
-  id,
 }): ReactElement => {
   const theme = useContext(ThemeContext);
 
@@ -180,7 +175,6 @@ const Modal: FunctionComponent<ModalProps> = ({
       >
         {isVisible && (
           <StyledModal
-            id={id}
             role="dialog"
             aria-labelledby={ariaLabelledBy}
             aria-modal="true"
