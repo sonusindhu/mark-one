@@ -1,3 +1,4 @@
+The following is a dropdown example in which the selection defaults to 'Fall', and the 'Summer' selection is disabled.
 ```jsx
       import { useState } from 'react';
       function DropdownExample() {
@@ -17,6 +18,9 @@
             },
             {
               value: 'spring', label: 'Spring',
+            },
+            {
+              value: 'summer', label: 'Summer', disabled: true,
             },
           ]}
           value={value}
