@@ -34,6 +34,8 @@ export interface TextInputProps {
   labelPosition?: POSITION;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
+  /** If true, input for the text field is required to submit the form */
+  required?: boolean;
 }
 
 const StyledTextInput = styled.input<TextInputProps>`
@@ -60,6 +62,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
     label,
     labelPosition,
     isLabelVisible,
+    required,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
@@ -79,6 +82,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
         value={value}
         disabled={disabled}
         label={label}
+        required={required}
       />
       {errorMessage
       && (
