@@ -72,9 +72,17 @@ const ModalBackdrop = styled.div`
 
 export interface ModalProps {
   /**
+   * The id of the modal
+   */
+  id: string;
+  /**
    * The content to be displayed within the modal
    */
   children: ReactNode;
+  /**
+   * Identifies the element that provides the modal
+   */
+  ariaLabelledBy: string;
   /**
    * Function that closes the modal by flipping the isVisible value to false
    * This is passed to our background component to be called when the user
@@ -128,6 +136,8 @@ const Modal: FunctionComponent<ModalProps> = ({
   onClose,
   children,
   closeHandler,
+  ariaLabelledBy,
+  id,
 }): ReactElement => {
   const theme = useContext(ThemeContext);
 
@@ -170,7 +180,9 @@ const Modal: FunctionComponent<ModalProps> = ({
       >
         {isVisible && (
           <StyledModal
+            id={id}
             role="dialog"
+            aria-labelledby={ariaLabelledBy}
             aria-modal="true"
             onClick={(evt): void => { evt.stopPropagation(); }}
             theme={theme}

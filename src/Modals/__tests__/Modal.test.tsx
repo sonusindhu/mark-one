@@ -12,6 +12,8 @@ describe('Modal', function () {
       it('Should not render any visible content', function () {
         const { queryByText } = render(
           <Modal
+            id="testInvisibleModal"
+            ariaLabelledBy="facultyEditButton"
             isVisible={false}
           >
             hidden
@@ -27,6 +29,8 @@ describe('Modal', function () {
       it('Should render visible content', function () {
         const { getByText } = render(
           <Modal
+            id="testVisibleModal"
+            ariaLabelledBy="facultyEditButton"
             isVisible
           >
             displayed
@@ -57,6 +61,8 @@ describe('Modal', function () {
               Toggle Modal
             </button>
             <Modal
+              id="testModal"
+              ariaLabelledBy="facultyEditButton"
               isVisible={modalOpen}
               onOpen={onOpenStub}
               onClose={onCloseStub}

@@ -11,6 +11,8 @@ const [modalVisible, setModalVisible] = useState(false);
     Open Modal
   </Button>
   <Modal
+    id="testModal"
+    ariaLabelledBy="testButton"
     closeHandler={() => {setModalVisible(false)}}
     isVisible={modalVisible}
   >
