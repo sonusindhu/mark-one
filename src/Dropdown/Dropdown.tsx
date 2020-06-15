@@ -7,6 +7,15 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme';
 
+interface DropdownOptionProps {
+  /** The label of the dropdown option */
+  label: string;
+  /** The value of the dropdown option */
+  value: string;
+  /** Specifies whether the dropdown option is disabled */
+  disabled?: boolean;
+}
+
 export interface DropdownProps {
   /** The id tied to this dropdown field */
   id?: string;
@@ -14,8 +23,8 @@ export interface DropdownProps {
   onChange: ChangeEventHandler;
   /** The name of the dropdown */
   name: string;
-  /** An array of objects with the properties 'label', 'value', and 'disabled' for each dropdown option */
-  options: Array<{label: string; value: string; disabled?: boolean}>;
+  /** An array of objects with the properties specified through DropdownOptions */
+  options: Array<DropdownOptionProps>;
   /** The currently selected dropdown value */
   value?: string;
   /** The dropdown value selected by default */
