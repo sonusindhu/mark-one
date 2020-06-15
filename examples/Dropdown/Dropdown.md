@@ -11,13 +11,16 @@ The following is a dropdown example in which the selection defaults to 'Fall', a
           <Dropdown
           options={[
             {
-              value: 'all', label: 'All',
+              value: 'all',
+              label: 'All',
             },
             {
-              value: 'fall', label: 'Fall',
+              value: 'fall',
+              label: 'Fall',
             },
             {
-              value: 'spring', label: 'Spring',
+              value: 'spring',
+              label: 'Spring',
             },
             {
               value: 'summer',
