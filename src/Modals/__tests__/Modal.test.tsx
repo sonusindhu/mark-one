@@ -37,6 +37,18 @@ describe('Modal', function () {
         const modal = getByText('displayed');
         strictEqual(modal === null, false);
       });
+      it('Should have the specified value for the property aria-labelledBy', function () {
+        const { getByText } = render(
+          <Modal
+            ariaLabelledBy="facultyEditButton"
+            isVisible
+          >
+            displayed
+          </Modal>
+        );
+        const modal = getByText('displayed');
+        strictEqual(modal.getAttribute('aria-labelledBy'), 'facultyEditButton');
+      });
     });
   });
   describe('open/close handlers', function () {
