@@ -14,7 +14,10 @@ import {
 const [modalVisible, setModalVisible] = useState(false);
 
 <div>
-  <Button onClick={() => {setModalVisible(true)}}>
+  <Button
+    id="testButton"
+    onClick={() => {setModalVisible(true)}}
+  >
     Open Modal
   </Button>
   <Modal
@@ -50,7 +53,10 @@ import {
 const [modalVisible, setModalVisible] = useState(false);
 
 <div>
-  <Button onClick={() => {setModalVisible(true)}}>
+  <Button
+    id="testButton"
+    onClick={() => {setModalVisible(true)}}
+  >
     Open Modal
   </Button>
   <Modal
