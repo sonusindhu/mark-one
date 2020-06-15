@@ -53,7 +53,7 @@ describe('Dropdown', function () {
   });
   it('contains the expected elements', function () {
     const dropdownOptionsCount = getAllByRole('option').length;
-    strictEqual(dropdownOptionsCount, 4);
+    strictEqual(dropdownOptionsCount, options.length);
   });
   it('renders the correct default value', function () {
     const dropdown = document.getElementsByName('semesters')[0] as HTMLSelectElement;
