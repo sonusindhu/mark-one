@@ -20,7 +20,9 @@ The following is a dropdown example in which the selection defaults to 'Fall', a
               value: 'spring', label: 'Spring',
             },
             {
-              value: 'summer', label: 'Summer', disabled: true,
+              value: 'summer',
+              label: 'Summer',
+              disabled: true,
             },
           ]}
           value={value}
