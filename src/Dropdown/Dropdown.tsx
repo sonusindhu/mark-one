@@ -8,8 +8,8 @@ import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme';
 
 export interface DropdownProps {
-  /** The id of the label tied to this dropdown field */
-  id: string;
+  /** The id tied to this dropdown field */
+  id?: string;
   /** Function to call on change event */
   onChange: ChangeEventHandler;
   /** The name of the dropdown */
