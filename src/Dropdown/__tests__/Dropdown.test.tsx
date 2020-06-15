@@ -37,6 +37,7 @@ describe('Dropdown', function () {
         value="fall"
         name="semesters"
         onChange={changeSpy}
+        required
       />
     ));
   });
@@ -73,6 +74,10 @@ describe('Dropdown', function () {
       }
     ));
     deepStrictEqual(optionsFound, optionsWithDefaults);
+  });
+  it('sets the required property to true when the required property is included', function () {
+    const dropdown = document.getElementsByName('semesters')[0] as HTMLSelectElement;
+    strictEqual(dropdown.required, true);
   });
   context('when the disabled prop for the option is true', function () {
     it('sets the disabled attribute to the corresponding option element to true', function () {
