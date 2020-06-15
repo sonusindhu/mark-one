@@ -10,6 +10,8 @@ import { VARIANT } from '../Theme/MarkOneTheme';
 import { BaseTheme } from '../Theme';
 
 export interface ButtonProps {
+  /** The id of the button */
+  id?: string;
   /** Text or components to be displayed on the button */
   children?: ReactNode;
   /** Function to call on click event */

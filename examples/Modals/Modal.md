@@ -16,10 +16,14 @@ import {
 const [modalVisible, setModalVisible] = useState(false);
 
 <div>
-  <Button onClick={() => {setModalVisible(true)}}>
+  <Button
+    id="testButton"
+    onClick={() => {setModalVisible(true)}}
+  >
     Open Modal
   </Button>
   <Modal
+    ariaLabelledBy="testButton"
     closeHandler={() => {setModalVisible(false)}}
     isVisible={modalVisible}
   >
@@ -55,10 +59,14 @@ const [modalVisible, setModalVisible] = useState(false);
 const [formValue, setFormValue] = useState('');
 
 <div>
-  <Button onClick={() => {setModalVisible(true)}}>
+  <Button
+    id="testButton"
+    onClick={() => {setModalVisible(true)}}
+  >
     Open Modal
   </Button>
   <Modal
+    ariaLabelledBy="testButton"
     onOpen={() => {setModalCount(modalCount + 1)}}
     onClose={() => { setFormValue('') }}
     closeHandler={() => {setModalVisible(false)}}

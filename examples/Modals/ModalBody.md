@@ -7,10 +7,14 @@ import { Button, Modal } from 'mark-one';
 const [modalVisible, setModalVisible] = useState(false);
 
 <div>
-  <Button onClick={() => {setModalVisible(true)}}>
+  <Button
+    id="testButton"
+    onClick={() => {setModalVisible(true)}}
+  >
     Open Modal
   </Button>
   <Modal
+    ariaLabelledBy="testButton"
     closeHandler={() => {setModalVisible(false)}}
     isVisible={modalVisible}
   >

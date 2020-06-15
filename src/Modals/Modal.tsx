@@ -76,6 +76,10 @@ export interface ModalProps {
    */
   children: ReactNode;
   /**
+   * Identifies the element that provides the modal
+   */
+  ariaLabelledBy: string;
+  /**
    * Function that closes the modal by flipping the isVisible value to false
    * This is passed to our background component to be called when the user
    * clicks away
@@ -128,6 +132,7 @@ const Modal: FunctionComponent<ModalProps> = ({
   onClose,
   children,
   closeHandler,
+  ariaLabelledBy,
 }): ReactElement => {
   const theme = useContext(ThemeContext);
 
@@ -171,6 +176,7 @@ const Modal: FunctionComponent<ModalProps> = ({
         {isVisible && (
           <StyledModal
             role="dialog"
+            aria-labelledby={ariaLabelledBy}
             aria-modal="true"
             onClick={(evt): void => { evt.stopPropagation(); }}
             theme={theme}

@@ -12,6 +12,7 @@ describe('Modal', function () {
       it('Should not render any visible content', function () {
         const { queryByText } = render(
           <Modal
+            ariaLabelledBy="facultyEditButton"
             isVisible={false}
           >
             hidden
@@ -27,6 +28,7 @@ describe('Modal', function () {
       it('Should render visible content', function () {
         const { getByText } = render(
           <Modal
+            ariaLabelledBy="facultyEditButton"
             isVisible
           >
             displayed
@@ -34,6 +36,18 @@ describe('Modal', function () {
         );
         const modal = getByText('displayed');
         strictEqual(modal === null, false);
+      });
+      it('Should have the specified value for the property aria-labelledBy', function () {
+        const { getByText } = render(
+          <Modal
+            ariaLabelledBy="facultyEditButton"
+            isVisible
+          >
+            displayed
+          </Modal>
+        );
+        const modal = getByText('displayed');
+        strictEqual(modal.getAttribute('aria-labelledBy'), 'facultyEditButton');
       });
     });
   });
@@ -57,6 +71,7 @@ describe('Modal', function () {
               Toggle Modal
             </button>
             <Modal
+              ariaLabelledBy="facultyEditButton"
               isVisible={modalOpen}
               onOpen={onOpenStub}
               onClose={onCloseStub}

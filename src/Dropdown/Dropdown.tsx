@@ -7,19 +7,30 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme';
 
+interface DropdownOptionProps {
+  /** The label of the dropdown option */
+  label: string;
+  /** The value of the dropdown option */
+  value: string;
+  /** Specifies whether the dropdown option is disabled */
+  disabled?: boolean;
+}
+
 export interface DropdownProps {
-  /** The id of the label tied to this dropdown field */
-  id: string;
+  /** The id tied to this dropdown field */
+  id?: string;
   /** Function to call on change event */
   onChange: ChangeEventHandler;
   /** The name of the dropdown */
   name: string;
-  /** An array of objects with the properties 'label' and 'value' for each dropdown option */
-  options: Array<{label: string; value: string}>;
+  /** An array of objects with the properties specified through DropdownOptions */
+  options: Array<DropdownOptionProps>;
   /** The currently selected dropdown value */
   value?: string;
   /** The dropdown value selected by default */
   defaultValue?: string;
+  /** If true, the dropdown is required to submit the form */
+  required?: boolean;
 }
 
 const StyledDropdown = styled.select`
@@ -35,6 +46,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
     options,
     value,
     defaultValue,
+    required,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
@@ -45,9 +57,14 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
       name={name}
       value={value}
       defaultValue={defaultValue}
+      required={required}
     >
       {options.map((option) => (
-        <option value={option.value} key={option.value}>
+        <option
+          value={option.value}
+          key={option.value}
+          disabled={option.disabled}
+        >
           {option.label}
         </option>
       ))}

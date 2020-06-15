@@ -7,6 +7,8 @@ import { VARIANT } from '../Theme/MarkOneTheme';
 import { BaseTheme } from '../Theme';
 
 export interface BorderlessButtonProps {
+  /** The id of the button */
+  id?: string;
   /** Specifies the Font Awesome Icon(s) */
   children: ReactElement<FontAwesomeIconProps>;
   /** Function to call on click event */
