@@ -21,6 +21,7 @@ describe('Modal Header', function () {
       beforeEach(function () {
         ({ queryByTitle } = render(
           <Modal
+            ariaLabelledBy="facultyEditButton"
             isVisible
           >
             <ModalHeader
@@ -48,6 +49,7 @@ describe('Modal Header', function () {
       it('Should not render the close button', function () {
         const { queryByTitle } = render(
           <Modal
+            ariaLabelledBy="facultyEditButton"
             isVisible
           >
             displayed
@@ -62,6 +64,7 @@ describe('Modal Header', function () {
     it('Renders the title text in an h2', function () {
       const { getByText } = render(
         <Modal
+          ariaLabelledBy="facultyEditButton"
           isVisible
         >
           <ModalHeader>
