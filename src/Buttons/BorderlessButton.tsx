@@ -42,6 +42,7 @@ StyledBorderlessButton.defaultProps = {
 const BorderlessButton: FunctionComponent<BorderlessButtonProps> = (props):
 ReactElement => {
   const {
+    id,
     onClick,
     children,
     disabled,
@@ -50,6 +51,7 @@ ReactElement => {
   const theme: BaseTheme = useContext(ThemeContext);
   return (
     <StyledBorderlessButton
+      id={id}
       onClick={onClick}
       theme={theme}
       disabled={disabled}
