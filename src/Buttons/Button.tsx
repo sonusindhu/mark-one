@@ -45,6 +45,7 @@ StyledButton.defaultProps = {
 
 const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
   const {
+    id,
     children,
     onClick,
     disabled,
@@ -53,6 +54,7 @@ const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
   const theme: BaseTheme = useContext(ThemeContext);
   return (
     <StyledButton
+      id={id}
       onClick={onClick}
       theme={theme}
       disabled={disabled}
