@@ -148,3 +148,43 @@ Error Message example: The optional `errorMessage` property is set, and the `lab
   }
   <TextInputExample />
 ```
+
+isRequired example: The optional `isRequired` property is set, which causes an asterisk denoting that the field is required appears next to the label. The `labelPosition` prop is set to `POSITION.TOP.`
+```jsx
+  import { useState } from 'react';
+  const TextInputExample = () => {
+    const [value, setValue] = useState('Some valid input');
+    return (<TextInput
+      value={value}
+      name="example"
+      id="example"
+      label="Description"
+      onChange={(event) => {
+        setValue(event.target.value);
+      }}
+      labelPosition="top"
+      isRequired
+    />);
+  }
+  <TextInputExample />
+```
+
+isRequired example: The optional `isRequired` property is set, which causes an asterisk denoting that the field is required appears next to the label. The `labelPosition` prop is set to `POSITION.LEFT.`
+```jsx
+  import { useState } from 'react';
+  const TextInputExample = () => {
+    const [value, setValue] = useState('Some valid input');
+    return (<TextInput
+      value={value}
+      name="example"
+      id="example"
+      label="Description"
+      onChange={(event) => {
+        setValue(event.target.value);
+      }}
+      labelPosition="left"
+      isRequired
+    />);
+  }
+  <TextInputExample />
+```
