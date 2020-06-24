@@ -218,7 +218,7 @@ Error Message example: The optional `errorMessage` prop is not set.
       <DropdownExample />
 ```
 
-Error Message example: The optional `errorMessage` prop is not set, and the `labelPosition` prop defaults to `POSITION.TOP.`
+Error Message example: The optional `errorMessage` prop is set, and the `labelPosition` prop defaults to `POSITION.TOP.`
 ```jsx
       import { useState } from 'react';
       function DropdownExample() {
@@ -254,7 +254,7 @@ Error Message example: The optional `errorMessage` prop is not set, and the `lab
       <DropdownExample />
 ```
 
-Error Message example: The optional `errorMessage` prop is not set, and the `labelPosition` prop is set to `POSITION.LEFT.`
+Error Message example: The optional `errorMessage` prop is set, and the `labelPosition` prop is set to `POSITION.LEFT.`
 ```jsx
       import { useState } from 'react';
       function DropdownExample() {
