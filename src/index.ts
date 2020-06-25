@@ -6,7 +6,7 @@ export * from './Tables';
 export * from './Layout';
 export * from './Icons';
 export * from './Forms';
-export * from './Headings';
+export * from './Typography';
 export * from './Modals';
 export * from './Links';
 export * from './Spinners';

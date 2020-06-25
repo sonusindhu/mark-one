@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { BorderlessButton } from '../Buttons';
 import { VARIANT, BaseTheme } from '../Theme';
-import { SectionHeading } from '../Headings';
+import { SectionHeading } from '../Typography';
 
 interface ModalHeaderProps {
   /**
