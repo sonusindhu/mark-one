@@ -102,7 +102,7 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
           ? (
             <>
               <span>{label}</span>
-              <span style={{ color: 'red' }}>*</span>
+              <span style={{ color: theme.color.text.negative }}>*</span>
             </>
           )
           : label}

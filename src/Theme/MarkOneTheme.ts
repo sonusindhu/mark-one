@@ -6,6 +6,9 @@ type ColorRange = {
   medium?: string;
   dark?: string;
   darker?: string;
+  info?: string;
+  positive?: string;
+  negative?: string;
   [key: string]: string | ColorRange;
 }
 
