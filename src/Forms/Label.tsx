@@ -41,6 +41,11 @@ export interface LabelProps {
   isRequired?: boolean;
 }
 
+export interface RequiredSymbolProps {
+  /** Text to be displayed */
+  children: string;
+}
+
 const generateGrid = (labelPosition, isLabelVisible): string => {
   if (!isLabelVisible) {
     return `"i i i"
@@ -77,6 +82,25 @@ const StyledLabelText = styled.span<StyledLabelTextProps>`
   )};
 `;
 
+const StyledRequiredSymbol = styled.span`
+    color: ${({ theme }): string => (theme.color.text.negative)};
+`;
+
+const RequiredSymbol:
+FunctionComponent<RequiredSymbolProps> = (props): ReactElement => {
+  const {
+    children,
+  } = props;
+  const theme: BaseTheme = useContext(ThemeContext);
+  return (
+    <StyledRequiredSymbol
+      theme={theme}
+    >
+      {children}
+    </StyledRequiredSymbol>
+  );
+};
+
 const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
   const {
     htmlFor,
@@ -98,14 +122,10 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
         isLabelVisible={isLabelVisible}
         labelPosition={labelPosition}
       >
-        {isRequired
-          ? (
-            <>
-              <span>{label}</span>
-              <span style={{ color: theme.color.text.negative }}>*</span>
-            </>
-          )
-          : label}
+        <>
+          {label}
+          {isRequired && <RequiredSymbol>*</RequiredSymbol>}
+        </>
       </StyledLabelText>
       { children }
     </StyledLabel>
