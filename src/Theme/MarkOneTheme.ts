@@ -131,6 +131,12 @@ const MarkOneTheme: BaseTheme = {
       size: '0.9em',
       weight: WEIGHT.BOLD,
     },
+    note: {
+      family: FONT.SANS,
+      size: '0.8em',
+      weight: WEIGHT.MEDIUM,
+      color: lighten(0.35, BLACK),
+    },
     bold: {
       family: FONT.SANS,
       size: '1em',

@@ -12,10 +12,10 @@ export interface NoteTextProps {
 }
 
 const StyledNoteText = styled.span`
-  color: ${({ theme }): string => (theme.color.text.base)};
-  font-family: ${({ theme }): string => (theme.font.data.family)};
-  font-size: ${({ theme }): string => (theme.font.data.size)};
-  font-weight: ${({ theme }): string => (theme.font.data.weight)};
+  color: ${({ theme }): string => (theme.color.text.medium)};
+  font-family: ${({ theme }): string => (theme.font.note.family)};
+  font-size: ${({ theme }): string => (theme.font.note.size)};
+  font-weight: ${({ theme }): string => (theme.font.note.weight)};
 `;
 
 const NoteText: FunctionComponent<NoteTextProps> = (props): ReactElement => {
