@@ -37,6 +37,8 @@ export interface LabelProps {
   labelPosition?: POSITION;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
+  /** If true, the label will be styled to indicate that it labels a required field */
+  isRequired?: boolean;
 }
 
 const generateGrid = (labelPosition, isLabelVisible): string => {
@@ -75,6 +77,9 @@ const StyledLabelText = styled.span<StyledLabelTextProps>`
   )};
 `;
 
+const RequiredSymbol = styled.span`
+    color: ${({ theme }): string => (theme.color.text.negative)};
+`;
 const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
   const {
     htmlFor,
@@ -82,6 +87,7 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
     labelPosition,
     isLabelVisible,
     children,
+    isRequired,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
@@ -95,7 +101,10 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
         isLabelVisible={isLabelVisible}
         labelPosition={labelPosition}
       >
-        {label}
+        <>
+          {label}
+          {isRequired && <RequiredSymbol>*</RequiredSymbol>}
+        </>
       </StyledLabelText>
       { children }
     </StyledLabel>

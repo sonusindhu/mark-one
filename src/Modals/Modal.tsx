@@ -115,7 +115,8 @@ const StyledModal = styled.div<{theme: BaseTheme}>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 80%;
+  min-width: 40em;
+  max-height: 100%;
   visibility: inherit;
 `;
 

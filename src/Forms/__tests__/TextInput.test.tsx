@@ -95,6 +95,75 @@ describe('Text input', function () {
       strictEqual(errorField, null);
     });
   });
+  context('when isRequired prop is present', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      ({ getByText } = render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Spring"
+          label="semester"
+          onChange={changeSpy}
+          isRequired
+        />
+      ));
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('calls the change handler when changed', function () {
+      fireEvent.change(document.getElementById('semester'), {
+        target: {
+          value: 'Fall',
+        },
+      });
+      strictEqual(changeSpy.callCount, 1);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Spring');
+    });
+    it('renders the asterisk (*) denoting that the field is required', function () {
+      getByText('*');
+    });
+  });
+  context('when isRequired prop is not present', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      ({ queryByText } = render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Spring"
+          label="semester"
+          onChange={changeSpy}
+        />
+      ));
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('calls the change handler when changed', function () {
+      fireEvent.change(document.getElementById('semester'), {
+        target: {
+          value: 'Fall',
+        },
+      });
+      strictEqual(changeSpy.callCount, 1);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Spring');
+    });
+    it('does not render the asterisk (*), which denotes that the field is required', function () {
+      strictEqual(queryByText('*', { exact: false }), null);
+    });
+  });
   context('when isLabelVisible prop is true', function () {
     beforeEach(function () {
       changeSpy = spy();
