@@ -41,11 +41,6 @@ export interface LabelProps {
   isRequired?: boolean;
 }
 
-export interface RequiredSymbolProps {
-  /** Text to be displayed */
-  children: string;
-}
-
 const generateGrid = (labelPosition, isLabelVisible): string => {
   if (!isLabelVisible) {
     return `"i i i"
