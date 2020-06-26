@@ -82,25 +82,9 @@ const StyledLabelText = styled.span<StyledLabelTextProps>`
   )};
 `;
 
-const StyledRequiredSymbol = styled.span`
+const RequiredSymbol = styled.span`
     color: ${({ theme }): string => (theme.color.text.negative)};
 `;
-
-const RequiredSymbol:
-FunctionComponent<RequiredSymbolProps> = (props): ReactElement => {
-  const {
-    children,
-  } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
-  return (
-    <StyledRequiredSymbol
-      theme={theme}
-    >
-      {children}
-    </StyledRequiredSymbol>
-  );
-};
-
 const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
   const {
     htmlFor,
