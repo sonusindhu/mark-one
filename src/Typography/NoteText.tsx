@@ -12,7 +12,7 @@ export interface NoteTextProps {
 }
 
 const StyledNoteText = styled.span`
-  color: ${({ theme }): string => (theme.color.text.medium)};
+  color: ${({ theme }): string => (theme.font.note.color)};
   font-family: ${({ theme }): string => (theme.font.note.family)};
   font-size: ${({ theme }): string => (theme.font.note.size)};
   font-weight: ${({ theme }): string => (theme.font.note.weight)};
