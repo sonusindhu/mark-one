@@ -189,8 +189,8 @@ Required selection example: The optional `isRequired` property is set, which cau
   <TextInputExample />
 ```
 
-Ref example: When the button is clicked, the focus shifts from the button itself to
-the text input field.
+Ref example: The optional `forwardRef` property is set. When the test button is
+clicked, the focus shifts from the button itself to the text input field.
 ```jsx
   import { useState, useRef, } from 'react';
   import { VARIANT } from 'Theme';
@@ -224,8 +224,9 @@ the text input field.
   };
   <RefExample />
 ```
-Ref example: When the button is clicked, the focus shifts from the button itself to
-the text input field inside a modal.
+Ref example: The optional `forwardRef` property is set. When the button is
+clicked, the focus shifts from the button itself to the text input field inside
+a modal.
 ```jsx
   import { useState, useRef, } from 'react';
   import { VARIANT } from 'Theme';
@@ -237,8 +238,8 @@ the text input field inside a modal.
     const [modalVisible, setModalVisible] = useState(false);
     const onButtonClick = () => {
       setModalVisible(true);
-      // Since modal may not have been rendered in DOM, wait for it to be rendered
-      // by letting next task of event queue run first
+      /* Since modal may not have been rendered in DOM, wait for it to be
+      rendered by letting next task of event queue run first */
       setTimeout(() => ref.current.focus(), 0);
     }
     return (
@@ -264,7 +265,10 @@ the text input field inside a modal.
               }}
               forwardRef={ref}
             />
-            <Button onClick={() => setModalVisible(false)}>
+            <Button
+              onClick={() => setModalVisible(false)}
+              variant={VARIANT.BASE}
+            >
               Close Modal
             </Button>
           </ModalBody>
