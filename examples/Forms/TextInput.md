@@ -189,7 +189,8 @@ Required selection example: The optional `isRequired` property is set, which cau
   <TextInputExample />
 ```
 
-Ref example
+Ref example: When the button is clicked, the focus shifts from the button itself to
+the text input field.
 ```jsx
   import { useState, useRef, } from 'react';
   import { Button } from 'mark-one';
@@ -210,7 +211,51 @@ Ref example
               setValue(event.target.value);
             }}
             forwardRef={ref}
-          />
+        />
+      </>
+    );
+  };
+  <RefExample />
+```
+Ref example: When the button is clicked, the focus shifts from the button itself to
+the text input field inside a modal.
+```jsx
+  import { useState, useRef, } from 'react';
+  import { Button, Modal, ModalBody, } from 'mark-one';
+
+  const RefExample = () => {
+    const ref = useRef(null);
+    const [value, setValue] = useState('');
+    const [modalVisible, setModalVisible] = useState(false);
+    const onButtonClick = () => {
+      setModalVisible(true);
+      // Since modal may not have been rendered in DOM, wait for it to be rendered
+      // by letting next task of event queue run first
+      setTimeout(() => ref.current.focus(), 0);
+    }
+    return (
+      <>
+        <Button onClick={onButtonClick}>Focus the input</Button>
+        <Modal
+          ariaLabelledBy="testButton"
+          closeHandler={() => {setModalVisible(false)}}
+          isVisible={modalVisible}
+        >
+          <ModalBody>
+            <TextInput
+              value={value}
+              name="example"
+              label="Description:"
+              onChange={(event) => {
+                setValue(event.target.value);
+              }}
+              forwardRef={ref}
+            />
+            <Button onClick={() => setModalVisible(false)}>
+              Close Modal
+            </Button>
+          </ModalBody>
+        </Modal>
       </>
     );
   };
