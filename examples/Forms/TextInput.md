@@ -193,6 +193,7 @@ Ref example: When the button is clicked, the focus shifts from the button itself
 the text input field.
 ```jsx
   import { useState, useRef, } from 'react';
+  import { VARIANT } from 'Theme';
   import { Button } from 'mark-one';
   const RefExample = () => {
     const ref = useRef(null);
@@ -202,8 +203,14 @@ the text input field.
     }
     return (
       <>
-        <Button onClick={onButtonClick}>Focus the input</Button>
+        <Button
+          onClick={onButtonClick}
+          variant={VARIANT.INFO}
+        >
+          Focus the input
+        </Button>
         <TextInput
+            id="example"
             value={value}
             name="example"
             label="Description:"
@@ -221,6 +228,7 @@ Ref example: When the button is clicked, the focus shifts from the button itself
 the text input field inside a modal.
 ```jsx
   import { useState, useRef, } from 'react';
+  import { VARIANT } from 'Theme';
   import { Button, Modal, ModalBody, } from 'mark-one';
 
   const RefExample = () => {
@@ -235,7 +243,12 @@ the text input field inside a modal.
     }
     return (
       <>
-        <Button onClick={onButtonClick}>Focus the input</Button>
+        <Button
+          onClick={onButtonClick}
+          variant={VARIANT.INFO}
+        >
+          Focus the input
+        </Button>
         <Modal
           ariaLabelledBy="testButton"
           closeHandler={() => {setModalVisible(false)}}
