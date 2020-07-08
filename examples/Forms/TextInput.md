@@ -188,3 +188,31 @@ Required selection example: The optional `isRequired` property is set, which cau
   }
   <TextInputExample />
 ```
+
+Ref example
+```jsx
+  import { useState, useRef, } from 'react';
+  import { Button } from 'mark-one';
+  const RefExample = () => {
+    const ref = useRef(null);
+    const [value, setValue] = useState('');
+    const onButtonClick = () => {
+      ref.current.focus();
+    }
+    return (
+      <>
+        <Button onClick={onButtonClick}>Focus the input</Button>
+        <TextInput
+            value={value}
+            name="example"
+            label="Description:"
+            onChange={(event) => {
+              setValue(event.target.value);
+            }}
+            forwardRef={ref}
+          />
+      </>
+    );
+  };
+  <RefExample />
+```
