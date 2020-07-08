@@ -3,6 +3,7 @@ import React, {
   FunctionComponent,
   useContext,
   ChangeEventHandler,
+  Ref,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme';
@@ -41,6 +42,8 @@ export interface DropdownProps {
   labelPosition?: POSITION;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
+  /** Specifies the ref of the dropdown */
+  forwardRef?: Ref<HTMLSelectElement>;
 }
 
 const StyledDropdown = styled.select`
@@ -62,6 +65,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
     label,
     labelPosition,
     isLabelVisible,
+    forwardRef,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
@@ -80,6 +84,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
         value={value}
         defaultValue={defaultValue}
         aria-required={isRequired}
+        ref={forwardRef}
       >
         {options.map((option) => (
           <option
