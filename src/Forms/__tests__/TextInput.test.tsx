@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   render,
   fireEvent,
@@ -10,6 +10,8 @@ import {
 import { spy } from 'sinon';
 import { strictEqual } from 'assert';
 import userEvent from '@testing-library/user-event';
+import { Button } from 'Buttons';
+import { VARIANT } from 'Theme';
 import TextInput from '../TextInput';
 
 enum POSITION {
@@ -312,6 +314,53 @@ describe('Text input', function () {
     it('positions the label to the left of the text input field', function () {
       const style = window.getComputedStyle(getByText('visibleLabel').parentNode as HTMLElement);
       strictEqual(style['grid-template-areas'], '"l i i" ". e e"');
+    });
+  });
+  context('when ref prop is present', function () {
+    const textInputId = 'semester';
+    beforeEach(function () {
+      changeSpy = spy();
+      const RefExample = () => {
+        const ref = useRef(null);
+        const onButtonClick = () => {
+          ref.current.focus();
+        };
+        return (
+          <>
+            <Button
+              id="testButton"
+              onClick={onButtonClick}
+              variant={VARIANT.INFO}
+            >
+              Focus the input
+            </Button>
+            <TextInput
+              id={textInputId}
+              name="semester"
+              value="Fall"
+              label="visibleLabel"
+              onChange={changeSpy}
+              forwardRef={ref}
+            />
+          </>
+        );
+      };
+      ({ getByText } = render(
+        <RefExample />
+      ));
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('renders the correct default value', function () {
+      const { value } = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(value, 'Fall');
+    });
+    it('shifts the focus to the text input field on button click', function () {
+      const testButton = document.getElementById('testButton') as HTMLButtonElement;
+      testButton.click();
+      strictEqual(document.activeElement.id, textInputId);
     });
   });
 });
