@@ -316,7 +316,7 @@ describe('Text input', function () {
       strictEqual(style['grid-template-areas'], '"l i i" ". e e"');
     });
   });
-  context('when ref prop is present', function () {
+  context('when forwardRef prop is present', function () {
     const textInputId = 'semester';
     beforeEach(function () {
       changeSpy = spy();
@@ -357,7 +357,7 @@ describe('Text input', function () {
       const { value } = document.getElementById('semester') as HTMLInputElement;
       strictEqual(value, 'Fall');
     });
-    it('shifts the focus to the text input field on button click', function () {
+    it('can be used to shift the focus to the text input field on button click', function () {
       const testButton = document.getElementById('testButton') as HTMLButtonElement;
       testButton.click();
       strictEqual(document.activeElement.id, textInputId);
