@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   render,
   fireEvent,
@@ -10,6 +10,8 @@ import {
 import { spy } from 'sinon';
 import { strictEqual, deepStrictEqual } from 'assert';
 import { POSITION } from 'Forms/Label';
+import { Button } from 'Buttons';
+import { VARIANT } from 'Theme';
 import Dropdown from '../Dropdown';
 
 describe('Dropdown', function () {
@@ -496,6 +498,62 @@ describe('Dropdown', function () {
     it('positions the label to the left of the dropdown', function () {
       const style = window.getComputedStyle(getByText('semesters').parentNode as HTMLElement);
       strictEqual(style['grid-template-areas'], '"l i i" ". e e"');
+    });
+  });
+  context('when forwardRef prop is present', function () {
+    const dropdownId = 'semester';
+    beforeEach(function () {
+      changeSpy = spy();
+      const RefExample = () => {
+        const ref = useRef(null);
+        const onButtonClick = () => {
+          ref.current.focus();
+        };
+        return (
+          <>
+            <Button
+              id="testButton"
+              onClick={onButtonClick}
+              variant={VARIANT.INFO}
+            >
+              Focus the input
+            </Button>
+            <Dropdown
+              id={dropdownId}
+              options={options}
+              value="fall"
+              label="semesters"
+              name="semesters"
+              onChange={changeSpy}
+              forwardRef={ref}
+            />
+          </>
+        );
+      };
+      ({ getByText } = render(
+        <RefExample />
+      ));
+    });
+    it('renders', function () {
+      getByText('Spring');
+    });
+    it('calls the change handler when changed', function () {
+      fireEvent.change(document.getElementsByName('semesters')[0]);
+      strictEqual(changeSpy.callCount, 1);
+    });
+    it('contains the expected elements', function () {
+      const dropdownOptionsCount = getAllByRole('option').length;
+      strictEqual(dropdownOptionsCount, options.length);
+    });
+    it('renders the correct default value', function () {
+      const dropdown = document.getElementsByName('semesters')[0] as HTMLSelectElement;
+      const defaultValue = dropdown.value;
+      strictEqual(defaultValue, 'fall');
+    });
+    it('can be used to shift the focus to the dropdown on button click', function () {
+      const testButton = document.getElementById('testButton') as HTMLButtonElement;
+      testButton.click();
+      strictEqual(document.activeElement.id, dropdownId);
     });
   });
 });

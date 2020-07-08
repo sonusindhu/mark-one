@@ -3,6 +3,7 @@ import React, {
   useContext,
   ChangeEventHandler,
   FunctionComponent,
+  Ref,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { BaseTheme } from '../Theme/index';
@@ -36,6 +37,8 @@ export interface TextInputProps {
   isLabelVisible?: boolean;
   /** If true, the input for the text field is required to submit the form */
   isRequired?: boolean;
+  /** Specifies the ref of the text input */
+  forwardRef?: Ref<HTMLInputElement>;
 }
 
 const StyledTextInput = styled.input<TextInputProps>`
@@ -63,6 +66,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
     labelPosition,
     isLabelVisible,
     isRequired,
+    forwardRef,
   } = props;
   const theme: BaseTheme = useContext(ThemeContext);
   return (
@@ -84,6 +88,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
         disabled={disabled}
         label={label}
         aria-required={isRequired}
+        ref={forwardRef}
       />
       {errorMessage
       && (

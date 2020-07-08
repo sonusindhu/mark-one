@@ -363,3 +363,123 @@ Required selection example: The optional `isRequired` property is set, which cau
       }
       <DropdownExample />
 ```
+
+Ref example: The optional `forwardRef` property is set. When the test button is
+clicked, the focus shifts to the dropdown.
+```jsx
+      import { useState, useRef, } from 'react';
+      import { VARIANT } from 'Theme';
+      import { Button } from 'mark-one';
+      const RefExample = () => {
+        const ref = useRef(null);
+        const [value, setValue] = useState('');
+        const onButtonClick = () => {
+          ref.current.focus();
+        }
+        return (
+          <>
+            <Button
+              onClick={onButtonClick}
+              variant={VARIANT.INFO}
+            >
+              Focus the input
+            </Button>
+            <Dropdown
+              options={[
+                {
+                  value: 'all',
+                  label: 'All',
+                },
+                {
+                  value: 'fall',
+                  label: 'Fall',
+                },
+                {
+                  value: 'spring',
+                  label: 'Spring',
+                },
+              ]}
+              value={value}
+              id="semesters"
+              name="semesters"
+              onChange={function(event){
+                setValue(event.target.value);
+                alert('You changed the selection to ' + event.target.value);
+              }}
+              label="Semester"
+              forwardRef={ref}
+            />
+          </>
+        );
+      };
+      <RefExample />
+```
+
+Ref example: The optional `forwardRef` property is set. When the test button is
+clicked, the focus shifts to the dropdown in the modal.
+```jsx
+      import { useState, useRef, } from 'react';
+      import { VARIANT } from 'Theme';
+      import { Button, Modal, ModalBody, } from 'mark-one';
+      const RefExample = () => {
+        const ref = useRef(null);
+        const [value, setValue] = useState('');
+        const [modalVisible, setModalVisible] = useState(false);
+        const onButtonClick = () => {
+          setModalVisible(true);
+          /* Since modal may not have been rendered in DOM, wait for it to be
+          rendered by letting next task of event queue run first */
+          setTimeout(() => ref.current.focus(), 0);
+        }
+        return (
+          <>
+            <Button
+              onClick={onButtonClick}
+              variant={VARIANT.INFO}
+            >
+              Focus the input
+            </Button>
+            <Modal
+              ariaLabelledBy="testButton"
+              closeHandler={() => {setModalVisible(false)}}
+              isVisible={modalVisible}
+            >
+              <ModalBody>
+                <Dropdown
+                  options={[
+                    {
+                      value: 'all',
+                      label: 'All',
+                    },
+                    {
+                      value: 'fall',
+                      label: 'Fall',
+                    },
+                    {
+                      value: 'spring',
+                      label: 'Spring',
+                    },
+                  ]}
+                  value={value}
+                  id="semesters"
+                  name="semesters"
+                  onChange={function(event){
+                    setValue(event.target.value);
+                    alert('You changed the selection to ' + event.target.value);
+                  }}
+                  label="Semester"
+                  forwardRef={ref}
+                />
+                <Button
+                  onClick={() => setModalVisible(false)}
+                  variant={VARIANT.BASE}
+                >
+                  Close Modal
+                </Button>
+              </ModalBody>
+            </Modal>
+          </>
+        );
+      };
+      <RefExample />
+```

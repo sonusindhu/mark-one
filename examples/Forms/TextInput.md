@@ -188,3 +188,93 @@ Required selection example: The optional `isRequired` property is set, which cau
   }
   <TextInputExample />
 ```
+
+Ref example: The optional `forwardRef` property is set. When the test button is
+clicked, the focus shifts from the button itself to the text input field.
+```jsx
+  import { useState, useRef, } from 'react';
+  import { VARIANT } from 'Theme';
+  import { Button } from 'mark-one';
+  const RefExample = () => {
+    const ref = useRef(null);
+    const [value, setValue] = useState('');
+    const onButtonClick = () => {
+      ref.current.focus();
+    }
+    return (
+      <>
+        <Button
+          onClick={onButtonClick}
+          variant={VARIANT.INFO}
+        >
+          Focus the input
+        </Button>
+        <TextInput
+            id="example"
+            value={value}
+            name="example"
+            label="Description:"
+            onChange={(event) => {
+              setValue(event.target.value);
+            }}
+            forwardRef={ref}
+        />
+      </>
+    );
+  };
+  <RefExample />
+```
+Ref example: The optional `forwardRef` property is set. When the button is
+clicked, the focus shifts from the button itself to the text input field inside
+a modal.
+```jsx
+  import { useState, useRef, } from 'react';
+  import { VARIANT } from 'Theme';
+  import { Button, Modal, ModalBody, } from 'mark-one';
+
+  const RefExample = () => {
+    const ref = useRef(null);
+    const [value, setValue] = useState('');
+    const [modalVisible, setModalVisible] = useState(false);
+    const onButtonClick = () => {
+      setModalVisible(true);
+      /* Since modal may not have been rendered in DOM, wait for it to be
+      rendered by letting next task of event queue run first */
+      setTimeout(() => ref.current.focus(), 0);
+    }
+    return (
+      <>
+        <Button
+          onClick={onButtonClick}
+          variant={VARIANT.INFO}
+        >
+          Focus the input
+        </Button>
+        <Modal
+          ariaLabelledBy="testButton"
+          closeHandler={() => {setModalVisible(false)}}
+          isVisible={modalVisible}
+        >
+          <ModalBody>
+            <TextInput
+              value={value}
+              name="example"
+              label="Description:"
+              onChange={(event) => {
+                setValue(event.target.value);
+              }}
+              forwardRef={ref}
+            />
+            <Button
+              onClick={() => setModalVisible(false)}
+              variant={VARIANT.BASE}
+            >
+              Close Modal
+            </Button>
+          </ModalBody>
+        </Modal>
+      </>
+    );
+  };
+  <RefExample />
+```
