@@ -1,5 +1,11 @@
 import React, {
-  ReactElement, FunctionComponent, useContext, useEffect, ReactNode,
+  ReactElement,
+  FunctionComponent,
+  useContext,
+  useEffect,
+  ReactNode,
+  useRef,
+  RefObject,
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { createPortal } from 'react-dom';
@@ -88,6 +94,8 @@ export interface ModalProps {
    * This will be controlled by the parent component, likely via useState
    */
   isVisible: boolean;
+  /** Specifies the ref of the Modal */
+  forwardRef?: RefObject<HTMLDivElement>;
 }
 
 /**
@@ -120,8 +128,12 @@ const Modal: FunctionComponent<ModalProps> = ({
   children,
   closeHandler,
   ariaLabelledBy,
+  forwardRef,
 }): ReactElement => {
   const theme = useContext(ThemeContext);
+
+  // If the ref is not provided, create one since it is used below
+  const finalForwardRef = forwardRef != null ? forwardRef : useRef(null);
 
   /**
    * Watch the isVisible prop, and set the background overflow style when it
@@ -129,12 +141,27 @@ const Modal: FunctionComponent<ModalProps> = ({
    * when the modal unmounts.
    * */
   useEffect(() => {
+    const listener = (event): void => {
+      const modal: HTMLElement = finalForwardRef.current;
+      if (!modal.contains(event.target as Node)) {
+        const focusables = 'button, [href], input, select, textarea,'
+          + ' [tabindex]:not([tabindex="-1"])';
+        const firstFocusable: HTMLElement = modal.querySelector(focusables);
+        if (firstFocusable != null) {
+          firstFocusable.focus();
+        }
+      }
+    };
     if (isVisible) {
       // prevents the background from scrolling
       document.body.style.overflow = 'hidden';
+      // Redirects the focus to the first focusable element in the modal when
+      // modal is visible
+      document.body.addEventListener('focus', listener, true);
     }
     return (): void => {
       document.body.style.overflow = '';
+      document.body.removeEventListener('focus', listener);
     };
   }, [isVisible]);
 
@@ -159,6 +186,7 @@ const Modal: FunctionComponent<ModalProps> = ({
             aria-modal="true"
             onClick={(evt): void => { evt.stopPropagation(); }}
             theme={theme}
+            ref={finalForwardRef}
           >
             { children }
           </StyledModal>

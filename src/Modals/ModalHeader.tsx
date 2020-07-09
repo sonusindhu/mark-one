@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   FunctionComponent,
   useContext,
+  Ref,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,6 +22,10 @@ interface ModalHeaderProps {
    * rendered
    */
   closeButtonHandler?: () => void;
+  /** Specifies the ref of the Modal Header */
+  forwardRef?: Ref<HTMLHeadingElement>;
+  /** Corresponds to HTML attribute tabindex */
+  tabIndex?: number;
 }
 
 const ModalTitle = styled(SectionHeading)`
@@ -46,11 +51,15 @@ declare type ModalHeader = ReactElement<ModalHeaderProps>;
 const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   closeButtonHandler,
   children,
+  forwardRef,
+  tabIndex,
 }): ReactElement<ModalHeaderProps> => {
   const markOneTheme = useContext(ThemeContext);
   return (
     <StyledModalHeader
       theme={markOneTheme}
+      ref={forwardRef}
+      tabIndex={tabIndex}
     >
       <ModalTitle>
         {children}
