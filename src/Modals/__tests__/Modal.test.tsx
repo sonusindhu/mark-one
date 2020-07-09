@@ -1,10 +1,23 @@
-import React, { useState, FunctionComponent } from 'react';
+import React, { useState, FunctionComponent, useRef } from 'react';
 import { strictEqual } from 'assert';
-import { stub, SinonStub } from 'sinon';
-import { render, fireEvent } from 'test-utils';
+import {
+  spy, stub, SinonSpy, SinonStub,
+} from 'sinon';
+import {
+  render,
+  fireEvent,
+  cleanup,
+  waitForElement,
+  BoundFunction,
+  GetByRole,
+} from 'test-utils';
 import Modal from 'Modals/Modal';
+import { Button } from 'Buttons';
+import { VARIANT } from 'Theme';
+import { ModalHeader } from 'Modals';
 
 describe('Modal', function () {
+  let getByRole: BoundFunction<GetByRole>;
   describe('isVisible prop', function () {
     context('When isVisible is false', function () {
       it('Should not render any visible content', function () {
@@ -46,6 +59,51 @@ describe('Modal', function () {
         );
         const modal = getByText('displayed');
         strictEqual(modal.getAttribute('aria-labelledBy'), 'facultyEditButton');
+      });
+    });
+    context('when forwardRef prop is present', function () {
+      beforeEach(function () {
+        const RefExample = () => {
+          const ref = useRef(null);
+          const [modalVisible, setModalVisible] = useState(false);
+          const onButtonClick = () => {
+            setModalVisible(true);
+            setTimeout(() => ref.current.focus(), 0);
+          };
+          return (
+            <>
+              <Button
+                id="testButton"
+                onClick={onButtonClick}
+                variant={VARIANT.INFO}
+              >
+                Focus the Modal Header
+              </Button>
+              <Modal
+                ariaLabelledBy="testButton"
+                closeHandler={() => { setModalVisible(false); }}
+                isVisible={modalVisible}
+              >
+                <ModalHeader
+                  closeButtonHandler={() => { setModalVisible(false); }}
+                  tabIndex={0}
+                  forwardRef={ref}
+                >
+                  Modal Header
+                </ModalHeader>
+              </Modal>
+            </>
+          );
+        };
+        ({ getByRole } = render(
+          <RefExample />
+        ));
+      });
+      it('can be used to shift the focus to the modal header on button click', async function () {
+        const testButton = document.getElementById('testButton') as HTMLButtonElement;
+        testButton.click();
+        await waitForElement(() => getByRole('heading'));
+        strictEqual((document.activeElement as HTMLElement).textContent.includes('Modal Header'), true);
       });
     });
   });
