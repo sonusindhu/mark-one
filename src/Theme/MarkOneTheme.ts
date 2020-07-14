@@ -1,35 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 import { lighten, darken } from 'polished';
 
-type ColorRange = {
-  light?: string;
-  medium?: string;
-  dark?: string;
-  darker?: string;
-  [key: string]: string | ColorRange;
-}
-
-type FontSpec = {
-  family?: string;
-  size?: string;
-  weight?: string;
-  color?: string;
-}
-
-export interface BaseTheme extends DefaultTheme {
-  color?: {
-    background?: ColorRange;
-    text?: ColorRange;
-    area?: { [key: string]: string };
-  };
-  font?: {
-    [key: string]: FontSpec;
-  };
-  shadow?: { [key: string]: string };
-  border?: { [key: string]: string };
-  ws?: { [key: string]: string };
-}
-
 enum FONT {
   SANS = '"Open Sans", sans-serif',
   MONO = '"Roboto Mono", monospace',
@@ -57,7 +28,7 @@ export enum VARIANT {
 const WHITE = '#fefefe';
 const BLACK = '#181818';
 
-const MarkOneTheme: BaseTheme = {
+const MarkOneTheme: DefaultTheme = {
   color: {
     background: {
       light: WHITE,
@@ -70,25 +41,21 @@ const MarkOneTheme: BaseTheme = {
         light: WHITE,
         medium: darken(0.175, WHITE),
         dark: '#93a1ad',
-        text: BLACK,
       },
       info: {
         light: '#95b5df',
         medium: '#4e88c7',
         dark: '#084161',
-        text: WHITE,
       },
       positive: {
         light: '#81e981',
         medium: '#4db848',
         dark: '#178717',
-        text: WHITE,
       },
       negative: {
         light: '#ff8f9c',
         medium: '#ff4040',
         dark: '#ed1b2a',
-        text: WHITE,
       },
     },
     text: {
