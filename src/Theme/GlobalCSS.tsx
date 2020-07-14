@@ -1,11 +1,10 @@
-import { createGlobalStyle } from 'styled-components';
-import { BaseTheme } from '.';
+import { createGlobalStyle, DefaultTheme } from 'styled-components';
 import '@openfonts/open-sans_all';
 import '@openfonts/roboto-mono_all';
 
 interface GlobalCSSProps {
   /** The theme to use within the global stylesheet */
-  theme: BaseTheme;
+  theme: DefaultTheme;
 }
 
 /**
