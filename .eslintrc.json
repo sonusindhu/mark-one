@@ -7,9 +7,10 @@
     "project": "./tsconfig.json"
   },
   "extends": [
-    "plugin:react/recommended",
-    "airbnb",
-    "plugin:@typescript-eslint/recommended"
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "env": {
     "browser": true,
@@ -22,7 +23,10 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/indent": [
+      "error",
+      2
+    ],
     "arrow-parens": [
       "warn",
       "always"
@@ -44,18 +48,22 @@
       "as-needed"
     ],
     "id-length": "off",
-    "import/extensions": ["error", "ignorePackages", {
-      "js": "never",
-      "jsx": "never",
-      "ts": "never",
-      "tsx": "never"
-    }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
     "import/no-extraneous-dependencies": [
       "error",
       {
         "devDependencies": true
       }
-    ], 
+    ],
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
     "jsx-a11y/label-has-associated-control": [
@@ -79,7 +87,7 @@
     ],
     "max-params": [
       "warn",
-      { 
+      {
         "max": 3
       }
     ],
@@ -89,7 +97,8 @@
     "mocha/no-skipped-tests": "warn",
     "no-console": "off",
     "no-plusplus": [
-      "warn", {
+      "warn",
+      {
         "allowForLoopAfterthoughts": true
       }
     ],
@@ -101,8 +110,8 @@
       "error",
       {
         "VariableDeclarator": {
-         "array": false,
-         "object": true
+          "array": false,
+          "object": true
         },
         "AssignmentExpression": {
           "array": false,
@@ -122,7 +131,7 @@
       }
     ],
     "react/forbid-prop-types": [
-      "error", 
+      "error",
       {
         "forbid": [
           "any",
@@ -150,18 +159,7 @@
   "settings": {
     "import/resolver": {
       "node": {},
-      "webpack": {
-        "config": {
-          "resolve": {
-            "extensions": [
-              ".js",
-              ".jsx",
-              ".ts",
-              ".tsx"
-            ]
-          }
-        }
-      }
+      "webpack": {}
     }
   }
 }
