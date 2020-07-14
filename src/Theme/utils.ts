@@ -35,3 +35,21 @@ export const fromTheme = (...levels: string[]) => (
     }
     return null;
   });
+
+/**
+ * A set of enums corresponding to the different colors exposed by the Mark One
+ * Theme.
+ *
+ */
+export enum VARIANT {
+  BASE = 'base',
+  INFO = 'info',
+  POSITIVE = 'positive',
+  PRIMARY = 'positive',
+  NEGATIVE = 'negative',
+  SECONDARY = 'base',
+  DANGER = 'negative',
+  DEFAULT = 'base',
+  LIGHT = 'light',
+  DARK = 'dark',
+}

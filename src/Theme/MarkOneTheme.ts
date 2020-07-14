@@ -12,19 +12,6 @@ enum WEIGHT {
   BOLD = '600',
 }
 
-export enum VARIANT {
-  BASE = 'base',
-  INFO = 'info',
-  POSITIVE = 'positive',
-  PRIMARY = 'positive',
-  NEGATIVE = 'negative',
-  SECONDARY = 'base',
-  DANGER = 'negative',
-  DEFAULT = 'base',
-  LIGHT = 'light',
-  DARK = 'dark',
-}
-
 const WHITE = '#fefefe';
 const BLACK = '#181818';
 
