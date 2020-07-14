@@ -2,7 +2,8 @@ import React, {
   ReactElement, ReactNode, FunctionComponent,
 } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { GlobalCSS, MarkOneTheme } from '.';
+import GlobalCSS from './GlobalCSS';
+import MarkOneTheme from './MarkOneTheme';
 
 export interface ThemeWrapperProps {
   /** The content of the app that should receive the theme */
