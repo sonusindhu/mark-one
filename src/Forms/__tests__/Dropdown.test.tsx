@@ -9,9 +9,9 @@ import {
 } from 'test-utils';
 import { spy, SinonSpy } from 'sinon';
 import { strictEqual, deepStrictEqual } from 'assert';
-import { POSITION } from 'Forms/Label';
-import { Button } from 'Buttons';
-import { VARIANT } from 'Theme';
+import { POSITION } from '../Label';
+import { Button } from '../../Buttons';
+import { VARIANT } from '../../Theme';
 import Dropdown from '../Dropdown';
 
 describe('Dropdown', function () {
