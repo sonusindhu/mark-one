@@ -27,7 +27,7 @@ describe('TabListItem Component', function () {
       const tabItem = getByText('Tab 2');
       const style = window.getComputedStyle(tabItem);
       const [red, green, blue] = convert.hex.rgb(
-        MarkOneTheme.color.background.light as string
+        MarkOneTheme.color.background.light
       );
       const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
       strictEqual(style.backgroundColor, convertExpectedToRGB);
