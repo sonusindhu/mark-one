@@ -2,7 +2,7 @@ import {
   ReactElement,
 } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { TabListItem } from './TabListItem';
+import TabListItem from './TabListItem';
 
 export interface TabListProps {
   /** Our TabListItem functional component serves as the children for TabList  */
@@ -24,6 +24,6 @@ const TabList = styled.ul`
   list-style-type: none;
 `;
 
-export type TabList = ReactElement<TabListProps>;
+declare type TabList = ReactElement<TabListProps>;
 
 export default withTheme(TabList);

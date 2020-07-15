@@ -49,6 +49,6 @@ TabListItemBox.defaultProps = {
   isActive: false,
 };
 
-export type TabListItem = ReactElement<TabListItemProps>;
+declare type TabListItem = ReactElement<TabListItemProps>;
 
 export default TabListItem;
