@@ -6,8 +6,7 @@ import React, {
   MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { VARIANT } from '../Theme/MarkOneTheme';
-import { BaseTheme } from '../Theme';
+import { VARIANT } from '../Theme';
 
 export interface ButtonProps {
   /** The id of the button */
@@ -18,8 +17,6 @@ export interface ButtonProps {
   onClick: MouseEventHandler;
   /** If true, button won't fire */
   disabled?: boolean;
-  /** Allows you to pass in style properties for the element */
-  theme?: object;
   /** Allows you to pass in a variant property from the VARIANT enum */
   variant: VARIANT;
 }
@@ -51,7 +48,7 @@ const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
     disabled,
     variant,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <StyledButton
       id={id}

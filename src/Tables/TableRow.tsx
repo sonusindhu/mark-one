@@ -1,8 +1,7 @@
 import {
   ReactElement, ForwardRefExoticComponent,
 } from 'react';
-import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import styled, { withTheme, DefaultTheme } from 'styled-components';
 import TableRowHeadingCell from './TableRowHeadingCell';
 import TableCell from './TableCell';
 import TableHeadingCell from './TableHeadingCell';
@@ -26,7 +25,7 @@ export interface TableRowProps {
    */
   noHighlight?: boolean;
   /** The application theme */
-  theme?: BaseTheme;
+  theme?: DefaultTheme;
 }
 
 const StyledTableRow = styled.tr<TableRowProps>`

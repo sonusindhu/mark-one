@@ -6,7 +6,6 @@ import React, {
   Ref,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
 import ValidationErrorMessage from './ValidationErrorMessage';
 import Label, { POSITION } from './Label';
 
@@ -67,7 +66,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
     isLabelVisible,
     forwardRef,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <Label
       htmlFor={id}

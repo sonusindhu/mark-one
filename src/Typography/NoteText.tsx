@@ -4,7 +4,6 @@ import React, {
   useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
 
 export interface NoteTextProps {
   /** Text to be displayed */
@@ -22,7 +21,7 @@ const NoteText: FunctionComponent<NoteTextProps> = (props): ReactElement => {
   const {
     children,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <StyledNoteText
       theme={theme}

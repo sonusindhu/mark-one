@@ -1,6 +1,5 @@
 import { ReactElement, ReactNode } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from '../Theme';
 
 export interface HeaderProps {
   /**
@@ -15,8 +14,6 @@ export interface HeaderProps {
    * @default space-between
    * */
   justify?: string;
-  /** the app theme */
-  theme: BaseTheme;
 }
 
 /**

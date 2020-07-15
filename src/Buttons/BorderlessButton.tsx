@@ -3,8 +3,7 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import { VARIANT } from '../Theme/MarkOneTheme';
-import { BaseTheme } from '../Theme';
+import { VARIANT } from '../Theme';
 
 export interface BorderlessButtonProps {
   /** The id of the button */
@@ -15,8 +14,6 @@ export interface BorderlessButtonProps {
   onClick: MouseEventHandler;
   /** If true, button won't fire */
   disabled?: boolean;
-  /** Allows you to pass in style properties for the element */
-  theme?: object;
   /** Allows you to pass in a variant property from the VARIANT enum */
   variant: VARIANT;
 }
@@ -48,7 +45,7 @@ ReactElement => {
     disabled,
     variant,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <StyledBorderlessButton
       id={id}

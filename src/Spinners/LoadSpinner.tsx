@@ -4,7 +4,6 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-import { BaseTheme } from 'Theme';
 import LoadSpinnerText, { SPINNER_TEXT } from './LoadSpinnerText';
 
 export interface LoadSpinnerProps {
@@ -32,7 +31,7 @@ ReactElement => {
     children,
     textColor,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
 
   return (
     <StyledLoadSpinner role="alert" theme={theme}>

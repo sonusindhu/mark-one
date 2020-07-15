@@ -1,6 +1,5 @@
 import { ReactElement, ForwardRefExoticComponent } from 'react';
-import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import styled, { withTheme, DefaultTheme } from 'styled-components';
 import TableRow from './TableRow';
 
 export interface TableBodyProps {
@@ -11,7 +10,7 @@ export interface TableBodyProps {
    */
   isScrollable?: boolean;
   /** The application theme */
-  theme?: BaseTheme;
+  theme?: DefaultTheme;
 }
 
 const StyledTableBody = styled.tbody<TableBodyProps>`

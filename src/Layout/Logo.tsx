@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from '../Theme';
 
 export interface LogoProps {
   /**
@@ -17,8 +16,6 @@ export interface LogoProps {
   href?: string;
   /** the url for the image to be displayed */
   image?: string;
-  /** The application theme */
-  theme: BaseTheme;
   /**
    * The width at which the image should be displayed
    * @default 200px

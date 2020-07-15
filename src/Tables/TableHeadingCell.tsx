@@ -4,8 +4,7 @@ import {
   ReactElement,
   ForwardRefExoticComponent,
 } from 'react';
-import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import styled, { withTheme, DefaultTheme } from 'styled-components';
 
 export interface TableHeadingCellProps {
   /** Specifies the background color of the table cell */
@@ -21,7 +20,7 @@ export interface TableHeadingCellProps {
   /** Specifies the group of cells that the table heading refers to */
   scope?: 'col' | 'colgroup' | 'auto';
   /** The application theme */
-  theme?: BaseTheme;
+  theme?: DefaultTheme;
 }
 
 const StyledTableHeadingCell = styled.th<TableHeadingCellProps>`

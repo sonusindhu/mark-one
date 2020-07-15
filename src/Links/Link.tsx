@@ -8,7 +8,6 @@ import {
   Link as ReactLink,
   LinkProps,
 } from 'react-router-dom';
-import { BaseTheme } from '../Theme';
 
 const StyledLink = styled(ReactLink)`
   text-decoration: none;
@@ -32,7 +31,7 @@ FunctionComponent<LinkProps> = (props): ReactElement => {
     children,
     to,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <StyledLink
       to={to}

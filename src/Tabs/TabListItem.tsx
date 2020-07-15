@@ -2,7 +2,6 @@ import React, {
   ReactElement, ReactNode, FunctionComponent, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
 
 export interface TabListItemProps {
   /** Text or components to be displayed in the TabList item */
@@ -36,7 +35,7 @@ FunctionComponent<TabListItemProps> = (props): ReactElement => {
     children,
     isActive,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <TabListItemWrapper>
       <TabListItemBox theme={theme} isActive={isActive}>

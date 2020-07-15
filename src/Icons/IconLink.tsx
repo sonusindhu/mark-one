@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import { BaseTheme } from '../Theme';
 
 export interface IconLinkProps {
   /** Function to call on click event */
@@ -14,8 +13,6 @@ export interface IconLinkProps {
   title: string;
   /** Specifies the alt text for screen readers */
   alt: string;
-  /** Allows you to pass in style properties for the element */
-  theme?: object;
   /** Specifies the Font Awesome Icon(s) */
   children: ReactElement<FontAwesomeIconProps>;
 }
@@ -38,7 +35,7 @@ const IconLink: FunctionComponent<IconLinkProps> = (props): ReactElement => {
     alt,
     children,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <StyledIconLink
       onClick={clickHandler}

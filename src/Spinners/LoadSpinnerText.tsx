@@ -2,7 +2,6 @@ import React, {
   FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
 
 export enum SPINNER_TEXT {
   LIGHT = 'light',
@@ -31,7 +30,7 @@ const StyledLoadSpinnerText = styled.div`
 const LoadSpinnerText: FunctionComponent<LoadSpinnerTextProps> = (props):
 ReactElement => {
   const { children, color } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <StyledLoadSpinnerText theme={theme} color={color}>
       { children }

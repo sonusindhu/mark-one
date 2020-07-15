@@ -1,12 +1,11 @@
 import { ReactElement, ReactNode } from 'react';
-import styled from 'styled-components';
-import { BaseTheme } from 'mark-one';
+import styled, { DefaultTheme } from 'styled-components';
 
 export interface TableCellListItemProps {
   /**
    * The application theme
    */
-  theme: BaseTheme;
+  theme: DefaultTheme;
   /**
    * The contents of the list item
    */

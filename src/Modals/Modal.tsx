@@ -4,7 +4,6 @@ import React, {
 import { CSSTransition } from 'react-transition-group';
 import { createPortal } from 'react-dom';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
 
 const FADE_TIME = 250;
 
@@ -109,7 +108,7 @@ export interface ModalProps {
  * the children.
  */
 
-const StyledModal = styled.div<{theme: BaseTheme}>`
+const StyledModal = styled.div`
   background-color: ${({ theme }): string => theme.color.background.light};
   border: ${({ theme }): string => theme.border.light};
   display: flex;

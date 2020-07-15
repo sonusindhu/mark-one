@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import { BaseTheme } from 'mark-one';
+import styled, { DefaultTheme } from 'styled-components';
 import TableCellListItem from './TableCellListItem';
 
 export interface TableCellListProps {
@@ -10,7 +9,7 @@ export interface TableCellListProps {
   /**
    * The application theme
    */
-  theme: BaseTheme;
+  theme: DefaultTheme;
 }
 
 const TableCellList = styled.ol<TableCellListProps>`

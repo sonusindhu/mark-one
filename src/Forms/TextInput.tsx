@@ -6,7 +6,6 @@ import React, {
   Ref,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme/index';
 import ValidationErrorMessage from './ValidationErrorMessage';
 import Label, { POSITION } from './Label';
 
@@ -68,7 +67,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
     isRequired,
     forwardRef,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <Label
       htmlFor={id}

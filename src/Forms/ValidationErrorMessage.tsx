@@ -2,7 +2,6 @@ import React, {
   ReactNode, FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
 
 export interface ValidationErrorMessageProps {
   /** Text or components to be displayed */
@@ -22,7 +21,7 @@ FunctionComponent<ValidationErrorMessageProps> = (props): ReactElement => {
   const {
     children,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <StyledValidationErrorMessage
       theme={theme}

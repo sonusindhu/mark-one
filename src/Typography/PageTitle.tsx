@@ -5,7 +5,6 @@ import React, {
   ReactNode,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
 
 export interface PageHeadingProps {
   /** Page heading text */
@@ -29,7 +28,7 @@ ReactElement => {
   const {
     children,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <Heading
       theme={theme}

@@ -1,6 +1,5 @@
-import styled, { withTheme } from 'styled-components';
+import styled, { withTheme, DefaultTheme } from 'styled-components';
 import { ReactElement, ForwardRefExoticComponent } from 'react';
-import { BaseTheme } from '../Theme';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 
@@ -12,7 +11,7 @@ export interface TableProps {
   children: (TableHead | TableBody | HTMLTableColElement)
   | (TableHead | TableBody | HTMLTableColElement)[];
   /** The application theme */
-  theme?: BaseTheme;
+  theme?: DefaultTheme;
 }
 
 const StyledTable = styled.table`

@@ -1,8 +1,7 @@
 import {
   ReactNode, ReactElement, ForwardRefExoticComponent,
 } from 'react';
-import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import styled, { withTheme, DefaultTheme } from 'styled-components';
 import { ALIGN, VALIGN } from './TableCell';
 
 export interface TableRowHeadingCellProps {
@@ -21,7 +20,7 @@ export interface TableRowHeadingCellProps {
   /** Specifies the group of cells that the row heading refers to */
   scope: 'row' | 'rowgroup' | 'auto';
   /** The application theme */
-  theme?: BaseTheme;
+  theme?: DefaultTheme;
 }
 
 const StyledTableRowHeadingCell = styled.th<TableRowHeadingCellProps>`

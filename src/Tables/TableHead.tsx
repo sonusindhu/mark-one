@@ -1,13 +1,12 @@
-import styled, { withTheme } from 'styled-components';
+import styled, { DefaultTheme, withTheme } from 'styled-components';
 import { ReactElement, ForwardRefExoticComponent } from 'react';
-import { BaseTheme } from '../Theme';
 import TableRow from './TableRow';
 
 export interface TableHeadProps {
   /** Our TableRow functional component serves as the children for TableHead */
   children: TableRow | TableRow[];
   /** The application theme */
-  theme?: BaseTheme;
+  theme?: DefaultTheme;
 }
 
 const StyledTableHead = styled.thead`

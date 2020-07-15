@@ -1,6 +1,5 @@
 import { ReactNode, ReactElement, ForwardRefExoticComponent } from 'react';
-import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import styled, { withTheme, DefaultTheme } from 'styled-components';
 
 /** Represents the possible values for TableCell's text-align property */
 export enum ALIGN {
@@ -32,7 +31,7 @@ export interface TableCellProps {
   /** Text or components to be displayed in the cell */
   children: ReactNode;
   /** The application theme */
-  theme?: BaseTheme;
+  theme?: DefaultTheme;
 }
 
 const StyledCell = styled.td<TableCellProps>`

@@ -4,7 +4,6 @@ import React, {
   FunctionComponent,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme/index';
 
 /** An enum that represents the possible values for the label's positioning */
 export enum POSITION {
@@ -89,7 +88,7 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
     children,
     isRequired,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <StyledLabel
       htmlFor={htmlFor}
