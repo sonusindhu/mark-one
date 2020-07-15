@@ -257,8 +257,8 @@ describe('Text input', function () {
       const { value } = document.getElementById('semester') as HTMLInputElement;
       strictEqual(value, 'Fall');
     });
-    it('does not call the change handler when user tries to change the input', function () {
-      userEvent.type(document.getElementById('semester'), 'Spring');
+    it('does not call the change handler when user tries to change the input', async function () {
+      await userEvent.type(document.getElementById('semester'), 'Spring');
       strictEqual(changeSpy.callCount, 0);
     });
   });
