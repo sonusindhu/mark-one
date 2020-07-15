@@ -27,7 +27,6 @@ FunctionComponent<ValidationErrorMessageProps> = (props): ReactElement => {
       theme={theme}
       role="alert"
       aria-live="assertive"
-      aria-invalid="true"
     >
       {children}
     </StyledValidationErrorMessage>
