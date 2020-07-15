@@ -156,7 +156,7 @@ const Modal: FunctionComponent<ModalProps> = ({
       }
       return cleanup;
     }
-  }, [isVisible]);
+  }, [isVisible, onClose, onOpen]);
 
   return createPortal((
     <CSSTransition
