@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  render, fireEvent, BoundFunction, GetByText,
+  render, fireEvent, BoundFunction, GetByRole,
 } from 'test-utils';
 import { spy, SinonSpy } from 'sinon';
 import { strictEqual } from 'assert';
@@ -9,13 +9,13 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import IconLink from '../IconLink';
 
 describe('Icon Link', function () {
-  let getByTestId: BoundFunction<GetByText>;
+  let getByRole: BoundFunction<GetByRole>;
   let clickSpy: SinonSpy;
   beforeEach(function () {
     clickSpy = spy();
-    ({ getByTestId } = render(
+    ({ getByRole } = render(
       <IconLink title="Edit account information" alt="Edit account information" clickHandler={clickSpy}>
-        <FontAwesomeIcon icon={faEdit} data-testid="test-icon" />
+        <FontAwesomeIcon icon={faEdit} />
       </IconLink>
     ));
   });
@@ -23,10 +23,10 @@ describe('Icon Link', function () {
     clickSpy.resetHistory();
   });
   it('renders', function () {
-    getByTestId('test-icon');
+    getByRole('link');
   });
   it('calls the click handler when clicked', function () {
-    fireEvent.click(getByTestId('test-icon'));
+    fireEvent.click(getByRole('link'));
     strictEqual(clickSpy.callCount, 1);
   });
   it('renders the correct icon', function () {

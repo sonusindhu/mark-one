@@ -43,6 +43,7 @@ const IconLink: FunctionComponent<IconLinkProps> = (props): ReactElement => {
       title={title}
       theme={theme}
       aria-label={alt}
+      role="link"
     >
       { children }
     </StyledIconLink>
