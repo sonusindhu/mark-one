@@ -2,6 +2,7 @@ import React, {
   FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { fromTheme } from 'Theme';
 
 export enum SPINNER_TEXT {
   LIGHT = 'light',
@@ -17,11 +18,13 @@ export interface LoadSpinnerTextProps {
 
 const StyledLoadSpinnerText = styled.div`
   background: transparent;
-  color: ${({ color, theme }): string => theme.color.text[color]};
-  font-family: ${({ theme }): string => (theme.font.heading.family)};
-  font-weight: ${({ theme }): string => (theme.font.heading.weight)};
-  font-size: ${({ theme }): string => (theme.font.heading.size)};
-  margin-top: ${({ theme }): string => (theme.ws.large)};
+  color: ${({ color, theme }) => (
+    fromTheme('color', 'text', color)({ theme })
+  )};
+  font-family: ${fromTheme('font', 'heading', 'family')};
+  font-weight: ${fromTheme('font', 'heading', 'weight')};
+  font-size: ${fromTheme('font', 'heading', 'size')};
+  margin-top: ${fromTheme('ws', 'large')};
 `;
 
 /**
