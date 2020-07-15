@@ -68,7 +68,6 @@ const ModalBackdrop = styled.div`
   }
 `;
 
-
 export interface ModalProps {
   /**
    * The content to be displayed within the modal

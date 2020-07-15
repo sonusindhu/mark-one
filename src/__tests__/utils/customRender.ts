@@ -18,6 +18,5 @@ const customRender = (
   options?: RenderOptions
 ): RenderResult => render(ui, { wrapper: MarkOneWrapper, ...options });
 
-
 export * from '@testing-library/react';
 export { customRender as render };
