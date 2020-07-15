@@ -321,9 +321,11 @@ describe('Text input', function () {
     beforeEach(function () {
       changeSpy = spy();
       const RefExample = () => {
-        const ref = useRef(null);
+        const ref = useRef<HTMLInputElement>(null);
         const onButtonClick = () => {
-          ref.current.focus();
+          if (ref.current) {
+            ref.current.focus();
+          }
         };
         return (
           <>
