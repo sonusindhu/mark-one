@@ -1,11 +1,13 @@
 import React from 'react';
-import { render } from 'test-utils';
+import {
+  render, BoundFunction, AllByRole,
+} from 'test-utils';
 import { strictEqual } from 'assert';
 import TabList from '../TabList';
 import TabListItem from '../TabListItem';
 
 describe('TabList Component', function () {
-  let getAllByRole;
+  let getAllByRole: BoundFunction<AllByRole>;
   beforeEach(function () {
     ({ getAllByRole } = render(
       <TabList>

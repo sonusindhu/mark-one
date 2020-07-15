@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'test-utils';
+import { render, GetByText, BoundFunction } from 'test-utils';
 import convert from 'color-convert';
 import { strictEqual } from 'assert';
 import TabList from '../TabList';
@@ -7,7 +7,7 @@ import TabListItem from '../TabListItem';
 import MarkOneTheme from '../../Theme/MarkOneTheme';
 
 describe('TabListItem Component', function () {
-  let getByText;
+  let getByText: BoundFunction<GetByText>;
   beforeEach(function () {
     ({ getByText } = render(
       <TabList>

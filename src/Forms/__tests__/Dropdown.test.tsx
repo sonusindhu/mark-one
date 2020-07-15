@@ -7,7 +7,7 @@ import {
   GetByText,
   QueryByText,
 } from 'test-utils';
-import { spy } from 'sinon';
+import { spy, SinonSpy } from 'sinon';
 import { strictEqual, deepStrictEqual } from 'assert';
 import { POSITION } from 'Forms/Label';
 import { Button } from 'Buttons';
@@ -18,7 +18,7 @@ describe('Dropdown', function () {
   let getByText: BoundFunction<GetByText>;
   let getAllByRole: BoundFunction<AllByRole>;
   let queryByText: BoundFunction<QueryByText>;
-  let changeSpy;
+  let changeSpy: SinonSpy;
   const options = [
     {
       value: 'all',

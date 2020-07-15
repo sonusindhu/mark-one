@@ -7,7 +7,7 @@ import {
   GetByText,
   QueryByText,
 } from 'test-utils';
-import { spy } from 'sinon';
+import { spy, SinonSpy } from 'sinon';
 import { strictEqual } from 'assert';
 import userEvent from '@testing-library/user-event';
 import { Button } from 'Buttons';
@@ -22,7 +22,7 @@ enum POSITION {
 describe('Text input', function () {
   let getByText: BoundFunction<GetByText>;
   let queryByText: BoundFunction<QueryByText>;
-  let changeSpy;
+  let changeSpy: SinonSpy;
   context('when errorMessage prop is present', function () {
     beforeEach(function () {
       changeSpy = spy();
