@@ -7,7 +7,7 @@ import { ReactElement } from 'react';
  * blank space to use in complicated, multi-layer headers.
  */
 
-const TableHeadingSpacer: StyledComponent<'td', {}> = styled.td`
+const TableHeadingSpacer = styled.td`
   background-color: none;
   border: none;
   color: transparent;
@@ -16,6 +16,6 @@ const TableHeadingSpacer: StyledComponent<'td', {}> = styled.td`
   }
 `;
 
-declare type TableHeadingSpacer = ReactElement<{}>;
+declare type TableHeadingSpacer = ReactElement<unknown>;
 
 export default TableHeadingSpacer;
