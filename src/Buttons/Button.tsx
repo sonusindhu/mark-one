@@ -6,7 +6,7 @@ import React, {
   MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { VARIANT } from '../Theme';
+import { VARIANT, fromTheme } from '../Theme';
 
 export interface ButtonProps {
   /** The id of the button */
@@ -22,17 +22,25 @@ export interface ButtonProps {
 }
 
 const StyledButton = styled.button<ButtonProps>`
-  background: ${({ theme, variant }): string => (theme.color.background[variant].medium)};
+  background: ${({ theme, variant }) => (
+    fromTheme('color', 'background', variant, 'medium')({ theme })
+  )};
   border: none;
-  color: ${({ theme, variant }): string => (theme.color.background[variant].text)};
+  color: ${({ theme, variant }) => (
+    fromTheme('color', 'text', variant === VARIANT.BASE ? 'dark' : 'light')({ theme })
+  )};
   cursor: pointer;
-  font-size: ${({ theme }): string => (theme.font.body.size)};
-  font-weight: ${({ theme }): string => (theme.font.body.weight)};
-  padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.small)};
+  font-size: ${fromTheme('font', 'body', 'size')};
+  font-weight: ${fromTheme('font', 'body', 'weight')};
+  padding: ${({ theme }) => (`${theme.ws.xsmall} ${theme.ws.small}`)};
   &:hover {
-    background: ${({ theme, variant }): string => (theme.color.background[variant].dark)};
+    background: ${({ theme, variant }) => (
+    fromTheme('color', 'background', variant, 'dark')({ theme })
+  )};
     border: none;
-    color: ${({ theme, variant }): string => (theme.color.background[variant].text)};
+    color: ${({ theme, variant }) => (
+    fromTheme('color', 'text', variant === VARIANT.BASE ? 'dark' : 'light')({ theme })
+  )};
   }
 `;
 

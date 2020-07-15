@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import { VARIANT } from '../Theme';
+import { VARIANT, fromTheme } from '../Theme';
 
 export interface BorderlessButtonProps {
   /** The id of the button */
@@ -21,14 +21,18 @@ export interface BorderlessButtonProps {
 const StyledBorderlessButton = styled.button<BorderlessButtonProps>`
   background: transparent;
   border: none;
-  color: ${({ theme, variant }): string => (theme.color.background[variant].medium)};
+  color: ${({ variant, theme }) => (
+    fromTheme('color', 'background', variant, 'medium')({ theme })
+  )};
   cursor: pointer;
-  font-size: ${({ theme }): string => (theme.font.body.size)};
-  font-weight: ${({ theme }): string => (theme.font.body.weight)};
-  padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.small)};
+  font-size: ${fromTheme('font', 'body', 'size')};
+  font-weight: ${fromTheme('font', 'body', 'weight')};
+  padding: ${({ theme }) => (`${theme.ws.xsmall} ${theme.ws.small}`)};
   &:hover {
     background: transparent;
-    color: ${({ theme, variant }): string => (theme.color.background[variant].dark)};
+  color: ${({ variant, theme }) => (
+    fromTheme('color', 'background', variant, 'dark')({ theme })
+  )};
   }
 `;
 
