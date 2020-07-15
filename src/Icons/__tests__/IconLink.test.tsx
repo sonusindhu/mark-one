@@ -30,7 +30,8 @@ describe('Icon Link', function () {
     strictEqual(clickSpy.callCount, 1);
   });
   it('renders the correct icon', function () {
-    const iconName = getByTestId('test-icon').className.baseVal.split(' ')[1];
-    strictEqual(iconName, 'fa-edit');
+    const iconName = getByRole('img', { hidden: true });
+    const classes = Array.from(iconName.classList);
+    strictEqual(classes.includes('fa-edit'), true);
   });
 });
