@@ -88,16 +88,6 @@ export interface ModalProps {
    * This will be controlled by the parent component, likely via useState
    */
   isVisible: boolean;
-  /**
-   * Handler to be invoked when the modal closes
-   * e.g. to clear data entered into a form
-   */
-  onClose?: () => void;
-  /**
-   * Handler to be invoked when the modal opens
-   * e.g. initialize values in a form
-   */
-  onOpen?: () => void;
 }
 
 /**
@@ -127,8 +117,6 @@ const StyledModal = styled.div`
 declare type Modal = ReactElement<ModalProps>;
 const Modal: FunctionComponent<ModalProps> = ({
   isVisible,
-  onOpen,
-  onClose,
   children,
   closeHandler,
   ariaLabelledBy,
@@ -136,27 +124,19 @@ const Modal: FunctionComponent<ModalProps> = ({
   const theme = useContext(ThemeContext);
 
   /**
-   * Watch the isVisible props, and call the onOpen handler when it becomes
-   * true. We're returning the onClose handler so it gets called during the
-   * cleanup phase
-   */
+   * Watch the isVisible prop, and set the background overflow style when it
+   * is opened. We're returning a cleanup function that will reset the style
+   * when the modal unmounts.
+   * */
   useEffect(() => {
-    // restore everything to normal and call the onClose handler, if defined
-    const cleanup = (): void => {
-      document.body.style.overflow = '';
-      if (onClose !== undefined) {
-        onClose();
-      }
-    };
     if (isVisible) {
       // prevents the background from scrolling
       document.body.style.overflow = 'hidden';
-      if (onOpen !== undefined) {
-        onOpen();
-      }
-      return cleanup;
     }
-  }, [isVisible, onClose, onOpen]);
+    return (): void => {
+      document.body.style.overflow = '';
+    };
+  }, [isVisible]);
 
   return createPortal((
     <CSSTransition

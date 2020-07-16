@@ -51,14 +51,10 @@ describe('Modal', function () {
       });
     });
   });
-  describe('open/close handlers', function () {
-    let onOpenStub: SinonSpy;
-    let onCloseStub: SinonSpy;
+  describe('closeHandler', function () {
     let closeHandlerStub: SinonStub;
     let ModalOpener: FunctionComponent;
     beforeEach(function () {
-      onOpenStub = spy();
-      onCloseStub = spy();
       closeHandlerStub = stub();
       ModalOpener = () => {
         const [modalOpen, setModalOpen] = useState(false);
@@ -73,8 +69,6 @@ describe('Modal', function () {
             <Modal
               ariaLabelledBy="facultyEditButton"
               isVisible={modalOpen}
-              onOpen={onOpenStub}
-              onClose={onCloseStub}
               closeHandler={closeHandlerStub}
             >
               Contents
@@ -82,49 +76,6 @@ describe('Modal', function () {
           </div>
         );
       };
-    });
-    context('When the modal changes from closed to open', function () {
-      beforeEach(function () {
-        const { getByText } = render(<ModalOpener />);
-        fireEvent.click(getByText('Toggle Modal'));
-      });
-      it('Should call the onOpen handler', function () {
-        strictEqual(onOpenStub.callCount, 1);
-      });
-      it('Should not call the onClose handler', function () {
-        strictEqual(onCloseStub.callCount, 0);
-      });
-    });
-    context('When the modal is open and is unmounted', function () {
-      beforeEach(function () {
-        const { getByText } = render(<ModalOpener />);
-        fireEvent.click(getByText('Toggle Modal'));
-        onOpenStub.resetHistory();
-        onCloseStub.resetHistory();
-        cleanup();
-      });
-      it('Should not call the onOpen handler', function () {
-        strictEqual(onOpenStub.callCount, 0);
-      });
-      it('Should call the onClose handler', function () {
-        strictEqual(onCloseStub.callCount, 1);
-      });
-    });
-    context('When the modal changes from open to closed', function () {
-      beforeEach(function () {
-        const { getByText } = render(<ModalOpener />);
-        const toggleButton = getByText('Toggle Modal');
-        fireEvent.click(toggleButton);
-        onOpenStub.resetHistory();
-        onCloseStub.resetHistory();
-        fireEvent.click(toggleButton);
-      });
-      it('Should not call the onOpen handler', function () {
-        strictEqual(onOpenStub.callCount, 0);
-      });
-      it('Should call the onClose handler', function () {
-        strictEqual(onCloseStub.callCount, 1);
-      });
     });
     context('When the backdrop is clicked', function () {
       beforeEach(function () {
