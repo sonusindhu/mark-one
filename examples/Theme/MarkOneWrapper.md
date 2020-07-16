@@ -4,6 +4,7 @@
 
 ```jsx
 import styled from 'styled-components';
+
 const BackgroundDiv = styled.div`
   background: ${({theme, value, modifier}) => (
     modifier
@@ -16,15 +17,16 @@ const BackgroundDiv = styled.div`
 `;
 const getFontColor = (shade, meaning) => {
   if (
-    shade === 'accent' 
-    || (meaning === 'info' 
+    shade === 'accent'
+    || (meaning === 'info'
       && shade === 'medium')
   ) {
     return 'light';
   }
   return /dark/.test(shade) ? 'light' : 'dark';
 }
-<div>
+
+<>
   {[
      'light',
      'subtle',
@@ -51,18 +53,20 @@ const getFontColor = (shade, meaning) => {
       </BackgroundDiv>
     ))
   ))}
-</div>
+</>
 ```
 
 ### Typography
 
 ```jsx
 import styled from 'styled-components';
+
 const TextBlock = styled.span`
   font-family: ${({theme, type}) => theme.font[type].family};
   font-weight: ${({theme, type}) => theme.font[type].weight};
   font-size: ${({theme, type}) => theme.font[type].size}
 `;
+
 <>
   <div>
     <TextBlock type="title">This is the title</TextBlock>
@@ -82,11 +86,11 @@ const TextBlock = styled.span`
 </>
 ```
 
-
 ### Borders and Shadows
 
 ```jsx
 import styled from 'styled-components';
+
 const BorderDiv = styled.div`
   background: ${({theme}) => (theme.color.background.subtle)
   };

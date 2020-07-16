@@ -6,7 +6,7 @@ import { Button, Modal } from 'mark-one';
 
 const [modalVisible, setModalVisible] = useState(false);
 
-<div>
+<>
   <Button
     id="testButton"
     onClick={() => {setModalVisible(true)}}
@@ -25,6 +25,6 @@ const [modalVisible, setModalVisible] = useState(false);
       </Button>
     </ModalBody>
   </Modal>
-</div>
+</>
 ```
 

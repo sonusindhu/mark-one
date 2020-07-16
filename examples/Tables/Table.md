@@ -1,4 +1,5 @@
 The following is an example of the `Table` component with the `alignment` prop set to the enum value `ALIGN.LEFT.`
+
 ```jsx
 import {
   ALIGN,
@@ -9,6 +10,7 @@ import {
   TableHeadingCell,
   TableHead,
 } from 'mark-one';
+
 <Table>
   <TableHead>
     <TableRow>
@@ -43,6 +45,7 @@ import {
 ```
 
 The following is an example of the `Table` component with the `alignment` prop set to the enum value `ALIGN.CENTER.`
+
 ```jsx
 import {
   ALIGN,
@@ -53,6 +56,7 @@ import {
   TableHeadingCell,
   TableHead, 
 } from 'mark-one';
+
 <Table>
   <TableHead>
     <TableRow>
@@ -87,6 +91,7 @@ import {
 ```
 
 The following is an example of the `Table` component with the `alignment` prop set to the enum value `ALIGN.RIGHT.`
+
 ```jsx
 import {
   ALIGN,
@@ -97,6 +102,7 @@ import {
   TableHeadingCell,
   TableHead,
 } from 'mark-one';
+
 <Table>
   <TableHead>
     <TableRow>
@@ -131,6 +137,7 @@ import {
 ```
 
 The following is an example of the `Table` component in which the `alignment` is not set. In this case, the `alignment` property defaults to `ALIGN.LEFT` per our default props. This example also shows the `backgroundColor` property set to the value `#ffdd2e` for a `TableCell.`
+
 ```jsx
 import {
   ALIGN,
@@ -141,6 +148,7 @@ import {
   TableHeadingCell,
   TableHead,
 } from 'mark-one';
+
 <Table>
   <TableHead>
     <TableRow>
@@ -295,3 +303,4 @@ import {
   </TableBody>
 </Table>
 ```
+

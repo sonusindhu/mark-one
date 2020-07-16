@@ -13,7 +13,7 @@ import {
 
 const [modalVisible, setModalVisible] = useState(false);
 
-<div>
+<>
   <Button
     id="testButton"
     onClick={() => {setModalVisible(true)}}
@@ -37,7 +37,7 @@ const [modalVisible, setModalVisible] = useState(false);
       </Button>
     </ModalFooter>
   </Modal>
-</div>
+</>
 ```
 
 ### With the `closeButtonHandler`
@@ -52,7 +52,7 @@ import {
 
 const [modalVisible, setModalVisible] = useState(false);
 
-<div>
+<>
   <Button
     id="testButton"
     onClick={() => {setModalVisible(true)}}
@@ -75,5 +75,5 @@ const [modalVisible, setModalVisible] = useState(false);
       </div>
     </ModalBody>
   </Modal>
-</div>
+</>
 ```

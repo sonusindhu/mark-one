@@ -1,6 +1,6 @@
 The following is an example of a basic button in which the `variant` property defaults to the enum value `VARIANT.BASE`.
 ```jsx
-import { VARIANT } from 'Theme/MarkOneTheme';
+import { VARIANT } from 'mark-one';
 
 <Button
   onClick={function() {
@@ -12,9 +12,10 @@ import { VARIANT } from 'Theme/MarkOneTheme';
 </Button>
 ```
 
-The following is an example of a primary button in which the `variant` property is set to `VARIANT.PRIMARY`. 
+The following is an example of a primary button in which the `variant` property is set to `VARIANT.PRIMARY`.
+
 ```jsx
-import { VARIANT } from 'Theme/MarkOneTheme';
+import { VARIANT } from 'mark-one';
 
 <Button
   onClick={function() {
@@ -26,9 +27,10 @@ import { VARIANT } from 'Theme/MarkOneTheme';
 </Button>
 ```
 
-The following is an example of a secondary button in which the `variant` property is set to `VARIANT.SECONDARY`. 
+The following is an example of a secondary button in which the `variant` property is set to `VARIANT.SECONDARY`.
+
 ```jsx
-import { VARIANT } from 'Theme/MarkOneTheme';
+import { VARIANT } from 'mark-one';
 
 <Button
   onClick={function() {
@@ -40,9 +42,10 @@ import { VARIANT } from 'Theme/MarkOneTheme';
 </Button>
 ```
 
-The following is an example of an info button in which the `variant` property is set to `VARIANT.INFO`. 
+The following is an example of an info button in which the `variant` property is set to `VARIANT.INFO`.
+
 ```jsx
-import { VARIANT } from 'Theme/MarkOneTheme';
+import { VARIANT } from 'mark-one';
 
 <Button
   onClick={function() {
@@ -54,9 +57,10 @@ import { VARIANT } from 'Theme/MarkOneTheme';
 </Button>
 ```
 
-The following is an example of a danger button in which the `variant` property is set to `VARIANT.DANGER`. 
+The following is an example of a danger button in which the `variant` property is set to `VARIANT.DANGER`.
+
 ```jsx
-import { VARIANT } from 'Theme/MarkOneTheme';
+import { VARIANT } from 'mark-one';
 
 <Button
   onClick={function() {
