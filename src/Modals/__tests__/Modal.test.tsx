@@ -64,11 +64,13 @@ describe('Modal', function () {
     context('when forwardRef prop is present', function () {
       beforeEach(function () {
         const RefExample = () => {
-          const ref = useRef(null);
+          const ref = useRef<HTMLDivElement>(null);
           const [modalVisible, setModalVisible] = useState(false);
           const onButtonClick = () => {
             setModalVisible(true);
-            setTimeout(() => ref.current.focus());
+            if (ref.current) {
+              setTimeout(() => ref.current.focus());
+            }
           };
           return (
             <>
