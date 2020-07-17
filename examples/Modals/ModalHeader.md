@@ -99,7 +99,7 @@ const RefExample = () => {
     setModalVisible(true);
     /* Since modal may not have been rendered in DOM, wait for it to be
     rendered by letting next task of event queue run first */
-    setTimeout(() => ref.current.focus(), 0);
+    setTimeout(() => ref.current.focus());
   }
   return (
     <>
