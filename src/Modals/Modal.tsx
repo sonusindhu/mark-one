@@ -135,6 +135,9 @@ const Modal: FunctionComponent<ModalProps> = ({
   // If the ref is not provided, create one since it is used below
   const finalForwardRef = forwardRef != null ? forwardRef : useRef(null);
 
+  const focusables = 'button, [href], input, select, textarea,'
+            + ' [tabindex]:not([tabindex="-1"])';
+
   /**
    * Watch the isVisible prop, and set the background overflow style when it
    * is opened. We're returning a cleanup function that will reset the style
@@ -144,8 +147,6 @@ const Modal: FunctionComponent<ModalProps> = ({
     const listener = (event): void => {
       const modal: HTMLElement = finalForwardRef.current;
       if (!modal.contains(event.target as Node)) {
-        const focusables = 'button, [href], input, select, textarea,'
-          + ' [tabindex]:not([tabindex="-1"])';
         const firstFocusable: HTMLElement = modal.querySelector(focusables);
         if (firstFocusable != null) {
           firstFocusable.focus();
