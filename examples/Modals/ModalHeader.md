@@ -107,7 +107,7 @@ const RefExample = () => {
         onClick={onButtonClick}
         variant={VARIANT.INFO}
       >
-        Focus the input
+        Focus the Header
       </Button>
       <Modal
         ariaLabelledBy="testButton"
@@ -140,7 +140,7 @@ const RefExample = () => {
             value={value}
             id="semesters"
             name="semesters"
-            onChange={function(event){
+            onChange={(event) => {
               setValue(event.target.value);
               alert('You changed the selection to ' + event.target.value);
             }}
