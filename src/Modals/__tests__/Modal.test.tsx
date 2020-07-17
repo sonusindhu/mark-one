@@ -10,6 +10,8 @@ import {
   waitForElement,
   BoundFunction,
   GetByRole,
+  GetByText,
+  wait,
 } from 'test-utils';
 import Modal from 'Modals/Modal';
 import { Button } from 'Buttons';
@@ -18,6 +20,7 @@ import { ModalHeader } from 'Modals';
 
 describe('Modal', function () {
   let getByRole: BoundFunction<GetByRole>;
+  let getByText: BoundFunction<GetByText>;
   describe('isVisible prop', function () {
     context('When isVisible is false', function () {
       it('Should not render any visible content', function () {
@@ -97,7 +100,7 @@ describe('Modal', function () {
             </>
           );
         };
-        ({ getByRole } = render(
+        ({ getByRole, getByText } = render(
           <RefExample />
         ));
       });
@@ -105,6 +108,13 @@ describe('Modal', function () {
         const testButton = document.getElementById('testButton') as HTMLButtonElement;
         testButton.click();
         await waitForElement(() => getByRole('heading'));
+        strictEqual((document.activeElement as HTMLElement).textContent.includes('Modal Header'), true);
+      });
+      it('will focus back on the first focusable element after cycling through modal elements', async function () {
+        const testButton = document.getElementById('testButton') as HTMLButtonElement;
+        testButton.click();
+        await waitForElement(() => getByRole('heading'));
+        fireEvent.keyPress(getByText('Modal Header'), {key: 'Tab', code: 'Tab'});
         strictEqual((document.activeElement as HTMLElement).textContent.includes('Modal Header'), true);
       });
     });
