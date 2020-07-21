@@ -20,7 +20,7 @@ interface DropdownOptionProps {
 
 export interface DropdownProps {
   /** The id tied to this dropdown field */
-  id?: string;
+  id: string;
   /** Function to call on change event */
   onChange: ChangeEventHandler;
   /** The name of the dropdown */
@@ -82,7 +82,10 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
         name={name}
         value={value}
         defaultValue={defaultValue}
+        aria-errormessage={`${id}-error`}
+        aria-invalid={errorMessage ? true : null}
         aria-required={isRequired}
+
         ref={forwardRef}
       >
         {options.map((option) => (
@@ -97,7 +100,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
       </StyledDropdown>
       {errorMessage
       && (
-        <ValidationErrorMessage>
+        <ValidationErrorMessage id={`${id}-error`}>
           {errorMessage}
         </ValidationErrorMessage>
       )}

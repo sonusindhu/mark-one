@@ -86,12 +86,14 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
         value={value}
         disabled={disabled}
         label={label}
+        aria-errormessage={`${id}-error`}
+        aria-invalid={errorMessage ? true : null}
         aria-required={isRequired}
         ref={forwardRef}
       />
       {errorMessage
       && (
-        <ValidationErrorMessage>
+        <ValidationErrorMessage id={`${id}-error`}>
           {errorMessage}
         </ValidationErrorMessage>
       )}

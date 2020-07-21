@@ -6,6 +6,8 @@ import styled, { ThemeContext } from 'styled-components';
 export interface ValidationErrorMessageProps {
   /** Text or components to be displayed */
   children: ReactNode;
+  /** An html id used by the parent Input component to associate the error* */
+  id: string;
 }
 
 const StyledValidationErrorMessage = styled.span`
@@ -19,11 +21,13 @@ const StyledValidationErrorMessage = styled.span`
 const ValidationErrorMessage:
 FunctionComponent<ValidationErrorMessageProps> = (props): ReactElement => {
   const {
+    id,
     children,
   } = props;
   const theme = useContext(ThemeContext);
   return (
     <StyledValidationErrorMessage
+      id={id}
       theme={theme}
       role="alert"
       aria-live="assertive"

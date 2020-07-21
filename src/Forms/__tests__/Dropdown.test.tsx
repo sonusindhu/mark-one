@@ -4,6 +4,7 @@ import {
   fireEvent,
   BoundFunction,
   AllByRole,
+  GetByRole,
   GetByText,
   QueryByText,
 } from 'test-utils';
@@ -16,6 +17,7 @@ import Dropdown from '../Dropdown';
 
 describe('Dropdown', function () {
   let getByText: BoundFunction<GetByText>;
+  let getByRole: BoundFunction<GetByRole>;
   let getAllByRole: BoundFunction<AllByRole>;
   let queryByText: BoundFunction<QueryByText>;
   let changeSpy: SinonSpy;
@@ -40,11 +42,12 @@ describe('Dropdown', function () {
     },
   ];
   context('when errorMessage prop is present', function () {
+    const dropdownId = 'semesters';
     beforeEach(function () {
       changeSpy = spy();
-      ({ getByText, getAllByRole } = render(
+      ({ getByText, getByRole, getAllByRole } = render(
         <Dropdown
-          id="semesters"
+          id={dropdownId}
           options={options}
           value="fall"
           label="semesters"
@@ -88,11 +91,31 @@ describe('Dropdown', function () {
     it('renders the error message', function () {
       getByText('Please select a semester', { exact: false });
     });
+    it('Sets the aria-errormessage on the dropdown', function () {
+      const dropdown = getByRole('combobox');
+      strictEqual(
+        dropdown.getAttribute('aria-errormessage'),
+        `${dropdownId}-error`
+      );
+    });
+    it('Sets the id on the error message', function () {
+      const errorMessage = getByRole('alert');
+      strictEqual(errorMessage.id, `${dropdownId}-error`);
+    });
+    it('Sets aria-invalid', function () {
+      const dropdown = getByRole('combobox');
+      strictEqual(
+        dropdown.getAttribute('aria-invalid'),
+        'true'
+      );
+    });
   });
   context('when the errorMessage prop is not present', function () {
     beforeEach(function () {
       changeSpy = spy();
-      ({ getByText, getAllByRole, queryByText } = render(
+      ({
+        getByText, getByRole, getAllByRole, queryByText,
+      } = render(
         <Dropdown
           id="semesters"
           options={options}
@@ -136,6 +159,10 @@ describe('Dropdown', function () {
     });
     it('does not render the error message', function () {
       strictEqual(queryByText('Error: Please select a semester', { exact: false }), null);
+    });
+    it('Does not set aria-invalid', function () {
+      const dropdown = getByRole('combobox');
+      strictEqual(dropdown.hasAttribute('aria-invalid'), false);
     });
   });
   context('when isRequired prop is present', function () {
