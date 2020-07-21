@@ -1,9 +1,7 @@
 import React, { useState, FunctionComponent } from 'react';
 import { strictEqual } from 'assert';
-import {
-  spy, stub, SinonSpy, SinonStub,
-} from 'sinon';
-import { render, fireEvent, cleanup } from 'test-utils';
+import { stub, SinonStub } from 'sinon';
+import { render, fireEvent } from 'test-utils';
 import Modal from 'Modals/Modal';
 
 describe('Modal', function () {
