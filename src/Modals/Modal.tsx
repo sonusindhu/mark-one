@@ -135,6 +135,8 @@ const Modal: FunctionComponent<ModalProps> = ({
   // If the ref is not provided, create one since it is used below
   const finalForwardRef = forwardRef != null ? forwardRef : useRef(null);
 
+  // Encompasses all of the elements that can be focused on by the user
+  // If you set the index of an element to -1, that element can also be focused
   const focusables = 'button, [href], input, select, textarea,'
             + ' [tabindex]:not([tabindex="-1"])';
 
