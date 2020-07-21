@@ -39,7 +39,6 @@ export const fromTheme = (...levels: string[]) => (
 /**
  * A set of enums corresponding to the different colors exposed by the Mark One
  * Theme.
- *
  */
 export enum VARIANT {
   BASE = 'base',

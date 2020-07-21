@@ -2,7 +2,6 @@ A specialized component for displaying icons as links.
 
 ```jsx
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 <IconLink
