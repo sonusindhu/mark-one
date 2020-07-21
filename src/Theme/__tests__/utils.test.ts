@@ -21,7 +21,7 @@ describe('Theme Utilities', function () {
       strictEqual(result, null);
     });
     it('Should return a function that gets null if the value is not defined', function () {
-      const getter = utils.fromTheme('foo', 'bar', 'baz');
+      const getter = utils.fromTheme('color', 'bar', 'baz');
       const result = getter(testProps);
       strictEqual(result, null);
     });
