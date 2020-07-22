@@ -70,7 +70,7 @@ describe('Modal', function () {
             setModalVisible(true);
             if (ref.current) {
               ref.current.focus();
-            };
+            }
           };
           return (
             <>
