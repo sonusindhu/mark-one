@@ -68,11 +68,9 @@ describe('Modal', function () {
           const [modalVisible, setModalVisible] = useState(false);
           const onButtonClick = () => {
             setModalVisible(true);
-            setTimeout(() => {
-              if (ref.current) {
-                ref.current.focus();
-              }
-            });
+            if (ref.current) {
+              ref.current.focus();
+            };
           };
           return (
             <>
