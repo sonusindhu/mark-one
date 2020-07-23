@@ -4,7 +4,7 @@ import {
   ReactElement,
   ForwardRefExoticComponent,
 } from 'react';
-import styled, { withTheme, DefaultTheme } from 'styled-components';
+import styled from 'styled-components';
 import { fromTheme } from 'Theme';
 
 export interface TableHeadingCellProps {
@@ -20,8 +20,6 @@ export interface TableHeadingCellProps {
   rowSpan?: string | number;
   /** Specifies the group of cells that the table heading refers to */
   scope?: 'col' | 'colgroup' | 'auto';
-  /** The application theme */
-  theme?: DefaultTheme;
 }
 
 const StyledTableHeadingCell = styled.th<TableHeadingCellProps>`
@@ -42,7 +40,7 @@ const StyledTableHeadingCell = styled.th<TableHeadingCellProps>`
 
 const TableHeadingCell: ForwardRefExoticComponent<
 TableHeadingCellProps
-> = withTheme(StyledTableHeadingCell);
+> = StyledTableHeadingCell;
 
 declare type TableHeadingCell = ReactElement<TableHeadingCellProps>;
 

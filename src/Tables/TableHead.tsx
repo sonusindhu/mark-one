@@ -1,4 +1,4 @@
-import styled, { DefaultTheme, withTheme } from 'styled-components';
+import styled from 'styled-components';
 import { ReactElement, ForwardRefExoticComponent } from 'react';
 import { fromTheme } from 'Theme';
 import TableRow from './TableRow';
@@ -6,11 +6,9 @@ import TableRow from './TableRow';
 export interface TableHeadProps {
   /** Our TableRow functional component serves as the children for TableHead */
   children: TableRow | TableRow[];
-  /** The application theme */
-  theme?: DefaultTheme;
 }
 
-const StyledTableHead = styled.thead`
+const StyledTableHead = styled.thead<TableHeadProps>`
   background-color: ${fromTheme('color', 'background', 'medium')};
 `;
 
@@ -20,7 +18,7 @@ const StyledTableHead = styled.thead`
  */
 
 const TableHead:
-ForwardRefExoticComponent<TableHeadProps> = withTheme(StyledTableHead);
+ForwardRefExoticComponent<TableHeadProps> = StyledTableHead;
 
 declare type TableHead = ReactElement<TableHeadProps>;
 

@@ -1,12 +1,8 @@
 import { ReactElement, ReactNode } from 'react';
-import styled, { DefaultTheme } from 'styled-components';
+import styled from 'styled-components';
 import { fromTheme } from 'Theme';
 
 export interface TableCellListItemProps {
-  /**
-   * The application theme
-   */
-  theme: DefaultTheme;
   /**
    * The contents of the list item
    */

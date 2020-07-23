@@ -1,5 +1,5 @@
 import { ReactNode, ReactElement, ForwardRefExoticComponent } from 'react';
-import styled, { withTheme, DefaultTheme } from 'styled-components';
+import styled from 'styled-components';
 import { fromTheme } from 'Theme';
 
 /** Represents the possible values for TableCell's text-align property */
@@ -31,8 +31,6 @@ export interface TableCellProps {
   backgroundColor?: string;
   /** Text or components to be displayed in the cell */
   children: ReactNode;
-  /** The application theme */
-  theme?: DefaultTheme;
 }
 
 const StyledCell = styled.td<TableCellProps>`
@@ -56,7 +54,7 @@ StyledCell.defaultProps = {
  * Renders a single <td> element, for use inside of a <TableRow>
  */
 const TableCell:
-ForwardRefExoticComponent<TableCellProps> = withTheme(StyledCell);
+ForwardRefExoticComponent<TableCellProps> = StyledCell;
 
 declare type TableCell = ReactElement<TableCellProps>;
 
