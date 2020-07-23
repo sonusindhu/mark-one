@@ -1,53 +1,81 @@
-import { DefaultTheme } from 'styled-components';
+import { ValidThemeValues, DefaultTheme } from 'styled-components';
 
 /**
  * Recursively get a value from the theme object, or return null if the value
  * either doesn't exist, or doesn't refer to a string value.
+ *
+ * Uses a typescript generic function to update the type as it recurses
  */
 
-function getRecursiveProp<T, K extends keyof T>(
-  themeLevel: T,
-  nextLevel: K,
-  moreLevels?: string[]
+function getRecursiveProp<T>(
+  theme: T,
+  key: Extract<ValidThemeValues, keyof T>,
+  next?: ValidThemeValues[]
 ): string {
-  if (nextLevel in themeLevel) {
-    const nextValue = themeLevel[nextLevel];
-    if (moreLevels && moreLevels.length > 0) {
-      const thirdLevel = moreLevels.shift();
-      return getRecursiveProp(nextValue, thirdLevel as keyof T[K], moreLevels);
-    }
-    if (typeof nextValue === 'string') {
-      return nextValue;
-    }
+  const nextValue = theme[key];
+  if (next.length > 0) {
+    const thirdLevel = next.shift();
+    return getRecursiveProp<typeof nextValue>(
+      nextValue,
+      thirdLevel as Extract<ValidThemeValues, keyof typeof nextValue>,
+      next
+    );
+  }
+  if (typeof nextValue === 'string') {
+    return nextValue;
   }
   return null;
 }
 
 /**
  * Helper function that returns a function that extracts values from the theme.
- * Allows passing multiple strings as props to dig into nested values.
- * This is intended for use in styled-comopnents's interpolation functions as
+ * Allows passing multiple strings as props to dig into nested values, but can
+ * only descend four levels into the theme.
+ *
+ * This is intended for use in styled-components's interpolation functions as
  * an easier way to get properly typed values. Examples:
  *
  * instead of:
  *
+ * ```
  * styled.div`
- *   margin-top: ${({theme}: {theme: DefaultTheme}):string => theme.ws.xsmall}
+ *   background-color: ${({ theme }) => theme.background.info.dark};
+ * ```
  * `
  *
  * use instead:
  *
+ * ```
  * styled.div`
- *   margin-top: ${fromTheme('ws', 'xsmall')}
+ *   background-color: ${fromTheme('background','info', 'dark')}
+ * ```
  */
-
-export const fromTheme = (
-  topLevel: keyof DefaultTheme,
-  ...nextLevels: string[]
-) => (
-  ({ theme }: { theme: DefaultTheme }): string => (
-    getRecursiveProp(theme, topLevel, nextLevels)
-  ));
+//
+// Disabling rule since our theme object can go four deep
+// eslint-disable-next-line max-params
+export function fromTheme
+<
+  T extends DefaultTheme,
+  K extends Extract<ValidThemeValues, keyof T>,
+  N extends Extract<ValidThemeValues, keyof T[K]>,
+  M extends Extract<ValidThemeValues, keyof T[K][N]>,
+  L extends Extract<ValidThemeValues, keyof T[K][N][M]>,
+>(
+  key: K,
+  next: N,
+  more?: M,
+  last?: L
+) {
+  return ({ theme }: { theme: T }): string => {
+    if (more) {
+      if (last) {
+        return getRecursiveProp(theme, key, [next, more, last]);
+      }
+      return getRecursiveProp(theme, key, [next, more]);
+    }
+    return getRecursiveProp(theme, key, [next]);
+  };
+}
 
 /**
  * A set of enums corresponding to the different colors exposed by the Mark One
