@@ -2,12 +2,12 @@ import React, { useRef } from 'react';
 import {
   render,
   fireEvent,
-  getByRole,
+  GetByRole,
   BoundFunction,
   GetByText,
   QueryByText,
 } from 'test-utils';
-import { spy } from 'sinon';
+import { spy, SinonSpy } from 'sinon';
 import { strictEqual } from 'assert';
 import userEvent from '@testing-library/user-event';
 import { Button } from 'Buttons';
@@ -21,30 +21,29 @@ enum POSITION {
 
 describe('Text input', function () {
   let getByText: BoundFunction<GetByText>;
+  let getByRole: BoundFunction<GetByRole>;
   let queryByText: BoundFunction<QueryByText>;
-  let changeSpy;
+  let changeSpy: SinonSpy;
   context('when errorMessage prop is present', function () {
+    const inputId = 'semester';
     beforeEach(function () {
       changeSpy = spy();
-      render(
+      ({ getByRole } = render(
         <TextInput
-          id="semester"
+          id={inputId}
           name="semester"
           value="Spring"
           errorMessage="Error: Please enter a valid ID"
           label="semester"
           onChange={changeSpy}
         />
-      );
+      ));
     });
-    // getByText method does not work with text fields, so we are using the below
-    // as an alternative way to test that the component renders
     it('renders', function () {
-      const inputElement = document.getElementById('semester') as HTMLInputElement;
-      strictEqual(!!inputElement, true);
+      getByRole('textbox');
     });
     it('calls the change handler when changed', function () {
-      fireEvent.change(document.getElementById('semester'), {
+      fireEvent.change(document.getElementById(inputId), {
         target: {
           value: 'Fall',
         },
@@ -52,14 +51,25 @@ describe('Text input', function () {
       strictEqual(changeSpy.callCount, 1);
     });
     it('renders the correct default value', function () {
-      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const inputField = document.getElementById(inputId) as HTMLInputElement;
       const defaultValue = inputField.value;
       strictEqual(defaultValue, 'Spring');
     });
     it('renders the error message', function () {
-      const inputField = document.getElementById('semester') as HTMLInputElement;
-      const errorMessage = getByRole(inputField.parentNode as HTMLElement, 'alert');
+      const errorMessage = getByRole('alert');
       strictEqual(errorMessage.textContent.trim(), 'Error: Please enter a valid ID');
+    });
+    it('sets aria-invalid', function () {
+      const input = getByRole('textbox');
+      strictEqual(input.hasAttribute('aria-invalid'), true);
+    });
+    it(`sets the aria-errormessage value to ${inputId}-error`, function () {
+      const input = getByRole('textbox');
+      strictEqual(input.getAttribute('aria-errormessage'), `${inputId}-error`);
+    });
+    it(`Sets the id of the errorMessage to ${inputId}-error`, function () {
+      const error = getByRole('alert');
+      strictEqual(error.id, `${inputId}-error`);
     });
   });
   context('when errorMessage prop is not present', function () {
@@ -95,6 +105,10 @@ describe('Text input', function () {
     it('does not render the error message', function () {
       const errorField = queryByText('error');
       strictEqual(errorField, null);
+    });
+    it('does not set aria-invalid', function () {
+      const input = getByRole('textbox');
+      strictEqual(input.hasAttribute('aria-invalid'), false);
     });
   });
   context('when isRequired prop is present', function () {
@@ -257,8 +271,8 @@ describe('Text input', function () {
       const { value } = document.getElementById('semester') as HTMLInputElement;
       strictEqual(value, 'Fall');
     });
-    it('does not call the change handler when user tries to change the input', function () {
-      userEvent.type(document.getElementById('semester'), 'Spring');
+    it('does not call the change handler when user tries to change the input', async function () {
+      await userEvent.type(document.getElementById('semester'), 'Spring');
       strictEqual(changeSpy.callCount, 0);
     });
   });
@@ -321,9 +335,11 @@ describe('Text input', function () {
     beforeEach(function () {
       changeSpy = spy();
       const RefExample = () => {
-        const ref = useRef(null);
+        const ref = useRef<HTMLInputElement>(null);
         const onButtonClick = () => {
-          ref.current.focus();
+          if (ref.current) {
+            ref.current.focus();
+          }
         };
         return (
           <>

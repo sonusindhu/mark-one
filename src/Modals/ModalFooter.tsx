@@ -8,7 +8,6 @@ interface ModalFooterProps {
   children: ReactNode;
 }
 
-
 const styledModalFooter = styled.div<ModalFooterProps>`
   display: flex;
   flex-direction: row-reverse;

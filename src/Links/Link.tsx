@@ -8,18 +8,18 @@ import {
   Link as ReactLink,
   LinkProps,
 } from 'react-router-dom';
-import { BaseTheme } from '../Theme';
+import { fromTheme, VARIANT } from 'Theme';
 
 const StyledLink = styled(ReactLink)`
   text-decoration: none;
-  color: ${({ theme }): string => (theme.color.background.info.medium)};
+  color: ${fromTheme('color', 'background', VARIANT.INFO, 'medium')};
   &:hover {
     text-decoration: underline;
-    color: ${({ theme }): string => (theme.color.background.info.dark)};
+    color: ${fromTheme('color', 'background', VARIANT.INFO, 'dark')};
   }
   &:visited {
     text-decoration: none;
-    color: ${({ theme }): string => (theme.color.background.info.medium)};
+    color: ${fromTheme('color', 'background', VARIANT.INFO, 'medium')};
   }
 `;
 
@@ -32,7 +32,7 @@ FunctionComponent<LinkProps> = (props): ReactElement => {
     children,
     to,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <StyledLink
       to={to}

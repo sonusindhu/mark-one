@@ -2,7 +2,7 @@ import React, {
   FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import { fromTheme } from 'Theme';
 
 export enum SPINNER_TEXT {
   LIGHT = 'light',
@@ -16,13 +16,13 @@ export interface LoadSpinnerTextProps {
   color?: SPINNER_TEXT;
 }
 
-const StyledLoadSpinnerText = styled.div`
+const StyledLoadSpinnerText = styled.div<LoadSpinnerTextProps>`
   background: transparent;
-  color: ${({ color, theme }): string => theme.color.text[color]};
-  font-family: ${({ theme }): string => (theme.font.heading.family)};
-  font-weight: ${({ theme }): string => (theme.font.heading.weight)};
-  font-size: ${({ theme }): string => (theme.font.heading.size)};
-  margin-top: ${({ theme }): string => (theme.ws.large)};
+  color: ${({ color, theme }) => theme.color.text[color]}; 
+  font-family: ${fromTheme('font', 'heading', 'family')};
+  font-weight: ${fromTheme('font', 'heading', 'weight')};
+  font-size: ${fromTheme('font', 'heading', 'size')};
+  margin-top: ${fromTheme('ws', 'large')};
 `;
 
 /**
@@ -31,7 +31,7 @@ const StyledLoadSpinnerText = styled.div`
 const LoadSpinnerText: FunctionComponent<LoadSpinnerTextProps> = (props):
 ReactElement => {
   const { children, color } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <StyledLoadSpinnerText theme={theme} color={color}>
       { children }

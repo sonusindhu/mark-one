@@ -1,16 +1,14 @@
 import { ReactNode, ReactElement } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import { fromTheme } from 'Theme';
 
 export interface PageBodyProps {
   /** Page contents */
   children?: ReactNode;
-  /** The theme this component should use for styling */
-  theme: BaseTheme;
 }
 
 const PageBody = styled.main<PageBodyProps>`
-  margin: ${({ theme }): string => (theme.ws.small)};
+  margin: ${fromTheme('ws', 'small')};
 `;
 
 declare type PageBody = ReactElement<PageBodyProps>;

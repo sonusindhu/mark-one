@@ -1,8 +1,10 @@
+A very basic component for displaying the main body of a page.
+
 ```jsx
-import { PageBody } from 'mark-one';
+import { PageTitle } from 'mark-one';
 
 <PageBody>
-  <h1>Hello world</h1>
+  <PageTitle>Hello world</PageTitle>
 
   <p>
     Here is some example content

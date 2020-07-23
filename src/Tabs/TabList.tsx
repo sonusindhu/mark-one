@@ -2,7 +2,8 @@ import {
   ReactElement,
 } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { TabListItem } from './TabListItem';
+import { fromTheme } from 'Theme';
+import TabListItem from './TabListItem';
 
 export interface TabListProps {
   /** Our TabListItem functional component serves as the children for TabList  */
@@ -17,13 +18,13 @@ export interface TabListProps {
 
 const TabList = styled.ul`
   background-color: transparent;
-  border-bottom: ${({ theme }): string => theme.border.hairline};
+  border-bottom: ${fromTheme('border', 'hairline')};
   border-collapse: collapse;
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
 `;
 
-export type TabList = ReactElement<TabListProps>;
+declare type TabList = ReactElement<TabListProps>;
 
 export default withTheme(TabList);

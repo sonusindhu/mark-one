@@ -1,17 +1,15 @@
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import { ReactElement, ForwardRefExoticComponent } from 'react';
-import { BaseTheme } from '../Theme';
+import { fromTheme } from 'Theme';
 import TableRow from './TableRow';
 
 export interface TableHeadProps {
   /** Our TableRow functional component serves as the children for TableHead */
   children: TableRow | TableRow[];
-  /** The application theme */
-  theme?: BaseTheme;
 }
 
-const StyledTableHead = styled.thead`
-  background-color: ${({ theme }): string => (theme.color.background.medium)};
+const StyledTableHead = styled.thead<TableHeadProps>`
+  background-color: ${fromTheme('color', 'background', 'medium')};
 `;
 
 /**
@@ -20,7 +18,7 @@ const StyledTableHead = styled.thead`
  */
 
 const TableHead:
-ForwardRefExoticComponent<TableHeadProps> = withTheme(StyledTableHead);
+ForwardRefExoticComponent<TableHeadProps> = StyledTableHead;
 
 declare type TableHead = ReactElement<TableHeadProps>;
 

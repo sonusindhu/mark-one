@@ -7,9 +7,11 @@
     "project": "./tsconfig.json"
   },
   "extends": [
-    "plugin:react/recommended",
-    "airbnb",
-    "plugin:@typescript-eslint/recommended"
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:testing-library/react"
   ],
   "env": {
     "browser": true,
@@ -19,10 +21,29 @@
   "plugins": [
     "react",
     "mocha",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "testing-library"
   ],
   "rules": {
-    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/indent": [
+      "error",
+      2
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "enum",
+        "format": [
+          "UPPER_CASE"
+        ]
+      },
+      {
+        "selector": "enumMember",
+        "format": [
+          "UPPER_CASE"
+        ]
+      }
+    ],
     "arrow-parens": [
       "warn",
       "always"
@@ -44,18 +65,22 @@
       "as-needed"
     ],
     "id-length": "off",
-    "import/extensions": ["error", "ignorePackages", {
-      "js": "never",
-      "jsx": "never",
-      "ts": "never",
-      "tsx": "never"
-    }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
     "import/no-extraneous-dependencies": [
       "error",
       {
         "devDependencies": true
       }
-    ], 
+    ],
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
     "jsx-a11y/label-has-associated-control": [
@@ -79,7 +104,7 @@
     ],
     "max-params": [
       "warn",
-      { 
+      {
         "max": 3
       }
     ],
@@ -89,7 +114,8 @@
     "mocha/no-skipped-tests": "warn",
     "no-console": "off",
     "no-plusplus": [
-      "warn", {
+      "warn",
+      {
         "allowForLoopAfterthoughts": true
       }
     ],
@@ -101,8 +127,8 @@
       "error",
       {
         "VariableDeclarator": {
-         "array": false,
-         "object": true
+          "array": false,
+          "object": true
         },
         "AssignmentExpression": {
           "array": false,
@@ -122,7 +148,7 @@
       }
     ],
     "react/forbid-prop-types": [
-      "error", 
+      "error",
       {
         "forbid": [
           "any",
@@ -133,7 +159,8 @@
     "react/jsx-filename-extension": "off",
     "react/no-did-update-set-state": "warn",
     "react/prefer-stateless-function": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "testing-library/no-manual-cleanup": "error"
   },
   "overrides": [
     {
@@ -150,18 +177,7 @@
   "settings": {
     "import/resolver": {
       "node": {},
-      "webpack": {
-        "config": {
-          "resolve": {
-            "extensions": [
-              ".js",
-              ".jsx",
-              ".ts",
-              ".tsx"
-            ]
-          }
-        }
-      }
+      "webpack": {}
     }
   }
 }

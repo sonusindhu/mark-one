@@ -4,7 +4,7 @@ import React, {
   FunctionComponent,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme/index';
+import { fromTheme } from 'Theme';
 
 /** An enum that represents the possible values for the label's positioning */
 export enum POSITION {
@@ -41,7 +41,10 @@ export interface LabelProps {
   isRequired?: boolean;
 }
 
-const generateGrid = (labelPosition, isLabelVisible): string => {
+const generateGrid = (
+  labelPosition: POSITION,
+  isLabelVisible: boolean
+): string => {
   if (!isLabelVisible) {
     return `"i i i"
             "e e e"`;
@@ -59,18 +62,18 @@ const StyledLabel = styled.label<StyledLabelProps>`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr minmax(1em, max-content);
-  grid-template-areas: ${({ labelPosition, isLabelVisible }): string => (
+  grid-template-areas: ${({ labelPosition, isLabelVisible }) => (
     generateGrid(labelPosition, isLabelVisible)
   )};
-  margin: ${({ theme }): string => (theme.ws.small)};
+  margin: ${fromTheme('ws', 'small')};
   align-items: baseline;
-  gap: ${({ theme }): string => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
+  gap: ${({ theme }) => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
 `;
 
 const StyledLabelText = styled.span<StyledLabelTextProps>`
-  display: ${({ isLabelVisible }): string => (isLabelVisible ? 'inline' : 'none')};
+  display: ${({ isLabelVisible }) => (isLabelVisible ? 'inline' : 'none')};
   grid-area: l;
-  justify-self: ${({ labelPosition }): string => (
+  justify-self: ${({ labelPosition }) => (
     labelPosition === POSITION.TOP
       ? 'start'
       : 'end'
@@ -78,7 +81,7 @@ const StyledLabelText = styled.span<StyledLabelTextProps>`
 `;
 
 const RequiredSymbol = styled.span`
-    color: ${({ theme }): string => (theme.color.text.negative)};
+    color: ${fromTheme('color', 'text', 'negative')};
 `;
 const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
   const {
@@ -89,7 +92,7 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
     children,
     isRequired,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <StyledLabel
       htmlFor={htmlFor}

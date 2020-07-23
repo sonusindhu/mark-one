@@ -39,8 +39,11 @@ const StyledLink = styled.a`
   </TabList>
 </StyledNav>
 ```
+
 The nav element in this example does not have a background color set, which is why the background color across the entire TabList defaults to the standard browser background color.
+
 ```jsx
+
 import { TabListItem } from 'mark-one';
 import styled from 'styled-components';
 

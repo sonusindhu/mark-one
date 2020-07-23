@@ -1,18 +1,12 @@
 import { ReactNode } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from '../Theme';
 
 interface ModalBodyProps {
   /**
    * the content of the Modal Body
    */
   children: ReactNode;
-  /**
-   * The MarkOneTheme
-   */
-  theme: BaseTheme;
 }
-
 
 const StyledModalBody = styled.div<ModalBodyProps>`
   padding: ${({ theme }): string => theme.ws.medium};

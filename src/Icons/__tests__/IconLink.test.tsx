@@ -1,19 +1,21 @@
 import React from 'react';
-import { render, fireEvent } from 'test-utils';
-import { spy } from 'sinon';
+import {
+  render, fireEvent, BoundFunction, GetByRole,
+} from 'test-utils';
+import { spy, SinonSpy } from 'sinon';
 import { strictEqual } from 'assert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import IconLink from '../IconLink';
 
 describe('Icon Link', function () {
-  let getByTestId;
-  let clickSpy;
+  let getByRole: BoundFunction<GetByRole>;
+  let clickSpy: SinonSpy;
   beforeEach(function () {
     clickSpy = spy();
-    ({ getByTestId } = render(
+    ({ getByRole } = render(
       <IconLink title="Edit account information" alt="Edit account information" clickHandler={clickSpy}>
-        <FontAwesomeIcon icon={faEdit} data-testid="test-icon" />
+        <FontAwesomeIcon icon={faEdit} />
       </IconLink>
     ));
   });
@@ -21,14 +23,15 @@ describe('Icon Link', function () {
     clickSpy.resetHistory();
   });
   it('renders', function () {
-    getByTestId('test-icon');
+    getByRole('link');
   });
   it('calls the click handler when clicked', function () {
-    fireEvent.click(getByTestId('test-icon'));
+    fireEvent.click(getByRole('link'));
     strictEqual(clickSpy.callCount, 1);
   });
   it('renders the correct icon', function () {
-    const iconName = getByTestId('test-icon').className.baseVal.split(' ')[1];
-    strictEqual(iconName, 'fa-edit');
+    const iconName = getByRole('img', { hidden: true });
+    const classes = Array.from(iconName.classList);
+    strictEqual(classes.includes('fa-edit'), true);
   });
 });

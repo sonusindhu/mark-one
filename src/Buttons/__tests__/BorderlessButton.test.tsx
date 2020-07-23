@@ -12,7 +12,7 @@ import {
 import assert from 'assert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
-import { VARIANT } from '../../Theme/MarkOneTheme';
+import { VARIANT } from '../../Theme';
 import BorderlessButton from '../BorderlessButton';
 
 describe('Borderless Button', function () {

@@ -1,16 +1,11 @@
 import { ReactNode } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from 'Theme';
 
 interface SectionHeadingProps {
   /**
    * The content to display inside the Heading
    */
   children: ReactNode;
-  /**
-   * The styled-components theme
-   */
-  theme: BaseTheme;
 }
 
 const StyledSectionHeading = styled.h2<SectionHeadingProps>`

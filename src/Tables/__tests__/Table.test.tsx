@@ -93,7 +93,7 @@ describe('Table Components', function () {
     it('defaults to medium with no background color', function () {
       const style = window.getComputedStyle(getByText('Without Background'));
       const [red, green, blue] = convert.hex.rgb(
-        MarkOneTheme.color.background.medium as string
+        MarkOneTheme.color.background.medium
       );
       const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
       strictEqual(style.backgroundColor, convertExpectedToRGB);
@@ -108,7 +108,7 @@ describe('Table Components', function () {
       const row = getByTestId('firstStripedRow');
       const style = window.getComputedStyle(row);
       const [red, green, blue] = convert.hex.rgb(
-        MarkOneTheme.color.background.subtle as string
+        MarkOneTheme.color.background.subtle
       );
       const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
       strictEqual(style.backgroundColor, convertExpectedToRGB);

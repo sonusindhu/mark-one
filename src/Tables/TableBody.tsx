@@ -1,6 +1,6 @@
 import { ReactElement, ForwardRefExoticComponent } from 'react';
-import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import styled from 'styled-components';
+import { fromTheme } from 'Theme';
 import TableRow from './TableRow';
 
 export interface TableBodyProps {
@@ -10,13 +10,11 @@ export interface TableBodyProps {
    * body does not fit within the table body
    */
   isScrollable?: boolean;
-  /** The application theme */
-  theme?: BaseTheme;
 }
 
 const StyledTableBody = styled.tbody<TableBodyProps>`
-  border: ${({ theme }): string => (theme.border.light)};
-  overflow: ${({ isScrollable }): string => (isScrollable ? 'scroll' : 'visible')};
+  border: ${fromTheme('border', 'light')};
+  overflow: ${({ isScrollable }) => (isScrollable ? 'scroll' : 'visible')};
 `;
 
 /**
@@ -25,7 +23,7 @@ const StyledTableBody = styled.tbody<TableBodyProps>`
  */
 const TableBody: ForwardRefExoticComponent<
 TableBodyProps
-> = withTheme(StyledTableBody);
+> = StyledTableBody;
 
 TableBody.defaultProps = {
   isScrollable: false,

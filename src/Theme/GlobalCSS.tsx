@@ -1,12 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-import { BaseTheme } from '.';
 import '@openfonts/open-sans_all';
 import '@openfonts/roboto-mono_all';
-
-interface GlobalCSSProps {
-  /** The theme to use within the global stylesheet */
-  theme: BaseTheme;
-}
+import { fromTheme } from './utils';
 
 /**
  * Creates a global stylesheet that will apply to all sub-components,
@@ -40,14 +35,14 @@ interface GlobalCSSProps {
  * ```
  */
 
-export default createGlobalStyle<GlobalCSSProps>`
+export default createGlobalStyle`
    html, body {
-    background: ${({ theme }): string => theme.color.background.light};
+    background: ${fromTheme('color', 'background', 'light')};
     box-sizing: border-box;
-    color: ${({ theme }): string => theme.color.text.dark} ;
-    font-family: ${({ theme }): string => theme.font.base.family};
-    font-size: ${({ theme }): string => theme.font.base.size};
-    font-weight: ${({ theme }): string => theme.font.base.weight};
+    color: ${fromTheme('color', 'text', 'dark')} ;
+    font-family: ${fromTheme('font', 'base', 'family')};
+    font-size: ${fromTheme('font', 'base', 'size')};
+    font-weight: ${fromTheme('font', 'base', 'weight')};
     height: 100%;
     margin: 0;
     padding: 0;

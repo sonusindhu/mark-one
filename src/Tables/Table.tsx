@@ -1,6 +1,5 @@
-import styled, { withTheme } from 'styled-components';
+import styled from 'styled-components';
 import { ReactElement, ForwardRefExoticComponent } from 'react';
-import { BaseTheme } from '../Theme';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 
@@ -11,13 +10,11 @@ export interface TableProps {
   */
   children: (TableHead | TableBody | HTMLTableColElement)
   | (TableHead | TableBody | HTMLTableColElement)[];
-  /** The application theme */
-  theme?: BaseTheme;
 }
 
-const StyledTable = styled.table`
+const StyledTable = styled.table<TableProps>`
     border-collapse: collapse;
-    padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.small)};
+    padding: ${({ theme }) => (theme.ws.xsmall + ' ' + theme.ws.small)};
     width: 100%;
 `;
 
@@ -26,7 +23,7 @@ const StyledTable = styled.table`
  * Renders a simple, full-width <table>
  */
 
-const Table: ForwardRefExoticComponent<TableProps> = withTheme(StyledTable);
+const Table: ForwardRefExoticComponent<TableProps> = StyledTable;
 
 declare type Table = ReactElement<TableProps>;
 

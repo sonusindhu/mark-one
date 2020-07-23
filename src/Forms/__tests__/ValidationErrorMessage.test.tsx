@@ -10,7 +10,7 @@ describe('Validation Error Message', function () {
   let getByText: BoundFunction<GetByText>;
   beforeEach(function () {
     ({ getByText } = render(
-      <ValidationErrorMessage>
+      <ValidationErrorMessage id="number-error">
         Error: This entry may only contain numbers.
       </ValidationErrorMessage>
     ));

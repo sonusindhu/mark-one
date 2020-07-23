@@ -3,7 +3,6 @@ import { strictEqual } from 'assert';
 import { render } from 'test-utils';
 import Header from '../Header';
 
-
 describe('Header', function () {
   describe('background prop', function () {
     it('Should default to transparent', function () {

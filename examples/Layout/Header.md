@@ -23,6 +23,7 @@ A value of `center` be used to position content around the center. (See [MDN's d
 
 ```jsx
 import { PageTitle } from 'mark-one';
+
 <Header justify="center">
   <PageTitle>Centered Title</PageTitle>
 </Header>
@@ -32,6 +33,7 @@ You can also pass in a custom `background` prop to replace the default transpare
 
 ```jsx
 import { PageTitle } from 'mark-one';
+
 <Header justify="center" background="#eafeaf">
   <PageTitle>Custom Background</PageTitle>
 </Header>

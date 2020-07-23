@@ -15,7 +15,7 @@ import {
 
 const [modalVisible, setModalVisible] = useState(false);
 
-<div>
+<>
   <Button
     id="testButton"
     onClick={() => {setModalVisible(true)}}
@@ -37,16 +37,16 @@ const [modalVisible, setModalVisible] = useState(false);
       </Button>
     </ModalFooter>
   </Modal>
-</div>
+</>
 ```
 
-### Open/Close handlers
+### Open/Close effects
 
-You can also pass in `onOpen` and `onClose` handlers that will be called when the modal is opened and closed. These can be used for cases where you need to fetch some data in the background on open, or if you want to clear the values from a form on close:
+If you need to run additional code when the modal is opened and closed (e.g. focus an input on open, or clear the values from a form on close), you'll need to do so in the parent function that controls the `isVisible` prop.
 
 ```jsx
-import { useState } from 'react';
-import { 
+import { useState, useRef } from 'react';
+import {
   Button,
   ModalBody,
   ModalHeader,
@@ -54,26 +54,33 @@ import {
   TextInput,
 } from 'mark-one';
 
-const [modalCount, setModalCount] = useState(0);
+const inputRef = useRef(null);
 const [modalVisible, setModalVisible] = useState(false);
 const [formValue, setFormValue] = useState('');
 
-<div>
+const switchModal = (isOpen) => {
+  setModalVisible(isOpen);
+  if (isOpen) {
+    setTimeout(() => { inputRef.current.focus() }, 500)
+  } else {
+    setFormValue('');
+  }
+}
+
+<>
   <Button
     id="testButton"
-    onClick={() => {setModalVisible(true)}}
+    onClick={() => { switchModal(true) }}
   >
     Open Modal
   </Button>
   <Modal
     ariaLabelledBy="testButton"
-    onOpen={() => {setModalCount(modalCount + 1)}}
-    onClose={() => { setFormValue('') }}
-    closeHandler={() => {setModalVisible(false)}}
+    closeHandler={() => { switchModal(false) }}
     isVisible={modalVisible}
   >
     <ModalHeader
-      closeButtonHandler={()=> {setModalVisible(false)}}
+      closeButtonHandler={() => { switchModal(false) }}
     >
       Modal Example 2
     </ModalHeader>
@@ -83,24 +90,21 @@ const [formValue, setFormValue] = useState('');
       </div>
       <div>
         <TextInput
+          forwardRef={inputRef}
           label="Enter text:"
           value={formValue}
-          onChange={(evt) => {
+          changeHandler={(evt) => {
+            console.log(evt.target.value);
             setFormValue(evt.target.value);
           }}
         />
       </div>
     </ModalBody>
     <ModalFooter>
-      <Button onClick={() => setModalVisible(false)}>
+      <Button onClick={() => { switchModal(false) }}>
         Close Modal
       </Button>
     </ModalFooter>
   </Modal>
-  <p>
-    <strong>
-      Modal open count: {modalCount}
-    </strong>
-  </p>
-</div>
+</>
 ```

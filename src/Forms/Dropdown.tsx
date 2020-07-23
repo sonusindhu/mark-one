@@ -6,7 +6,7 @@ import React, {
   Ref,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import { fromTheme } from 'Theme';
 import ValidationErrorMessage from './ValidationErrorMessage';
 import Label, { POSITION } from './Label';
 
@@ -21,7 +21,7 @@ interface DropdownOptionProps {
 
 export interface DropdownProps {
   /** The id tied to this dropdown field */
-  id?: string;
+  id: string;
   /** Function to call on change event */
   onChange: ChangeEventHandler;
   /** The name of the dropdown */
@@ -47,7 +47,7 @@ export interface DropdownProps {
 }
 
 const StyledDropdown = styled.select`
-  color: ${({ theme }): string => (theme.color.text.dark)};
+  color: ${fromTheme('color', 'text', 'dark')};
   width: 100%;
   grid-area: i;
 `;
@@ -67,7 +67,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
     isLabelVisible,
     forwardRef,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <Label
       htmlFor={id}
@@ -83,6 +83,8 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
         name={name}
         value={value}
         defaultValue={defaultValue}
+        aria-errormessage={`${id}-error`}
+        aria-invalid={errorMessage ? true : null}
         aria-required={isRequired}
         ref={forwardRef}
       >
@@ -98,7 +100,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
       </StyledDropdown>
       {errorMessage
       && (
-        <ValidationErrorMessage>
+        <ValidationErrorMessage id={`${id}-error`}>
           {errorMessage}
         </ValidationErrorMessage>
       )}

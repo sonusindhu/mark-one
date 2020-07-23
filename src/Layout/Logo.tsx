@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from '../Theme';
 
 export interface LogoProps {
   /**
@@ -17,8 +16,6 @@ export interface LogoProps {
   href?: string;
   /** the url for the image to be displayed */
   image?: string;
-  /** The application theme */
-  theme: BaseTheme;
   /**
    * The width at which the image should be displayed
    * @default 200px
@@ -33,7 +30,7 @@ export interface LogoProps {
 
 const Logo = styled.a<LogoProps>`
   align-self: stretch;
-  background-image: url(${({ image }): string => image});
+  background-image: url(${({ image }) => image});
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -41,10 +38,10 @@ const Logo = styled.a<LogoProps>`
   display: inline-block;
   font-size: 0;
   line-height: 0;
-  margin: ${({ theme }): string => `${theme.ws.zero} ${theme.ws.small}`};
-  width: ${({ width }): string => width};
+  margin: ${({ theme }) => `${theme.ws.zero} ${theme.ws.small}`};
+  width: ${({ width }) => width};
   min-width: 100px;
-  height: ${({ height }): string => height};
+  height: ${({ height }) => height};
 `;
 
 Logo.defaultProps = {

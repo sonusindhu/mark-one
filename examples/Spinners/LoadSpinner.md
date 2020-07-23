@@ -1,4 +1,5 @@
 A load spinner component that can be used to show the loading state of the data.
+
 ```jsx
 <LoadSpinner>
   Loading Data
@@ -6,16 +7,18 @@ A load spinner component that can be used to show the loading state of the data.
 ```
 
 To style the text to have a light color. Note that a dark background is used to show the light text.
+
 ```jsx
-import { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
-import { BaseTheme, SPINNER_TEXT } from 'mark-one';
+import { SPINNER_TEXT } from 'mark-one';
 
-const theme = useContext(ThemeContext);
+const DarkBackground = styled.div`
+  background: ${({ theme }) => theme.color.background.darker };
+`;
 
-<div style={{background: theme.color.background.darker}}>
+<DarkBackground>
   <LoadSpinner textColor={SPINNER_TEXT.LIGHT}>
     Loading Data
   </LoadSpinner>
-</div>
+</DarkBackground>
 ```
+

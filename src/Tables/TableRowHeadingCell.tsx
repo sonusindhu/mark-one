@@ -1,9 +1,9 @@
 import {
   ReactNode, ReactElement, ForwardRefExoticComponent,
 } from 'react';
-import styled, { withTheme } from 'styled-components';
-import { BaseTheme } from '../Theme';
+import styled from 'styled-components';
 import { ALIGN, VALIGN } from './TableCell';
+import { fromTheme } from '../Theme/utils';
 
 export interface TableRowHeadingCellProps {
   /** Allows you to pass in a alignment property from the ALIGN enum */
@@ -20,19 +20,17 @@ export interface TableRowHeadingCellProps {
   rowSpan?: string | number;
   /** Specifies the group of cells that the row heading refers to */
   scope: 'row' | 'rowgroup' | 'auto';
-  /** The application theme */
-  theme?: BaseTheme;
 }
 
 const StyledTableRowHeadingCell = styled.th<TableRowHeadingCellProps>`
-  border-left: ${({ theme }): string => (theme.border.light)};
-  border-right: ${({ theme }): string => (theme.border.light)};
-  font-weight: ${({ theme }): string => (theme.font.data.weight)};
-  font-family: ${({ theme }): string => (theme.font.data.family)};
-  font-size: ${({ theme }): string => (theme.font.data.size)};
-  text-align: ${({ alignment }): string => alignment};
-  vertical-align: ${({ verticalAlignment }): string => verticalAlignment};
-  background-color: ${({ backgroundColor }): string => backgroundColor};
+  border-left: ${fromTheme('border', 'light')};
+  border-right: ${fromTheme('border', 'light')};
+  font-weight: ${fromTheme('font', 'data', 'weight')};
+  font-family: ${fromTheme('font', 'data', 'family')};
+  font-size: ${fromTheme('font', 'data', 'size')};
+  text-align: ${({ alignment }) => alignment};
+  vertical-align: ${({ verticalAlignment }) => verticalAlignment};
+  background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 
 StyledTableRowHeadingCell.defaultProps = {
@@ -46,7 +44,7 @@ StyledTableRowHeadingCell.defaultProps = {
  */
 const TableRowHeadingCell: ForwardRefExoticComponent<
 TableRowHeadingCellProps
-> = withTheme(StyledTableRowHeadingCell);
+> = StyledTableRowHeadingCell;
 
 declare type TableRowHeadingCell = ReactElement<TableRowHeadingCellProps>;
 

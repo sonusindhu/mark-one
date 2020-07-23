@@ -1,12 +1,8 @@
 import { ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
-import { BaseTheme } from 'mark-one';
+import { fromTheme } from 'Theme';
 
 export interface TableCellListItemProps {
-  /**
-   * The application theme
-   */
-  theme: BaseTheme;
   /**
    * The contents of the list item
    */
@@ -14,8 +10,8 @@ export interface TableCellListItemProps {
 }
 
 const TableCellListItem = styled.li<TableCellListItemProps>`
-  border-top: ${({ theme }): string => (theme.border.hairline)};
-  padding: ${({ theme }): string => (theme.ws.small)} 0px;
+  border-top: ${fromTheme('border', 'hairline')};
+  padding: ${fromTheme('ws', 'small')} 0px;
   &:first-child {
     border-top: none;
   }

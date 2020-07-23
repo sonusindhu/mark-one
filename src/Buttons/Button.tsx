@@ -6,8 +6,7 @@ import React, {
   MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { VARIANT } from '../Theme/MarkOneTheme';
-import { BaseTheme } from '../Theme';
+import { VARIANT, fromTheme } from '../Theme';
 
 export interface ButtonProps {
   /** The id of the button */
@@ -18,24 +17,26 @@ export interface ButtonProps {
   onClick: MouseEventHandler;
   /** If true, button won't fire */
   disabled?: boolean;
-  /** Allows you to pass in style properties for the element */
-  theme?: object;
   /** Allows you to pass in a variant property from the VARIANT enum */
   variant: VARIANT;
 }
 
 const StyledButton = styled.button<ButtonProps>`
-  background: ${({ theme, variant }): string => (theme.color.background[variant].medium)};
+  background: ${({ theme, variant }) => theme.color.background[variant].medium};
   border: none;
-  color: ${({ theme, variant }): string => (theme.color.background[variant].text)};
+  color: ${({ theme, variant }) => (
+    theme.color.text[variant === VARIANT.BASE ? 'dark' : 'light']
+  )};
   cursor: pointer;
-  font-size: ${({ theme }): string => (theme.font.body.size)};
-  font-weight: ${({ theme }): string => (theme.font.body.weight)};
-  padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.small)};
+  font-size: ${fromTheme('font', 'body', 'size')};
+  font-weight: ${fromTheme('font', 'body', 'weight')};
+  padding: ${({ theme }) => (`${theme.ws.xsmall} ${theme.ws.small}`)};
   &:hover {
-    background: ${({ theme, variant }): string => (theme.color.background[variant].dark)};
+    background: ${({ theme, variant }) => theme.color.background[variant].dark};
     border: none;
-    color: ${({ theme, variant }): string => (theme.color.background[variant].text)};
+    color: ${({ theme, variant }) => (
+    theme.color.text[variant === VARIANT.BASE ? 'dark' : 'light']
+  )};
   }
 `;
 
@@ -51,7 +52,7 @@ const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
     disabled,
     variant,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <StyledButton
       id={id}

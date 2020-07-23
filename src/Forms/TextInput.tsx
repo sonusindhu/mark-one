@@ -6,7 +6,7 @@ import React, {
   Ref,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { BaseTheme } from '../Theme/index';
+import { fromTheme } from 'Theme';
 import ValidationErrorMessage from './ValidationErrorMessage';
 import Label, { POSITION } from './Label';
 
@@ -42,9 +42,10 @@ export interface TextInputProps {
 }
 
 const StyledTextInput = styled.input<TextInputProps>`
-  border: ${({ theme }): string => (theme.border.hairline)};
+  border: ${fromTheme('border', 'hairline')};
   width: 100%;
-  padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.zero + ' ' + theme.ws.xsmall + ' ' + theme.ws.xsmall)};
+  padding: ${fromTheme('ws', 'xsmall')};
+  padding-right: ${fromTheme('ws', 'zero')};
   grid-area: i;
 `;
 
@@ -68,7 +69,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
     isRequired,
     forwardRef,
   } = props;
-  const theme: BaseTheme = useContext(ThemeContext);
+  const theme = useContext(ThemeContext);
   return (
     <Label
       htmlFor={id}
@@ -87,12 +88,14 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
         value={value}
         disabled={disabled}
         label={label}
+        aria-errormessage={`${id}-error`}
+        aria-invalid={errorMessage ? true : null}
         aria-required={isRequired}
         ref={forwardRef}
       />
       {errorMessage
       && (
-        <ValidationErrorMessage>
+        <ValidationErrorMessage id={`${id}-error`}>
           {errorMessage}
         </ValidationErrorMessage>
       )}

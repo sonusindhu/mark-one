@@ -8,7 +8,7 @@ import styled, { ThemeContext } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { BorderlessButton } from '../Buttons';
-import { VARIANT, BaseTheme } from '../Theme';
+import { VARIANT } from '../Theme';
 import { SectionHeading } from '../Typography';
 
 interface ModalHeaderProps {
@@ -27,7 +27,7 @@ const ModalTitle = styled(SectionHeading)`
   border-bottom: none;
 `;
 
-const StyledModalHeader = styled.div<{theme: BaseTheme}>`
+const StyledModalHeader = styled.div`
   background-color: ${({ theme }): string => (theme.color.background.subtle)};
   border-bottom: ${({ theme }): string => (theme.border.light)};
   display: flex;
