@@ -2,6 +2,7 @@ import React, {
   ReactElement, ReactNode, FunctionComponent, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { fromTheme } from 'Theme';
 
 export interface TabListItemProps {
   /** Text or components to be displayed in the TabList item */
@@ -11,16 +12,16 @@ export interface TabListItemProps {
 }
 
 const TabListItemBox = styled.div<TabListItemProps>`
-  background: ${({ theme, isActive }): string => (isActive ? theme.color.background.light : 'transparent')};
-  border: ${({ theme, isActive }): string => (isActive ? theme.border.hairline : '1px solid transparent')};
-  border-bottom: ${({ isActive }): string => (isActive ? '1px solid transparent' : 'none')};
-  color: ${({ theme }): string => (theme.color.text.dark)};
+  background: ${({ theme, isActive }) => (isActive ? theme.color.background.light : 'transparent')};
+  border: ${({ theme, isActive }) => (isActive ? theme.border.hairline : '1px solid transparent')};
+  border-bottom: ${({ isActive }) => (isActive ? '1px solid transparent' : 'none')};
+  color: ${fromTheme('color', 'text', 'dark')};
   display: inline-block;
   padding: 0.5rem 1rem;
   &:hover {
-    border: ${({ theme }): string => (theme.border.hairline)};
-    border-bottom: ${({ isActive }): string => (isActive ? '1px solid transparent' : 'none')};
-    color: ${({ theme }): string => (theme.color.text.dark)};
+    border: ${fromTheme('border', 'hairline')};
+    border-bottom: ${({ isActive }) => (isActive ? '1px solid transparent' : 'none')};
+    color: ${fromTheme('color', 'text', 'dark')};
   }
 `;
 

@@ -6,6 +6,7 @@ import React, {
   Ref,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { fromTheme } from 'Theme';
 import ValidationErrorMessage from './ValidationErrorMessage';
 import Label, { POSITION } from './Label';
 
@@ -46,7 +47,7 @@ export interface DropdownProps {
 }
 
 const StyledDropdown = styled.select`
-  color: ${({ theme }): string => (theme.color.text.dark)};
+  color: ${fromTheme('color', 'text', 'dark')};
   width: 100%;
   grid-area: i;
 `;

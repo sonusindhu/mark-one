@@ -1,5 +1,6 @@
 import { ReactElement, ForwardRefExoticComponent } from 'react';
 import styled, { withTheme, DefaultTheme } from 'styled-components';
+import { fromTheme } from 'Theme';
 import TableRow from './TableRow';
 
 export interface TableBodyProps {
@@ -14,8 +15,8 @@ export interface TableBodyProps {
 }
 
 const StyledTableBody = styled.tbody<TableBodyProps>`
-  border: ${({ theme }): string => (theme.border.light)};
-  overflow: ${({ isScrollable }): string => (isScrollable ? 'scroll' : 'visible')};
+  border: ${fromTheme('border', 'light')};
+  overflow: ${({ isScrollable }) => (isScrollable ? 'scroll' : 'visible')};
 `;
 
 /**

@@ -4,6 +4,7 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { fromTheme, VARIANT } from 'Theme';
 import LoadSpinnerText, { SPINNER_TEXT } from './LoadSpinnerText';
 
 export interface LoadSpinnerProps {
@@ -15,7 +16,7 @@ export interface LoadSpinnerProps {
 
 const StyledLoadSpinner = styled.div`
   background: transparent;
-  color: ${({ theme }): string => (theme.color.background.info.medium)};
+  color: ${fromTheme('color', 'background', VARIANT.INFO, 'medium')};
   display: flex;
   flex-flow: column;
   align-items: center;

@@ -21,18 +21,14 @@ export interface BorderlessButtonProps {
 const StyledBorderlessButton = styled.button<BorderlessButtonProps>`
   background: transparent;
   border: none;
-  color: ${({ variant, theme }) => (
-    fromTheme('color', 'background', variant, 'medium')({ theme })
-  )};
+  color: ${({ variant, theme }) => theme.color.background[variant].medium};
   cursor: pointer;
   font-size: ${fromTheme('font', 'body', 'size')};
   font-weight: ${fromTheme('font', 'body', 'weight')};
   padding: ${({ theme }) => (`${theme.ws.xsmall} ${theme.ws.small}`)};
   &:hover {
     background: transparent;
-  color: ${({ variant, theme }) => (
-    fromTheme('color', 'background', variant, 'dark')({ theme })
-  )};
+    color: ${({ variant, theme }) => theme.color.background[variant].dark};
   }
 `;
 

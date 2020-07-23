@@ -16,11 +16,9 @@ export interface LoadSpinnerTextProps {
   color?: SPINNER_TEXT;
 }
 
-const StyledLoadSpinnerText = styled.div`
+const StyledLoadSpinnerText = styled.div<LoadSpinnerTextProps>`
   background: transparent;
-  color: ${({ color, theme }) => (
-    fromTheme('color', 'text', color)({ theme })
-  )};
+  color: ${({ color, theme }) => theme.color.text[color]}; 
   font-family: ${fromTheme('font', 'heading', 'family')};
   font-weight: ${fromTheme('font', 'heading', 'weight')};
   font-size: ${fromTheme('font', 'heading', 'size')};

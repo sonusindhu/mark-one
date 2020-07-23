@@ -22,24 +22,20 @@ export interface ButtonProps {
 }
 
 const StyledButton = styled.button<ButtonProps>`
-  background: ${({ theme, variant }) => (
-    fromTheme('color', 'background', variant, 'medium')({ theme })
-  )};
+  background: ${({ theme, variant }) => theme.color.background[variant].medium};
   border: none;
   color: ${({ theme, variant }) => (
-    fromTheme('color', 'text', variant === VARIANT.BASE ? 'dark' : 'light')({ theme })
+    theme.color.text[variant === VARIANT.BASE ? 'dark' : 'light']
   )};
   cursor: pointer;
   font-size: ${fromTheme('font', 'body', 'size')};
   font-weight: ${fromTheme('font', 'body', 'weight')};
   padding: ${({ theme }) => (`${theme.ws.xsmall} ${theme.ws.small}`)};
   &:hover {
-    background: ${({ theme, variant }) => (
-    fromTheme('color', 'background', variant, 'dark')({ theme })
-  )};
+    background: ${({ theme, variant }) => theme.color.background[variant].dark};
     border: none;
     color: ${({ theme, variant }) => (
-    fromTheme('color', 'text', variant === VARIANT.BASE ? 'dark' : 'light')({ theme })
+    theme.color.text[variant === VARIANT.BASE ? 'dark' : 'light']
   )};
   }
 `;

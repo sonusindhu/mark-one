@@ -3,6 +3,7 @@ import {
 } from 'react';
 import styled, { withTheme, DefaultTheme } from 'styled-components';
 import { ALIGN, VALIGN } from './TableCell';
+import { fromTheme } from '../Theme/utils';
 
 export interface TableRowHeadingCellProps {
   /** Allows you to pass in a alignment property from the ALIGN enum */
@@ -24,14 +25,14 @@ export interface TableRowHeadingCellProps {
 }
 
 const StyledTableRowHeadingCell = styled.th<TableRowHeadingCellProps>`
-  border-left: ${({ theme }): string => (theme.border.light)};
-  border-right: ${({ theme }): string => (theme.border.light)};
-  font-weight: ${({ theme }): string => (theme.font.data.weight)};
-  font-family: ${({ theme }): string => (theme.font.data.family)};
-  font-size: ${({ theme }): string => (theme.font.data.size)};
-  text-align: ${({ alignment }): string => alignment};
-  vertical-align: ${({ verticalAlignment }): string => verticalAlignment};
-  background-color: ${({ backgroundColor }): string => backgroundColor};
+  border-left: ${fromTheme('border', 'light')};
+  border-right: ${fromTheme('border', 'light')};
+  font-weight: ${fromTheme('font', 'data', 'weight')};
+  font-family: ${fromTheme('font', 'data', 'family')};
+  font-size: ${fromTheme('font', 'data', 'size')};
+  text-align: ${({ alignment }) => alignment};
+  vertical-align: ${({ verticalAlignment }) => verticalAlignment};
+  background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 
 StyledTableRowHeadingCell.defaultProps = {

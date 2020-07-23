@@ -22,10 +22,10 @@ export interface HeaderProps {
 
 const Header = styled.header<HeaderProps>`
   align-items: baseline;
-  background-color: ${({ background }): string => background};
+  background-color: ${({ background }) => background};
   display: flex;
-  justify-content: ${({ justify }): string => justify};
-  padding: ${({ theme }): string => `${theme.ws.medium} ${theme.ws.small}`};
+  justify-content: ${({ justify }) => justify};
+  padding: ${({ theme }) => `${theme.ws.medium} ${theme.ws.small}`};
   width: 100%;
 `;
 

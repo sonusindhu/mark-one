@@ -1,5 +1,6 @@
 import styled, { DefaultTheme, withTheme } from 'styled-components';
 import { ReactElement, ForwardRefExoticComponent } from 'react';
+import { fromTheme } from 'Theme';
 import TableRow from './TableRow';
 
 export interface TableHeadProps {
@@ -10,7 +11,7 @@ export interface TableHeadProps {
 }
 
 const StyledTableHead = styled.thead`
-  background-color: ${({ theme }): string => (theme.color.background.medium)};
+  background-color: ${fromTheme('color', 'background', 'medium')};
 `;
 
 /**

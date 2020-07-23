@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import { fromTheme } from 'Theme';
 
 export interface IconLinkProps {
   /** Function to call on click event */
@@ -19,9 +20,9 @@ export interface IconLinkProps {
 
 const StyledIconLink = styled.a`
   background: transparent;
-  color: ${({ theme }): string => (theme.color.background.medium)};
+  color: ${fromTheme('color', 'background', 'medium')};
   &:hover {
-    color: ${({ theme }): string => (theme.color.background.dark)};
+    color: ${fromTheme('color', 'background', 'dark')};
     cursor: pointer;
   }
   display: inline-block;

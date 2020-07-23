@@ -1,5 +1,6 @@
 import { ReactNode, ReactElement, ForwardRefExoticComponent } from 'react';
 import styled, { withTheme, DefaultTheme } from 'styled-components';
+import { fromTheme } from 'Theme';
 
 /** Represents the possible values for TableCell's text-align property */
 export enum ALIGN {
@@ -35,14 +36,14 @@ export interface TableCellProps {
 }
 
 const StyledCell = styled.td<TableCellProps>`
-  border-left: ${({ theme }): string => (theme.border.light)};
-  border-right: ${({ theme }): string => (theme.border.light)};
-  font-family: ${({ theme }): string => (theme.font.data.family)};
-  font-size: ${({ theme }): string => (theme.font.data.size)};
-  padding: ${({ theme }): string => (theme.ws.xsmall)};
-  text-align: ${({ alignment }): string => alignment};
-  vertical-align: ${({ verticalAlignment }): string => verticalAlignment};
-  background-color: ${({ backgroundColor }): string => backgroundColor};
+  border-left: ${fromTheme('border', 'light')};
+  border-right: ${fromTheme('border', 'light')};
+  font-family: ${fromTheme('font', 'data', 'family')};
+  font-size:  ${fromTheme('font', 'data', 'size')};
+  padding: ${fromTheme('ws', 'xsmall')};
+  text-align: ${({ alignment }) => alignment};
+  vertical-align: ${({ verticalAlignment }) => verticalAlignment};
+  background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 
 StyledCell.defaultProps = {

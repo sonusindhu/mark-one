@@ -6,6 +6,7 @@ import React, {
   Ref,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { fromTheme } from 'Theme';
 import ValidationErrorMessage from './ValidationErrorMessage';
 import Label, { POSITION } from './Label';
 
@@ -41,9 +42,10 @@ export interface TextInputProps {
 }
 
 const StyledTextInput = styled.input<TextInputProps>`
-  border: ${({ theme }): string => (theme.border.hairline)};
+  border: ${fromTheme('border', 'hairline')};
   width: 100%;
-  padding: ${({ theme }): string => (theme.ws.xsmall + ' ' + theme.ws.zero + ' ' + theme.ws.xsmall + ' ' + theme.ws.xsmall)};
+  padding: ${fromTheme('ws', 'xsmall')};
+  padding-right: ${fromTheme('ws', 'zero')};
   grid-area: i;
 `;
 

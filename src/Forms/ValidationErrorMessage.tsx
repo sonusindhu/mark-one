@@ -2,6 +2,7 @@ import React, {
   ReactNode, FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { fromTheme } from 'Theme';
 
 export interface ValidationErrorMessageProps {
   /** Text or components to be displayed */
@@ -11,10 +12,10 @@ export interface ValidationErrorMessageProps {
 }
 
 const StyledValidationErrorMessage = styled.span`
-  color: ${({ theme }): string => (theme.color.text.negative)};
-  font-family: ${({ theme }): string => (theme.font.error.family)};
-  font-size: ${({ theme }): string => (theme.font.error.size)};
-  font-weight: ${({ theme }): string => (theme.font.error.weight)};
+  color: ${fromTheme('color', 'text', 'negative')};
+  font-family: ${fromTheme('font', 'error', 'family')};
+  font-size: ${fromTheme('font', 'error', 'size')};
+  font-weight: ${fromTheme('font', 'error', 'weight')};
   grid-area: e;
 `;
 

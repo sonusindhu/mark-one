@@ -5,6 +5,7 @@ import {
   ForwardRefExoticComponent,
 } from 'react';
 import styled, { withTheme, DefaultTheme } from 'styled-components';
+import { fromTheme } from 'Theme';
 
 export interface TableHeadingCellProps {
   /** Specifies the background color of the table cell */
@@ -24,11 +25,11 @@ export interface TableHeadingCellProps {
 }
 
 const StyledTableHeadingCell = styled.th<TableHeadingCellProps>`
-  background-color: ${({ theme, backgroundColor }): string => (
+  background-color: ${({ theme, backgroundColor }) => (
     backgroundColor || theme.color.background.medium
   )};
-  border: ${({ theme }): string => (theme.border.light)};
-  font-weight: ${({ theme }): string => (theme.font.bold.weight)};
+  border: ${fromTheme('border', 'light')};
+  font-weight: ${fromTheme('font', 'bold', 'weight')};
   text-align: 'center';
 `;
 

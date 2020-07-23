@@ -2,6 +2,7 @@ import {
   ReactElement,
 } from 'react';
 import styled, { withTheme } from 'styled-components';
+import { fromTheme } from 'Theme';
 import TabListItem from './TabListItem';
 
 export interface TabListProps {
@@ -17,7 +18,7 @@ export interface TabListProps {
 
 const TabList = styled.ul`
   background-color: transparent;
-  border-bottom: ${({ theme }): string => theme.border.hairline};
+  border-bottom: ${fromTheme('border', 'hairline')};
   border-collapse: collapse;
   display: flex;
   flex-wrap: wrap;
