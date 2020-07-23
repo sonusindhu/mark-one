@@ -1,12 +1,15 @@
 import 'styled-components';
+import { VARIANT } from './Theme/utils';
 
 declare module 'styled-components' {
 
   type ColorRange = {
-    light?: string;
-    medium?: string;
-    dark?: string;
+    light: string;
+    medium: string;
+    subtle?: string;
+    dark: string;
     darker?: string;
+    accent?: string;
   };
 
   type FontSpec = {
@@ -16,39 +19,87 @@ declare module 'styled-components' {
     color?: string;
   };
 
+  type AcademicArea = 'acs' |
+  'am' |
+  'ap' |
+  'be' |
+  'cs' |
+  'ee' |
+  'ese' |
+  'general' |
+  'mat & me' |
+  'mde' |
+  'msmba' |
+  'sem';
+
+  type ColorCategory = 'background' | 'text' | 'area';
+
+  type FontCategory = 'base' |
+  'body' |
+  'data' |
+  'note' |
+  'bold' |
+  'title'|
+  'heading' |
+  'error';
+
+  type WhiteSpaceSize = 'zero' |
+  'xsmall' |
+  'small' |
+  'medium' |
+  'large' |
+  'xlarge';
+
+  type BorderWeight = 'hairline' | 'light' | 'heavy';
+
+  type ShadowWeight = 'xlight' | 'light' | 'medium';
+
+  type TextColors = 'base' |
+  'light' |
+  'medium' |
+  'dark' |
+  'info' |
+  'positive' |
+  'negative';
+
   export interface DefaultTheme {
-    color?: {
-      background?: {
-        light?: string;
-        subtle?: string;
-        medium?: string;
-        dark?: string;
-        darker?: string;
-        accent?: string;
-        base?: ColorRange;
-        info?: ColorRange;
-        positive?: ColorRange;
-        negative?: ColorRange;
+    color: {
+      background:{
+        [K in VARIANT | keyof ColorRange]:
+        K extends VARIANT
+          ? ColorRange
+          : string;
+      }
+      text: {
+        [key in TextColors]: string;
       };
-      text?: {
-        base?: string;
-        light?: string;
-        medium?: string;
-        dark?: string;
-        info?: string;
-        positive?: string;
-        negative?: string;
-      };
-      area?: {
-        [key: string]: string;
+      area: {
+        [key in AcademicArea]: string;
       };
     };
-    font?: {
-      [key: string]: FontSpec;
+    font: {
+      [key in FontCategory]: FontSpec;
     };
-    shadow?: { [key: string]: string };
-    border?: { [key: string]: string };
-    ws?: { [key: string]: string };
+    shadow: {
+      [key in ShadowWeight]: string
+    };
+    border: {
+      [key in BorderWeight]: string
+    };
+    ws: {
+      [key in WhiteSpaceSize]: string
+    };
   }
 
+  export type ValidThemeValues = keyof DefaultTheme |
+  keyof ColorRange |
+  keyof FontSpec |
+  AcademicArea |
+  ColorCategory |
+  FontCategory |
+  ShadowWeight |
+  BorderWeight |
+  WhiteSpaceSize |
+  TextColors |
+  VARIANT;
 }

@@ -62,6 +62,4 @@ export enum VARIANT {
   SECONDARY = 'base',
   DANGER = 'negative',
   DEFAULT = 'base',
-  LIGHT = 'light',
-  DARK = 'dark',
 }
