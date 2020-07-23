@@ -63,21 +63,21 @@ const CheckmarkBox = styled.svg<CheckmarkBoxProps>`
   fill: none;
   stroke: ${({ theme, checked, disabled }): string => {
     if (checked && disabled) {
-      return `${theme.color.text.medium}`;
+      return `${fromTheme('color', 'text', 'medium')}`;
     } if (checked) {
-      return `${theme.color.text.dark}`;
+      return `${fromTheme('color', 'text', 'dark')}`;
     }
     return 'none';
   }};
-  stroke-width: 8px;
+  stroke-width: 0.5em;
 `;
 
 const CustomCheckbox = styled.span<CustomCheckboxProps>`
   display: inline-block;
   border: ${({ theme, disabled }): string => (
     disabled
-      ? `${theme.border.light}`
-      : `2px solid ${theme.color.text.base}`
+      ? `${fromTheme('border', 'light')}`
+      : `2px solid ${fromTheme('color', 'text', 'base')}`
   )};
   grid-area: i;
   width: 1.25em;
@@ -87,7 +87,8 @@ const CustomCheckbox = styled.span<CustomCheckboxProps>`
       ? 'default'
       : 'pointer'
   )};
-  box-shadow: ${({ theme, checked }): string => checked && `0 0px 8px ${theme.color.background.base.dark}`};
+  box-shadow: ${({ theme, checked }): string =>
+    checked && `0 0px 8px ${fromTheme('color', 'background', 'dark')}`};
   margin-right: ${fromTheme('ws', 'xsmall')};
   align-self: center;
   justify-self: ${({ labelPosition }): string => (
