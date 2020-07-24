@@ -1,6 +1,6 @@
 import { ReactNode, ReactElement, ForwardRefExoticComponent } from 'react';
 import styled from 'styled-components';
-import { fromTheme } from 'Theme';
+import { fromTheme } from '../Theme';
 
 /** Represents the possible values for TableCell's text-align property */
 export enum ALIGN {

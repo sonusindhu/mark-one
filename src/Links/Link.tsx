@@ -8,7 +8,7 @@ import {
   Link as ReactLink,
   LinkProps,
 } from 'react-router-dom';
-import { fromTheme, VARIANT } from 'Theme';
+import { fromTheme, VARIANT } from '../Theme';
 
 const StyledLink = styled(ReactLink)`
   text-decoration: none;

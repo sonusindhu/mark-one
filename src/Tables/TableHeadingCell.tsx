@@ -5,7 +5,7 @@ import {
   ForwardRefExoticComponent,
 } from 'react';
 import styled from 'styled-components';
-import { fromTheme } from 'Theme';
+import { fromTheme } from '../Theme';
 
 export interface TableHeadingCellProps {
   /** Specifies the background color of the table cell */

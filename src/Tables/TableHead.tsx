@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ReactElement, ForwardRefExoticComponent } from 'react';
-import { fromTheme } from 'Theme';
+import { fromTheme } from '../Theme';
 import TableRow from './TableRow';
 
 export interface TableHeadProps {
