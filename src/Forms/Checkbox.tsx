@@ -7,7 +7,7 @@ import React,
   ReactElement,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { fromTheme } from 'Theme';
+import { fromTheme } from '../Theme';
 import Label, { POSITION } from './Label';
 import ValidationErrorMessage from './ValidationErrorMessage';
 
@@ -61,11 +61,11 @@ interface CheckmarkBoxProps {
 
 const CheckmarkBox = styled.svg<CheckmarkBoxProps>`
   fill: none;
-  stroke: ${({ theme, checked, disabled }): string => {
+  stroke: ${({ checked, disabled, theme }): string => {
     if (checked && disabled) {
-      return `${fromTheme('color', 'text', 'medium')}`;
+      return `${theme.color.text.medium}`;
     } if (checked) {
-      return `${fromTheme('color', 'text', 'dark')}`;
+      return `${theme.color.text.dark}`;
     }
     return 'none';
   }};
@@ -76,8 +76,8 @@ const CustomCheckbox = styled.span<CustomCheckboxProps>`
   display: inline-block;
   border: ${({ theme, disabled }): string => (
     disabled
-      ? `${fromTheme('border', 'light')}`
-      : `2px solid ${fromTheme('color', 'text', 'base')}`
+      ? `${theme.border.light}`
+      : `2px solid ${theme.color.text.base}`
   )};
   grid-area: i;
   width: 1.25em;
@@ -87,7 +87,7 @@ const CustomCheckbox = styled.span<CustomCheckboxProps>`
       ? 'default'
       : 'pointer'
   )};
-  box-shadow: ${({ theme, checked }): string => checked && `0 0px 8px ${fromTheme('color', 'background', 'dark')}`};
+  box-shadow: ${({ checked, theme }): string => checked && `0 0px 8px ${theme.color.background.dark}`};
   margin-right: ${fromTheme('ws', 'xsmall')};
   align-self: center;
   justify-self: ${({ labelPosition }): string => (

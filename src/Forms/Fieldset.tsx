@@ -8,7 +8,6 @@ import React,
 import styled, { ThemeContext } from 'styled-components';
 import { NoteText } from 'Typography';
 import ValidationErrorMessage from './ValidationErrorMessage';
-import { fromTheme } from 'Theme';
 
 export interface FieldsetProps {
   /** Describes the elements within the fieldset */
@@ -29,9 +28,9 @@ export interface FieldsetProps {
 
 const StyledFieldset = styled.fieldset<FieldsetProps>`
   display: block;
-  border: ${({ theme, isBorderVisible }): string => (
+  border: ${({ isBorderVisible, theme }): string => (
     isBorderVisible
-      ? `${fromTheme('border', 'light')}`
+      ? `${theme.border.light}`
       : 'none'
   )};
   margin-inline-start: 2px;
