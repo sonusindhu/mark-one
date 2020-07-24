@@ -4,7 +4,7 @@ import React, {
   FunctionComponent,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { fromTheme } from 'Theme';
+import { fromTheme } from '../Theme';
 
 /** An enum that represents the possible values for the label's positioning */
 export enum POSITION {

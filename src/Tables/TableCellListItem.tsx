@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
-import { fromTheme } from 'Theme';
+import { fromTheme } from '../Theme';
 
 export interface TableCellListItemProps {
   /**

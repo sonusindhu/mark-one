@@ -2,7 +2,7 @@ import React, {
   ReactElement, ReactNode, FunctionComponent, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { fromTheme } from 'Theme';
+import { fromTheme } from '../Theme';
 
 export interface TabListItemProps {
   /** Text or components to be displayed in the TabList item */

@@ -6,7 +6,7 @@ import React, {
   Ref,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { fromTheme } from 'Theme';
+import { fromTheme } from '../Theme';
 import ValidationErrorMessage from './ValidationErrorMessage';
 import Label, { POSITION } from './Label';
 

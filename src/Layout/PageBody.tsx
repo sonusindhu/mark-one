@@ -1,6 +1,6 @@
 import { ReactNode, ReactElement } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { fromTheme } from 'Theme';
+import { fromTheme } from '../Theme';
 
 export interface PageBodyProps {
   /** Page contents */

@@ -2,7 +2,7 @@ import React, {
   ReactNode, FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { fromTheme } from 'Theme';
+import { fromTheme } from '../Theme';
 
 export interface ValidationErrorMessageProps {
   /** Text or components to be displayed */

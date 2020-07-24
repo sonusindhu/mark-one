@@ -11,7 +11,7 @@ import { spy, SinonSpy } from 'sinon';
 import { strictEqual } from 'assert';
 import userEvent from '@testing-library/user-event';
 import { Button } from 'Buttons';
-import { VARIANT } from 'Theme';
+import { VARIANT } from '../../Theme';
 import TextInput from '../TextInput';
 
 enum POSITION {

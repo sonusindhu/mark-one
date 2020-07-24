@@ -3,7 +3,7 @@ import {
 } from 'react';
 import styled from 'styled-components';
 import { ALIGN, VALIGN } from './TableCell';
-import { fromTheme } from '../Theme/utils';
+import { fromTheme } from '../Theme';
 
 export interface TableRowHeadingCellProps {
   /** Allows you to pass in a alignment property from the ALIGN enum */

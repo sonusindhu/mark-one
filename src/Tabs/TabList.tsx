@@ -2,7 +2,7 @@ import {
   ReactElement,
 } from 'react';
 import styled, { withTheme } from 'styled-components';
-import { fromTheme } from 'Theme';
+import { fromTheme } from '../Theme';
 import TabListItem from './TabListItem';
 
 export interface TabListProps {
