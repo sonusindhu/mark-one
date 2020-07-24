@@ -8,10 +8,11 @@ import React,
 import styled, { ThemeContext } from 'styled-components';
 import { NoteText } from 'Typography';
 import ValidationErrorMessage from './ValidationErrorMessage';
+import { fromTheme } from 'Theme';
 
 export interface FieldsetProps {
   /** Describes the elements within the fieldset */
-  legend?: string;
+  legend: string;
   /** Specifies the id of the associated form */
   form?: string;
   /** The form elements in the fieldset */
@@ -22,13 +23,15 @@ export interface FieldsetProps {
   errorMessage?: string;
   /** Specifies whether the border of fieldset is visible */
   isBorderVisible?: boolean;
+  /** Specifies whether the legend of the fieldset is visible */
+  isLegendVisible?: boolean;
 }
 
 const StyledFieldset = styled.fieldset<FieldsetProps>`
   display: block;
   border: ${({ theme, isBorderVisible }): string => (
     isBorderVisible
-      ? `${theme.border.light}`
+      ? `${fromTheme('border', 'light')}`
       : 'none'
   )};
   margin-inline-start: 2px;
@@ -48,6 +51,7 @@ const Fieldset: FunctionComponent<FieldsetProps> = (props): ReactElement => {
     legendDescription,
     errorMessage,
     isBorderVisible,
+    isLegendVisible,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -58,6 +62,7 @@ const Fieldset: FunctionComponent<FieldsetProps> = (props): ReactElement => {
       legendDescription={legendDescription}
       errorMessage={errorMessage}
       isBorderVisible={isBorderVisible}
+      isLegendVisible={isLegendVisible}
     >
       <legend>{legend}</legend>
       {legendDescription

@@ -7,9 +7,9 @@ import React,
   ReactElement,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { fromTheme } from 'Theme';
 import Label, { POSITION } from './Label';
 import ValidationErrorMessage from './ValidationErrorMessage';
-import { fromTheme } from 'Theme';
 
 interface NativeCheckboxProps {
   /** The id of the label tied to the checkbox */
@@ -87,8 +87,7 @@ const CustomCheckbox = styled.span<CustomCheckboxProps>`
       ? 'default'
       : 'pointer'
   )};
-  box-shadow: ${({ theme, checked }): string =>
-    checked && `0 0px 8px ${fromTheme('color', 'background', 'dark')}`};
+  box-shadow: ${({ theme, checked }): string => checked && `0 0px 8px ${fromTheme('color', 'background', 'dark')}`};
   margin-right: ${fromTheme('ws', 'xsmall')};
   align-self: center;
   justify-self: ${({ labelPosition }): string => (
