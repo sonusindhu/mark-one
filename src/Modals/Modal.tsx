@@ -147,6 +147,8 @@ const Modal: FunctionComponent<ModalProps> = ({
    * */
   useEffect(() => {
     const listener = (event): void => {
+      // If the modal is not visible, the ref will not be set
+      if (!finalForwardRef.current) return;
       const modal: HTMLElement = finalForwardRef.current;
       if (!modal.contains(event.target as Node)) {
         const firstFocusable: HTMLElement = modal.querySelector(focusables);
