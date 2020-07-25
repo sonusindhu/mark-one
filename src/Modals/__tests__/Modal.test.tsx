@@ -1,15 +1,13 @@
 import React, { useState, FunctionComponent, useRef } from 'react';
 import { strictEqual } from 'assert';
 import {
-  spy, stub, SinonSpy, SinonStub,
+  stub, SinonStub,
 } from 'sinon';
 import {
   render,
   fireEvent,
-  cleanup,
-  waitForElement,
   BoundFunction,
-  GetByRole,
+  FindByRole,
 } from 'test-utils';
 import Modal from 'Modals/Modal';
 import { Button } from 'Buttons';
@@ -17,7 +15,7 @@ import { VARIANT } from 'Theme';
 import { ModalHeader } from 'Modals';
 
 describe('Modal', function () {
-  let getByRole: BoundFunction<GetByRole>;
+  let findByRole: BoundFunction<FindByRole>;
   describe('isVisible prop', function () {
     context('When isVisible is false', function () {
       it('Should not render any visible content', function () {
@@ -99,21 +97,21 @@ describe('Modal', function () {
             </>
           );
         };
-        ({ getByRole } = render(
+        ({ findByRole } = render(
           <RefExample />
         ));
       });
       it('can be used to shift the focus to the modal header on button click', async function () {
         const testButton = document.getElementById('testButton') as HTMLButtonElement;
         testButton.click();
-        await waitForElement(() => getByRole('heading'));
+        await findByRole('heading');
         strictEqual((document.activeElement as HTMLElement).textContent.includes('Modal Header'), true);
       });
       it('will focus back on the first focusable element after cycling through modal elements', async function () {
         const testButton = document.getElementById('testButton') as HTMLButtonElement;
         testButton.click();
-        await waitForElement(() => getByRole('heading'));
-        fireEvent.keyPress(getByRole('heading'), { key: 'Tab', code: 'Tab' });
+        await findByRole('heading');
+        fireEvent.keyPress(await findByRole('heading'), { key: 'Tab', code: 'Tab' });
         strictEqual((document.activeElement as HTMLElement).textContent.includes('Modal Header'), true);
       });
     });

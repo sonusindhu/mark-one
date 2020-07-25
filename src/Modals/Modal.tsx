@@ -133,7 +133,8 @@ const Modal: FunctionComponent<ModalProps> = ({
   const theme = useContext(ThemeContext);
 
   // If the ref is not provided, create one since it is used below
-  const finalForwardRef = forwardRef != null ? forwardRef : useRef(null);
+  const backupRef: React.RefObject<HTMLDivElement> = useRef(null);
+  const finalForwardRef = forwardRef != null ? forwardRef : backupRef;
 
   // Encompasses all of the elements that can be focused on by the user
   // If you set the index of an element to -1, that element can also be focused
@@ -146,7 +147,7 @@ const Modal: FunctionComponent<ModalProps> = ({
    * when the modal unmounts.
    * */
   useEffect(() => {
-    const listener = (event): void => {
+    const listener = (event: Event): void => {
       // If the modal is not visible, the ref will not be set
       if (!finalForwardRef.current) return;
       const modal: HTMLElement = finalForwardRef.current;
@@ -168,7 +169,7 @@ const Modal: FunctionComponent<ModalProps> = ({
       document.body.style.overflow = '';
       document.body.removeEventListener('focus', listener);
     };
-  }, [isVisible]);
+  }, [finalForwardRef, focusables, isVisible]);
 
   return createPortal((
     <CSSTransition
