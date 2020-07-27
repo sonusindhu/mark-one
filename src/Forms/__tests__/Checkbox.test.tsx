@@ -20,6 +20,7 @@ describe('Checkbox', function () {
   let queryByText: BoundFunction<QueryByText>;
   let clickSpy: SinonSpy;
   context('when errorMessage prop is present', function () {
+    const errorMessage = 'Please select this checkbox before proceeding.';
     beforeEach(function () {
       clickSpy = spy();
       ({ getByText } = render(
@@ -28,7 +29,7 @@ describe('Checkbox', function () {
           checked={false}
           label="I agree to the terms and conditions."
           onChange={clickSpy}
-          errorMessage="Please select this checkbox before proceeding."
+          errorMessage={errorMessage}
           isRequired
         />
       ));
@@ -46,7 +47,7 @@ describe('Checkbox', function () {
       strictEqual(checkboxElement.checked, false);
     });
     it('renders the error message', function () {
-      getByText('Please select this checkbox before proceeding.', { exact: false });
+      getByText(errorMessage, { exact: false });
     });
   });
   context('when errorMessage prop is not present', function () {
