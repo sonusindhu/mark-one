@@ -77,7 +77,7 @@ const FieldsetExample = () => {
 <FieldsetExample />
 ```
 
-Non Visible Border and Non Visible Legend example: The `isBorderVisible` property is set to `false,` and the `legend` property is set to "Fieldset Legend."
+Non Visible Border and Non Visible Legend example: The `isBorderVisible` property is set to `false,` the `legend` property is set to "Fieldset Legend," and the `isLegendVisible` property is set to `false.`
 ```jsx
 import { useState } from 'react';
 import { Checkbox } from 'mark-one';
@@ -89,6 +89,41 @@ const FieldsetExample = () => {
       legend="Fieldset Legend"
       legendDescription="Note: * denoted required information"
       isBorderVisible={false}
+      isLegendVisible={false}
+    >
+      <Checkbox
+        checked={requiredCheckbox}
+        label="Required Checkbox"
+        onChange={(event) => {
+          setRequiredCheckbox(!requiredCheckbox);
+        }}
+        isRequired
+      />
+      <Checkbox
+        checked={nonRequiredCheckbox}
+        label="Non-Required Checkbox"
+        onChange={(event) => {
+          setNonRequiredCheckbox(!nonRequiredCheckbox);
+        }}
+      />
+    </Fieldset>
+  );
+}
+<FieldsetExample />
+```
+
+Visible Border and Non Visible Legend example: The `legend` property is set to "Fieldset Legend," and the `isLegendVisible` property is set to `false.`
+```jsx
+import { useState } from 'react';
+import { Checkbox } from 'mark-one';
+const FieldsetExample = () => {
+  const [requiredCheckbox, setRequiredCheckbox] = useState(false);
+  const [nonRequiredCheckbox, setNonRequiredCheckbox] = useState(false);
+  return (
+    <Fieldset
+      legend="Fieldset Legend"
+      legendDescription="Note: * denoted required information"
+      isLegendVisible={false}
     >
       <Checkbox
         checked={requiredCheckbox}

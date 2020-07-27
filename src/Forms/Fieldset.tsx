@@ -9,6 +9,13 @@ import styled, { ThemeContext } from 'styled-components';
 import { NoteText } from 'Typography';
 import ValidationErrorMessage from './ValidationErrorMessage';
 
+interface StyledFieldsetProps {
+  /** Specifies the id of the associated form */
+  form?: string;
+  /** Specifies whether the border of fieldset is visible */
+  isBorderVisible?: boolean;
+}
+
 export interface FieldsetProps {
   /** Describes the elements within the fieldset */
   legend: string;
@@ -26,7 +33,12 @@ export interface FieldsetProps {
   isLegendVisible?: boolean;
 }
 
-const StyledFieldset = styled.fieldset<FieldsetProps>`
+interface StyledLegendProps {
+  /** Specifies whether the legend of the fieldset is visible */
+  isLegendVisible?: boolean;
+}
+
+const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   display: block;
   border: ${({ isBorderVisible, theme }): string => (
     isBorderVisible
@@ -42,6 +54,19 @@ const StyledFieldset = styled.fieldset<FieldsetProps>`
   min-inline-size: min-content;
 `;
 
+const StyledLegend = styled.legend<StyledLegendProps>`
+  position: ${({ isLegendVisible }): string => (
+    isLegendVisible
+      ? null
+      : 'absolute'
+  )};
+  left: ${({ isLegendVisible }): string => (
+    isLegendVisible
+      ? null
+      : '-100vw'
+  )};
+`;
+
 const Fieldset: FunctionComponent<FieldsetProps> = (props): ReactElement => {
   const {
     legend,
@@ -55,15 +80,15 @@ const Fieldset: FunctionComponent<FieldsetProps> = (props): ReactElement => {
   const theme = useContext(ThemeContext);
   return (
     <StyledFieldset
-      legend={legend}
       form={form}
       theme={theme}
-      legendDescription={legendDescription}
-      errorMessage={errorMessage}
       isBorderVisible={isBorderVisible}
-      isLegendVisible={isLegendVisible}
     >
-      <legend>{legend}</legend>
+      <StyledLegend
+        isLegendVisible={isLegendVisible}
+      >
+        {legend}
+      </StyledLegend>
       {legendDescription
         && (
           <NoteText>
@@ -83,6 +108,7 @@ const Fieldset: FunctionComponent<FieldsetProps> = (props): ReactElement => {
 
 Fieldset.defaultProps = {
   isBorderVisible: true,
+  isLegendVisible: true,
 };
 
 /** @component */
