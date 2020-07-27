@@ -1,4 +1,27 @@
-import { ValidThemeValues, DefaultTheme } from 'styled-components';
+import { DefaultTheme } from 'styled-components';
+import {
+  ColorRange,
+  TextColors,
+  AcademicArea,
+  FontCategory,
+  ShadowWeight,
+  BorderWeight,
+  WhiteSpaceSize,
+  FontSpec,
+  ColorCategory,
+} from './ThemeTypes';
+
+type ValidThemeValues = keyof DefaultTheme |
+keyof ColorRange |
+keyof FontSpec |
+AcademicArea |
+ColorCategory |
+FontCategory |
+ShadowWeight |
+BorderWeight |
+WhiteSpaceSize |
+TextColors |
+VARIANT;
 
 /**
  * Recursively get a value from the theme object, or return null if the value

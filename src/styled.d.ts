@@ -1,67 +1,17 @@
 import 'styled-components';
 import { VARIANT } from './Theme/utils';
+import {
+  ColorRange,
+  TextColors,
+  AcademicArea,
+  FontCategory,
+  ShadowWeight,
+  BorderWeight,
+  WhiteSpaceSize,
+  FontSpec,
+} from './Theme/ThemeTypes';
 
 declare module 'styled-components' {
-
-  type ColorRange = {
-    light: string;
-    medium: string;
-    subtle?: string;
-    dark: string;
-    darker?: string;
-    accent?: string;
-  };
-
-  type FontSpec = {
-    family?: string;
-    size?: string;
-    weight?: string;
-    color?: string;
-  };
-
-  type AcademicArea = 'acs' |
-  'am' |
-  'ap' |
-  'be' |
-  'cs' |
-  'ee' |
-  'ese' |
-  'general' |
-  'mat & me' |
-  'mde' |
-  'msmba' |
-  'sem';
-
-  type ColorCategory = 'background' | 'text' | 'area';
-
-  type FontCategory = 'base' |
-  'body' |
-  'data' |
-  'note' |
-  'bold' |
-  'title'|
-  'heading' |
-  'error';
-
-  type WhiteSpaceSize = 'zero' |
-  'xsmall' |
-  'small' |
-  'medium' |
-  'large' |
-  'xlarge';
-
-  type BorderWeight = 'hairline' | 'light' | 'heavy';
-
-  type ShadowWeight = 'xlight' | 'light' | 'medium';
-
-  type TextColors = 'base' |
-  'light' |
-  'medium' |
-  'dark' |
-  'info' |
-  'positive' |
-  'negative';
-
   export interface DefaultTheme {
     color: {
       background:{
@@ -90,16 +40,4 @@ declare module 'styled-components' {
       [key in WhiteSpaceSize]: string
     };
   }
-
-  export type ValidThemeValues = keyof DefaultTheme |
-  keyof ColorRange |
-  keyof FontSpec |
-  AcademicArea |
-  ColorCategory |
-  FontCategory |
-  ShadowWeight |
-  BorderWeight |
-  WhiteSpaceSize |
-  TextColors |
-  VARIANT;
 }
