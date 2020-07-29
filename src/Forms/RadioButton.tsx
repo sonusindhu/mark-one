@@ -3,6 +3,7 @@ import React, {
   FunctionComponent,
   ChangeEventHandler,
   useContext,
+  Ref,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
@@ -17,6 +18,8 @@ interface NativeRadioButtonProps {
   value: string;
   /** Specifies the label text */
   label: string;
+  /** If true, radio button will be disabled */
+  disabled?: boolean;
   /** Specifies whether button is checked */
   checked?: boolean;
   /** Function to call on change event */
@@ -28,11 +31,15 @@ export interface RadioButtonProps extends NativeRadioButtonProps {
   labelPosition?: POSITION;
   /** If true, the radio button is required to submit the form */
   isRequired?: boolean;
+  /** Specifies the ref of the radio button */
+  forwardRef?: Ref<HTMLInputElement>;
 }
 
 interface CustomRadioButtonProps {
   /** Specifies whether button is checked */
   checked?: boolean;
+  /** If true, radio button will be disabled */
+  disabled?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
   labelPosition?: POSITION;
 }
@@ -40,10 +47,16 @@ interface CustomRadioButtonProps {
 interface SelectMarkProps {
   /** Specifies whether button is checked */
   checked?: boolean;
+  /** If true, radio button will be disabled */
+  disabled?: boolean;
 }
 
 const SelectMark = styled.span<SelectMarkProps>`
-  border: ${({ theme }): string => `6px solid ${theme.color.text.base}`};
+  border: ${({ theme, disabled }): string => (
+    disabled
+      ? 'none'
+      : `6px solid ${theme.color.text.base}`
+  )};
   border-radius: 50%;
   position: absolute;
   transition: opacity 0.2s ease-in-out;
@@ -65,11 +78,19 @@ const CustomRadioButton = styled.span<CustomRadioButtonProps>`
   grid-area: i;
   height: 1.25em;
   width: 1.25em;
-  border: ${({ theme }): string => `2px solid ${theme.color.text.base}`};
+  border: ${({ theme, disabled }): string => (
+    disabled
+      ? `${theme.border.light}`
+      : `2px solid ${theme.color.text.base}`
+  )};
   border-radius: 50%;
   margin-right: ${fromTheme('ws', 'xsmall')};
   align-self: center;
-  cursor: pointer;
+  cursor: ${({ disabled }): string => (
+    disabled
+      ? 'default'
+      : 'pointer'
+  )};
   box-shadow: ${({ checked, theme }): string => checked && `0 0px 10px ${theme.color.background.darker}`};
   justify-self: ${({ labelPosition }): string => (
     labelPosition === POSITION.RIGHT
@@ -94,8 +115,10 @@ ReactElement => {
     label,
     labelPosition,
     checked,
+    disabled,
     onChange,
     isRequired,
+    forwardRef,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -105,6 +128,7 @@ ReactElement => {
         label={label}
         labelPosition={labelPosition}
         isRequired={isRequired}
+        disabled={disabled}
       >
         <NativeRadioButton
           type="radio"
@@ -114,11 +138,15 @@ ReactElement => {
           name={name}
           onChange={onChange}
           aria-required={isRequired}
+          ref={forwardRef}
           theme={theme}
+          checked={checked}
+          disabled={disabled}
         />
         <CustomRadioButton
           labelPosition={labelPosition}
           checked={checked}
+          disabled={disabled}
         >
           {checked
           && (
