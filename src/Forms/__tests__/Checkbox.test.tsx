@@ -18,17 +18,17 @@ import { POSITION } from 'Forms/Label';
 describe('Checkbox', function () {
   let getByText: BoundFunction<GetByText>;
   let queryByText: BoundFunction<QueryByText>;
-  let clickSpy: SinonSpy;
+  let changeSpy: SinonSpy;
   context('when errorMessage prop is present', function () {
     const errorMessage = 'Please select this checkbox before proceeding.';
     beforeEach(function () {
-      clickSpy = spy();
+      changeSpy = spy();
       ({ getByText } = render(
         <Checkbox
           id="testCheckbox"
           checked={false}
           label="I agree to the terms and conditions."
-          onChange={clickSpy}
+          onChange={changeSpy}
           errorMessage={errorMessage}
           isRequired
         />
@@ -40,7 +40,7 @@ describe('Checkbox', function () {
     });
     it('calls the click handler when clicked', function () {
       fireEvent.click(document.getElementById('testCheckbox'));
-      strictEqual(clickSpy.callCount, 1);
+      strictEqual(changeSpy.callCount, 1);
     });
     it('renders the correct checked value', function () {
       const checkboxElement = document.getElementById('testCheckbox') as HTMLInputElement;
@@ -52,13 +52,13 @@ describe('Checkbox', function () {
   });
   context('when errorMessage prop is not present', function () {
     beforeEach(function () {
-      clickSpy = spy();
+      changeSpy = spy();
       ({ queryByText } = render(
         <Checkbox
           id="testCheckbox"
           checked={false}
           label="I agree to the terms and conditions."
-          onChange={clickSpy}
+          onChange={changeSpy}
           isRequired
         />
       ));
@@ -69,7 +69,7 @@ describe('Checkbox', function () {
     });
     it('calls the click handler when clicked', function () {
       fireEvent.click(document.getElementById('testCheckbox'));
-      strictEqual(clickSpy.callCount, 1);
+      strictEqual(changeSpy.callCount, 1);
     });
     it('renders the correct checked value', function () {
       const checkboxElement = document.getElementById('testCheckbox') as HTMLInputElement;
@@ -81,13 +81,13 @@ describe('Checkbox', function () {
   });
   context('when isRequired prop is present', function () {
     beforeEach(function () {
-      clickSpy = spy();
+      changeSpy = spy();
       ({ getByText } = render(
         <Checkbox
           id="testCheckbox"
           checked={false}
           label="I agree to the terms and conditions."
-          onChange={clickSpy}
+          onChange={changeSpy}
           isRequired
         />
       ));
@@ -98,7 +98,7 @@ describe('Checkbox', function () {
     });
     it('calls the click handler when clicked', function () {
       fireEvent.click(document.getElementById('testCheckbox'));
-      strictEqual(clickSpy.callCount, 1);
+      strictEqual(changeSpy.callCount, 1);
     });
     it('renders the correct checked value', function () {
       const checkboxElement = document.getElementById('testCheckbox') as HTMLInputElement;
@@ -110,13 +110,13 @@ describe('Checkbox', function () {
   });
   context('when isRequired prop is not present', function () {
     beforeEach(function () {
-      clickSpy = spy();
+      changeSpy = spy();
       ({ queryByText } = render(
         <Checkbox
           id="testCheckbox"
           checked={false}
           label="I agree to the terms and conditions."
-          onChange={clickSpy}
+          onChange={changeSpy}
         />
       ));
     });
@@ -126,7 +126,7 @@ describe('Checkbox', function () {
     });
     it('calls the click handler when clicked', function () {
       fireEvent.click(document.getElementById('testCheckbox'));
-      strictEqual(clickSpy.callCount, 1);
+      strictEqual(changeSpy.callCount, 1);
     });
     it('renders the correct checked value', function () {
       const checkboxElement = document.getElementById('testCheckbox') as HTMLInputElement;
@@ -138,13 +138,13 @@ describe('Checkbox', function () {
   });
   context('when disabled prop is true', function () {
     beforeEach(function () {
-      clickSpy = spy();
+      changeSpy = spy();
       render(
         <Checkbox
           id="testCheckbox"
           checked
           label="I agree to the terms and conditions."
-          onChange={clickSpy}
+          onChange={changeSpy}
           disabled
         />
       );
@@ -155,7 +155,7 @@ describe('Checkbox', function () {
     });
     it('does not call the change handler when clicked', function () {
       userEvent.click(document.getElementById('testCheckbox'));
-      strictEqual(clickSpy.callCount, 0);
+      strictEqual(changeSpy.callCount, 0);
     });
     it('renders the correct checked value', function () {
       const checkboxElement = document.getElementById('testCheckbox') as HTMLInputElement;
@@ -164,13 +164,13 @@ describe('Checkbox', function () {
   });
   context('when disabled prop is false', function () {
     beforeEach(function () {
-      clickSpy = spy();
+      changeSpy = spy();
       render(
         <Checkbox
           id="testCheckbox"
           checked
           label="I agree to the terms and conditions."
-          onChange={clickSpy}
+          onChange={changeSpy}
         />
       );
     });
@@ -180,7 +180,7 @@ describe('Checkbox', function () {
     });
     it('calls the click handler when clicked', function () {
       userEvent.click(document.getElementById('testCheckbox'));
-      strictEqual(clickSpy.callCount, 1);
+      strictEqual(changeSpy.callCount, 1);
     });
     it('renders the correct checked value', function () {
       const checkboxElement = document.getElementById('testCheckbox') as HTMLInputElement;
@@ -189,14 +189,14 @@ describe('Checkbox', function () {
   });
   context('when labelPosition prop is equal to POSITION.RIGHT', function () {
     beforeEach(function () {
-      clickSpy = spy();
+      changeSpy = spy();
       ({ getByText } = render(
         <Checkbox
           id="testCheckbox"
           checked
           label="Test Label"
           labelPosition={POSITION.RIGHT}
-          onChange={clickSpy}
+          onChange={changeSpy}
         />
       ));
     });
@@ -206,7 +206,7 @@ describe('Checkbox', function () {
     });
     it('calls the click handler when clicked', function () {
       fireEvent.click(document.getElementById('testCheckbox'));
-      strictEqual(clickSpy.callCount, 1);
+      strictEqual(changeSpy.callCount, 1);
     });
     it('positions the label to the right of the checkbox', function () {
       const style = window.getComputedStyle(getByText('Test Label').parentNode as HTMLElement);
@@ -215,14 +215,14 @@ describe('Checkbox', function () {
   });
   context('when labelPosition prop is equal to POSITION.LEFT', function () {
     beforeEach(function () {
-      clickSpy = spy();
+      changeSpy = spy();
       ({ getByText } = render(
         <Checkbox
           id="testCheckbox"
           checked
           label="Test Label"
           labelPosition={POSITION.LEFT}
-          onChange={clickSpy}
+          onChange={changeSpy}
         />
       ));
     });
@@ -232,7 +232,7 @@ describe('Checkbox', function () {
     });
     it('calls the click handler when clicked', function () {
       fireEvent.click(document.getElementById('testCheckbox'));
-      strictEqual(clickSpy.callCount, 1);
+      strictEqual(changeSpy.callCount, 1);
     });
     it('positions the label to the right of the checkbox', function () {
       const style = window.getComputedStyle(getByText('Test Label').parentNode as HTMLElement);
@@ -241,14 +241,14 @@ describe('Checkbox', function () {
   });
   context('when labelPosition prop is equal to POSITION.TOP', function () {
     beforeEach(function () {
-      clickSpy = spy();
+      changeSpy = spy();
       ({ getByText } = render(
         <Checkbox
           id="testCheckbox"
           checked
           label="Test Label"
           labelPosition={POSITION.TOP}
-          onChange={clickSpy}
+          onChange={changeSpy}
         />
       ));
     });
@@ -258,7 +258,7 @@ describe('Checkbox', function () {
     });
     it('calls the click handler when clicked', function () {
       fireEvent.click(document.getElementById('testCheckbox'));
-      strictEqual(clickSpy.callCount, 1);
+      strictEqual(changeSpy.callCount, 1);
     });
     it('positions the label to the right of the checkbox', function () {
       const style = window.getComputedStyle(getByText('Test Label').parentNode as HTMLElement);
