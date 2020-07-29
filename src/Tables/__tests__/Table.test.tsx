@@ -131,7 +131,7 @@ describe('Table Components', function () {
       it('Should not have a :hover css class with noHighlight', function () {
         const noHighlight = getByText('noHighlight');
         const allSheets = Array.from(document.styleSheets);
-        const sheet = allSheets[allSheets.length - 1] as CSSStyleSheet;
+        const sheet = allSheets[allSheets.length - 1];
         const rules = sheet.cssRules;
         const parentClasses = noHighlight.parentElement.classList;
         const maybeHoverClasses = Array.from(parentClasses)
@@ -145,7 +145,7 @@ describe('Table Components', function () {
       it('Should have a :hover rule without noHighlight', function () {
         const regular = getByText('Regular');
         const allSheets = Array.from(document.styleSheets);
-        const sheet = allSheets[allSheets.length - 1] as CSSStyleSheet;
+        const sheet = allSheets[allSheets.length - 1];
         const rules = sheet.cssRules;
         const parentClasses = regular.parentElement.classList;
         const maybeHoverClasses = Array.from(parentClasses)
