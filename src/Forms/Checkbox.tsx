@@ -36,7 +36,7 @@ export interface CheckboxProps extends NativeCheckboxProps {
   isRequired?: boolean;
   /** The body of the error message, if applicable */
   errorMessage?: string;
-  /** Specifies the ref of the text input */
+  /** Specifies the ref of the checkbox */
   forwardRef?: Ref<HTMLInputElement>;
 }
 
