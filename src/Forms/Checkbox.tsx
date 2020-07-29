@@ -1,5 +1,4 @@
-import React,
-{
+import React, {
   FunctionComponent,
   ChangeEventHandler,
   Ref,
@@ -50,7 +49,7 @@ interface CustomCheckboxProps {
   labelPosition?: POSITION;
 }
 
-interface CheckmarkBoxProps {
+interface CheckmarkProps {
   /** The SVG viewBox attribute */
   viewBox: string;
   /** If true, this indicates that the checkbox is checked */
@@ -59,7 +58,7 @@ interface CheckmarkBoxProps {
   disabled?: boolean;
 }
 
-const CheckmarkBox = styled.svg<CheckmarkBoxProps>`
+const Checkmark = styled.svg<CheckmarkProps>`
   fill: none;
   stroke: ${({ checked, disabled, theme }): string => {
     if (checked && disabled) {
@@ -146,13 +145,13 @@ const Checkbox: FunctionComponent<CheckboxProps> = (props): ReactElement => {
           disabled={disabled}
           labelPosition={labelPosition}
         >
-          <CheckmarkBox
+          <Checkmark
             viewBox="0 0 60 60"
             checked={checked}
             disabled={disabled}
           >
             <polyline points="10 25 25 40 50 7" />
-          </CheckmarkBox>
+          </Checkmark>
         </CustomCheckbox>
         {errorMessage
         && (
