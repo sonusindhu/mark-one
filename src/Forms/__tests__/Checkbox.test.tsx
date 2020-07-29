@@ -38,7 +38,7 @@ describe('Checkbox', function () {
       const checkboxElement = document.getElementById('testCheckbox') as HTMLInputElement;
       strictEqual(!!checkboxElement, true);
     });
-    it('calls the click handler when clicked', function () {
+    it('calls the change handler when clicked', function () {
       fireEvent.click(document.getElementById('testCheckbox'));
       strictEqual(changeSpy.callCount, 1);
     });
