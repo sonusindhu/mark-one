@@ -160,7 +160,6 @@ const CheckboxExample = () => {
 <CheckboxExample />
 ```
 
-
 Disabled example: The optional `disabled` prop is set to true.
 ```jsx
 import { useState } from 'react';
