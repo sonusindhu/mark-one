@@ -106,7 +106,8 @@ describe('Radio Button', function () {
       strictEqual(changeSpy.callCount, 1);
     });
     it('renders the correct checked value', function () {
-      const radioButton = document.getElementById(radioButtonId) as HTMLInputElement;
+      const radioButton = document
+        .getElementById(radioButtonId) as HTMLInputElement;
       strictEqual(radioButton.checked, false);
     });
     it('does not render the asterisk (*), which denotes the input is required', function () {
@@ -139,7 +140,8 @@ describe('Radio Button', function () {
       strictEqual(changeSpy.callCount, 1);
     });
     it('renders the correct checked value', function () {
-      const radioButton = document.getElementById(radioButtonId) as HTMLInputElement;
+      const radioButton = document
+        .getElementById(radioButtonId) as HTMLInputElement;
       strictEqual(radioButton.checked, false);
     });
     it('renders the asterisk (*), which denotes the input is required', function () {
