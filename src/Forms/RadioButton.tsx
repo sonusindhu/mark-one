@@ -54,7 +54,7 @@ interface SelectMarkProps {
 const SelectMark = styled.span<SelectMarkProps>`
   border: ${({ theme, disabled }): string => (
     disabled
-      ? 'none'
+      ? `6px solid ${theme.color.text.medium}`
       : `6px solid ${theme.color.text.base}`
   )};
   border-radius: 50%;
@@ -151,7 +151,9 @@ ReactElement => {
           {checked
           && (
             <SelectMarkContainer>
-              <SelectMark />
+              <SelectMark
+                disabled={disabled}
+              />
             </SelectMarkContainer>
           )}
         </CustomRadioButton>
