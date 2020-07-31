@@ -144,6 +144,7 @@ ReactElement => {
           disabled={disabled}
         />
         <CustomRadioButton
+          role="radio"
           labelPosition={labelPosition}
           checked={checked}
           disabled={disabled}

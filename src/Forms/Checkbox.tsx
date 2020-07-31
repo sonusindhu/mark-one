@@ -141,6 +141,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = (props): ReactElement => {
           checked={checked}
         />
         <CustomCheckbox
+          role="checkbox"
           checked={checked}
           disabled={disabled}
           labelPosition={labelPosition}
