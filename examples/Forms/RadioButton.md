@@ -133,9 +133,10 @@ const RadioButtonExample = () => {
   const [checkedValue, setCheckedValue] = useState('');
   return (<>
     <Fieldset
-      legend="Fieldset Legend"
+      legend="Terms and Conditions"
       isBorderVisible={false}
       isLegendVisible={false}
+      legendDescription="Note: * denoted required information"
     >
       <RadioButton
         id="agree"
@@ -152,6 +153,44 @@ const RadioButtonExample = () => {
         value="disagree"
         name="terms"
         checked={checkedValue === 'disagree'}
+        onChange={(event) => setCheckedValue(event.target.value)}
+      />
+    </Fieldset>
+  </>);
+}
+<RadioButtonExample />
+```
+
+Error Message example: The `errorMessage` property of the Fieldset wrapping the radio buttons is set.
+
+```jsx
+import { useState } from 'react';
+import { Fieldset } from 'mark-one';
+const RadioButtonExample = () => {
+  const [checkedValue, setCheckedValue] = useState('');
+  return (<>
+    <Fieldset
+      legend="Terms and Conditions"
+      isBorderVisible
+      isLegendVisible
+      legendDescription="Note: * denoted required information"
+      errorMessage="Error: Please make a selection before proceeding."
+    >
+      <RadioButton
+        id="accept"
+        label="I accept the terms and conditions."
+        value="accept"
+        name="conditions"
+        checked={checkedValue === 'accept'}
+        isRequired
+        onChange={(event) => setCheckedValue(event.target.value)}
+      />
+      <RadioButton
+        id="decline"
+        label="I do not accept the terms and conditions."
+        value="decline"
+        name="conditions"
+        checked={checkedValue === 'decline'}
         onChange={(event) => setCheckedValue(event.target.value)}
       />
     </Fieldset>
