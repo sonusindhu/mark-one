@@ -8,6 +8,7 @@ import React,
 import styled, { ThemeContext } from 'styled-components';
 import { NoteText } from 'Typography';
 import ValidationErrorMessage from './ValidationErrorMessage';
+import { RequiredSymbol } from './Label';
 
 interface StyledFieldsetProps {
   /** Specifies the id of the associated form */
@@ -31,6 +32,8 @@ export interface FieldsetProps {
   isBorderVisible?: boolean;
   /** Specifies whether the legend of the fieldset is visible */
   isLegendVisible?: boolean;
+  /** If true, a choice within the fieldset is required */
+  isRequired?: boolean;
 }
 
 interface StyledLegendProps {
@@ -76,6 +79,7 @@ const Fieldset: FunctionComponent<FieldsetProps> = (props): ReactElement => {
     errorMessage,
     isBorderVisible,
     isLegendVisible,
+    isRequired,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -87,7 +91,14 @@ const Fieldset: FunctionComponent<FieldsetProps> = (props): ReactElement => {
       <StyledLegend
         isLegendVisible={isLegendVisible}
       >
-        {legend}
+        {isRequired
+          ? (
+            <>
+              {legend}
+              <RequiredSymbol>*</RequiredSymbol>
+            </>
+          )
+          : legend}
       </StyledLegend>
       {legendDescription
         && (

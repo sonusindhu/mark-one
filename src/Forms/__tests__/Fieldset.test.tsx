@@ -173,4 +173,53 @@ describe('Fieldset', function () {
       strictEqual(style.position, 'absolute');
     });
   });
+  context('when isRequired prop is true', function () {
+    const legendText = 'Legend Fieldset';
+    beforeEach(function () {
+      ({ getByText } = render(
+        <Fieldset
+          legend={legendText}
+          isLegendVisible
+          isRequired
+        >
+          <Checkbox
+            checked
+            label="Disabled Checkbox"
+            disabled
+          />
+        </Fieldset>
+      ));
+    });
+    it('renders', function () {
+      const fieldsetElement = document.getElementsByTagName('fieldset');
+      strictEqual(!!fieldsetElement, true);
+    });
+    it('renders an asterisk, denoting that there is a required field(s)', function () {
+      getByText('*');
+    });
+  });
+  context('when isRequired prop is false', function () {
+    const legendText = 'Legend Fieldset';
+    beforeEach(function () {
+      ({ queryByText } = render(
+        <Fieldset
+          legend={legendText}
+          isLegendVisible
+        >
+          <Checkbox
+            checked
+            label="Disabled Checkbox"
+            disabled
+          />
+        </Fieldset>
+      ));
+    });
+    it('renders', function () {
+      const fieldsetElement = document.getElementsByTagName('fieldset');
+      strictEqual(!!fieldsetElement, true);
+    });
+    it('renders an asterisk, denoting that there is a required field(s)', function () {
+      strictEqual(queryByText('*', { exact: false }), null);
+    });
+  });
 });
