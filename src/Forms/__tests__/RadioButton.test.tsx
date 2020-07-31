@@ -61,6 +61,7 @@ describe('Radio Button', function () {
             value="one"
             name="disabledPropTest"
             disabled
+            checked
             onChange={changeSpy}
           />
         </>
@@ -77,7 +78,15 @@ describe('Radio Button', function () {
     it('renders the correct checked value', function () {
       const radioButton = document
         .getElementById(radioButtonId) as HTMLInputElement;
-      strictEqual(radioButton.checked, false);
+      strictEqual(radioButton.checked, true);
+    });
+    it('styles its select mark border accordingly', function () {
+      const radioButton = document
+        .getElementById(radioButtonId) as HTMLInputElement;
+      const label = radioButton.parentNode as HTMLLabelElement;
+      const selectMark = label.querySelector('span span span');
+      const borderStyle = window.getComputedStyle(selectMark).border;
+      strictEqual(borderStyle, '6px solid #717171');
     });
   });
   context('when isRequired prop is false', function () {
