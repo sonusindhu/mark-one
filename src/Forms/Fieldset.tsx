@@ -90,6 +90,7 @@ const Fieldset: FunctionComponent<FieldsetProps> = (props): ReactElement => {
     >
       <StyledLegend
         isLegendVisible={isLegendVisible}
+        aria-required={isRequired}
       >
         {isRequired
           ? (

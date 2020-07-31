@@ -94,7 +94,7 @@ const StyledLabelText = styled.span<StyledLabelTextProps>`
   )};
 `;
 
-const RequiredSymbol = styled.span`
+export const RequiredSymbol = styled.span`
     color: ${fromTheme('color', 'text', 'negative')};
 `;
 const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
