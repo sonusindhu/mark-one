@@ -48,8 +48,8 @@ const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
       ? `${theme.border.light}`
       : 'none'
   )};
-  margin-inline-start: 2px;
-  margin-inline-end: 2px;
+  margin-inline-start: 0.125em;
+  margin-inline-end: 0.125em;
   padding-block-start: 0.35em;
   padding-inline-start: 0.75em;
   padding-inline-end: 0.75em;
@@ -58,6 +58,7 @@ const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
 `;
 
 const StyledLegend = styled.legend<StyledLegendProps>`
+  padding: 0.25em;
   position: ${({ isLegendVisible }): string => (
     isLegendVisible
       ? null
