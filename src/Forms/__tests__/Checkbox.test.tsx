@@ -57,6 +57,7 @@ describe('Checkbox', function () {
   });
   context('when errorMessage prop is not present', function () {
     const checkboxId = 'testCheckbox';
+    const errorMessage = 'Please select this checkbox before proceeding.';
     beforeEach(function () {
       changeSpy = spy();
       ({ queryByText } = render(
@@ -84,7 +85,7 @@ describe('Checkbox', function () {
       strictEqual(checkboxElement.checked, false);
     });
     it('does not render the error message', function () {
-      strictEqual(queryByText('Please select this checkbox before proceeding.', { exact: false }), null);
+      strictEqual(queryByText(errorMessage, { exact: false }), null);
     });
   });
   context('when isRequired prop is present', function () {
