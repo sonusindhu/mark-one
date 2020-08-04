@@ -11,7 +11,6 @@ const RadioButtonExample = () => {
       isLegendVisible={false}
     >
       <RadioButton
-        id="foo"
         label="Foo"
         value="foo"
         name="nonVisibleFieldsetTest"
@@ -19,7 +18,6 @@ const RadioButtonExample = () => {
         onChange={(event) => setCheckedValue(event.target.value)}
       />
       <RadioButton
-        id="bar"
         label="Bar"
         value="bar"
         name="nonVisibleFieldsetTest"
@@ -27,7 +25,6 @@ const RadioButtonExample = () => {
         onChange={(event) => setCheckedValue(event.target.value)}
       />
       <RadioButton
-        id="baz"
         label="Baz"
         value="baz"
         name="nonVisibleFieldsetTest"
@@ -53,7 +50,6 @@ const RadioButtonExample = () => {
         isLegendVisible
     >
       <RadioButton
-        id="morning"
         label="Morning"
         value="morning"
         name="visibleFieldsetTest"
@@ -61,7 +57,6 @@ const RadioButtonExample = () => {
         onChange={(event) => setCheckedValue(event.target.value)}
       />
       <RadioButton
-        id="noon"
         label="Noon"
         value="noon"
         name="visibleFieldsetTest"
@@ -69,7 +64,6 @@ const RadioButtonExample = () => {
         onChange={(event) => setCheckedValue(event.target.value)}
       />
       <RadioButton
-        id="evening"
         label="Evening"
         value="evening"
         name="visibleFieldsetTest"
@@ -95,7 +89,6 @@ const RadioButtonExample = () => {
       isLegendVisible={false}
     >
       <RadioButton
-        id="one"
         label="One"
         value="one"
         name="quantity"
@@ -103,7 +96,6 @@ const RadioButtonExample = () => {
         onChange={(event) => setCheckedValue(event.target.value)}
       />
       <RadioButton
-        id="two"
         label="Two"
         value="two"
         name="quantity"
@@ -111,7 +103,6 @@ const RadioButtonExample = () => {
         onChange={(event) => setCheckedValue(event.target.value)}
       />
       <RadioButton
-        id="three"
         label="Three"
         value="three"
         name="quantity"
@@ -139,7 +130,6 @@ const RadioButtonExample = () => {
       legendDescription="Note: * denoted required information"
     >
       <RadioButton
-        id="agree"
         label="I accept the terms and conditions."
         value="agree"
         name="terms"
@@ -148,7 +138,6 @@ const RadioButtonExample = () => {
         onChange={(event) => setCheckedValue(event.target.value)}
       />
       <RadioButton
-        id="disagree"
         label="I do not accept the terms and conditions."
         value="disagree"
         name="terms"
@@ -177,7 +166,6 @@ const RadioButtonExample = () => {
       errorMessage="Error: Please make a selection before proceeding."
     >
       <RadioButton
-        id="accept"
         label="I accept the terms and conditions."
         value="accept"
         name="conditions"
@@ -186,7 +174,6 @@ const RadioButtonExample = () => {
         onChange={(event) => setCheckedValue(event.target.value)}
       />
       <RadioButton
-        id="decline"
         label="I do not accept the terms and conditions."
         value="decline"
         name="conditions"
