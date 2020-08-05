@@ -7,8 +7,8 @@ import { fromTheme } from '../Theme';
 export interface ValidationErrorMessageProps {
   /** Text or components to be displayed */
   children: ReactNode;
-  /** An html id used by the parent Input component to associate the error* */
-  id: string;
+  /** An html id used by the parent Input component to associate the error */
+  id?: string;
 }
 
 const StyledValidationErrorMessage = styled.span`

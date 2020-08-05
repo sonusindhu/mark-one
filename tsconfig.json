@@ -22,7 +22,7 @@
     "sourceMap": true,
     "outDir": "./lib",
     "baseUrl": "./src",
-    "incremental": true,
+    "incremental": false,
     "paths": {
       "test-data": [
         "./__tests__/data/index.ts"

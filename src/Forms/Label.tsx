@@ -10,6 +10,7 @@ import { fromTheme } from '../Theme';
 export enum POSITION {
   TOP = 'top',
   LEFT = 'left',
+  RIGHT='right',
 }
 
 export interface StyledLabelProps {
@@ -26,6 +27,8 @@ export interface StyledLabelTextProps {
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
   labelPosition?: POSITION;
+  /** Used to style label text in a different style if disabled is true */
+  disabled?: boolean;
 }
 
 export interface LabelProps {
@@ -39,6 +42,8 @@ export interface LabelProps {
   isLabelVisible?: boolean;
   /** If true, the label will be styled to indicate that it labels a required field */
   isRequired?: boolean;
+  /** Used to style label text in a different style if disabled is true */
+  disabled?: boolean;
 }
 
 const generateGrid = (
@@ -53,6 +58,10 @@ const generateGrid = (
     return `"l l l"
             "i i i"
             "e e e"`;
+  }
+  if (labelPosition === POSITION.RIGHT) {
+    return `"i l l"
+            ". e e"`;
   }
   return `"l i i"
           ". e e"`;
@@ -74,13 +83,18 @@ const StyledLabelText = styled.span<StyledLabelTextProps>`
   display: ${({ isLabelVisible }) => (isLabelVisible ? 'inline' : 'none')};
   grid-area: l;
   justify-self: ${({ labelPosition }) => (
-    labelPosition === POSITION.TOP
+    (labelPosition === POSITION.TOP || labelPosition === POSITION.RIGHT)
       ? 'start'
       : 'end'
   )};
+  color: ${({ theme, disabled }): string => (
+    (disabled)
+      ? `${theme.color.text.medium}`
+      : `${theme.color.text.dark}`
+  )};
 `;
 
-const RequiredSymbol = styled.span`
+export const RequiredSymbol = styled.span`
     color: ${fromTheme('color', 'text', 'negative')};
 `;
 const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
@@ -91,6 +105,7 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
     isLabelVisible,
     children,
     isRequired,
+    disabled,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -103,6 +118,7 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
       <StyledLabelText
         isLabelVisible={isLabelVisible}
         labelPosition={labelPosition}
+        disabled={disabled}
       >
         <>
           {label}
@@ -117,6 +133,7 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
 Label.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
+  disabled: false,
 };
 
 StyledLabel.defaultProps = {
