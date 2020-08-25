@@ -10,6 +10,7 @@ interface ModalBodyProps {
 
 const StyledModalBody = styled.div<ModalBodyProps>`
   padding: ${({ theme }): string => theme.ws.medium};
+  overflow: scroll;
 `;
 
 /**
