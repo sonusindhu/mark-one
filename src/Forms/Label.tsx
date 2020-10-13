@@ -69,7 +69,7 @@ const generateGrid = (
 
 const StyledLabel = styled.label<StyledLabelProps>`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto minmax(0, 1fr);
   grid-template-rows: 1fr minmax(1em, max-content);
   grid-template-areas: ${({ labelPosition, isLabelVisible }) => (
     generateGrid(labelPosition, isLabelVisible)
@@ -82,11 +82,7 @@ const StyledLabel = styled.label<StyledLabelProps>`
 const StyledLabelText = styled.span<StyledLabelTextProps>`
   display: ${({ isLabelVisible }) => (isLabelVisible ? 'inline' : 'none')};
   grid-area: l;
-  justify-self: ${({ labelPosition }) => (
-    (labelPosition === POSITION.TOP || labelPosition === POSITION.RIGHT)
-      ? 'start'
-      : 'end'
-  )};
+  justify-self: start;
   color: ${({ theme, disabled }): string => (
     (disabled)
       ? `${theme.color.text.medium}`
