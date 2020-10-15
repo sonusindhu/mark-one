@@ -8,7 +8,7 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
 import ValidationErrorMessage from './ValidationErrorMessage';
-import Label, { POSITION } from './Label';
+import InputLabel, { POSITION } from './InputLabel';
 
 export interface TextInputProps {
   /** The id of the label tied to this text input field */
@@ -71,7 +71,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
   } = props;
   const theme = useContext(ThemeContext);
   return (
-    <Label
+    <InputLabel
       htmlFor={id}
       label={label}
       labelPosition={labelPosition}
@@ -99,7 +99,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
           {errorMessage}
         </ValidationErrorMessage>
       )}
-    </Label>
+    </InputLabel>
   );
 };
 

@@ -13,7 +13,7 @@ export enum POSITION {
   RIGHT='right',
 }
 
-export interface StyledLabelProps {
+export interface StyledInputLabelProps {
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
@@ -22,7 +22,7 @@ export interface StyledLabelProps {
   htmlFor: string;
 }
 
-export interface StyledLabelTextProps {
+export interface StyledInputLabelTextProps {
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
@@ -31,7 +31,7 @@ export interface StyledLabelTextProps {
   disabled?: boolean;
 }
 
-export interface LabelProps {
+export interface InputLabelProps {
   /** The id of the field tied to this label */
   htmlFor: string;
   /** Specifies the label text */
@@ -59,17 +59,13 @@ const generateGrid = (
             "i i i"
             "e e e"`;
   }
-  if (labelPosition === POSITION.RIGHT) {
-    return `"i l l"
-            ". e e"`;
-  }
   return `"l i i"
           ". e e"`;
 };
 
-const StyledLabel = styled.label<StyledLabelProps>`
+const StyledInputLabel = styled.label<StyledInputLabelProps>`
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr minmax(1em, max-content);
   grid-template-areas: ${({ labelPosition, isLabelVisible }) => (
     generateGrid(labelPosition, isLabelVisible)
@@ -79,10 +75,14 @@ const StyledLabel = styled.label<StyledLabelProps>`
   gap: ${({ theme }) => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
 `;
 
-const StyledLabelText = styled.span<StyledLabelTextProps>`
+const StyledLabelText = styled.span<StyledInputLabelTextProps>`
   display: ${({ isLabelVisible }) => (isLabelVisible ? 'inline' : 'none')};
   grid-area: l;
-  justify-self: start;
+  justify-self: ${({ labelPosition }) => (
+    (labelPosition === POSITION.TOP || labelPosition === POSITION.RIGHT)
+      ? 'start'
+      : 'end'
+  )};
   color: ${({ theme, disabled }): string => (
     (disabled)
       ? `${theme.color.text.medium}`
@@ -93,7 +93,8 @@ const StyledLabelText = styled.span<StyledLabelTextProps>`
 export const RequiredSymbol = styled.span`
     color: ${fromTheme('color', 'text', 'negative')};
 `;
-const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
+const InputLabel:
+FunctionComponent<InputLabelProps> = (props): ReactElement => {
   const {
     htmlFor,
     label,
@@ -105,7 +106,7 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
   } = props;
   const theme = useContext(ThemeContext);
   return (
-    <StyledLabel
+    <StyledInputLabel
       htmlFor={htmlFor}
       labelPosition={labelPosition}
       theme={theme}
@@ -122,19 +123,19 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
         </>
       </StyledLabelText>
       { children }
-    </StyledLabel>
+    </StyledInputLabel>
   );
 };
 
-Label.defaultProps = {
+InputLabel.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
   disabled: false,
 };
 
-StyledLabel.defaultProps = {
+StyledInputLabel.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
 };
 
-export default Label;
+export default InputLabel;

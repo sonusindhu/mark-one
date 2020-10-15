@@ -2,6 +2,6 @@ export { default as ValidationErrorMessage } from './ValidationErrorMessage';
 export { default as TextInput } from './TextInput';
 export { default as Dropdown } from './Dropdown';
 export { default as Checkbox } from './Checkbox';
-export { default as Label } from './Label';
+export { default as InputLabel } from './InputLabel';
 export { default as Fieldset } from './Fieldset';
 export { default as RadioButton } from './RadioButton';
