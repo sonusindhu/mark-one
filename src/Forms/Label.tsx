@@ -80,9 +80,16 @@ const StyledLabel = styled.label<StyledLabelProps>`
   grid-template-areas: ${({ labelPosition, isLabelVisible }) => (
     generateGrid(labelPosition, isLabelVisible)
   )};
-  margin: ${({ hideError }) => (hideError ? 0 : fromTheme('ws', 'small'))};
+  margin: ${fromTheme('ws', 'small')}
   align-items: baseline;
   gap: ${({ theme }) => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
+  ${({ hideError }) => (hideError 
+    ? `margin: 0px;
+       gap: 0px;
+       grid-template-rows: 1fr;
+      `
+    : null
+  )};
 `;
 
 const StyledLabelText = styled.span<StyledLabelTextProps>`
@@ -142,11 +149,13 @@ Label.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
   disabled: false,
+  hideError: false,
 };
 
 StyledLabel.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
+  hideError: false,
 };
 
 export default Label;

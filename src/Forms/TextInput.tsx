@@ -97,7 +97,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
         aria-required={isRequired}
         ref={forwardRef}
       />
-      {errorMessage
+      {errorMessage && !hideError
       && (
         <ValidationErrorMessage id={`${id}-error`}>
           {errorMessage}
@@ -112,6 +112,7 @@ TextInput.defaultProps = {
   disabled: false,
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
+  hideError: false,
 };
 
 /** @component */

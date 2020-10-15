@@ -72,7 +72,6 @@ const [value, setValue] = useState('Some valid input');
   }}
 />
 ```
-
 Text Input example: The `disabled` prop set to `true.`
 
 ```jsx
@@ -104,6 +103,48 @@ const [value, setValue] = useState('Some valid input');
   name="example"
   id="example"
   label="Description:"
+  onChange={(event) => {
+    setValue(event.target.value);
+  }}
+/>
+```
+
+Label example: The optional `errorMessage` prop is not set, and the 
+`hideError` prop is set to `true.` Remove the `errorMesage` style.
+
+```jsx
+import { useState } from 'react';
+
+const [value, setValue] = useState('Some valid input');
+
+<TextInput
+  value={value}
+  name="example"
+  id="example"
+  label="Description:"
+  hideError={true}
+  onChange={(event) => {
+    setValue(event.target.value);
+  }}
+/>
+```
+
+Label example: The optional `errorMessage` prop is set, and the 
+`hideError` prop is set to `true.` Remove the `errorMesage` and
+its style.
+
+```jsx
+import { useState } from 'react';
+
+const [value, setValue] = useState('Some valid input');
+
+<TextInput
+  value={value}
+  name="example"
+  id="example"
+  label="Description:"
+  errorMessage="Error: Please enter a valid ID"
+  hideError={true}
   onChange={(event) => {
     setValue(event.target.value);
   }}
