@@ -83,7 +83,7 @@ const StyledLabel = styled.label<StyledLabelProps>`
   margin: ${fromTheme('ws', 'small')}
   align-items: baseline;
   gap: ${({ theme }) => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
-  ${({ hideError }) => (hideError 
+  ${({ hideError }) => (hideError
     ? `margin: 0px;
        gap: 0px;
        grid-template-rows: 1fr;

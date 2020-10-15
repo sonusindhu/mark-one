@@ -72,6 +72,50 @@ describe('Text input', function () {
       strictEqual(error.id, `${inputId}-error`);
     });
   });
+  context('when hideError prop is set to true', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      ({ queryByText, getByText } = render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Spring"
+          label="semester"
+          errorMessage="Error: Please enter a valid ID"
+          hideError
+          onChange={changeSpy}
+        />
+      ));
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('calls the change handler when changed', function () {
+      fireEvent.change(document.getElementById('semester'), {
+        target: {
+          value: 'Fall',
+        },
+      });
+      strictEqual(changeSpy.callCount, 1);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Spring');
+    });
+    it('does not render the error message', function () {
+      const errorField = queryByText('error');
+      strictEqual(errorField, null);
+    });
+
+    it('gap and margin and grid-template-rows style', function () {
+      const style = window.getComputedStyle(getByText('semester').parentNode as HTMLElement);
+      strictEqual(style['grid-template-rows'], '1fr');
+      strictEqual(style.gap, '0px');
+      strictEqual(style.margin, '0px');
+    });
+  });
   context('when errorMessage prop is not present', function () {
     beforeEach(function () {
       changeSpy = spy();
