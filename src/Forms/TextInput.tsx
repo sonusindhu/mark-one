@@ -39,6 +39,8 @@ export interface TextInputProps {
   isRequired?: boolean;
   /** Specifies the ref of the text input */
   forwardRef?: Ref<HTMLInputElement>;
+  /** If true, ommit the margin style in label */
+  hideError?: boolean;
 }
 
 const StyledTextInput = styled.input<TextInputProps>`
@@ -68,6 +70,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
     isLabelVisible,
     isRequired,
     forwardRef,
+    hideError,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -77,6 +80,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
       labelPosition={labelPosition}
       isLabelVisible={isLabelVisible}
       isRequired={isRequired}
+      hideError={hideError}
     >
       <StyledTextInput
         onChange={onChange}

@@ -20,6 +20,8 @@ export interface StyledLabelProps {
   labelPosition?: POSITION;
   /** Specifies the id for the label */
   htmlFor: string;
+  /** If true, remove the margin on the StyledLabelProps */
+  hideError?: boolean;
 }
 
 export interface StyledLabelTextProps {
@@ -29,6 +31,8 @@ export interface StyledLabelTextProps {
   labelPosition?: POSITION;
   /** Used to style label text in a different style if disabled is true */
   disabled?: boolean;
+  /** If true, remove the margin on the StyledLabelProps */
+  hideError?: boolean;
 }
 
 export interface LabelProps {
@@ -44,6 +48,8 @@ export interface LabelProps {
   isRequired?: boolean;
   /** Used to style label text in a different style if disabled is true */
   disabled?: boolean;
+  /** If true, remove the margin on the StyledLabelProps */
+  hideError?: boolean;
 }
 
 const generateGrid = (
@@ -74,7 +80,7 @@ const StyledLabel = styled.label<StyledLabelProps>`
   grid-template-areas: ${({ labelPosition, isLabelVisible }) => (
     generateGrid(labelPosition, isLabelVisible)
   )};
-  margin: ${fromTheme('ws', 'small')};
+  margin: ${({ hideError }) => (hideError ? 0 : fromTheme('ws', 'small'))};
   align-items: baseline;
   gap: ${({ theme }) => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
 `;
@@ -106,6 +112,7 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
     children,
     isRequired,
     disabled,
+    hideError,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -114,6 +121,7 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
       labelPosition={labelPosition}
       theme={theme}
       isLabelVisible={isLabelVisible}
+      hideError={hideError}
     >
       <StyledLabelText
         isLabelVisible={isLabelVisible}
