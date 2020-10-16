@@ -7,7 +7,8 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
-import Label, { POSITION } from './Label';
+import CheckLabel from './CheckLabel';
+import { POSITION } from './InputLabel';
 import ValidationErrorMessage from './ValidationErrorMessage';
 
 interface NativeCheckboxProps {
@@ -78,7 +79,7 @@ const CustomCheckbox = styled.span<CustomCheckboxProps>`
       ? `${theme.border.light}`
       : `2px solid ${theme.color.text.base}`
   )};
-  grid-area: i;
+  grid-area: input;
   width: 1.25em;
   height: 1.25em;
   cursor: ${({ disabled }): string => (
@@ -120,7 +121,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = (props): ReactElement => {
   const theme = useContext(ThemeContext);
   return (
     <>
-      <Label
+      <CheckLabel
         htmlFor={id}
         label={label}
         labelPosition={labelPosition}
@@ -160,7 +161,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = (props): ReactElement => {
             {errorMessage}
           </ValidationErrorMessage>
         )}
-      </Label>
+      </CheckLabel>
     </>
   );
 };

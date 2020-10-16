@@ -12,7 +12,7 @@ import React, { useRef } from 'react';
 import Checkbox from 'Forms/Checkbox';
 import { strictEqual } from 'assert';
 import userEvent from '@testing-library/user-event';
-import { POSITION } from 'Forms/Label';
+import { POSITION } from 'Forms/InputLabel';
 import { Button } from 'Buttons';
 import { VARIANT } from 'Theme';
 

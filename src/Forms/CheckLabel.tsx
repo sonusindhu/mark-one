@@ -5,15 +5,9 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
+import { POSITION, RequiredSymbol } from './InputLabel';
 
-// An enum that represents the possible values for the label's positioning
-export enum POSITION {
-  TOP = 'top',
-  LEFT = 'left',
-  RIGHT='right',
-}
-
-export interface StyledInputLabelProps {
+export interface StyledCheckLabelProps {
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
@@ -22,7 +16,7 @@ export interface StyledInputLabelProps {
   htmlFor: string;
 }
 
-export interface StyledInputLabelTextProps {
+export interface StyledCheckLabelTextProps {
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
@@ -31,7 +25,7 @@ export interface StyledInputLabelTextProps {
   disabled?: boolean;
 }
 
-export interface InputLabelProps {
+export interface LabelProps {
   /** The id of the field tied to this label */
   htmlFor: string;
   /** Specifies the label text */
@@ -51,21 +45,24 @@ const generateGrid = (
   isLabelVisible: boolean
 ): string => {
   if (!isLabelVisible) {
-    return `"i i i"
+    return `"input input input"
             "e e e"`;
   }
-  if (labelPosition === POSITION.TOP) {
-    return `"l l l"
-            "i i i"
-            "e e e"`;
+  if (labelPosition === POSITION.RIGHT) {
+    return `"input label label"
+            ". e e"`;
   }
-  return `"l i i"
+  return `"label input input"
           ". e e"`;
 };
 
-const StyledInputLabel = styled.label<StyledInputLabelProps>`
+const StyledCheckLabel = styled.label<StyledCheckLabelProps>`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: ${({ labelPosition }) => (
+    labelPosition === POSITION.RIGHT
+    ? 'auto minmax(0, 1fr)'
+    : 'repeat(3, 1fr)'
+  )};
   grid-template-rows: 1fr minmax(1em, max-content);
   grid-template-areas: ${({ labelPosition, isLabelVisible }) => (
     generateGrid(labelPosition, isLabelVisible)
@@ -75,9 +72,9 @@ const StyledInputLabel = styled.label<StyledInputLabelProps>`
   gap: ${({ theme }) => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
 `;
 
-const StyledLabelText = styled.span<StyledInputLabelTextProps>`
+const StyledCheckLabelText = styled.span<StyledCheckLabelTextProps>`
   display: ${({ isLabelVisible }) => (isLabelVisible ? 'inline' : 'none')};
-  grid-area: l;
+  grid-area: label;
   justify-self: ${({ labelPosition }) => (
     (labelPosition === POSITION.TOP || labelPosition === POSITION.RIGHT)
       ? 'start'
@@ -90,11 +87,7 @@ const StyledLabelText = styled.span<StyledInputLabelTextProps>`
   )};
 `;
 
-export const RequiredSymbol = styled.span`
-    color: ${fromTheme('color', 'text', 'negative')};
-`;
-const InputLabel:
-FunctionComponent<InputLabelProps> = (props): ReactElement => {
+const CheckLabel: FunctionComponent<LabelProps> = (props): ReactElement => {
   const {
     htmlFor,
     label,
@@ -106,13 +99,13 @@ FunctionComponent<InputLabelProps> = (props): ReactElement => {
   } = props;
   const theme = useContext(ThemeContext);
   return (
-    <StyledInputLabel
+    <StyledCheckLabel
       htmlFor={htmlFor}
       labelPosition={labelPosition}
       theme={theme}
       isLabelVisible={isLabelVisible}
     >
-      <StyledLabelText
+      <StyledCheckLabelText
         isLabelVisible={isLabelVisible}
         labelPosition={labelPosition}
         disabled={disabled}
@@ -121,21 +114,21 @@ FunctionComponent<InputLabelProps> = (props): ReactElement => {
           {label}
           {isRequired && <RequiredSymbol>*</RequiredSymbol>}
         </>
-      </StyledLabelText>
+      </StyledCheckLabelText>
       { children }
-    </StyledInputLabel>
+    </StyledCheckLabel>
   );
 };
 
-InputLabel.defaultProps = {
+CheckLabel.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
   disabled: false,
 };
 
-StyledInputLabel.defaultProps = {
+StyledCheckLabel.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
 };
 
-export default InputLabel;
+export default CheckLabel;

@@ -7,7 +7,8 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
-import Label, { POSITION } from './Label';
+import CheckLabel from './CheckLabel';
+import { POSITION } from './InputLabel';
 
 interface NativeRadioButtonProps {
   /** The id tied to the radio button */
@@ -75,7 +76,7 @@ const SelectMarkContainer = styled.span`
 
 const CustomRadioButton = styled.span<CustomRadioButtonProps>`
   display: inline-block;
-  grid-area: i;
+  grid-area: input;
   height: 1.25em;
   width: 1.25em;
   border: ${({ theme, disabled }): string => (
@@ -123,7 +124,7 @@ ReactElement => {
   const theme = useContext(ThemeContext);
   return (
     <>
-      <Label
+      <CheckLabel
         htmlFor={id}
         label={label}
         labelPosition={labelPosition}
@@ -158,7 +159,7 @@ ReactElement => {
             </SelectMarkContainer>
           )}
         </CustomRadioButton>
-      </Label>
+      </CheckLabel>
     </>
   );
 };
