@@ -185,7 +185,7 @@ describe('Checkbox', function () {
       });
       it('positions the label to the right of the checkbox', function () {
         const style = window.getComputedStyle(getByText('Test Label').parentNode as HTMLElement);
-        strictEqual(style['grid-template-areas'], '"i l l" ". e e"');
+        strictEqual(style['grid-template-areas'], '"input label label" ". e e"');
       });
     });
     context('when labelPosition prop is equal to POSITION.LEFT', function () {
@@ -201,27 +201,9 @@ describe('Checkbox', function () {
           />
         ));
       });
-      it('positions the label to the right of the checkbox', function () {
+      it('positions the label to the left of the checkbox', function () {
         const style = window.getComputedStyle(getByText('Test Label').parentNode as HTMLElement);
-        strictEqual(style['grid-template-areas'], '"l i i" ". e e"');
-      });
-    });
-    context('when labelPosition prop is equal to POSITION.TOP', function () {
-      beforeEach(function () {
-        changeSpy = spy();
-        ({ getByText } = render(
-          <Checkbox
-            id={checkboxId}
-            checked
-            label="Test Label"
-            labelPosition={POSITION.TOP}
-            onChange={changeSpy}
-          />
-        ));
-      });
-      it('positions the label to the right of the checkbox', function () {
-        const style = window.getComputedStyle(getByText('Test Label').parentNode as HTMLElement);
-        strictEqual(style['grid-template-areas'], '"l l l" "i i i" "e e e"');
+        strictEqual(style['grid-template-areas'], '"label input input" ". e e"');
       });
     });
   });
