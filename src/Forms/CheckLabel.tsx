@@ -60,8 +60,8 @@ const StyledCheckLabel = styled.label<StyledCheckLabelProps>`
   display: grid;
   grid-template-columns: ${({ labelPosition }) => (
     labelPosition === POSITION.RIGHT
-    ? 'auto minmax(0, 1fr)'
-    : 'repeat(3, 1fr)'
+      ? 'auto minmax(0, 1fr)'
+      : 'repeat(3, 1fr)'
   )};
   grid-template-rows: 1fr minmax(1em, max-content);
   grid-template-areas: ${({ labelPosition, isLabelVisible }) => (
