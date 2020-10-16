@@ -207,6 +207,44 @@ describe('Checkbox', function () {
       });
     });
   });
+  describe('isLabelVisible prop', function () {
+    const labelText = 'Test Label';
+    context('when isLabelVisible prop is true', function () {
+      beforeEach(function () {
+        changeSpy = spy();
+        ({ getByText } = render(
+          <Checkbox
+            id={checkboxId}
+            checked
+            label={labelText}
+            isLabelVisible
+            onChange={changeSpy}
+          />
+        ));
+      });
+      it('renders', function () {
+        getByText(labelText);
+      });
+    });
+    context('when isLabelVisible prop is false', function () {
+      beforeEach(function () {
+        changeSpy = spy();
+        ({ queryByText } = render(
+          <Checkbox
+            id={checkboxId}
+            checked
+            label={labelText}
+            isLabelVisible={false}
+            onChange={changeSpy}
+          />
+        ));
+      });
+      it('positions the input above the error message', function () {
+        const style = window.getComputedStyle(getByText('Test Label').parentNode as HTMLElement);
+        strictEqual(style['grid-template-areas'], '"input input input" "e e e"');
+      });
+    });
+  });
   describe('forwardRef prop', function () {
     context('when forwardRef value is present', function () {
       const refCheckboxId = 'refTest';
