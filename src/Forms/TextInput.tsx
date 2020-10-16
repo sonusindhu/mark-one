@@ -39,7 +39,7 @@ export interface TextInputProps {
   isRequired?: boolean;
   /** Specifies the ref of the text input */
   forwardRef?: Ref<HTMLInputElement>;
-  /** If true, ommit the margin style in label */
+  /** If true, omit the margin style in label */
   hideError?: boolean;
 }
 

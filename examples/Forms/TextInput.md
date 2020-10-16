@@ -110,7 +110,7 @@ const [value, setValue] = useState('Some valid input');
 ```
 
 Label example: The optional `errorMessage` prop is not set, and the 
-`hideError` prop is set to `true.` Remove the `errorMesage` style.
+`hideError` prop is set to `true`, which removes the errorMessage style.
 
 ```jsx
 import { useState } from 'react';
@@ -130,8 +130,8 @@ const [value, setValue] = useState('Some valid input');
 ```
 
 Label example: The optional `errorMessage` prop is set, and the 
-`hideError` prop is set to `true.` Remove the `errorMesage` and
-its style.
+`hideError` prop is set to `true`, which removes the errorMessage 
+and its style.
 
 ```jsx
 import { useState } from 'react';
