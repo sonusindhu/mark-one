@@ -80,7 +80,7 @@ const StyledLabel = styled.label<StyledLabelProps>`
   grid-template-areas: ${({ labelPosition, isLabelVisible }) => (
     generateGrid(labelPosition, isLabelVisible)
   )};
-  margin: ${fromTheme('ws', 'small')}
+  margin: ${fromTheme('ws', 'small')};
   align-items: baseline;
   gap: ${({ theme }) => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
   ${({ hideError }) => (hideError
