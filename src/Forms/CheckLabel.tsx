@@ -7,11 +7,13 @@ import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
 import { POSITION, RequiredSymbol } from './InputLabel';
 
+export type CheckLabelPosition = POSITION.LEFT | POSITION.RIGHT;
+
 export interface StyledCheckLabelProps {
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: CheckLabelPosition;
   /** Specifies the id for the label */
   htmlFor: string;
 }
@@ -20,7 +22,7 @@ export interface StyledCheckLabelTextProps {
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: CheckLabelPosition
   /** Used to style label text in a different style if disabled is true */
   disabled?: boolean;
 }
@@ -31,7 +33,7 @@ export interface LabelProps {
   /** Specifies the label text */
   label: string;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: CheckLabelPosition
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** If true, the label will be styled to indicate that it labels a required field */
@@ -41,7 +43,7 @@ export interface LabelProps {
 }
 
 const generateGrid = (
-  labelPosition: POSITION,
+  labelPosition: CheckLabelPosition,
   isLabelVisible: boolean
 ): string => {
   if (!isLabelVisible) {
@@ -76,7 +78,7 @@ const StyledCheckLabelText = styled.span<StyledCheckLabelTextProps>`
   display: ${({ isLabelVisible }) => (isLabelVisible ? 'inline' : 'none')};
   grid-area: l;
   justify-self: ${({ labelPosition }) => (
-    (labelPosition === POSITION.TOP || labelPosition === POSITION.RIGHT)
+    labelPosition === POSITION.RIGHT
       ? 'start'
       : 'end'
   )};

@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
-import CheckLabel from './CheckLabel';
+import CheckLabel, { CheckLabelPosition } from './CheckLabel';
 import { POSITION } from './InputLabel';
 
 interface NativeRadioButtonProps {
@@ -29,7 +29,7 @@ interface NativeRadioButtonProps {
 
 export interface RadioButtonProps extends NativeRadioButtonProps {
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: CheckLabelPosition;
   /** If true, the radio button is required to submit the form */
   isRequired?: boolean;
   /** Specifies the ref of the radio button */
@@ -42,7 +42,7 @@ interface CustomRadioButtonProps {
   /** If true, radio button will be disabled */
   disabled?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: CheckLabelPosition;
 }
 
 interface SelectMarkProps {
