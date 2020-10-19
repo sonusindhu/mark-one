@@ -14,6 +14,8 @@ export enum POSITION {
 }
 
 export interface StyledLabelProps {
+  /** Specifies the label text */
+  label: string;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
@@ -76,20 +78,32 @@ const generateGrid = (
 const StyledLabel = styled.label<StyledLabelProps>`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr minmax(1em, max-content);
+  grid-template-rows: ${({ hideError }) => (
+    (hideError)
+      ? '1fr'
+      : '1fr minmax(1em, max-content)'
+  )};
   grid-template-areas: ${({ labelPosition, isLabelVisible }) => (
     generateGrid(labelPosition, isLabelVisible)
   )};
-  margin: ${fromTheme('ws', 'small')};
+  margin: ${({ hideError, isLabelVisible, label }) => {
+    if (!(isLabelVisible && label) && hideError) {
+      return ('0px');
+    }
+    return (fromTheme('ws', 'small'));
+  }};
   align-items: baseline;
-  gap: ${({ theme }) => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
-  ${({ hideError }) => (hideError
-    ? `margin: 0px;
-       gap: 0px;
-       grid-template-rows: 1fr;
-      `
-    : null
-  )};
+  gap: ${({
+    hideError,
+    isLabelVisible,
+    label,
+    theme,
+  }) => {
+    if (!(isLabelVisible && label) && hideError) {
+      return ('0px');
+    }
+    return ((theme.ws.xsmall) + ' ' + (theme.ws.xsmall));
+  }};
 `;
 
 const StyledLabelText = styled.span<StyledLabelTextProps>`
@@ -124,6 +138,7 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
   const theme = useContext(ThemeContext);
   return (
     <StyledLabel
+      label={label}
       htmlFor={htmlFor}
       labelPosition={labelPosition}
       theme={theme}

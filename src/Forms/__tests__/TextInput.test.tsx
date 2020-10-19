@@ -147,11 +147,9 @@ describe('Text input', function () {
       const errorField = queryByText('error');
       strictEqual(errorField, null);
     });
-    it('gap and margin and grid-template-rows style', function () {
+    it('set grid-template-rows styles accordingly', function () {
       const style = window.getComputedStyle(getByText('semester').parentNode as HTMLElement);
       strictEqual(style['grid-template-rows'], '1fr');
-      strictEqual(style.gap, '0px');
-      strictEqual(style.margin, '0px');
     });
   });
   context('when hideError prop is not set', function () {
@@ -184,7 +182,7 @@ describe('Text input', function () {
       const defaultValue = inputField.value;
       strictEqual(defaultValue, 'Spring');
     });
-    it('gap and margin and grid-template-rows style', function () {
+    it('set grid-template-rows styles accordingly', function () {
       const style = window.getComputedStyle(getByText('semester').parentNode as HTMLElement);
       strictEqual(style['grid-template-rows'], '1fr minmax(1em,max-content)');
     });
