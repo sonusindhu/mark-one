@@ -185,7 +185,7 @@ describe('Radio Button', function () {
       it('positions the label to the right of the radio button', function () {
         const style = window.getComputedStyle(getByText(testLabel)
           .parentNode as HTMLElement);
-        strictEqual(style['grid-template-areas'], '"input label label" ". e e"');
+        strictEqual(style['grid-template-areas'], '"i l l" ". e e"');
       });
     });
     context('when labelPosition prop is equal to POSITION.LEFT', function () {
@@ -207,7 +207,7 @@ describe('Radio Button', function () {
       it('positions the label to the left of the radio button', function () {
         const style = window.getComputedStyle(getByText(testLabel)
           .parentNode as HTMLElement);
-        strictEqual(style['grid-template-areas'], '"label input input" ". e e"');
+        strictEqual(style['grid-template-areas'], '"l i i" ". e e"');
       });
     });
   });

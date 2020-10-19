@@ -79,7 +79,7 @@ const CustomCheckbox = styled.span<CustomCheckboxProps>`
       ? `${theme.border.light}`
       : `2px solid ${theme.color.text.base}`
   )};
-  grid-area: input;
+  grid-area: i;
   width: 1.25em;
   height: 1.25em;
   cursor: ${({ disabled }): string => (

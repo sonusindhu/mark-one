@@ -45,14 +45,14 @@ const generateGrid = (
   isLabelVisible: boolean
 ): string => {
   if (!isLabelVisible) {
-    return `"input input input"
+    return `"i i i"
             "e e e"`;
   }
   if (labelPosition === POSITION.RIGHT) {
-    return `"input label label"
+    return `"i l l"
             ". e e"`;
   }
-  return `"label input input"
+  return `"l i i"
           ". e e"`;
 };
 
@@ -74,7 +74,7 @@ const StyledCheckLabel = styled.label<StyledCheckLabelProps>`
 
 const StyledCheckLabelText = styled.span<StyledCheckLabelTextProps>`
   display: ${({ isLabelVisible }) => (isLabelVisible ? 'inline' : 'none')};
-  grid-area: label;
+  grid-area: l;
   justify-self: ${({ labelPosition }) => (
     (labelPosition === POSITION.TOP || labelPosition === POSITION.RIGHT)
       ? 'start'

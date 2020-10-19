@@ -76,7 +76,7 @@ const SelectMarkContainer = styled.span`
 
 const CustomRadioButton = styled.span<CustomRadioButtonProps>`
   display: inline-block;
-  grid-area: input;
+  grid-area: i;
   height: 1.25em;
   width: 1.25em;
   border: ${({ theme, disabled }): string => (
