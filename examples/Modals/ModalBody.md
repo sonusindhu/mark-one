@@ -39,6 +39,7 @@ import {
   Checkbox,
   TextInput,
   RadioButton,
+  POSITION,
 } from 'mark-one';
 
 const [modalVisible, setModalVisible] = useState(false);
@@ -119,6 +120,7 @@ const [checkedValue, setCheckedValue] = useState('');
             name="example"
             id="example"
             label="Description:"
+            labelPosition={POSITION.TOP}
             disabled="disabled"
             onChange={() => {}}
           />
