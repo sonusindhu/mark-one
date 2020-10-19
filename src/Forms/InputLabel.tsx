@@ -6,6 +6,8 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
 
+export type InputLabelPosition = POSITION.TOP | POSITION.LEFT;
+
 // An enum that represents the possible values for the label's positioning
 export enum POSITION {
   TOP = 'top',
@@ -17,7 +19,7 @@ export interface StyledInputLabelProps {
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: InputLabelPosition;
   /** Specifies the id for the label */
   htmlFor: string;
 }
@@ -26,7 +28,7 @@ export interface StyledInputLabelTextProps {
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: InputLabelPosition;
   /** Used to style label text in a different style if disabled is true */
   disabled?: boolean;
 }
@@ -37,7 +39,7 @@ export interface InputLabelProps {
   /** Specifies the label text */
   label: string;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: InputLabelPosition;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** If true, the label will be styled to indicate that it labels a required field */
@@ -47,7 +49,7 @@ export interface InputLabelProps {
 }
 
 const generateGrid = (
-  labelPosition: POSITION,
+  labelPosition: InputLabelPosition,
   isLabelVisible: boolean
 ): string => {
   if (!isLabelVisible) {
@@ -79,7 +81,7 @@ const StyledLabelText = styled.span<StyledInputLabelTextProps>`
   display: ${({ isLabelVisible }) => (isLabelVisible ? 'inline' : 'none')};
   grid-area: l;
   justify-self: ${({ labelPosition }) => (
-    (labelPosition === POSITION.TOP || labelPosition === POSITION.RIGHT)
+    labelPosition === POSITION.TOP
       ? 'start'
       : 'end'
   )};

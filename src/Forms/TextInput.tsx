@@ -8,7 +8,7 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
 import ValidationErrorMessage from './ValidationErrorMessage';
-import InputLabel, { POSITION } from './InputLabel';
+import InputLabel, { InputLabelPosition, POSITION } from './InputLabel';
 
 export interface TextInputProps {
   /** The id of the label tied to this text input field */
@@ -32,7 +32,7 @@ export interface TextInputProps {
   /** If true, text input field will be disabled */
   disabled?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: InputLabelPosition;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** If true, the input for the text field is required to submit the form */
