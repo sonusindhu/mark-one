@@ -3,7 +3,7 @@ The `CheckLabel` component is used by the `RadioButton` and `Checkbox` component
 Aligning `RadioButton` and `Dropdown` fields example: The labelPosition for `RadioButton` is `POSITION.RIGHT`, and the `labelPosition` for the `Dropdown` is `POSITION.TOP`.
 ```jsx
 import { useState } from 'react';
-import { Fieldset, RadioButton, Dropdown } from 'mark-one';
+import { Fieldset, RadioButton, Dropdown, POSITION } from 'mark-one';
 const Example = () => {
   const [checkedValue, setCheckedValue] = useState('');
   const [value, setValue] = useState('fall');
@@ -19,7 +19,7 @@ const Example = () => {
         name="nonVisibleFieldsetTest"
         checked={checkedValue === 'foo'}
         onChange={(event) => setCheckedValue(event.target.value)}
-        labelPosition="right"
+        labelPosition={POSITION.RIGHT}
       />
       <RadioButton
         label="Bar"
@@ -27,7 +27,7 @@ const Example = () => {
         name="nonVisibleFieldsetTest"
         checked={checkedValue === 'bar'}
         onChange={(event) => setCheckedValue(event.target.value)}
-        labelPosition="right"
+        labelPosition={POSITION.RIGHT}
       />
       <Dropdown
         options={[
@@ -52,7 +52,7 @@ const Example = () => {
           alert('You changed the selection to ' + event.target.value);
         }}
         label="Semester"
-        labelPosition="top"
+        labelPosition={POSITION.TOP}
       />
     </Fieldset>
   </>);
@@ -63,7 +63,7 @@ const Example = () => {
 Aligning `RadioButton` and `Dropdown` fields example: The labelPosition for `RadioButton` and `Dropdown` is `POSITION.LEFT`.
 ```jsx
 import { useState } from 'react';
-import { Fieldset, RadioButton, Dropdown } from 'mark-one';
+import { Fieldset, RadioButton, Dropdown, POSITION } from 'mark-one';
 const Example = () => {
   const [checkedValue, setCheckedValue] = useState('');
   const [value, setValue] = useState('fall');
@@ -79,7 +79,7 @@ const Example = () => {
         name="nonVisibleFieldsetTest"
         checked={checkedValue === 'foo'}
         onChange={(event) => setCheckedValue(event.target.value)}
-        labelPosition="left"
+        labelPosition={POSITION.LEFT}
       />
       <RadioButton
         label="Bar"
@@ -87,7 +87,7 @@ const Example = () => {
         name="nonVisibleFieldsetTest"
         checked={checkedValue === 'bar'}
         onChange={(event) => setCheckedValue(event.target.value)}
-        labelPosition="left"
+        labelPosition={POSITION.LEFT}
       />
       <Dropdown
         options={[
@@ -112,7 +112,7 @@ const Example = () => {
           alert('You changed the selection to ' + event.target.value);
         }}
         label="Semester"
-        labelPosition="left"
+        labelPosition={POSITION.LEFT}
       />
     </Fieldset>
   </>);

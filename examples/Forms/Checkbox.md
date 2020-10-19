@@ -28,7 +28,7 @@ const CheckboxExample = () => {
 Label Position example: The optional `labelPosition` prop is set to `POSITION.LEFT.`
 ```jsx
 import { useState } from 'react';
-import { Fieldset } from 'mark-one';
+import { Fieldset, POSITION } from 'mark-one';
 const CheckboxExample = () => {
   const [value, setValue] = useState(false);
   return (<>
@@ -40,7 +40,7 @@ const CheckboxExample = () => {
       <Checkbox
       checked={value}
       label="Undergraduate"
-      labelPosition="left"
+      labelPosition={POSITION.LEFT}
       onChange={(event) => {
         setValue(!value);
       }}
@@ -81,7 +81,7 @@ const CheckboxExample = () => {
 Error Message and Required selection example: The `errorMessage` prop is set, and the `isRequired` prop is set to true, which causes a red asterisk indicating a required field to appear next to the label. The optional `labelPosition` prop is set to `POSITION.LEFT.`
 ```jsx
 import { useState } from 'react';
-import { Fieldset } from 'mark-one';
+import { Fieldset, POSITION } from 'mark-one';
 const CheckboxExample = () => {
   const [value, setValue] = useState(false);
   return (<>
@@ -93,7 +93,7 @@ const CheckboxExample = () => {
       <Checkbox
       checked={value}
       label="I agree to the terms and conditions."
-      labelPosition="left"
+      labelPosition={POSITION.LEFT}
       onChange={(event) => {
         setValue(!value);
       }}

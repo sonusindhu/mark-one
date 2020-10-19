@@ -3,7 +3,7 @@ The `InputLabel` component is used by the `TextInput` and `Dropdown` components,
 Aligning `TextInput` and `Checkbox` fields example: The labelPosition for `TextInput` is `POSITION.TOP`, and the `labelPosition` for the `Checkbox` is `POSITION.RIGHT`.
 ```jsx
 import { useState } from 'react';
-import { Fieldset, TextInput, Checkbox } from 'mark-one';
+import { Fieldset, TextInput, Checkbox, POSITION } from 'mark-one';
 const Example = () => {
   const [checkValue, setCheckValue] = useState(false);
   const [textValue, setTextValue] = useState('Some valid input');
@@ -16,7 +16,7 @@ const Example = () => {
       <Checkbox
         checked={checkValue}
         label="Undergraduate"
-        labelPosition="right"
+        labelPosition={POSITION.RIGHT}
         onChange={(event) => {
           setCheckValue(!checkValue);
         }}
@@ -26,7 +26,7 @@ const Example = () => {
         id="example"
         value={textValue}
         label="Description"
-        labelPosition="top"
+        labelPosition={POSITION.TOP}
         onChange={(event) => {
         setTextValue(event.target.value);
         }}
@@ -40,7 +40,7 @@ const Example = () => {
 Aligning `TextInput` and `Checkbox` fields example: The `labelPosition` for the `TextInput` and `Checkbox` is `POSITION.LEFT.`
 ```jsx
 import { useState } from 'react';
-import { Fieldset, TextInput, Checkbox } from 'mark-one';
+import { Fieldset, TextInput, Checkbox, POSITION } from 'mark-one';
 const Example = () => {
   const [checkValue, setCheckValue] = useState(false);
   const [textValue, setTextValue] = useState('Some valid input');
@@ -53,7 +53,7 @@ const Example = () => {
       <Checkbox
         checked={checkValue}
         label="Undergraduate"
-        labelPosition="left"
+        labelPosition={POSITION.LEFT}
         onChange={(event) => {
           setCheckValue(!checkValue);
         }}
@@ -63,7 +63,7 @@ const Example = () => {
         id="example"
         value={textValue}
         label="Description"
-        labelPosition="left"
+        labelPosition={POSITION.LEFT}
         onChange={(event) => {
         setTextValue(event.target.value);
         }}
