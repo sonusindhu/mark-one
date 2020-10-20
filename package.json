@@ -1,6 +1,6 @@
 {
   "name": "mark-one",
-  "version": "0.0.2-develop.41",
+  "version": "0.0.2-develop.42",
   "description": "A UI component library for building React Apps",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
