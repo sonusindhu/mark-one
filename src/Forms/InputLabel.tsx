@@ -6,38 +6,40 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
 
-/** An enum that represents the possible values for the label's positioning */
+export type InputLabelPosition = POSITION.TOP | POSITION.LEFT;
+
+// An enum that represents the possible values for the label's positioning
 export enum POSITION {
   TOP = 'top',
   LEFT = 'left',
   RIGHT='right',
 }
 
-export interface StyledLabelProps {
+export interface StyledInputLabelProps {
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: InputLabelPosition;
   /** Specifies the id for the label */
   htmlFor: string;
 }
 
-export interface StyledLabelTextProps {
+export interface StyledInputLabelTextProps {
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: InputLabelPosition;
   /** Used to style label text in a different style if disabled is true */
   disabled?: boolean;
 }
 
-export interface LabelProps {
+export interface InputLabelProps {
   /** The id of the field tied to this label */
   htmlFor: string;
   /** Specifies the label text */
   label: string;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: InputLabelPosition;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** If true, the label will be styled to indicate that it labels a required field */
@@ -47,7 +49,7 @@ export interface LabelProps {
 }
 
 const generateGrid = (
-  labelPosition: POSITION,
+  labelPosition: InputLabelPosition,
   isLabelVisible: boolean
 ): string => {
   if (!isLabelVisible) {
@@ -59,15 +61,11 @@ const generateGrid = (
             "i i i"
             "e e e"`;
   }
-  if (labelPosition === POSITION.RIGHT) {
-    return `"i l l"
-            ". e e"`;
-  }
   return `"l i i"
           ". e e"`;
 };
 
-const StyledLabel = styled.label<StyledLabelProps>`
+const StyledInputLabel = styled.label<StyledInputLabelProps>`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr minmax(1em, max-content);
@@ -79,11 +77,11 @@ const StyledLabel = styled.label<StyledLabelProps>`
   gap: ${({ theme }) => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
 `;
 
-const StyledLabelText = styled.span<StyledLabelTextProps>`
+const StyledLabelText = styled.span<StyledInputLabelTextProps>`
   display: ${({ isLabelVisible }) => (isLabelVisible ? 'inline' : 'none')};
   grid-area: l;
   justify-self: ${({ labelPosition }) => (
-    (labelPosition === POSITION.TOP || labelPosition === POSITION.RIGHT)
+    labelPosition === POSITION.TOP
       ? 'start'
       : 'end'
   )};
@@ -97,7 +95,8 @@ const StyledLabelText = styled.span<StyledLabelTextProps>`
 export const RequiredSymbol = styled.span`
     color: ${fromTheme('color', 'text', 'negative')};
 `;
-const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
+const InputLabel:
+FunctionComponent<InputLabelProps> = (props): ReactElement => {
   const {
     htmlFor,
     label,
@@ -109,7 +108,7 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
   } = props;
   const theme = useContext(ThemeContext);
   return (
-    <StyledLabel
+    <StyledInputLabel
       htmlFor={htmlFor}
       labelPosition={labelPosition}
       theme={theme}
@@ -126,19 +125,19 @@ const Label: FunctionComponent<LabelProps> = (props): ReactElement => {
         </>
       </StyledLabelText>
       { children }
-    </StyledLabel>
+    </StyledInputLabel>
   );
 };
 
-Label.defaultProps = {
+InputLabel.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
   disabled: false,
 };
 
-StyledLabel.defaultProps = {
+StyledInputLabel.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
 };
 
-export default Label;
+export default InputLabel;

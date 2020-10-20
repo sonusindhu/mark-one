@@ -35,6 +35,7 @@ Label example: The prop `labelPosition` is set to `POSITION.TOP.`
 
 ```jsx
 import { useState } from 'react';
+import { POSITION } from 'mark-one';
 
 const [value, setValue] = useState('fall');
 
@@ -61,7 +62,7 @@ const [value, setValue] = useState('fall');
     alert('You changed the selection to ' + event.target.value);
   }}
   label="Semester"
-  labelPosition="top"
+  labelPosition={POSITION.TOP}
 />
 ```
 
@@ -69,6 +70,7 @@ Label example: The prop `labelPosition` is set to `POSITION.LEFT.`
 
 ```jsx
 import { useState } from 'react';
+import { POSITION } from 'mark-one';
 
 const [value, setValue] = useState('fall');
 
@@ -95,7 +97,7 @@ const [value, setValue] = useState('fall');
     alert('You changed the selection to ' + event.target.value);
   }}
   label="Semester"
-  labelPosition="left"
+  labelPosition={POSITION.LEFT}
 />
 ```
 
@@ -177,6 +179,7 @@ Error Message example: The optional `errorMessage` prop is not set.
 import { useState } from 'react';
 
 const [value, setValue] = useState('fall');
+import { POSITION } from 'mark-one';
 
 <Dropdown
   options={[
@@ -201,7 +204,7 @@ const [value, setValue] = useState('fall');
     alert('You changed the selection to ' + event.target.value);
   }}
   label="Semester"
-  labelPosition="top"
+  labelPosition={POSITION.TOP}
 />
 ```
 
@@ -245,6 +248,7 @@ Error Message example: The optional `errorMessage` prop is set, and the `labelPo
 import { useState } from 'react';
 
 const [value, setValue] = useState('fall');
+import { POSITION } from 'mark-one';
 
 <Dropdown
   options={[
@@ -269,7 +273,7 @@ const [value, setValue] = useState('fall');
     alert('You changed the selection to ' + event.target.value);
   }}
   label="Semester"
-  labelPosition="left"
+  labelPosition={POSITION.LEFT}
   errorMessage="Error: Please select a semester."
 />
 ```
@@ -314,6 +318,7 @@ Required selection example: The optional `isRequired` property is set, which cau
 import { useState } from 'react';
 
 const [value, setValue] = useState('fall');
+import { POSITION } from 'mark-one';
 
 <Dropdown
   options={[
@@ -338,7 +343,7 @@ const [value, setValue] = useState('fall');
     alert('You changed the selection to ' + event.target.value);
   }}
   label="Semester"
-  labelPosition="left"
+  labelPosition={POSITION.LEFT}
   isRequired
 />
 ```

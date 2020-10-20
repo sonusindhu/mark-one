@@ -14,6 +14,7 @@ import RadioButton from 'Forms/RadioButton';
 import userEvent from '@testing-library/user-event';
 import { Button } from 'Buttons';
 import { VARIANT } from 'Theme';
+import { POSITION } from 'Forms/InputLabel';
 
 describe('Radio Button', function () {
   let getByText: BoundFunction<GetByText>;
@@ -159,6 +160,54 @@ describe('Radio Button', function () {
       });
       it('renders the asterisk (*), which denotes the input is required', function () {
         getByText('*');
+      });
+    });
+  });
+  describe('labelPosition prop', function () {
+    const radioButtonId = 'testRadioLabel';
+    const testLabel = 'Test Label';
+    context('when labelPosition prop is equal to POSITION.RIGHT', function () {
+      beforeEach(function () {
+        changeSpy = spy();
+        ({ queryByText } = render(
+          <>
+            <RadioButton
+              id={radioButtonId}
+              label={testLabel}
+              labelPosition={POSITION.RIGHT}
+              value="bar"
+              name="bar"
+              onChange={changeSpy}
+            />
+          </>
+        ));
+      });
+      it('positions the label to the right of the radio button', function () {
+        const style = window.getComputedStyle(getByText(testLabel)
+          .parentNode as HTMLElement);
+        strictEqual(style['grid-template-areas'], '"i l l" ". e e"');
+      });
+    });
+    context('when labelPosition prop is equal to POSITION.LEFT', function () {
+      beforeEach(function () {
+        changeSpy = spy();
+        ({ queryByText } = render(
+          <>
+            <RadioButton
+              id={radioButtonId}
+              label={testLabel}
+              labelPosition={POSITION.LEFT}
+              value="baz"
+              name="baz"
+              onChange={changeSpy}
+            />
+          </>
+        ));
+      });
+      it('positions the label to the left of the radio button', function () {
+        const style = window.getComputedStyle(getByText(testLabel)
+          .parentNode as HTMLElement);
+        strictEqual(style['grid-template-areas'], '"l i i" ". e e"');
       });
     });
   });

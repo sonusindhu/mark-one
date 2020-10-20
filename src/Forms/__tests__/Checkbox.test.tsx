@@ -12,7 +12,7 @@ import React, { useRef } from 'react';
 import Checkbox from 'Forms/Checkbox';
 import { strictEqual } from 'assert';
 import userEvent from '@testing-library/user-event';
-import { POSITION } from 'Forms/Label';
+import { POSITION } from 'Forms/InputLabel';
 import { Button } from 'Buttons';
 import { VARIANT } from 'Theme';
 
@@ -201,27 +201,47 @@ describe('Checkbox', function () {
           />
         ));
       });
-      it('positions the label to the right of the checkbox', function () {
+      it('positions the label to the left of the checkbox', function () {
         const style = window.getComputedStyle(getByText('Test Label').parentNode as HTMLElement);
         strictEqual(style['grid-template-areas'], '"l i i" ". e e"');
       });
     });
-    context('when labelPosition prop is equal to POSITION.TOP', function () {
+  });
+  describe('isLabelVisible prop', function () {
+    const labelText = 'Test Label';
+    context('when isLabelVisible prop is true', function () {
       beforeEach(function () {
         changeSpy = spy();
         ({ getByText } = render(
           <Checkbox
             id={checkboxId}
             checked
-            label="Test Label"
-            labelPosition={POSITION.TOP}
+            label={labelText}
+            isLabelVisible
             onChange={changeSpy}
           />
         ));
       });
-      it('positions the label to the right of the checkbox', function () {
+      it('renders', function () {
+        getByText(labelText);
+      });
+    });
+    context('when isLabelVisible prop is false', function () {
+      beforeEach(function () {
+        changeSpy = spy();
+        ({ queryByText } = render(
+          <Checkbox
+            id={checkboxId}
+            checked
+            label={labelText}
+            isLabelVisible={false}
+            onChange={changeSpy}
+          />
+        ));
+      });
+      it('positions the input above the error message', function () {
         const style = window.getComputedStyle(getByText('Test Label').parentNode as HTMLElement);
-        strictEqual(style['grid-template-areas'], '"l l l" "i i i" "e e e"');
+        strictEqual(style['grid-template-areas'], '"i i i" "e e e"');
       });
     });
   });
