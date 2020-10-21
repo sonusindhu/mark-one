@@ -74,6 +74,7 @@ const [value, setValue] = useState('Some valid input');
   }}
 />
 ```
+
 Text Input example: The `disabled` prop set to `true.`
 
 ```jsx
@@ -105,6 +106,46 @@ const [value, setValue] = useState('Some valid input');
   name="example"
   id="example"
   label="Description:"
+  onChange={(event) => {
+    setValue(event.target.value);
+  }}
+/>
+```
+
+Error Message example: The optional `errorMessage` property is set, and the `labelPosition` prop defaults to `POSITION.LEFT.`
+
+```jsx
+import { useState } from 'react';
+
+const [value, setValue] = useState('Invalid value');
+
+<TextInput
+  value={value}
+  name="example"
+  id="example"
+  errorMessage="Error: Please enter a valid ID"
+  label="Description:"
+  onChange={(event) => {
+    setValue(event.target.value);
+  }}
+/>
+```
+
+Error Message example: The optional `errorMessage` property is set, and the `labelPosition` prop is set to `POSITION.TOP.`
+
+```jsx
+import { useState } from 'react';
+import { POSITION } from 'mark-one';
+
+const [value, setValue] = useState('Invalid value');
+
+<TextInput
+  value={value}
+  name="example"
+  id="example"
+  errorMessage="Error: Please enter a valid ID"
+  label="Description:"
+  labelPosition={POSITION.TOP}
   onChange={(event) => {
     setValue(event.target.value);
   }}
@@ -147,46 +188,6 @@ const [value, setValue] = useState('Some valid input');
   label="Description:"
   errorMessage="Error: Please enter a valid ID"
   hideError={true}
-  onChange={(event) => {
-    setValue(event.target.value);
-  }}
-/>
-```
-
-Error Message example: The optional `errorMessage` property is set, and the `labelPosition` prop defaults to `POSITION.LEFT.`
-
-```jsx
-import { useState } from 'react';
-
-const [value, setValue] = useState('Invalid value');
-
-<TextInput
-  value={value}
-  name="example"
-  id="example"
-  errorMessage="Error: Please enter a valid ID"
-  label="Description:"
-  onChange={(event) => {
-    setValue(event.target.value);
-  }}
-/>
-```
-
-Error Message example: The optional `errorMessage` property is set, and the `labelPosition` prop is set to `POSITION.TOP.`
-
-```jsx
-import { useState } from 'react';
-import { POSITION } from 'mark-one';
-
-const [value, setValue] = useState('Invalid value');
-
-<TextInput
-  value={value}
-  name="example"
-  id="example"
-  errorMessage="Error: Please enter a valid ID"
-  label="Description:"
-  labelPosition={POSITION.TOP}
   onChange={(event) => {
     setValue(event.target.value);
   }}
