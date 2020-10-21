@@ -20,6 +20,7 @@ Label example: The prop `labelPosition` is set to `POSITION.LEFT.`
 
 ```jsx
 import { useState } from 'react';
+import { POSITION } from 'mark-one';
 
 const [value, setValue] = useState('Some valid input');
 
@@ -28,7 +29,7 @@ const [value, setValue] = useState('Some valid input');
   name="example"
   id="example"
   label="Description:"
-  labelPosition="left"
+  labelPosition={POSITION.LEFT}
   onChange={(event) => {
     setValue(event.target.value);
   }}
@@ -39,6 +40,7 @@ Label example: The prop `labelPosition` is set to `POSITION.TOP.`
 
 ```jsx
 import { useState } from 'react';
+import { POSITION } from 'mark-one';
 
 const [value, setValue] = useState('Some valid input');
 
@@ -47,7 +49,7 @@ const [value, setValue] = useState('Some valid input');
   name="example"
   id="example"
   label="Description:"
-  labelPosition="top"
+  labelPosition={POSITION.TOP}
   onChange={(event) => {
     setValue(event.target.value);
   }}
@@ -174,6 +176,7 @@ Error Message example: The optional `errorMessage` property is set, and the `lab
 
 ```jsx
 import { useState } from 'react';
+import { POSITION } from 'mark-one';
 
 const [value, setValue] = useState('Invalid value');
 
@@ -183,7 +186,7 @@ const [value, setValue] = useState('Invalid value');
   id="example"
   errorMessage="Error: Please enter a valid ID"
   label="Description:"
-  labelPosition="top"
+  labelPosition={POSITION.TOP}
   onChange={(event) => {
     setValue(event.target.value);
   }}
@@ -194,6 +197,7 @@ Required selection example: The optional `isRequired` property is set, which cau
 
 ```jsx
 import { useState } from 'react';
+import { POSITION } from 'mark-one';
 
 const [value, setValue] = useState('Some valid input');
 
@@ -205,7 +209,7 @@ const [value, setValue] = useState('Some valid input');
   onChange={(event) => {
     setValue(event.target.value);
   }}
-  labelPosition="top"
+  labelPosition={POSITION.TOP}
   isRequired
 />
 ```
@@ -214,6 +218,8 @@ Required selection example: The optional `isRequired` property is set, which cau
 
 ```jsx
 import { useState } from 'react';
+import { POSITION } from 'mark-one';
+
 
 const [value, setValue] = useState('Some valid input');
 
@@ -225,7 +231,7 @@ const [value, setValue] = useState('Some valid input');
   onChange={(event) => {
     setValue(event.target.value);
   }}
-  labelPosition="left"
+  labelPosition={POSITION.LEFT}
   isRequired
 />
 ```

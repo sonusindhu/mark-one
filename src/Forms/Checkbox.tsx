@@ -7,7 +7,8 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
-import Label, { POSITION } from './Label';
+import CheckLabel, { CheckLabelPosition } from './CheckLabel';
+import { POSITION } from './InputLabel';
 import ValidationErrorMessage from './ValidationErrorMessage';
 
 interface NativeCheckboxProps {
@@ -29,7 +30,7 @@ export interface CheckboxProps extends NativeCheckboxProps {
   /** Specifies the label text */
   label: string;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: CheckLabelPosition;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** If true, the checkbox is required to submit the form */
@@ -46,7 +47,7 @@ interface CustomCheckboxProps {
   /** If true, checkbox will be disabled */
   disabled?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: CheckLabelPosition;
 }
 
 interface CheckmarkProps {
@@ -120,7 +121,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = (props): ReactElement => {
   const theme = useContext(ThemeContext);
   return (
     <>
-      <Label
+      <CheckLabel
         htmlFor={id}
         label={label}
         labelPosition={labelPosition}
@@ -160,7 +161,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = (props): ReactElement => {
             {errorMessage}
           </ValidationErrorMessage>
         )}
-      </Label>
+      </CheckLabel>
     </>
   );
 };

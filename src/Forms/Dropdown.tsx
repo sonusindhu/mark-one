@@ -8,7 +8,7 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
 import ValidationErrorMessage from './ValidationErrorMessage';
-import Label, { POSITION } from './Label';
+import InputLabel, { InputLabelPosition, POSITION } from './InputLabel';
 
 interface DropdownOptionProps {
   /** The label of the dropdown option */
@@ -39,7 +39,7 @@ export interface DropdownProps {
   /** Specifies the label text */
   label: string;
   /** Allows you to pass in a label position property from the POSITION enum */
-  labelPosition?: POSITION;
+  labelPosition?: InputLabelPosition;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Specifies the ref of the dropdown */
@@ -69,7 +69,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
   } = props;
   const theme = useContext(ThemeContext);
   return (
-    <Label
+    <InputLabel
       htmlFor={id}
       label={label}
       labelPosition={labelPosition}
@@ -104,7 +104,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
           {errorMessage}
         </ValidationErrorMessage>
       )}
-    </Label>
+    </InputLabel>
   );
 };
 

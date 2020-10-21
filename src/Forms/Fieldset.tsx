@@ -8,7 +8,7 @@ import React,
 import styled, { ThemeContext } from 'styled-components';
 import { NoteText } from '../Typography';
 import ValidationErrorMessage from './ValidationErrorMessage';
-import { RequiredSymbol } from './Label';
+import { RequiredSymbol } from './InputLabel';
 
 interface StyledFieldsetProps {
   /** Specifies the id of the associated form */

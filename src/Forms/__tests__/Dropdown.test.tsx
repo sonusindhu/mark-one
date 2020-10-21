@@ -10,7 +10,7 @@ import {
 } from 'test-utils';
 import { spy, SinonSpy } from 'sinon';
 import { strictEqual, deepStrictEqual } from 'assert';
-import { POSITION } from '../Label';
+import { POSITION } from '../InputLabel';
 import { Button } from '../../Buttons';
 import { VARIANT } from '../../Theme';
 import Dropdown from '../Dropdown';
