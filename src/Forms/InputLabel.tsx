@@ -85,12 +85,11 @@ const StyledInputLabel = styled.label<StyledInputLabelProps>`
     generateGrid(labelPosition, isLabelVisible)
   )};
   align-items: baseline;
-  gap: ${({ hideError, isLabelVisible, theme }) => {
-    if (!(isLabelVisible) && hideError) {
-      return ('0px');
-    }
-    return ((theme.ws.xsmall) + ' ' + (theme.ws.xsmall));
-  }};
+  gap: ${({ hideError, isLabelVisible, theme }) => (
+    (!isLabelVisible && hideError)
+      ? '0px'
+      : (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)
+  )};
 `;
 
 const StyledInputLabelText = styled.span<StyledInputLabelTextProps>`
