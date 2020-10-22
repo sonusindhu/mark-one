@@ -35,7 +35,7 @@ export interface StyledInputLabelTextProps {
   labelPosition?: InputLabelPosition;
   /** Used to style label text in a different style if disabled is true */
   disabled?: boolean;
-  /** If true, remove the margin on the StyledLabelProps */
+  /** If true, hide the error Msg and change the style StyledLabelProps */
   hideError?: boolean;
 }
 
@@ -52,7 +52,7 @@ export interface InputLabelProps {
   isRequired?: boolean;
   /** Used to style label text in a different style if disabled is true */
   disabled?: boolean;
-  /** If true, remove the margin on the StyledLabelProps */
+  /** If true, hide the error Msg and change the style StyledLabelProps */
   hideError?: boolean;
 }
 
@@ -84,20 +84,9 @@ const StyledInputLabel = styled.label<StyledInputLabelProps>`
   grid-template-areas: ${({ labelPosition, isLabelVisible }) => (
     generateGrid(labelPosition, isLabelVisible)
   )};
-  margin: ${({ hideError, isLabelVisible, label }) => {
-    if (!(isLabelVisible && label) && hideError) {
-      return ('0px');
-    }
-    return (fromTheme('ws', 'small'));
-  }};
   align-items: baseline;
-  gap: ${({
-    hideError,
-    isLabelVisible,
-    label,
-    theme,
-  }) => {
-    if (!(isLabelVisible && label) && hideError) {
+  gap: ${({ hideError, isLabelVisible, theme }) => {
+    if (!(isLabelVisible) && hideError) {
       return ('0px');
     }
     return ((theme.ws.xsmall) + ' ' + (theme.ws.xsmall));
