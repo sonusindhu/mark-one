@@ -16,12 +16,16 @@ export enum POSITION {
 }
 
 export interface StyledInputLabelProps {
+  /** Specifies the label text */
+  label: string;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
   labelPosition?: InputLabelPosition;
   /** Specifies the id for the label */
   htmlFor: string;
+  /** If true, remove the gaps on the StyledLabelProps */
+  hideError?: boolean;
 }
 
 export interface StyledInputLabelTextProps {
@@ -31,6 +35,8 @@ export interface StyledInputLabelTextProps {
   labelPosition?: InputLabelPosition;
   /** Used to style label text in a different style if disabled is true */
   disabled?: boolean;
+  /** If true, hide the error Msg and change the style StyledLabelProps */
+  hideError?: boolean;
 }
 
 export interface InputLabelProps {
@@ -46,6 +52,8 @@ export interface InputLabelProps {
   isRequired?: boolean;
   /** Used to style label text in a different style if disabled is true */
   disabled?: boolean;
+  /** If true, hide the error Msg and change the style StyledLabelProps */
+  hideError?: boolean;
 }
 
 const generateGrid = (
@@ -68,16 +76,23 @@ const generateGrid = (
 const StyledInputLabel = styled.label<StyledInputLabelProps>`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr minmax(1em, max-content);
+  grid-template-rows: ${({ hideError }) => (
+    (hideError)
+      ? '1fr'
+      : '1fr minmax(1em, max-content)'
+  )};
   grid-template-areas: ${({ labelPosition, isLabelVisible }) => (
     generateGrid(labelPosition, isLabelVisible)
   )};
-  margin: ${fromTheme('ws', 'small')};
   align-items: baseline;
-  gap: ${({ theme }) => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
+  gap: ${({ hideError, isLabelVisible, theme }) => (
+    (!isLabelVisible && hideError)
+      ? '0px'
+      : (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)
+  )};
 `;
 
-const StyledLabelText = styled.span<StyledInputLabelTextProps>`
+const StyledInputLabelText = styled.span<StyledInputLabelTextProps>`
   display: ${({ isLabelVisible }) => (isLabelVisible ? 'inline' : 'none')};
   grid-area: l;
   justify-self: ${({ labelPosition }) => (
@@ -105,6 +120,7 @@ FunctionComponent<InputLabelProps> = (props): ReactElement => {
     children,
     isRequired,
     disabled,
+    hideError,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -113,8 +129,10 @@ FunctionComponent<InputLabelProps> = (props): ReactElement => {
       labelPosition={labelPosition}
       theme={theme}
       isLabelVisible={isLabelVisible}
+      label={label}
+      hideError={hideError}
     >
-      <StyledLabelText
+      <StyledInputLabelText
         isLabelVisible={isLabelVisible}
         labelPosition={labelPosition}
         disabled={disabled}
@@ -123,7 +141,7 @@ FunctionComponent<InputLabelProps> = (props): ReactElement => {
           {label}
           {isRequired && <RequiredSymbol>*</RequiredSymbol>}
         </>
-      </StyledLabelText>
+      </StyledInputLabelText>
       { children }
     </StyledInputLabel>
   );
@@ -133,11 +151,13 @@ InputLabel.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
   disabled: false,
+  hideError: false,
 };
 
 StyledInputLabel.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
+  hideError: false,
 };
 
 export default InputLabel;

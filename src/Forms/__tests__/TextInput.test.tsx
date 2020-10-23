@@ -111,6 +111,124 @@ describe('Text input', function () {
       strictEqual(input.hasAttribute('aria-invalid'), false);
     });
   });
+  context('when hideError and errorMessage prop are present', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      ({ queryByText, getByText } = render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Spring"
+          label="semester"
+          errorMessage="Error: Please enter a valid ID"
+          hideError
+          onChange={changeSpy}
+        />
+      ));
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('calls the change handler when changed', function () {
+      fireEvent.change(document.getElementById('semester'), {
+        target: {
+          value: 'Fall',
+        },
+      });
+      strictEqual(changeSpy.callCount, 1);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Spring');
+    });
+    it('does not render the error message', function () {
+      const errorField = queryByText('error');
+      strictEqual(errorField, null);
+    });
+    it('set grid-template-rows styles accordingly', function () {
+      const style = window.getComputedStyle(getByText('semester').parentNode as HTMLElement);
+      strictEqual(style['grid-template-rows'], '1fr');
+    });
+  });
+  context('when hideError is set and isLabelVisible is not ', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      ({ queryByText, getByText } = render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Spring"
+          label="semester"
+          hideError
+          isLabelVisible={false}
+          onChange={changeSpy}
+        />
+      ));
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('calls the change handler when changed', function () {
+      fireEvent.change(document.getElementById('semester'), {
+        target: {
+          value: 'Fall',
+        },
+      });
+      strictEqual(changeSpy.callCount, 1);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Spring');
+    });
+    it('does not render the error message', function () {
+      const errorField = queryByText('error');
+      strictEqual(errorField, null);
+    });
+    it('set grid-template-rows styles accordingly', function () {
+      const style = window.getComputedStyle(getByText('semester').parentNode as HTMLElement);
+      strictEqual(style['grid-template-rows'], '1fr');
+      strictEqual(style.gap, '0px');
+    });
+  });
+  context('when hideError prop is not set', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      ({ getByText } = render(
+        <TextInput
+          id="semester"
+          name="semester"
+          value="Spring"
+          label="semester"
+          onChange={changeSpy}
+        />
+      ));
+    });
+    it('renders', function () {
+      const inputElement = document.getElementById('semester') as HTMLInputElement;
+      strictEqual(!!inputElement, true);
+    });
+    it('calls the change handler when changed', function () {
+      fireEvent.change(document.getElementById('semester'), {
+        target: {
+          value: 'Fall',
+        },
+      });
+      strictEqual(changeSpy.callCount, 1);
+    });
+    it('renders the correct default value', function () {
+      const inputField = document.getElementById('semester') as HTMLInputElement;
+      const defaultValue = inputField.value;
+      strictEqual(defaultValue, 'Spring');
+    });
+    it('set grid-template-rows styles accordingly', function () {
+      const style = window.getComputedStyle(getByText('semester').parentNode as HTMLElement);
+      strictEqual(style['grid-template-rows'], '1fr minmax(1em,max-content)');
+    });
+  });
   context('when isRequired prop is present', function () {
     beforeEach(function () {
       changeSpy = spy();
