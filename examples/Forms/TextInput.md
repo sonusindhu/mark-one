@@ -152,8 +152,8 @@ const [value, setValue] = useState('Invalid value');
 />
 ```
 
-Label example: The optional `errorMessage` prop is not set, and the 
-`hideError` prop is set to `true`, which removes the errorMessage style.
+Error Message example: The optional `errorMessage` prop is not set, and the 
+`hideError` prop is set to `true`, which changes the errorMessage style.
 
 ```jsx
 import { useState } from 'react';
@@ -172,9 +172,9 @@ const [value, setValue] = useState('Some valid input');
 />
 ```
 
-Label example: The optional `errorMessage` prop is set, and the 
-`hideError` prop is set to `true`, which removes the errorMessage 
-and its style.
+Error Message example: The optional `errorMessage` and `hideError` props 
+are set to `true`, while `isLabelVisible` prop is set to false which removes 
+the errorMessage and its style.
 
 ```jsx
 import { useState } from 'react';
@@ -188,6 +188,7 @@ const [value, setValue] = useState('Some valid input');
   label="Description:"
   errorMessage="Error: Please enter a valid ID"
   hideError={true}
+  isLabelVisible={false}
   onChange={(event) => {
     setValue(event.target.value);
   }}
