@@ -169,7 +169,7 @@ describe('Dropdown', function () {
     beforeEach(function () {
       changeSpy = spy();
       ({
-        getByText, getByRole, getAllByRole, queryByText,
+        getByText, getByRole, getAllByRole, queryByText
       } = render(
         <Dropdown
           id="semesters"
@@ -187,7 +187,7 @@ describe('Dropdown', function () {
       getByText('Spring');
     });
     it('calls the change handler when changed', function () {
-      fireEvent.change(document.getElementsByName('semesters')[0]);
+      fireEvent.change(getByRole('combobox'));
       strictEqual(changeSpy.callCount, 1);
     });
     it('contains the expected elements', function () {
@@ -195,12 +195,12 @@ describe('Dropdown', function () {
       strictEqual(dropdownOptionsCount, options.length);
     });
     it('renders the correct default value', function () {
-      const dropdown = document.getElementsByName('semesters')[0] as HTMLSelectElement;
+      const dropdown = getByRole('combobox') as HTMLSelectElement;
       const defaultValue = dropdown.value;
       strictEqual(defaultValue, 'fall');
     });
     it('contains the correct value, label, and disabled value for each dropdown item', function () {
-      const dropdown = document.getElementsByName('semesters')[0] as HTMLSelectElement;
+      const dropdown = getByRole('combobox') as HTMLSelectElement;
       const optionsFound = Array.from(dropdown.options).map((element) => ({
         disabled: element.disabled,
         value: element.value,
@@ -216,11 +216,6 @@ describe('Dropdown', function () {
     });
     it('does not render the error message', function () {
       strictEqual(queryByText('Error: Please select a semester', { exact: false }), null);
-    });
-    it('set grid-template-rows styles accordingly', function () {
-      const style = window.getComputedStyle(getByText('semesters').parentNode as HTMLElement);
-      strictEqual(style['grid-template-rows'], '1fr');
-      strictEqual(style.gap, '0px');
     });
   });
   context('when isRequired prop is present', function () {
