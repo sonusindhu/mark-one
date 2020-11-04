@@ -169,7 +169,7 @@ describe('Dropdown', function () {
     beforeEach(function () {
       changeSpy = spy();
       ({
-        getByText, getByRole, getAllByRole, queryByText
+        getByText, getByRole, getAllByRole, queryByText,
       } = render(
         <Dropdown
           id="semesters"
