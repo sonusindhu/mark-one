@@ -44,6 +44,8 @@ export interface DropdownProps {
   isLabelVisible?: boolean;
   /** Specifies the ref of the dropdown */
   forwardRef?: Ref<HTMLSelectElement>;
+  /** If true, hide the error msg and its style */
+  hideError?: boolean;
 }
 
 const StyledDropdown = styled.select`
@@ -66,6 +68,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
     labelPosition,
     isLabelVisible,
     forwardRef,
+    hideError,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -75,6 +78,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
       labelPosition={labelPosition}
       isLabelVisible={isLabelVisible}
       isRequired={isRequired}
+      hideError={hideError}
     >
       <StyledDropdown
         id={id}
@@ -98,7 +102,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
           </option>
         ))}
       </StyledDropdown>
-      {errorMessage
+      {errorMessage && !hideError
       && (
         <ValidationErrorMessage id={`${id}-error`}>
           {errorMessage}
@@ -111,6 +115,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
 Dropdown.defaultProps = {
   labelPosition: POSITION.TOP,
   isLabelVisible: true,
+  hideError: false,
 };
 
 /** @component */

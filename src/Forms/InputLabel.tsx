@@ -24,7 +24,7 @@ export interface StyledInputLabelProps {
   labelPosition?: InputLabelPosition;
   /** Specifies the id for the label */
   htmlFor: string;
-  /** If true, remove the gaps on the StyledLabelProps */
+  /** If true, hide the error Msg and change the style StyledLabelProps */
   hideError?: boolean;
 }
 

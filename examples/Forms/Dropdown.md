@@ -278,6 +278,43 @@ import { POSITION } from 'mark-one';
 />
 ```
 
+Error message example: The optional `errorMessage` prop is set, and the 
+`hideError` prop is set while `isLabelVisible` is set to `false`, 
+which removes the errorMessage and its style.
+
+```jsx
+import { useState } from 'react';
+
+const [value, setValue] = useState('fall');
+
+<Dropdown
+  options={[
+    {
+      value: 'all',
+      label: 'All',
+    },
+    {
+      value: 'fall',
+      label: 'Fall',
+    },
+    {
+      value: 'spring',
+      label: 'Spring',
+    },
+  ]}
+  value={value}
+  id="semesters"
+  name="semesters"
+  onChange={function(event){
+    setValue(event.target.value);
+    alert('You changed the selection to ' + event.target.value);
+  }}
+  label="Semester"
+  hideError={true}
+  isLabelVisible={false}
+/>
+```
+
 Required selection example: The optional `isRequired` property is set, which causes an asterisk denoting that the field is required appears next to the label. The `labelPosition` prop defaults to `POSITION.TOP.`
 
 ```jsx

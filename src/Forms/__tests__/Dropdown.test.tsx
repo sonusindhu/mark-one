@@ -165,6 +165,59 @@ describe('Dropdown', function () {
       strictEqual(dropdown.hasAttribute('aria-invalid'), false);
     });
   });
+  context('when hideError prop is set and isLabelVisible is set to false', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      ({
+        getByText, getByRole, getAllByRole, queryByText,
+      } = render(
+        <Dropdown
+          id="semesters"
+          options={options}
+          value="fall"
+          label="semesters"
+          name="semesters"
+          onChange={changeSpy}
+          hideError
+          isLabelVisible={false}
+        />
+      ));
+    });
+    it('renders', function () {
+      getByText('Spring');
+    });
+    it('calls the change handler when changed', function () {
+      fireEvent.change(getByRole('combobox'));
+      strictEqual(changeSpy.callCount, 1);
+    });
+    it('contains the expected elements', function () {
+      const dropdownOptionsCount = getAllByRole('option').length;
+      strictEqual(dropdownOptionsCount, options.length);
+    });
+    it('renders the correct default value', function () {
+      const dropdown = getByRole('combobox') as HTMLSelectElement;
+      const defaultValue = dropdown.value;
+      strictEqual(defaultValue, 'fall');
+    });
+    it('contains the correct value, label, and disabled value for each dropdown item', function () {
+      const dropdown = getByRole('combobox') as HTMLSelectElement;
+      const optionsFound = Array.from(dropdown.options).map((element) => ({
+        disabled: element.disabled,
+        value: element.value,
+        label: element.label,
+      }));
+      const optionsWithDefaults = options.map((option) => (
+        {
+          ...option,
+          disabled: Boolean(option.disabled),
+        }
+      ));
+      deepStrictEqual(optionsFound, optionsWithDefaults);
+    });
+    it('does not render the error message', function () {
+      strictEqual(queryByText('Error: Please select a semester', { exact: false }), null);
+    });
+  });
   context('when isRequired prop is present', function () {
     beforeEach(function () {
       changeSpy = spy();
