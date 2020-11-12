@@ -1,9 +1,25 @@
 import React, {
-  ReactElement, ReactNode, FunctionComponent,
+  ReactElement,
+  ReactNode,
+  FunctionComponent,
+  Ref,
 } from 'react';
 import { ThemeProvider } from 'styled-components';
 import GlobalCSS from './GlobalCSS';
 import MarkOneTheme from './MarkOneTheme';
+
+/**
+ * This interface includes props that are common to many components for testing
+ * and accessibility purposes.
+ */
+export interface MarkOneInterface {
+  /** Specifies the ref of the element */
+  forwardRef?: Ref<HTMLElement>;
+  /** Corresponds to HTML attribute tabindex */
+  tabIndex?: number;
+  /** Specifies the alt text for screen readers */
+  alt?: string;
+}
 
 export interface ThemeWrapperProps {
   /** The content of the app that should receive the theme */
