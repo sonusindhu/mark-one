@@ -71,3 +71,46 @@ import { VARIANT } from 'mark-one';
   Click Me!
 </Button>
 ```
+
+### With the `forwardRef`
+Ref example: The optional `forwardRef` property is set. When the primary themed button is clicked, the focus shifts to the borderless button.
+```jsx
+import {
+  useState,
+  useRef,
+} from 'react';
+import { VARIANT } from 'mark-one';
+
+const ButtonRefExample = () => {
+  const ref = useRef(null);
+  const [value, setValue] = useState('');
+  const onButtonClick = () => {
+    setTimeout(() => ref.current.focus());
+  }
+  return (
+    <>
+    <div>
+    <Button
+      onClick={onButtonClick}
+      variant={VARIANT.PRIMARY}
+    >
+      Focus the Danger Button
+    </Button>
+    </div>
+    <div>
+    <Button
+      onClick={function() {
+        alert('You clicked the button in which variant equals VARIANT.DANGER')
+      }}
+      variant={VARIANT.DANGER}
+      tabIndex={0}
+      forwardRef={ref}
+    >
+      Danger Button
+    </Button>
+    </div>
+    </>
+  );
+};
+<ButtonRefExample />
+```
