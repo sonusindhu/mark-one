@@ -3,9 +3,10 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import { MarkOneInterface } from 'Theme/MarkOneWrapper';
 import { VARIANT, fromTheme } from '../Theme';
 
-export interface BorderlessButtonProps {
+export interface BorderlessButtonProps extends MarkOneInterface {
   /** The id of the button */
   id?: string;
   /** Specifies the Font Awesome Icon(s) */
@@ -44,6 +45,9 @@ ReactElement => {
     children,
     disabled,
     variant,
+    forwardRef,
+    tabIndex,
+    alt,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -53,6 +57,9 @@ ReactElement => {
       theme={theme}
       disabled={disabled}
       variant={variant}
+      ref={forwardRef}
+      tabIndex={tabIndex}
+      aria-label={alt}
     >
       { children }
     </StyledBorderlessButton>
