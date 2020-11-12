@@ -86,7 +86,10 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 ### With the `forwardRef`
 Ref example: The optional `forwardRef` property is set. When the primary themed button is clicked, the focus shifts to the borderless button.
 ```jsx
-import { useState, useRef, } from 'react';
+import {
+  useState,
+  useRef,
+} from 'react';
 import {
   Button,
   VARIANT,
