@@ -65,7 +65,7 @@ const accessibility = `
   margin: -1px;
   padding: 0;
   border: 0;
-`
+`;
 
 const generateGrid = (
   labelPosition: InputLabelPosition,
@@ -104,11 +104,7 @@ const StyledInputLabel = styled.label<StyledInputLabelProps>`
 `;
 
 const StyledInputLabelText = styled.span<StyledInputLabelTextProps>`
-  ${({ isLabelVisible }) => (
-    isLabelVisible
-    ? 'display: inline;'
-    : accessibility 
-  )};
+  ${({ isLabelVisible }) => (isLabelVisible ? 'display: inline;' : accessibility)};
   grid-area: l;
   justify-self: ${({ labelPosition }) => (
     labelPosition === POSITION.TOP

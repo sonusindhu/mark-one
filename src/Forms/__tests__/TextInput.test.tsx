@@ -364,7 +364,7 @@ describe('Text input', function () {
     });
     it('the label value is hidden in the UI', function () {
       const style = window.getComputedStyle(getByText('invisibleLabel'));
-      strictEqual(style.display, 'none');
+      strictEqual(style.overflow, 'hidden');
     });
   });
   context('when disabled prop is true', function () {
