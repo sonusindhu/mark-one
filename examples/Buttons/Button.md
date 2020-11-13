@@ -83,7 +83,6 @@ import { VARIANT } from 'mark-one';
 
 const ButtonRefExample = () => {
   const ref = useRef(null);
-  const [value, setValue] = useState('');
   const onButtonClick = () => {
     setTimeout(() => ref.current.focus());
   }

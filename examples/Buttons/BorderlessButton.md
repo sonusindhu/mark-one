@@ -118,6 +118,7 @@ const BorderlessButtonRefExample = () => {
       variant={VARIANT.DANGER}
       tabIndex={0}
       forwardRef={ref}
+      alt="testing"
     >
       <FontAwesomeIcon icon={faTrash} size="lg" />
     </BorderlessButton>
