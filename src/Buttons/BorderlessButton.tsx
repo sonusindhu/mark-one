@@ -3,10 +3,10 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import { MarkOneInterface } from 'Theme/MarkOneWrapper';
+import { MarkOneProps } from 'Theme/MarkOneWrapper';
 import { VARIANT, fromTheme } from '../Theme';
 
-export interface BorderlessButtonProps extends MarkOneInterface {
+export interface BorderlessButtonProps extends MarkOneProps {
   /** The id of the button */
   id?: string;
   /** Specifies the Font Awesome Icon(s) */

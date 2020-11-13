@@ -6,10 +6,10 @@ import React, {
   MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { MarkOneInterface } from 'Theme/MarkOneWrapper';
+import { MarkOneProps } from 'Theme/MarkOneWrapper';
 import { VARIANT, fromTheme } from '../Theme';
 
-export interface ButtonProps extends MarkOneInterface {
+export interface ButtonProps extends MarkOneProps {
   /** The id of the button */
   id?: string;
   /** Text or components to be displayed on the button */

@@ -12,7 +12,7 @@ import MarkOneTheme from './MarkOneTheme';
  * This interface includes props that are common to many components for testing
  * and accessibility purposes.
  */
-export interface MarkOneInterface {
+export interface MarkOneProps {
   /** Specifies the ref of the element */
   forwardRef?: Ref<HTMLElement>;
   /** Corresponds to HTML attribute tabindex */
