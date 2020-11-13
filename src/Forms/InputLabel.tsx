@@ -56,6 +56,17 @@ export interface InputLabelProps {
   hideError?: boolean;
 }
 
+const accessibility = `
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+`
+
 const generateGrid = (
   labelPosition: InputLabelPosition,
   isLabelVisible: boolean
@@ -93,7 +104,11 @@ const StyledInputLabel = styled.label<StyledInputLabelProps>`
 `;
 
 const StyledInputLabelText = styled.span<StyledInputLabelTextProps>`
-  display: ${({ isLabelVisible }) => (isLabelVisible ? 'inline' : 'none')};
+  ${({ isLabelVisible }) => (
+    isLabelVisible
+    ? 'display: inline;'
+    : accessibility 
+  )};
   grid-area: l;
   justify-self: ${({ labelPosition }) => (
     labelPosition === POSITION.TOP
