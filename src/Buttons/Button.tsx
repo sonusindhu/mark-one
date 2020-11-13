@@ -9,7 +9,7 @@ import styled, { ThemeContext } from 'styled-components';
 import { MarkOneProps } from 'Theme/MarkOneWrapper';
 import { VARIANT, fromTheme } from '../Theme';
 
-export interface ButtonProps extends MarkOneProps {
+export interface ButtonProps extends MarkOneProps<HTMLButtonElement> {
   /** The id of the button */
   id?: string;
   /** Text or components to be displayed on the button */

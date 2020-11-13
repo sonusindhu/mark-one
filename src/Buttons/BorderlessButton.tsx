@@ -6,7 +6,7 @@ import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import { MarkOneProps } from 'Theme/MarkOneWrapper';
 import { VARIANT, fromTheme } from '../Theme';
 
-export interface BorderlessButtonProps extends MarkOneProps {
+export interface BorderlessButtonProps extends MarkOneProps<HTMLButtonElement> {
   /** The id of the button */
   id?: string;
   /** Specifies the Font Awesome Icon(s) */
