@@ -91,7 +91,7 @@ describe('Button', function () {
               tabIndex={0}
               forwardRef={ref}
             >
-              Danger Button
+              Basic Button
             </Button>
           </>
         );
@@ -103,9 +103,9 @@ describe('Button', function () {
     it('can be used to shift the focus to the button', async function () {
       const initialButton = getByText('Focus the Other Button');
       initialButton.click();
-      const dangerButton = getByText('Danger Button');
-      await wait(() => document.activeElement === dangerButton);
-      strictEqual(document.activeElement as HTMLElement, dangerButton);
+      const basicButton = getByText('Basic Button');
+      await wait(() => document.activeElement === basicButton);
+      strictEqual(document.activeElement as HTMLElement, basicButton);
     });
   });
 });

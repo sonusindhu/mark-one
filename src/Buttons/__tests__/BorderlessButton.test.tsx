@@ -95,7 +95,7 @@ describe('Borderless Button', function () {
               variant={VARIANT.DANGER}
               tabIndex={0}
               forwardRef={ref}
-              alt="Danger Button"
+              alt="Borderless Button"
             >
               <FontAwesomeIcon icon={faTrash} size="lg" />
             </BorderlessButton>
@@ -109,7 +109,7 @@ describe('Borderless Button', function () {
     it('can be used to shift the focus to the button', async function () {
       const initialButton = getByText('Focus the Borderless Button');
       initialButton.click();
-      const borderlessButton = getByRole('button', { name: 'Danger Button' });
+      const borderlessButton = getByRole('button', { name: 'Borderless Button' });
       await wait(() => document.activeElement === borderlessButton);
       strictEqual(document.activeElement, borderlessButton);
     });
