@@ -3,8 +3,11 @@ import React, {
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import { MarkOneProps } from 'Theme/MarkOneWrapper';
-import { VARIANT, fromTheme } from '../Theme';
+import {
+  VARIANT,
+  fromTheme,
+  MarkOneProps,
+} from '../Theme';
 
 export interface BorderlessButtonProps extends MarkOneProps<HTMLButtonElement> {
   /** The id of the button */
