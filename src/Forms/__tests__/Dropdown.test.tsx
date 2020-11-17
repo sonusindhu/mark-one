@@ -17,6 +17,7 @@ import Dropdown from '../Dropdown';
 
 describe('Dropdown', function () {
   let getByText: BoundFunction<GetByText>;
+  let getByLabelText: BoundFunction<GetByText>;
   let getByRole: BoundFunction<GetByRole>;
   let getAllByRole: BoundFunction<AllByRole>;
   let queryByText: BoundFunction<QueryByText>;
@@ -370,7 +371,12 @@ describe('Dropdown', function () {
   context('when isLabelVisible prop is false', function () {
     beforeEach(function () {
       changeSpy = spy();
-      ({ getByText, getAllByRole, queryByText } = render(
+      ({
+        getByText,
+        getAllByRole,
+        queryByText,
+        getByLabelText,
+      } = render(
         <Dropdown
           id="semesters"
           options={options}
@@ -414,8 +420,7 @@ describe('Dropdown', function () {
       deepStrictEqual(optionsFound, optionsWithDefaults);
     });
     it('the label value is hidden in the UI', function () {
-      const style = window.getComputedStyle(getByText('semesters'));
-      strictEqual(style.overflow, 'hidden');
+      getByLabelText('semesters');
     });
   });
   context('when disabled prop is true', function () {
