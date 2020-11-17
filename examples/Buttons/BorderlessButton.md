@@ -101,7 +101,7 @@ const BorderlessButtonRefExample = () => {
   const ref = useRef(null);
   const [value, setValue] = useState('');
   const onButtonClick = () => {
-    setTimeout(() => ref.current.focus());
+    ref.current.focus();
   }
   return (
     <>
