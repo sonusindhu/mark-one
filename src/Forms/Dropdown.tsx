@@ -4,6 +4,7 @@ import React, {
   useContext,
   ChangeEventHandler,
   Ref,
+  MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { fromTheme } from '../Theme';
@@ -24,6 +25,8 @@ export interface DropdownProps {
   id: string;
   /** Function to call on change event */
   onChange: ChangeEventHandler;
+  /** Function to call on click event */
+  onClick?: MouseEventHandler
   /** The name of the dropdown */
   name: string;
   /** An array of objects with the properties specified through DropdownOptions */
@@ -46,6 +49,8 @@ export interface DropdownProps {
   forwardRef?: Ref<HTMLSelectElement>;
   /** If true, hide the error msg and its style */
   hideError?: boolean;
+  /** Specifies whether the dropdown is disabled */
+  disabled?: boolean;
 }
 
 const StyledDropdown = styled.select`
@@ -58,6 +63,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
   const {
     id,
     onChange,
+    onClick,
     name,
     options,
     value,
@@ -69,6 +75,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
     isLabelVisible,
     forwardRef,
     hideError,
+    disabled,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -83,6 +90,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
       <StyledDropdown
         id={id}
         onChange={onChange}
+        onClick={onClick}
         theme={theme}
         name={name}
         value={value}
@@ -91,6 +99,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
         aria-invalid={errorMessage ? true : null}
         aria-required={isRequired}
         ref={forwardRef}
+        disabled={disabled}
       >
         {options.map((option) => (
           <option
