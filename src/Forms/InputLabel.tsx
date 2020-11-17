@@ -56,7 +56,7 @@ export interface InputLabelProps {
   hideError?: boolean;
 }
 
-const accessibility = `
+const hideFromDisplay = `
   position: absolute;
   overflow: hidden;
   clip: rect(0 0 0 0);
@@ -104,7 +104,7 @@ const StyledInputLabel = styled.label<StyledInputLabelProps>`
 `;
 
 const StyledInputLabelText = styled.span<StyledInputLabelTextProps>`
-  ${({ isLabelVisible }) => (isLabelVisible ? 'display: inline;' : accessibility)};
+  ${({ isLabelVisible }) => (isLabelVisible ? '' : hideFromDisplay)};
   grid-area: l;
   justify-self: ${({ labelPosition }) => (
     labelPosition === POSITION.TOP
