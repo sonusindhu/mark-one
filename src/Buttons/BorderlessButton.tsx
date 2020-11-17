@@ -46,7 +46,6 @@ ReactElement => {
     disabled,
     variant,
     forwardRef,
-    tabIndex,
     alt,
   } = props;
   const theme = useContext(ThemeContext);
@@ -58,7 +57,6 @@ ReactElement => {
       disabled={disabled}
       variant={variant}
       ref={forwardRef}
-      tabIndex={tabIndex}
       aria-label={alt}
     >
       { children }

@@ -53,7 +53,6 @@ const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
     disabled,
     variant,
     forwardRef,
-    tabIndex,
     alt,
   } = props;
   const theme = useContext(ThemeContext);
@@ -65,7 +64,6 @@ const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
       disabled={disabled}
       variant={variant}
       ref={forwardRef}
-      tabIndex={tabIndex}
       aria-label={alt}
     >
       { children }

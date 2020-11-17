@@ -88,7 +88,6 @@ describe('Button', function () {
             <Button
               onClick={(): void => {}}
               variant={VARIANT.DANGER}
-              tabIndex={0}
               forwardRef={ref}
             >
               Basic Button

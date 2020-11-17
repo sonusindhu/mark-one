@@ -93,7 +93,7 @@ const ButtonRefExample = () => {
       onClick={onButtonClick}
       variant={VARIANT.PRIMARY}
     >
-      Focus the Danger Button
+      Focus the Other Button
     </Button>
     </div>
     <div>
@@ -102,10 +102,9 @@ const ButtonRefExample = () => {
         alert('You clicked the button in which variant equals VARIANT.DANGER')
       }}
       variant={VARIANT.DANGER}
-      tabIndex={0}
       forwardRef={ref}
     >
-      Danger Button
+      Other Button
     </Button>
     </div>
     </>

@@ -93,7 +93,6 @@ describe('Borderless Button', function () {
             <BorderlessButton
               onClick={() => {}}
               variant={VARIANT.DANGER}
-              tabIndex={0}
               forwardRef={ref}
               alt="Borderless Button"
             >

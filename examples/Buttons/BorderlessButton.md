@@ -116,7 +116,6 @@ const BorderlessButtonRefExample = () => {
         alert('You clicked the borderless button in which variant equals VARIANT.DANGER')
       }}
       variant={VARIANT.DANGER}
-      tabIndex={0}
       forwardRef={ref}
       alt="testing delete"
     >
