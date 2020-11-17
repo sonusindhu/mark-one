@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import assert, {
+  strictEqual,
+} from 'assert';
 import {
   render,
   fireEvent,
   BoundFunction,
   GetByText,
+  wait,
 } from 'test-utils';
 import {
   spy,
   SinonSpy,
 } from 'sinon';
-import assert from 'assert';
 import { VARIANT } from '../../Theme';
 import Button from '../Button';
 
@@ -61,6 +64,43 @@ describe('Button', function () {
     it('does not call the click handler when clicked', function () {
       fireEvent.click(getByText('Not Clickable'));
       assert.strictEqual(clickSpy.callCount, 0);
+    });
+  });
+  context('when forwardRef prop is present', function () {
+    beforeEach(function () {
+      const ButtonRefExample = () => {
+        const ref = useRef<HTMLInputElement>(null);
+        const onButtonClick = () => {
+          ref.current.focus();
+        };
+        return (
+          <>
+            <Button
+              onClick={onButtonClick}
+              variant={VARIANT.PRIMARY}
+            >
+              Focus the Other Button
+            </Button>
+            <Button
+              onClick={(): void => {}}
+              variant={VARIANT.DANGER}
+              forwardRef={ref}
+            >
+              Basic Button
+            </Button>
+          </>
+        );
+      };
+      ({ getByText } = render(
+        <ButtonRefExample />
+      ));
+    });
+    it('can be used to shift the focus to the button', async function () {
+      const initialButton = getByText('Focus the Other Button');
+      initialButton.click();
+      const basicButton = getByText('Basic Button');
+      await wait(() => document.activeElement === basicButton);
+      strictEqual(document.activeElement as HTMLElement, basicButton);
     });
   });
 });
