@@ -76,11 +76,7 @@ describe('Borderless Button', function () {
       const ButtonRefExample = () => {
         const ref = useRef<HTMLInputElement>(null);
         const onButtonClick = () => {
-          setTimeout(() => {
-            if (ref.current) {
-              ref.current.focus();
-            }
-          });
+          ref.current.focus();
         };
         return (
           <>
