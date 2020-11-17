@@ -6,9 +6,10 @@ import React, {
   MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { MarkOneProps } from 'Theme/MarkOneWrapper';
 import { VARIANT, fromTheme } from '../Theme';
 
-export interface ButtonProps {
+export interface ButtonProps extends MarkOneProps<HTMLButtonElement> {
   /** The id of the button */
   id?: string;
   /** Text or components to be displayed on the button */
@@ -51,6 +52,8 @@ const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
     onClick,
     disabled,
     variant,
+    forwardRef,
+    alt,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -60,6 +63,8 @@ const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
       theme={theme}
       disabled={disabled}
       variant={variant}
+      ref={forwardRef}
+      aria-label={alt}
     >
       { children }
     </StyledButton>
