@@ -6,8 +6,11 @@ import React, {
   MouseEventHandler,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { MarkOneProps } from 'Theme/MarkOneWrapper';
-import { VARIANT, fromTheme } from '../Theme';
+import {
+  VARIANT,
+  fromTheme,
+  MarkOneProps,
+} from '../Theme';
 
 export interface ButtonProps extends MarkOneProps<HTMLButtonElement> {
   /** The id of the button */
