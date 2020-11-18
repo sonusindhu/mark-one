@@ -21,6 +21,7 @@ enum POSITION {
 
 describe('Text input', function () {
   let getByText: BoundFunction<GetByText>;
+  let getByLabelText: BoundFunction<GetByText>;
   let getByRole: BoundFunction<GetByRole>;
   let queryByText: BoundFunction<QueryByText>;
   let changeSpy: SinonSpy;
@@ -302,7 +303,7 @@ describe('Text input', function () {
   context('when isLabelVisible prop is true', function () {
     beforeEach(function () {
       changeSpy = spy();
-      ({ getByText } = render(
+      ({ getByText, getByLabelText } = render(
         <TextInput
           id="semester"
           name="semester"
@@ -336,7 +337,7 @@ describe('Text input', function () {
   context('when isLabelVisible prop is false', function () {
     beforeEach(function () {
       changeSpy = spy();
-      ({ getByText } = render(
+      ({ getByLabelText } = render(
         <TextInput
           id="semester"
           name="semester"
@@ -363,9 +364,8 @@ describe('Text input', function () {
       const { value } = document.getElementById('semester') as HTMLInputElement;
       strictEqual(value, 'Spring');
     });
-    it('the label value is hidden in the UI', function () {
-      const style = window.getComputedStyle(getByText('invisibleLabel'));
-      strictEqual(style.display, 'none');
+    it('The label is still accessible in the DOM', function () {
+      getByLabelText('invisibleLabel');
     });
   });
   context('when disabled prop is true', function () {

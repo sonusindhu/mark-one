@@ -124,8 +124,8 @@ const [value, setValue] = useState('fall');
     },
   ]}
   value={value}
-  id="semesters"
-  name="semesters"
+  id="isLabelVisibleDropExample"
+  name="isLabelVisibleDropExample"
   onChange={function(event){
     setValue(event.target.value);
     alert('You changed the selection to ' + event.target.value);
@@ -303,8 +303,8 @@ const [value, setValue] = useState('fall');
     },
   ]}
   value={value}
-  id="semesters"
-  name="semesters"
+  id="hideErrorDropExample"
+  name="hideErrorDropExample"
   onChange={function(event){
     setValue(event.target.value);
     alert('You changed the selection to ' + event.target.value);

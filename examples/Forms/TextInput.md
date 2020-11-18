@@ -65,8 +65,8 @@ const [value, setValue] = useState('Some valid input');
 
 <TextInput
   value={value}
-  name="example"
-  id="example"
+  name="isLabelVisibleTextExample"
+  id="isLabelVisibleTextExample"
   label="Description:"
   isLabelVisible={false}
   onChange={(event) => {
@@ -183,8 +183,8 @@ const [value, setValue] = useState('Some valid input');
 
 <TextInput
   value={value}
-  name="example"
-  id="example"
+  name="hideErrorTextExample"
+  id="hideErrorTextExample"
   label="Description:"
   errorMessage="Error: Please enter a valid ID"
   hideError={true}
