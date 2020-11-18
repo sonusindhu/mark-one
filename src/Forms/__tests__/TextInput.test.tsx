@@ -364,7 +364,7 @@ describe('Text input', function () {
       const { value } = document.getElementById('semester') as HTMLInputElement;
       strictEqual(value, 'Spring');
     });
-    it('the label value is hidden in the UI', function () {
+    it('The label is still accessible in the DOM', function () {
       getByLabelText('invisibleLabel');
     });
   });

@@ -420,7 +420,7 @@ describe('Dropdown', function () {
       ));
       deepStrictEqual(optionsFound, optionsWithDefaults);
     });
-    it('the label value is hidden in the UI', function () {
+    it('The label is still accessible in the DOM', function () {
       getByLabelText('semesters');
     });
   });
