@@ -496,3 +496,37 @@ const onButtonClick = () => {
   </Modal>
 </>
 ```
+
+Disabled dropdown example: The `disabled` property is set to `true` on the dropdown.
+
+```jsx
+import { useState } from 'react';
+
+const [value, setValue] = useState('fall');
+
+<Dropdown
+  options={[
+    {
+      value: 'all',
+      label: 'All',
+    },
+    {
+      value: 'fall',
+      label: 'Fall',
+    },
+    {
+      value: 'spring',
+      label: 'Spring',
+    },
+  ]}
+  value={value}
+  id="semesters"
+  name="semesters"
+  onChange={function(event){
+    setValue(event.target.value);
+    alert('You changed the selection to ' + event.target.value);
+  }}
+  label="Semester"
+  disabled={true}
+/>
+```

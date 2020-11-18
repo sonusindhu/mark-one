@@ -1,2 +1,2 @@
-export { default as MarkOneWrapper } from './MarkOneWrapper';
+export { default as MarkOneWrapper, MarkOneProps } from './MarkOneWrapper';
 export * from './utils';

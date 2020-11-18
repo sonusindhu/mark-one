@@ -238,6 +238,30 @@ const [value, setValue] = useState('Some valid input');
 />
 ```
 
+onClick example: The optional `onClick` property is set.
+```jsx
+import { useState } from 'react';
+import { POSITION } from 'mark-one';
+
+
+const [value, setValue] = useState('Some valid input');
+
+<TextInput
+  value={value}
+  name="example"
+  id="example"
+  label="Description"
+  onChange={(event) => {
+    setValue(event.target.value);
+  }}
+  onClick={() => {
+    alert('You clicked the text input component.');
+  }}
+  labelPosition={POSITION.LEFT}
+  isLabelVisible={false}
+/>
+```
+
 Ref example: The optional `forwardRef` property is set. When the test button is clicked, the focus shifts from the button itself to the text input field.
 
 ```jsx

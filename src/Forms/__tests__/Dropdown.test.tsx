@@ -22,6 +22,7 @@ describe('Dropdown', function () {
   let getAllByRole: BoundFunction<AllByRole>;
   let queryByText: BoundFunction<QueryByText>;
   let changeSpy: SinonSpy;
+  let clickSpy: SinonSpy;
   const options = [
     {
       value: 'all',
@@ -423,7 +424,7 @@ describe('Dropdown', function () {
       getByLabelText('semesters');
     });
   });
-  context('when disabled prop is true', function () {
+  context('when disabled prop within an option is true', function () {
     beforeEach(function () {
       changeSpy = spy();
       ({ getByText, getAllByRole } = render(
@@ -443,7 +444,7 @@ describe('Dropdown', function () {
       strictEqual(summerOption.disabled, true);
     });
   });
-  context('when disabled prop is false', function () {
+  context('when disabled prop within an option is false', function () {
     beforeEach(function () {
       changeSpy = spy();
       ({ getByText, getAllByRole } = render(
@@ -481,6 +482,35 @@ describe('Dropdown', function () {
       const dropdown = document.getElementsByName('semesters')[0] as HTMLSelectElement;
       const fallOption = Array.from(dropdown.options).filter((option) => option.value === 'fall')[0];
       strictEqual(fallOption.disabled, false);
+    });
+  });
+  context('when the disabled prop is true', function () {
+    beforeEach(function () {
+      changeSpy = spy();
+      clickSpy = spy();
+      ({ getByText, getAllByRole } = render(
+        <Dropdown
+          id="semesters"
+          options={options}
+          value="fall"
+          label="Semesters"
+          name="semesters"
+          onChange={changeSpy}
+          onClick={clickSpy}
+          disabled
+        />
+      ));
+    });
+    it('renders', function () {
+      getByText('Semesters');
+    });
+    it('does not call the click handler when clicked', function () {
+      fireEvent.change(getByText('Semesters'));
+      strictEqual(clickSpy.callCount, 0);
+    });
+    it('contains the expected elements', function () {
+      const dropdownOptionsCount = getAllByRole('option').length;
+      strictEqual(dropdownOptionsCount, options.length);
     });
   });
   context('when labelPosition prop is POSITION.TOP', function () {
