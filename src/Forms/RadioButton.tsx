@@ -139,6 +139,7 @@ ReactElement => {
           name={name}
           onChange={onChange}
           aria-required={isRequired}
+          required={isRequired}
           ref={forwardRef}
           theme={theme}
           checked={checked}

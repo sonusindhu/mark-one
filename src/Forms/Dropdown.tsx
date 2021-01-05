@@ -98,6 +98,7 @@ const Dropdown: FunctionComponent<DropdownProps> = (props): ReactElement => {
         aria-errormessage={`${id}-error`}
         aria-invalid={errorMessage ? true : null}
         aria-required={isRequired}
+        required={isRequired}
         ref={forwardRef}
         disabled={disabled}
       >

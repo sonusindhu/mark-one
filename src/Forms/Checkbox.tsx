@@ -135,6 +135,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = (props): ReactElement => {
           value={value}
           name={name}
           aria-required={isRequired}
+          required={isRequired}
           onChange={onChange}
           disabled={disabled}
           ref={forwardRef}

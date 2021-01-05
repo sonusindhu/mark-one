@@ -100,6 +100,7 @@ const TextInput: FunctionComponent<TextInputProps> = (props): ReactElement => {
         aria-errormessage={`${id}-error`}
         aria-invalid={errorMessage ? true : null}
         aria-required={isRequired}
+        required={isRequired}
         ref={forwardRef}
       />
       {errorMessage && !hideError
