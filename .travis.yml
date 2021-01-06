@@ -4,7 +4,7 @@ node_js:
 stages:
   - test
   - name: documentation
-    if: branch = master AND type != pull_request
+    if: branch = main AND type != pull_request
   - name: npm_deploy_develop
     if: branch = develop AND type != pull_request
 jobs:
@@ -26,7 +26,7 @@ jobs:
         skip_cleanup: true
         target_branch: gh-pages
         on:
-          branch: master
+          branch: main
     - stage: npm_deploy_develop
       before_deploy: "./.travis_version_bump.sh"
       deploy:
