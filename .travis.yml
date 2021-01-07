@@ -35,3 +35,5 @@ jobs:
         api_key: $NPM_TOKEN
         skip_cleanup: true
         tag: $NPM_TAG
+        on:
+          all_branches: true
