@@ -8,27 +8,37 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
-    "target": "ES6",
+    "target": "ES5",
+    "types": [
+      "jsdom",
+      "mocha",
+      "node",
+      "react",
+      "react-dom",
+      "sinon",
+      "styled-components",
+      "webpack"
+    ],
     "sourceMap": true,
     "outDir": "./lib",
     "baseUrl": "./src",
-    "incremental": true,
+    "incremental": false,
     "paths": {
-      "testData": [
-        "/__tests__/data/index.ts"
+      "test-data": [
+        "./__tests__/data/index.ts"
       ],
-      "mark-one/*": [
-        "src/*"
+      "test-utils": [
+        "./__tests__/utils/index.ts"
+      ],
+      "mark-one": [
+        "./index.ts"
       ]
     }
   },
   "include": [
-    "src",
-    "webpackfile.js"
+    "src"
   ],
   "exclude": [
-    "node_modules",
-    "lib",
-    "**/*.test.ts"
+    "node_modules"
   ]
 }

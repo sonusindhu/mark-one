@@ -20,19 +20,32 @@ module.exports = {
   },
   target: 'web',
   module: {
-    rules: [{
-      test: /\.tsx?$/,
-      include: path.resolve(__dirname, 'src'),
-      exclude: /node_modules/,
-      use: [
-        {
-          loader: 'ts-loader',
-          options: {
-            happyPackMode: true,
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.(png|svg|jpe?g|gif|woff2?)$/i,
+        use: ['file-loader'],
+      },
+      {
+        test: /\.tsx?$/,
+        include: path.resolve(__dirname, 'src'),
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              happyPackMode: true,
+            },
           },
-        },
-      ],
-    }],
+        ],
+      },
+    ],
   },
   optimization: {
     minimize: false,

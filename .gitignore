@@ -39,3 +39,4 @@ src/server/app.pid
 dist
 coverage.lcov
 lib
+styleguide
