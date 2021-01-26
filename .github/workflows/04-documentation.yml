@@ -1,0 +1,41 @@
+name: Publish Documentation
+on:
+  workflow_run:
+    workflows:
+      - Increment Version
+    branches:
+      - main
+    types:
+      - completed
+jobs:
+  publish:
+    name: Generate Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: 'refs/heads/main'
+          fetch-depth: 0
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - name: NPM install
+        run: npm ci
+      - name: Find latest version
+        run: echo "VERSION_TAG=v$(jq -Mr .version package.json)" >> $GITHUB_ENV
+      - name: git config
+        run: |
+          git config --local user.name "SEAS COMPUTING ROBOT"
+          git config --local user.email "computing-dev-team@seas.harvard.edu"
+          git config credential.helper "store --file=.git/credentials"
+          echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
+      - name: generate docs
+        run: npm run build 
+      - name: publish to gh-pages
+        run: |
+          git checkout -B gh-pages
+          git add --force styleguide 
+          git commit -m "Deploy updated styleguide for ${{ env.VERSION_TAG }}"
+          git clean -dfx
+          FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch --force --prune-empty --subdirectory-filter docs/ gh-pages
+          git push --force origin gh-pages
