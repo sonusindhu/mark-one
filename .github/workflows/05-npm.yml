@@ -1,0 +1,36 @@
+name: Publish to NPM
+on:
+  workflow_run:
+    workflows:
+      - Increment Version
+    branches:
+      - main
+      - develop
+    types:
+      - completed
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Find latest version
+        run: |
+          git checkout main
+          export MAIN_VERSION=$(jq -Mr .version package.json)
+          git checkout develop
+          export DEVELOP_VERSION=$(jq -Mr .version package.json)
+          echo "VERSION_TAG=v$(npx semver $DEVELOP_VERSION $MAIN_VERSION | tail -n1)" >> $GITHUB_ENV
+      - name: determine npm tag
+        run: |
+          git checkout ${{ env.VERSION_TAG }}
+          echo "NPM_TAG=$(if [[ -n `git branch --points-at HEAD | grep main` ]]; then echo latest; else echo next; fi)" >> $GITHUB_ENV
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - run: npm publish --tag ${{ env.NPM_TAG }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
