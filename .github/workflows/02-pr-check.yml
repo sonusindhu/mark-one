@@ -1,0 +1,21 @@
+name: Check PR Branches
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+jobs:
+  check:
+    name: Only allow develop into main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pass
+        if: github.base_ref != 'main' || ( github.base_ref == 'main' && github.head_ref == 'develop')
+        run: exit 0
+      - name: Fail
+        if: github.base_ref == 'main' && github.head_ref != 'develop'
+        run: |
+          echo "::error::Invalid PR: Only 'develop' can merge into 'main'"
+          exit 1

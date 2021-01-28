@@ -1,0 +1,40 @@
+name: Increment Version
+on:
+  push:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to increment
+        required: true
+        default: 'major'
+jobs:
+  update_version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Git setup
+        run: |
+          git config --local user.name "SEAS COMPUTING ROBOT"
+          git config --local user.email "computing-dev-team@seas.harvard.edu"
+          git config --local push.default matching
+          git config credential.helper "store --file=.git/credentials"
+          echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
+      - name: update minor
+        run: npm version minor -m "Automatic bump to %s"
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      - name: update patch
+        run: npm version patch -m "Automatic bump to %s"
+        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+      - name: Update manual
+        run: npm version ${{ github.event.inputs.version }} -m "Manual bump to %s"
+        if: github.event_name == 'workflow_dispatch'
+      - name: Push back to branch
+        run: git push --tags origin ${{ github.ref }}
+      - name: Merge main back into develop
+        run: git push --tags origin main:develop
+        if: github.ref == 'refs/heads/main'
