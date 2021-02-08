@@ -4,21 +4,24 @@ import React from 'react';
 import {
   render,
   BoundFunction,
-  GetByText,
+  GetByBoundAttribute,
 } from 'test-utils';
 import { VARIANT } from 'Theme';
 
 describe('Form', function () {
-  let getByText: BoundFunction<GetByText>;
-  const errorMessage = 'Error: Please enter a valid ID';
+  let getByTestId: BoundFunction<GetByBoundAttribute>;
+  const formTestId = 'testForm';
   beforeEach(function () {
-    ({ getByText } = render(
-      <Form id="testForm">
+    ({ getByTestId } = render(
+      <Form
+        id="testForm"
+        dataTestId={formTestId}
+      >
         <TextInput
           id="testSemester"
           name="semester"
           value="Spring"
-          errorMessage={errorMessage}
+          errorMessage="Error: Please enter a valid ID"
           label="semester"
           onChange={() => {}}
         />
@@ -32,6 +35,6 @@ describe('Form', function () {
     ));
   });
   it('renders', function () {
-    getByText(errorMessage);
+    getByTestId(formTestId);
   });
 });
