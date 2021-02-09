@@ -2,7 +2,10 @@ import React, {
   FunctionComponent,
   ReactElement,
   ReactNode,
+  useContext,
 } from 'react';
+import styled, { ThemeContext } from 'styled-components';
+import { fromTheme } from '../Theme';
 
 export interface FormProps {
   /** Text or form components to be displayed */
@@ -13,20 +16,28 @@ export interface FormProps {
   dataTestId?: string;
 }
 
+const StyledForm = styled.form<FormProps>`
+  & > * {
+    margin: ${fromTheme('ws', 'small')};
+  }
+  cursor: pointer;
+`;
+
 const Form: FunctionComponent<FormProps> = (props): ReactElement => {
   const {
     id,
     dataTestId,
     children,
   } = props;
+  const theme = useContext(ThemeContext);
   return (
-    <form
+    <StyledForm
       id={id}
       data-testid={dataTestId}
       theme={theme}
     >
       {children}
-    </form>
+    </StyledForm>
   );
 };
 
