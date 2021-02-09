@@ -15,6 +15,8 @@ interface StyledFieldsetProps {
   form?: string;
   /** Specifies whether the border of fieldset is visible */
   isBorderVisible?: boolean;
+  /** Specifies whether the legend of the fieldset is visible */
+  isLegendVisible?: boolean;
 }
 
 export interface FieldsetProps {
