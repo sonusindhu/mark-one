@@ -4,7 +4,6 @@ import React, {
   FunctionComponent,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { fromTheme } from '../Theme';
 import { POSITION, RequiredSymbol } from './InputLabel';
 
 export type CheckLabelPosition = POSITION.LEFT | POSITION.RIGHT;
