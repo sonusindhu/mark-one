@@ -16,7 +16,14 @@ export interface FormProps {
   label: string;
 }
 
-const StyledForm = styled.form<FormProps>`
+export interface StyledFormProps {
+  /** Text or form components to be displayed */
+  children: ReactNode;
+  /** The id of the form */
+  id?: string;
+}
+
+const StyledForm = styled.form<StyledFormProps>`
   & > * {
     margin: ${fromTheme('ws', 'small')};
   }
