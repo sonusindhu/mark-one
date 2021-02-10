@@ -20,7 +20,7 @@ const [notesValue, setNotesValue] = useState('');
 
 <Form
   id="testForm"
-  dataTestId="testFormDataId"
+  label="New Student Registration Form"
 >
   <Fieldset
     legend="Appointment Time Preference"
