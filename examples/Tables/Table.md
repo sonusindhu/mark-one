@@ -54,7 +54,8 @@ import {
   TableBody,
   TableRow,
   TableHeadingCell,
-  TableHead, 
+  TableHead,
+  VARIANT,
 } from 'mark-one';
 
 <Table>
@@ -78,8 +79,18 @@ import {
     </TableRow>
     <TableRow isStriped={true}>
       <TableCell alignment={ALIGN.CENTER}>3</TableCell>
-      <TableCell alignment={ALIGN.CENTER}>Lianne</TableCell>
-      <TableCell alignment={ALIGN.CENTER}>Michaels</TableCell>
+      <TableCell
+        alignment={ALIGN.CENTER}
+        variant={VARIANT.NEGATIVE}
+      >
+        Lianne
+      </TableCell>
+      <TableCell
+        alignment={ALIGN.CENTER}
+        variant={VARIANT.NEGATIVE}
+      >
+        Michaels
+      </TableCell>
     </TableRow>
     <TableRow>
       <TableCell alignment={ALIGN.CENTER}>4</TableCell>
