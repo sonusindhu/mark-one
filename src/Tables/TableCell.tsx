@@ -1,6 +1,6 @@
 import { ReactNode, ReactElement, ForwardRefExoticComponent } from 'react';
 import styled from 'styled-components';
-import { fromTheme } from '../Theme';
+import { fromTheme, VARIANT } from '../Theme';
 
 /** Represents the possible values for TableCell's text-align property */
 export enum ALIGN {
@@ -29,6 +29,8 @@ export interface TableCellProps {
   verticalAlignment?: VALIGN;
   /** Specifies the background color of the table cell */
   backgroundColor?: string;
+  /** Allows you to pass in a variant property from the VARIANT enum */
+  variant?: VARIANT;
   /** Text or components to be displayed in the cell */
   children: ReactNode;
 }
@@ -38,6 +40,12 @@ const StyledCell = styled.td<TableCellProps>`
   border-right: ${fromTheme('border', 'light')};
   font-family: ${fromTheme('font', 'data', 'family')};
   font-size:  ${fromTheme('font', 'data', 'size')};
+  font-weight: ${({ theme, variant }) => (
+    theme.font[variant === VARIANT.NEGATIVE ? 'bold': 'base'].weight
+  )};
+  color: ${({ theme, variant }) => (
+    theme.color.text[variant === VARIANT.NEGATIVE ? 'negative' : 'base']
+  )};
   padding: ${fromTheme('ws', 'xsmall')};
   text-align: ${({ alignment }) => alignment};
   vertical-align: ${({ verticalAlignment }) => verticalAlignment};
@@ -47,6 +55,7 @@ const StyledCell = styled.td<TableCellProps>`
 StyledCell.defaultProps = {
   alignment: ALIGN.LEFT,
   verticalAlignment: VALIGN.CENTER,
+  variant: VARIANT.BASE,
 };
 
 /**
