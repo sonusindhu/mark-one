@@ -12,8 +12,8 @@ export interface FormProps {
   children: ReactNode;
   /** The id of the form */
   id?: string;
-  /** The test id of the form */
-  dataTestId?: string;
+  /** A label that specifies the purpose of the form */
+  label: string;
 }
 
 const StyledForm = styled.form<FormProps>`
@@ -26,14 +26,14 @@ const StyledForm = styled.form<FormProps>`
 const Form: FunctionComponent<FormProps> = (props): ReactElement => {
   const {
     id,
-    dataTestId,
+    label,
     children,
   } = props;
   const theme = useContext(ThemeContext);
   return (
     <StyledForm
       id={id}
-      data-testid={dataTestId}
+      aria-label={label}
       theme={theme}
     >
       {children}

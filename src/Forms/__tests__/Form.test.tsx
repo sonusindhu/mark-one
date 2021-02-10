@@ -4,18 +4,18 @@ import React from 'react';
 import {
   render,
   BoundFunction,
-  GetByBoundAttribute,
+  GetByText,
 } from 'test-utils';
 import { VARIANT } from 'Theme';
 
 describe('Form', function () {
-  let getByTestId: BoundFunction<GetByBoundAttribute>;
-  const formTestId = 'testForm';
+  let getByLabelText: BoundFunction<GetByText>;
+  const formLabel = 'New Student Registration Form';
   beforeEach(function () {
-    ({ getByTestId } = render(
+    ({ getByLabelText } = render(
       <Form
         id="testForm"
-        dataTestId={formTestId}
+        label={formLabel}
       >
         <TextInput
           id="testSemester"
@@ -35,6 +35,6 @@ describe('Form', function () {
     ));
   });
   it('renders', function () {
-    getByTestId(formTestId);
+    getByLabelText(formLabel);
   });
 });
