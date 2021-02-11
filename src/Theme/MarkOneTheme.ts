@@ -52,7 +52,7 @@ const MarkOneTheme: DefaultTheme = {
       dark: BLACK,
       info: '#4e88c7',
       positive: '#4db848',
-      negative: '#ff4040',
+      negative: '#c9223b',
     },
     area: {
       acs: '#da373e',
