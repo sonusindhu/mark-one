@@ -4,15 +4,15 @@ import React from 'react';
 import {
   render,
   BoundFunction,
-  GetByText,
+  GetByRole,
 } from 'test-utils';
 import { VARIANT } from 'Theme';
 
 describe('Form', function () {
-  let getByLabelText: BoundFunction<GetByText>;
+  let getByRole: BoundFunction<GetByRole>;
   const formLabel = 'New Student Registration Form';
   beforeEach(function () {
-    ({ getByLabelText } = render(
+    ({ getByRole } = render(
       <Form
         id="testForm"
         label={formLabel}
@@ -35,6 +35,6 @@ describe('Form', function () {
     ));
   });
   it('renders', function () {
-    getByLabelText(formLabel);
+    getByRole('form');
   });
 });
