@@ -42,6 +42,8 @@ export interface FieldsetProps {
 interface StyledLegendProps {
   /** Specifies whether the legend of the fieldset is visible */
   isLegendVisible?: boolean;
+  /** Specifies whether the border of fieldset is visible */
+  isBorderVisible?: boolean;
 }
 
 const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
@@ -65,7 +67,11 @@ const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
 `;
 
 const StyledLegend = styled.legend<StyledLegendProps>`
-  padding: 0.25em;
+  padding: ${({ isBorderVisible }): string => (
+    isBorderVisible
+      ? '0.25em'
+      : null
+  )};
   position: ${({ isLegendVisible }): string => (
     isLegendVisible
       ? null
