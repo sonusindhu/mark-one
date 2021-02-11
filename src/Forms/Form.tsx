@@ -27,7 +27,6 @@ const StyledForm = styled.form<StyledFormProps>`
   & > * {
     margin: ${fromTheme('ws', 'small')};
   }
-  cursor: pointer;
 `;
 
 const Form: FunctionComponent<FormProps> = (props): ReactElement => {
