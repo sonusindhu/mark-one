@@ -6,6 +6,7 @@ import React,
   useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { fromTheme } from 'Theme';
 import { NoteText } from '../Typography';
 import ValidationErrorMessage from './ValidationErrorMessage';
 import { RequiredSymbol } from './InputLabel';
@@ -59,6 +60,9 @@ const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
   padding-inline-end: 0.75em;
   padding-block-end: 0.625em;
   min-inline-size: min-content;
+  & > * {
+    margin: ${fromTheme('ws', 'small')};
+  }
 `;
 
 const StyledLegend = styled.legend<StyledLegendProps>`
