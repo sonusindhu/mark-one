@@ -51,17 +51,16 @@ const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
       ? `${theme.border.light}`
       : 'none'
   )};
-  padding-block-start: 0.35em;
   padding-inline-start: ${({ isBorderVisible, isLegendVisible }): string => (
     !isBorderVisible && !isLegendVisible
       ? null
       : '0.75em'
   )};
   padding-inline-end: 0.75em;
-  padding-block-end: 0.625em;
   min-inline-size: min-content;
   & > * {
-    margin: ${fromTheme('ws', 'small')};
+    margin-top: ${fromTheme('ws', 'small')};
+    margin-bottom: ${fromTheme('ws', 'small')};
   }
 `;
 
