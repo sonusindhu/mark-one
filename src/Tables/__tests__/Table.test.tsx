@@ -4,13 +4,14 @@ import {
 } from 'test-utils';
 import convert from 'color-convert';
 import { strictEqual } from 'assert';
+import { VARIANT } from 'Theme';
 import TableCell, { ALIGN } from '../TableCell';
 import TableBody from '../TableBody';
 import TableHead from '../TableHead';
 import TableHeadingCell from '../TableHeadingCell';
 import TableRow from '../TableRow';
 import Table from '../Table';
-import MarkOneTheme from '../../Theme/MarkOneTheme';
+import MarkOneTheme, { WEIGHT } from '../../Theme/MarkOneTheme';
 
 describe('Table Components', function () {
   let getByText: BoundFunction<GetByText>;
@@ -34,8 +35,18 @@ describe('Table Components', function () {
           </TableRow>
           <TableRow>
             <TableCell alignment={ALIGN.LEFT}>2</TableCell>
-            <TableCell alignment={ALIGN.LEFT}>Jess</TableCell>
-            <TableCell alignment={ALIGN.LEFT}>Win</TableCell>
+            <TableCell
+              alignment={ALIGN.LEFT}
+              variant={VARIANT.NEGATIVE}
+            >
+              Jess
+            </TableCell>
+            <TableCell
+              alignment={ALIGN.LEFT}
+              variant={VARIANT.POSITIVE}
+            >
+              Win
+            </TableCell>
           </TableRow>
           <TableRow isStriped>
             <TableCell alignment={ALIGN.CENTER}>3</TableCell>
@@ -71,6 +82,36 @@ describe('Table Components', function () {
     it('renders the correct background color', function () {
       const style = window.getComputedStyle(getByText('1'));
       strictEqual(style.backgroundColor, 'rgb(135, 255, 0)');
+    });
+    context('when variant prop value is not specified', function () {
+      it('renders the cell content with the base text font color', function () {
+        const style = window.getComputedStyle(getByText('2'));
+        strictEqual(style.color, 'rgb(24, 24, 24)');
+      });
+      it('renders the cell content with the base text font weight', function () {
+        const style = window.getComputedStyle(getByText('2'));
+        strictEqual(style.fontWeight, WEIGHT.MEDIUM);
+      });
+    });
+    context('when variant prop value is VARIANT.NEGATIVE', function () {
+      it('renders the cell content with the negative text font color', function () {
+        const style = window.getComputedStyle(getByText('Jess'));
+        strictEqual(style.color, 'rgb(201, 34, 59)');
+      });
+      it('renders the cell content with the base text font weight', function () {
+        const style = window.getComputedStyle(getByText('Jess'));
+        strictEqual(style.fontWeight, WEIGHT.BOLD);
+      });
+    });
+    context('when variant prop value is set to a non-VARIANT.NEGATIVE variant value', function () {
+      it('renders the cell content with the base text font color', function () {
+        const style = window.getComputedStyle(getByText('Win'));
+        strictEqual(style.color, 'rgb(24, 24, 24)');
+      });
+      it('renders the cell content with the base text font weight', function () {
+        const style = window.getComputedStyle(getByText('Win'));
+        strictEqual(style.fontWeight, WEIGHT.MEDIUM);
+      });
     });
   });
   describe('Table Heading Cell', function () {

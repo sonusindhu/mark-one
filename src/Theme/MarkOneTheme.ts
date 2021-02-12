@@ -6,7 +6,7 @@ enum FONT {
   MONO = '"Roboto Mono", monospace',
 }
 
-enum WEIGHT {
+export enum WEIGHT {
   LIGHT = '300',
   MEDIUM = '400',
   BOLD = '600',
