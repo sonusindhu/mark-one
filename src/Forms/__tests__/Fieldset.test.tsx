@@ -60,11 +60,12 @@ describe('Fieldset', function () {
     });
   });
   describe('isBorderVisible prop', function () {
+    const legendText = 'Fieldset Legend';
     context('when isBorderVisible is true', function () {
       beforeEach(function () {
         render(
           <Fieldset
-            legend="Fieldset Legend"
+            legend={legendText}
             legendDescription="Note: * denoted required information"
             isBorderVisible
           >
@@ -77,18 +78,23 @@ describe('Fieldset', function () {
         );
       });
       it('renders the border', function () {
-        const fieldset = document.querySelector('fieldset');
+        const fieldset = getByText(legendText).parentNode as HTMLElement;
         const style = window.getComputedStyle(fieldset);
         notStrictEqual(style.border, '' || 'none' || 0);
+      });
+      it('sets the padding-inline-start accordingly', function () {
+        const fieldset = getByText(legendText).parentNode as HTMLElement;
+        const style = window.getComputedStyle(fieldset);
+        strictEqual(style.paddingInlineStart, '0.75em');
       });
     });
     context('when isBorderVisible is false', function () {
       beforeEach(function () {
-        render(
+        ({ getByText } = render(
           <Fieldset
-            legend="Fieldset Legend"
-            legendDescription="Note: * denoted required information"
+            legend={legendText}
             isBorderVisible={false}
+            isLegendVisible
           >
             <Checkbox
               checked
@@ -96,12 +102,42 @@ describe('Fieldset', function () {
               disabled
             />
           </Fieldset>
-        );
+        ));
       });
       it('does not render the border', function () {
         const fieldset = document.querySelector('fieldset');
         const style = window.getComputedStyle(fieldset);
         strictEqual(style.border, '');
+      });
+      context('when isLegendVisible is true', function () {
+        it('sets the padding-inline-start accordingly', function () {
+          const fieldset = getByText(legendText).parentNode as HTMLElement;
+          const style = window.getComputedStyle(fieldset);
+          strictEqual(style.paddingInlineStart, '');
+        });
+      });
+    });
+    context('when both isBorderVisible and isLegendVisible are false', function () {
+      beforeEach(function () {
+        ({ getByText } = render(
+          <Fieldset
+            legend={legendText}
+            legendDescription="Note: * denoted required information"
+            isBorderVisible={false}
+            isLegendVisible={false}
+          >
+            <Checkbox
+              checked
+              label="Non-Required Checkbox"
+              disabled
+            />
+          </Fieldset>
+        ));
+      });
+      it('sets the padding-inline-start accordingly', function () {
+        const fieldset = getByText(legendText).parentNode as HTMLElement;
+        const style = window.getComputedStyle(fieldset);
+        strictEqual(style.paddingInlineStart, '');
       });
     });
   });
@@ -126,6 +162,11 @@ describe('Fieldset', function () {
       it('renders the legend', function () {
         getByText(legendText);
       });
+      it('sets the padding-inline-start accordingly', function () {
+        const fieldset = getByText(legendText).parentNode as HTMLElement;
+        const style = window.getComputedStyle(fieldset);
+        strictEqual(style.paddingInlineStart, '0.75em');
+      });
     });
     context('when isLegendVisible prop is false', function () {
       beforeEach(function () {
@@ -134,6 +175,7 @@ describe('Fieldset', function () {
             legend={legendText}
             legendDescription="Note: * denoted required information"
             isLegendVisible={false}
+            isBorderVisible
           >
             <Checkbox
               checked
@@ -151,6 +193,13 @@ describe('Fieldset', function () {
         const style = window.getComputedStyle(legend);
         strictEqual(style.left, '-100vw');
         strictEqual(style.position, 'absolute');
+      });
+      context('when isBorderVisible is true', function () {
+        it('sets the padding-inline-start accordingly', function () {
+          const fieldset = getByText(legendText).parentNode as HTMLElement;
+          const style = window.getComputedStyle(fieldset);
+          strictEqual(style.paddingInlineStart, '0.75em');
+        });
       });
     });
   });

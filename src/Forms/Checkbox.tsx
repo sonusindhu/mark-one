@@ -39,6 +39,8 @@ export interface CheckboxProps extends NativeCheckboxProps {
   errorMessage?: string;
   /** Specifies the ref of the checkbox */
   forwardRef?: Ref<HTMLInputElement>;
+  /** If true, omit the space for the error field */
+  hideError?: boolean;
 }
 
 interface CustomCheckboxProps {
@@ -48,6 +50,8 @@ interface CustomCheckboxProps {
   disabled?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
   labelPosition?: CheckLabelPosition;
+  /** If true, omit the space for the error field */
+  hideError?: boolean;
 }
 
 interface CheckmarkProps {
@@ -117,6 +121,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = (props): ReactElement => {
     isRequired,
     errorMessage,
     forwardRef,
+    hideError,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -128,6 +133,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = (props): ReactElement => {
         isLabelVisible={isLabelVisible}
         isRequired={isRequired}
         disabled={disabled}
+        hideError={hideError}
       >
         <NativeCheckbox
           id={id}
@@ -147,6 +153,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = (props): ReactElement => {
           checked={checked}
           disabled={disabled}
           labelPosition={labelPosition}
+          hideError={hideError}
         >
           <Checkmark
             viewBox="0 0 60 60"
@@ -156,7 +163,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = (props): ReactElement => {
             <polyline points="10 25 25 40 50 7" />
           </Checkmark>
         </CustomCheckbox>
-        {errorMessage
+        {errorMessage && !hideError
         && (
           <ValidationErrorMessage>
             {errorMessage}
@@ -172,6 +179,7 @@ Checkbox.defaultProps = {
   isLabelVisible: true,
   labelPosition: POSITION.RIGHT,
   checked: false,
+  hideError: false,
 };
 
 /** @component */
