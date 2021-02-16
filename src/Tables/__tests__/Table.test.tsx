@@ -34,7 +34,12 @@ describe('Table Components', function () {
             <TableCell>Bernstein</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell alignment={ALIGN.LEFT}>2</TableCell>
+            <TableCell
+              alignment={ALIGN.LEFT}
+              variant={VARIANT.MEDIUM}
+            >
+              2
+            </TableCell>
             <TableCell
               alignment={ALIGN.LEFT}
               variant={VARIANT.NEGATIVE}
@@ -85,7 +90,7 @@ describe('Table Components', function () {
     });
     context('when variant prop value is not specified', function () {
       it('renders the cell content with the base text font color', function () {
-        const style = window.getComputedStyle(getByText('2'));
+        const style = window.getComputedStyle(getByText('3'));
         const [red, green, blue] = convert.hex.rgb(
           MarkOneTheme.color.text.base
         );
@@ -93,7 +98,7 @@ describe('Table Components', function () {
         strictEqual(style.color, convertExpectedToRGB);
       });
       it('renders the cell content with the base text font weight', function () {
-        const style = window.getComputedStyle(getByText('2'));
+        const style = window.getComputedStyle(getByText('3'));
         strictEqual(style.fontWeight, WEIGHT.MEDIUM);
       });
     });
@@ -106,12 +111,26 @@ describe('Table Components', function () {
         const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
         strictEqual(style.color, convertExpectedToRGB);
       });
-      it('renders the cell content with the base text font weight', function () {
+      it('renders the cell content with the bold font weight', function () {
         const style = window.getComputedStyle(getByText('Jess'));
         strictEqual(style.fontWeight, WEIGHT.BOLD);
       });
     });
-    context('when variant prop value is set to a non-VARIANT.NEGATIVE variant value', function () {
+    context('when variant prop value is VARIANT.MEDIUM', function () {
+      it('renders the cell content with the medium text font color', function () {
+        const style = window.getComputedStyle(getByText('2'));
+        const [red, green, blue] = convert.hex.rgb(
+          MarkOneTheme.color.text.medium
+        );
+        const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
+        strictEqual(style.color, convertExpectedToRGB);
+      });
+      it('renders the cell content with the bold font weight', function () {
+        const style = window.getComputedStyle(getByText('2'));
+        strictEqual(style.fontWeight, WEIGHT.BOLD);
+      });
+    });
+    context('when variant prop value is set to a non-VARIANT.NEGATIVE and non-VARIANT.MEDIUM variant value', function () {
       it('renders the cell content with the base text font color', function () {
         const style = window.getComputedStyle(getByText('Win'));
         const [red, green, blue] = convert.hex.rgb(
