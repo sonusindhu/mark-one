@@ -44,7 +44,7 @@ import {
 </Table>
 ```
 
-The following is an example of the `Table` component with the `alignment` prop set to the enum value `ALIGN.CENTER.` This example also demonstrates the usage of the `variant` property, which is set to `VARIANT.NEGATIVE` for two table cells.
+The following is an example of the `Table` component with the `alignment` prop set to the enum value `ALIGN.CENTER.` This example also demonstrates the usage of the `variant` property, which is set to `VARIANT.NEGATIVE` for two table cells and `VARIANT.MEDIUM` for another two table cells.
 
 ```jsx
 import {
@@ -74,8 +74,18 @@ import {
     </TableRow>
     <TableRow>
       <TableCell alignment={ALIGN.CENTER}>2</TableCell>
-      <TableCell alignment={ALIGN.CENTER}>Jack</TableCell>
-      <TableCell alignment={ALIGN.CENTER}>Thompson</TableCell>
+      <TableCell
+        alignment={ALIGN.CENTER}
+        variant={VARIANT.MEDIUM}
+      >
+        Jack
+      </TableCell>
+      <TableCell
+        alignment={ALIGN.CENTER}
+        variant={VARIANT.MEDIUM}
+      >
+        Thompson
+      </TableCell>
     </TableRow>
     <TableRow isStriped={true}>
       <TableCell alignment={ALIGN.CENTER}>3</TableCell>
