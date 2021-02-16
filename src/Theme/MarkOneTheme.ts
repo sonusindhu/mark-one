@@ -48,11 +48,11 @@ const MarkOneTheme: DefaultTheme = {
     text: {
       base: BLACK,
       light: lighten(0.9, BLACK),
-      medium: lighten(0.35, BLACK),
+      medium: '#575757',
       dark: BLACK,
       info: '#4e88c7',
       positive: '#4db848',
-      negative: '#c9223b',
+      negative: '#a61c31',
     },
     area: {
       acs: '#da373e',
