@@ -113,4 +113,5 @@ export enum VARIANT {
   SECONDARY = 'base',
   DANGER = 'negative',
   DEFAULT = 'base',
+  MEDIUM = 'medium',
 }
