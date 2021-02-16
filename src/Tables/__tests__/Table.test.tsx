@@ -86,7 +86,11 @@ describe('Table Components', function () {
     context('when variant prop value is not specified', function () {
       it('renders the cell content with the base text font color', function () {
         const style = window.getComputedStyle(getByText('2'));
-        strictEqual(style.color, 'rgb(24, 24, 24)');
+        const [red, green, blue] = convert.hex.rgb(
+          MarkOneTheme.color.text.base
+        );
+        const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
+        strictEqual(style.color, convertExpectedToRGB);
       });
       it('renders the cell content with the base text font weight', function () {
         const style = window.getComputedStyle(getByText('2'));
@@ -96,7 +100,11 @@ describe('Table Components', function () {
     context('when variant prop value is VARIANT.NEGATIVE', function () {
       it('renders the cell content with the negative text font color', function () {
         const style = window.getComputedStyle(getByText('Jess'));
-        strictEqual(style.color, 'rgb(201, 34, 59)');
+        const [red, green, blue] = convert.hex.rgb(
+          MarkOneTheme.color.text.negative
+        );
+        const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
+        strictEqual(style.color, convertExpectedToRGB);
       });
       it('renders the cell content with the base text font weight', function () {
         const style = window.getComputedStyle(getByText('Jess'));
@@ -106,7 +114,11 @@ describe('Table Components', function () {
     context('when variant prop value is set to a non-VARIANT.NEGATIVE variant value', function () {
       it('renders the cell content with the base text font color', function () {
         const style = window.getComputedStyle(getByText('Win'));
-        strictEqual(style.color, 'rgb(24, 24, 24)');
+        const [red, green, blue] = convert.hex.rgb(
+          MarkOneTheme.color.text.base
+        );
+        const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
+        strictEqual(style.color, convertExpectedToRGB);
       });
       it('renders the cell content with the base text font weight', function () {
         const style = window.getComputedStyle(getByText('Win'));
