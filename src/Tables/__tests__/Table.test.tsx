@@ -4,7 +4,7 @@ import {
 } from 'test-utils';
 import convert from 'color-convert';
 import { strictEqual } from 'assert';
-import { VARIANT } from 'Theme';
+import { TEXTVARIANT } from 'Theme';
 import TableCell, { ALIGN } from '../TableCell';
 import TableBody from '../TableBody';
 import TableHead from '../TableHead';
@@ -36,19 +36,19 @@ describe('Table Components', function () {
           <TableRow>
             <TableCell
               alignment={ALIGN.LEFT}
-              variant={VARIANT.MEDIUM}
+              variant={TEXTVARIANT.MEDIUM}
             >
               2
             </TableCell>
             <TableCell
               alignment={ALIGN.LEFT}
-              variant={VARIANT.NEGATIVE}
+              variant={TEXTVARIANT.NEGATIVE}
             >
               Jess
             </TableCell>
             <TableCell
               alignment={ALIGN.LEFT}
-              variant={VARIANT.POSITIVE}
+              variant={TEXTVARIANT.NEGATIVE}
             >
               Win
             </TableCell>
@@ -130,20 +130,6 @@ describe('Table Components', function () {
         strictEqual(style.fontWeight, WEIGHT.BOLD);
       });
     });
-    context('when variant prop value is set to a non-VARIANT.NEGATIVE and non-VARIANT.MEDIUM variant value', function () {
-      it('renders the cell content with the base text font color', function () {
-        const style = window.getComputedStyle(getByText('Win'));
-        const [red, green, blue] = convert.hex.rgb(
-          MarkOneTheme.color.text.base
-        );
-        const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
-        strictEqual(style.color, convertExpectedToRGB);
-      });
-      it('renders the cell content with the base text font weight', function () {
-        const style = window.getComputedStyle(getByText('Win'));
-        strictEqual(style.fontWeight, WEIGHT.MEDIUM);
-      });
-    });
   });
   describe('Table Heading Cell', function () {
     beforeEach(function () {
@@ -165,7 +151,7 @@ describe('Table Components', function () {
     it('defaults to medium with no background color', function () {
       const style = window.getComputedStyle(getByText('Without Background'));
       const [red, green, blue] = convert.hex.rgb(
-        `${MarkOneTheme.color.background.medium}`
+        MarkOneTheme.color.background.medium
       );
       const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
       strictEqual(style.backgroundColor, convertExpectedToRGB);
