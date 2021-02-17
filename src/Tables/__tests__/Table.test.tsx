@@ -165,7 +165,7 @@ describe('Table Components', function () {
     it('defaults to medium with no background color', function () {
       const style = window.getComputedStyle(getByText('Without Background'));
       const [red, green, blue] = convert.hex.rgb(
-        MarkOneTheme.color.background.medium
+        `${MarkOneTheme.color.background.medium}`
       );
       const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
       strictEqual(style.backgroundColor, convertExpectedToRGB);
