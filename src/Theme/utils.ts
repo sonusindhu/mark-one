@@ -118,7 +118,7 @@ export enum VARIANT {
 /**
  * A set of enums used for the text variations within a TableCell component
  */
-export enum TEXTVARIANT {
+export enum TEXT_VARIANT {
   MEDIUM = 'medium',
   NEGATIVE = 'negative',
   BASE = 'base',

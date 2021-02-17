@@ -4,7 +4,7 @@ import {
 } from 'test-utils';
 import convert from 'color-convert';
 import { strictEqual } from 'assert';
-import { TEXTVARIANT } from 'Theme';
+import { TEXT_VARIANT } from 'Theme';
 import TableCell, { ALIGN } from '../TableCell';
 import TableBody from '../TableBody';
 import TableHead from '../TableHead';
@@ -36,19 +36,19 @@ describe('Table Components', function () {
           <TableRow>
             <TableCell
               alignment={ALIGN.LEFT}
-              variant={TEXTVARIANT.MEDIUM}
+              variant={TEXT_VARIANT.MEDIUM}
             >
               2
             </TableCell>
             <TableCell
               alignment={ALIGN.LEFT}
-              variant={TEXTVARIANT.NEGATIVE}
+              variant={TEXT_VARIANT.NEGATIVE}
             >
               Jess
             </TableCell>
             <TableCell
               alignment={ALIGN.LEFT}
-              variant={TEXTVARIANT.NEGATIVE}
+              variant={TEXT_VARIANT.NEGATIVE}
             >
               Win
             </TableCell>
