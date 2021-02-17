@@ -1,6 +1,6 @@
 export type ColorRange = {
   light: string;
-  medium: string;
+  medium?: string;
   subtle?: string;
   dark: string;
   darker?: string;
