@@ -41,17 +41,17 @@ const StyledCell = styled.td<TableCellProps>`
   font-family: ${fromTheme('font', 'data', 'family')};
   font-size:  ${fromTheme('font', 'data', 'size')};
   font-weight: ${({ theme, variant }) => (
-    theme.font[(variant === TEXTVARIANT.NEGATIVE || variant === TEXTVARIANT.MEDIUM)
+    theme.font[(variant === TEXTVARIANT.NEGATIVE
+      || variant === TEXTVARIANT.MEDIUM)
       ? 'bold' : 'base'].weight
   )};
   color: ${({ theme, variant }) => {
     if (variant === TEXTVARIANT.NEGATIVE) {
       return theme.color.text.negative;
-    } else if (variant === TEXTVARIANT.MEDIUM) {
+    } if (variant === TEXTVARIANT.MEDIUM) {
       return theme.color.text.medium;
-    } else {
-      return theme.color.text.base;
     }
+    return theme.color.text.base;
   }};
   padding: ${fromTheme('ws', 'xsmall')};
   text-align: ${({ alignment }) => alignment};
