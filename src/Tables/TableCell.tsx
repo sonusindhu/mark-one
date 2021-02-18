@@ -41,8 +41,8 @@ const StyledCell = styled.td<TableCellProps>`
   font-family: ${fromTheme('font', 'data', 'family')};
   font-size:  ${fromTheme('font', 'data', 'size')};
   font-weight: ${({ theme, variant }) => (
-    theme.font[(variant === TEXT_VARIANT.NEGATIVE
-      || variant === TEXT_VARIANT.MEDIUM)
+    theme.font[[TEXT_VARIANT.NEGATIVE, TEXT_VARIANT.MEDIUM]
+      .includes(variant)
       ? 'bold' : 'base'].weight
   )};
   color: ${({ theme, variant }) => {
