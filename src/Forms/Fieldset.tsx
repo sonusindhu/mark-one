@@ -6,7 +6,7 @@ import React,
   useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { fromTheme } from 'Theme';
+import { fromTheme } from '../Theme';
 import { NoteText } from '../Typography';
 import ValidationErrorMessage from './ValidationErrorMessage';
 import { RequiredSymbol } from './InputLabel';
