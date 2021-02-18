@@ -11,7 +11,7 @@ import TableHead from '../TableHead';
 import TableHeadingCell from '../TableHeadingCell';
 import TableRow from '../TableRow';
 import Table from '../Table';
-import MarkOneTheme, { WEIGHT } from '../../Theme/MarkOneTheme';
+import MarkOneTheme from '../../Theme/MarkOneTheme';
 
 describe('Table Components', function () {
   let getByText: BoundFunction<GetByText>;
