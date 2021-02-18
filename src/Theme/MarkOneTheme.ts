@@ -83,7 +83,7 @@ const MarkOneTheme: DefaultTheme = {
     data: {
       family: FONT.MONO,
       size: '0.9em',
-      weight: WEIGHT.BOLD,
+      weight: WEIGHT.MEDIUM,
     },
     note: {
       family: FONT.SANS,

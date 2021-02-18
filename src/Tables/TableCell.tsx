@@ -43,7 +43,7 @@ const StyledCell = styled.td<TableCellProps>`
   font-weight: ${({ theme, variant }) => (
     theme.font[[TEXT_VARIANT.NEGATIVE, TEXT_VARIANT.MEDIUM]
       .includes(variant)
-      ? 'bold' : 'base'].weight
+      ? 'bold' : 'data'].weight
   )};
   color: ${({ theme, variant }) => {
     if (variant === TEXT_VARIANT.NEGATIVE) {
