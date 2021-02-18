@@ -99,7 +99,7 @@ describe('Table Components', function () {
       });
       it('renders the cell content with the base text font weight', function () {
         const style = window.getComputedStyle(getByText('3'));
-        strictEqual(style.fontWeight, WEIGHT.MEDIUM);
+        strictEqual(style.fontWeight, MarkOneTheme.font.base.weight);
       });
     });
     context('when variant prop value is VARIANT.NEGATIVE', function () {
@@ -113,7 +113,7 @@ describe('Table Components', function () {
       });
       it('renders the cell content with the bold font weight', function () {
         const style = window.getComputedStyle(getByText('Jess'));
-        strictEqual(style.fontWeight, WEIGHT.BOLD);
+        strictEqual(style.fontWeight, MarkOneTheme.font.bold.weight);
       });
     });
     context('when variant prop value is VARIANT.MEDIUM', function () {
@@ -127,7 +127,7 @@ describe('Table Components', function () {
       });
       it('renders the cell content with the bold font weight', function () {
         const style = window.getComputedStyle(getByText('2'));
-        strictEqual(style.fontWeight, WEIGHT.BOLD);
+        strictEqual(style.fontWeight, MarkOneTheme.font.bold.weight);
       });
     });
   });
