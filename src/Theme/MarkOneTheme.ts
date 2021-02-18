@@ -19,8 +19,8 @@ const MarkOneTheme: DefaultTheme = {
   color: {
     background: {
       light: WHITE,
-      subtle: darken(0.07, WHITE),
-      medium: darken(0.175, WHITE),
+      subtle: '#f2f2f2',
+      medium: '#e8e8e8',
       dark: '#93a1ad',
       darker: darken(0.75, WHITE),
       accent: '#a51c30',
