@@ -44,7 +44,7 @@ import {
 </Table>
 ```
 
-The following is an example of the `Table` component with the `alignment` prop set to the enum value `ALIGN.CENTER.`
+The following is an example of the `Table` component with the `alignment` prop set to the enum value `ALIGN.CENTER.` This example also demonstrates the usage of the `variant` property, which is set to `TEXT_VARIANT.NEGATIVE` for two table cells and `TEXT_VARIANT.MEDIUM` for another two table cells.
 
 ```jsx
 import {
@@ -54,7 +54,8 @@ import {
   TableBody,
   TableRow,
   TableHeadingCell,
-  TableHead, 
+  TableHead,
+  TEXT_VARIANT,
 } from 'mark-one';
 
 <Table>
@@ -73,13 +74,33 @@ import {
     </TableRow>
     <TableRow>
       <TableCell alignment={ALIGN.CENTER}>2</TableCell>
-      <TableCell alignment={ALIGN.CENTER}>Jack</TableCell>
-      <TableCell alignment={ALIGN.CENTER}>Thompson</TableCell>
+      <TableCell
+        alignment={ALIGN.CENTER}
+        variant={TEXT_VARIANT.MEDIUM}
+      >
+        Jack
+      </TableCell>
+      <TableCell
+        alignment={ALIGN.CENTER}
+        variant={TEXT_VARIANT.MEDIUM}
+      >
+        Thompson
+      </TableCell>
     </TableRow>
     <TableRow isStriped={true}>
       <TableCell alignment={ALIGN.CENTER}>3</TableCell>
-      <TableCell alignment={ALIGN.CENTER}>Lianne</TableCell>
-      <TableCell alignment={ALIGN.CENTER}>Michaels</TableCell>
+      <TableCell
+        alignment={ALIGN.CENTER}
+        variant={TEXT_VARIANT.NEGATIVE}
+      >
+        Lianne
+      </TableCell>
+      <TableCell
+        alignment={ALIGN.CENTER}
+        variant={TEXT_VARIANT.NEGATIVE}
+      >
+        Michaels
+      </TableCell>
     </TableRow>
     <TableRow>
       <TableCell alignment={ALIGN.CENTER}>4</TableCell>

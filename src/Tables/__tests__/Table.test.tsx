@@ -4,6 +4,7 @@ import {
 } from 'test-utils';
 import convert from 'color-convert';
 import { strictEqual } from 'assert';
+import { TEXT_VARIANT } from 'Theme';
 import TableCell, { ALIGN } from '../TableCell';
 import TableBody from '../TableBody';
 import TableHead from '../TableHead';
@@ -33,9 +34,24 @@ describe('Table Components', function () {
             <TableCell>Bernstein</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell alignment={ALIGN.LEFT}>2</TableCell>
-            <TableCell alignment={ALIGN.LEFT}>Jess</TableCell>
-            <TableCell alignment={ALIGN.LEFT}>Win</TableCell>
+            <TableCell
+              alignment={ALIGN.LEFT}
+              variant={TEXT_VARIANT.MEDIUM}
+            >
+              2
+            </TableCell>
+            <TableCell
+              alignment={ALIGN.LEFT}
+              variant={TEXT_VARIANT.NEGATIVE}
+            >
+              Jess
+            </TableCell>
+            <TableCell
+              alignment={ALIGN.LEFT}
+              variant={TEXT_VARIANT.NEGATIVE}
+            >
+              Win
+            </TableCell>
           </TableRow>
           <TableRow isStriped>
             <TableCell alignment={ALIGN.CENTER}>3</TableCell>
@@ -71,6 +87,48 @@ describe('Table Components', function () {
     it('renders the correct background color', function () {
       const style = window.getComputedStyle(getByText('1'));
       strictEqual(style.backgroundColor, 'rgb(135, 255, 0)');
+    });
+    context('when variant prop value is not specified', function () {
+      it('renders the cell content with the base text font color', function () {
+        const style = window.getComputedStyle(getByText('3'));
+        const [red, green, blue] = convert.hex.rgb(
+          MarkOneTheme.color.text.base
+        );
+        const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
+        strictEqual(style.color, convertExpectedToRGB);
+      });
+      it('renders the cell content with the base text font weight', function () {
+        const style = window.getComputedStyle(getByText('3'));
+        strictEqual(style.fontWeight, MarkOneTheme.font.base.weight);
+      });
+    });
+    context('when variant prop value is VARIANT.NEGATIVE', function () {
+      it('renders the cell content with the negative text font color', function () {
+        const style = window.getComputedStyle(getByText('Jess'));
+        const [red, green, blue] = convert.hex.rgb(
+          MarkOneTheme.color.text.negative
+        );
+        const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
+        strictEqual(style.color, convertExpectedToRGB);
+      });
+      it('renders the cell content with the bold font weight', function () {
+        const style = window.getComputedStyle(getByText('Jess'));
+        strictEqual(style.fontWeight, MarkOneTheme.font.bold.weight);
+      });
+    });
+    context('when variant prop value is VARIANT.MEDIUM', function () {
+      it('renders the cell content with the medium text font color', function () {
+        const style = window.getComputedStyle(getByText('2'));
+        const [red, green, blue] = convert.hex.rgb(
+          MarkOneTheme.color.text.medium
+        );
+        const convertExpectedToRGB = `rgb(${red}, ${green}, ${blue})`;
+        strictEqual(style.color, convertExpectedToRGB);
+      });
+      it('renders the cell content with the bold font weight', function () {
+        const style = window.getComputedStyle(getByText('2'));
+        strictEqual(style.fontWeight, MarkOneTheme.font.bold.weight);
+      });
     });
   });
   describe('Table Heading Cell', function () {

@@ -15,6 +15,7 @@ import userEvent from '@testing-library/user-event';
 import { Button } from 'Buttons';
 import { VARIANT } from 'Theme';
 import { POSITION } from 'Forms/InputLabel';
+import MarkOneTheme from 'Theme/MarkOneTheme';
 
 describe('Radio Button', function () {
   let getByText: BoundFunction<GetByText>;
@@ -69,7 +70,7 @@ describe('Radio Button', function () {
         const label = radioButton.parentNode as HTMLLabelElement;
         const selectMark = label.querySelector('span span span');
         const borderStyle = window.getComputedStyle(selectMark).border;
-        strictEqual(borderStyle, '6px solid #717171');
+        strictEqual(borderStyle, `6px solid ${MarkOneTheme.color.text.medium}`);
       });
     });
   });
