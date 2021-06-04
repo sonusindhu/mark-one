@@ -28,15 +28,10 @@ const times = [
   ];
 
 <ButtonDropdown
-  onDropdownClick={function () {
-    setMenuVisibility(!currentMenuVisibility);
-  }}
   onChange={function(value) {
     alert('You chose ' + value);
-    setMenuVisibility(false);
   }}
   options={times}
-  isMenuVisible={currentMenuVisibility}
 >
   <FontAwesomeIcon icon={faClock} size="sm" />
 </ButtonDropdown>

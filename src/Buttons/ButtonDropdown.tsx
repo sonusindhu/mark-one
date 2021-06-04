@@ -1,13 +1,9 @@
 import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import { Dropdown } from 'Forms';
 import React, {
   FunctionComponent,
   ReactElement,
   useContext,
-  ReactNode,
-  MouseEventHandler,
-  useRef,
-  ChangeEventHandler,
+  useState,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import {
@@ -28,10 +24,6 @@ export interface MenuProps {
    * This will be controlled by the parent component, likely via useState.
    */
   isMenuVisible: boolean;
-  /**
-   * The content to be displayed within the modal
-   */
-  children: ReactNode;
 }
 
 export interface ButtonDropdownProps extends MarkOneProps<HTMLButtonElement> {
@@ -39,15 +31,8 @@ export interface ButtonDropdownProps extends MarkOneProps<HTMLButtonElement> {
   id?: string;
   /** Specifies the Font Awesome Icon(s) */
   children: ReactElement<FontAwesomeIconProps>;
-  /** Function to call on click of the dropdown button */
-  onDropdownClick: MouseEventHandler;
   /** Function to call on click of a selection within the dropdown */
   onChange: (string) => void;
-  /**
-   * Whether or not the menu should be visible.
-   * This will be controlled by the parent component, likely via useState.
-   */
-  isMenuVisible: boolean;
   /**
    * An array of string that outline the choices in the dropdown
    */
@@ -103,26 +88,33 @@ const StyledMenuButton = styled.button`
   }
 `;
 
+/**
+ * A component that allows users to specify a Font Awesome icon to be displayed
+ * in the button and options within the dropdown. When an option is clicked, the
+ * value that was selected is passed to the onChange function and the dropdown
+ * menu collapses.
+ */
 const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
 : ReactElement => {
   const {
     id,
     children,
-    onDropdownClick,
     onChange,
     forwardRef,
     alt,
-    isMenuVisible,
     options,
   } = props;
 
+  const [isMenuVisible, setMenuVisible] = useState(false);
   const theme = useContext(ThemeContext);
 
   return (
     <>
       <StyledButtonDropdown
         id={id}
-        onClick={onDropdownClick}
+        onClick={() => {
+          setMenuVisible(!isMenuVisible);
+        }}
         theme={theme}
         ref={forwardRef}
         aria-label={alt}
@@ -138,6 +130,7 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
                   key={option.value}
                   onClick={() => {
                     onChange(option.value);
+                    setMenuVisible(false);
                   }}
                 >
                   <StyledMenuButton>
@@ -151,10 +144,6 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
       )}
     </>
   );
-};
-
-ButtonDropdown.defaultProps = {
-  isMenuVisible: false,
 };
 
 export default ButtonDropdown;
