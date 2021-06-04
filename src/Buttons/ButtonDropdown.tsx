@@ -77,6 +77,7 @@ const StyledMenuListItem = styled.li`
   padding: .25em 1em;
   &:hover {
     background: ${fromTheme('color', 'background', 'medium')};
+    cursor: pointer;
   }
 `;
 
@@ -85,6 +86,7 @@ const StyledMenuButton = styled.button`
   border: none;
   &:hover {
     background: ${fromTheme('color', 'background', 'medium')};
+    cursor: pointer;
   }
 `;
 
