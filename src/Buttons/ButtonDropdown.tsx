@@ -42,7 +42,7 @@ export interface ButtonDropdownProps extends MarkOneProps<HTMLButtonElement> {
   /** Function to call on click of the dropdown button */
   onDropdownClick: MouseEventHandler;
   /** Function to call on click of a selection within the dropdown */
-  onChange: ChangeEventHandler;
+  onChange: (string) => void;
   /**
    * Whether or not the menu should be visible.
    * This will be controlled by the parent component, likely via useState.
@@ -117,7 +117,6 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
   } = props;
 
   const theme = useContext(ThemeContext);
-  const hiddenDropdownRef = useRef(null as HTMLSelectElement);
 
   return (
     <>
@@ -138,12 +137,7 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
                 <StyledMenuListItem
                   key={option.value}
                   onClick={() => {
-                    hiddenDropdownRef.current.value = option.value;
-                    // Note that the event must be created this way for the event to be recognized by React
-                    const hiddenDropdownEvent = document.createEvent('HTMLEvents');
-                    hiddenDropdownEvent.initEvent('change', true, false);
-                    hiddenDropdownRef.current
-                      .dispatchEvent(hiddenDropdownEvent);
+                    onChange(option.value);
                   }}
                 >
                   <StyledMenuButton>
@@ -153,16 +147,6 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
               ))}
             </StyledMenuList>
           </StyledMenu>
-          <div style={{ display: 'none' }}>
-            <Dropdown
-              id={`${id}HiddenDropdown`}
-              name={`${id}HiddenDropdown`}
-              label="Hidden Dropdown"
-              options={options}
-              forwardRef={hiddenDropdownRef}
-              onChange={onChange}
-            />
-          </div>
         </>
       )}
     </>

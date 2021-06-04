@@ -31,8 +31,8 @@ const times = [
   onDropdownClick={function () {
     setMenuVisibility(!currentMenuVisibility);
   }}
-  onChange={function(event) {
-    alert('You chose ' + event.target.value);
+  onChange={function(value) {
+    alert('You chose ' + value);
     setMenuVisibility(false);
   }}
   options={times}
