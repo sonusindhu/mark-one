@@ -2,7 +2,9 @@ import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import React, {
   FunctionComponent,
   ReactElement,
+  useCallback,
   useContext,
+  useEffect,
   useState,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
@@ -109,6 +111,20 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
 
   const [isMenuVisible, setMenuVisible] = useState(false);
   const theme = useContext(ThemeContext);
+
+  // When the menu is open and the user clicks on the document, it minimizes the menu
+  const handleDocumentBodyClick = useCallback(() => {
+    setMenuVisible(false);
+  }, [setMenuVisible]);
+
+  // Removes the event listener after the click event occurs
+  useEffect(() => {
+    if (isMenuVisible) {
+      document.addEventListener('click', handleDocumentBodyClick);
+    } else {
+      document.removeEventListener('click', handleDocumentBodyClick);
+    }
+  }, [isMenuVisible, handleDocumentBodyClick]);
 
   return (
     <>
