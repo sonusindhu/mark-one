@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 
-const [currentMenuVisibility, setMenuVisibility] = useState(false);
 const times = [
   {
     value: '09:00-10:00',
@@ -28,6 +27,7 @@ const times = [
   ];
 
 <ButtonDropdown
+  alt="Timeslot button dropdown"
   onChange={function(value) {
     alert('You chose ' + value);
   }}
