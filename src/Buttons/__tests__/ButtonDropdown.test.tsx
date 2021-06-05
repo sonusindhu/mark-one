@@ -54,14 +54,30 @@ describe('Button Dropdown', function () {
     strictEqual(queryByText(testLabel, { exact: false }), null);
   });
   it('renders the dropdown on button click', function () {
-    const dropdownButton = getByLabelText(altText);
-    fireEvent.click(dropdownButton);
+    fireEvent.click(getByLabelText(altText));
     getByText(testLabel);
   });
-  it('calls the change handler when an option in the dropdown is selected', function () {
+  it('minimizes the dropdown menu when the dropdown button is clicked a second time', function () {
     const dropdownButton = getByLabelText(altText);
+    // Initial button click
     fireEvent.click(dropdownButton);
+    // Second button click
+    fireEvent.click(dropdownButton);
+    strictEqual(queryByText(testLabel, { exact: false }), null);
+  });
+  it('minimizes the dropdown menu when the document is body is clicked while the menu is expanded', function () {
+    fireEvent.click(getByLabelText(altText));
+    fireEvent.click(document.body);
+    strictEqual(queryByText(testLabel, { exact: false }), null);
+  });
+  it('calls the change handler when an option in the dropdown is selected', function () {
+    fireEvent.click(getByLabelText(altText));
     fireEvent.click(getByText(testLabel));
     strictEqual(changeSpy.callCount, 1);
+  });
+  it('minimizes the dropdown menu after a selection is made', function () {
+    fireEvent.click(getByLabelText(altText));
+    fireEvent.click(getByText(testLabel));
+    strictEqual(queryByText(testLabel, { exact: false }), null);
   });
 });
