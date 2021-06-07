@@ -28,7 +28,7 @@ export interface MenuProps {
   isMenuVisible: boolean;
 }
 
-export interface ButtonDropdownProps extends MarkOneProps<HTMLButtonElement> {
+export interface ButtonDropdownProps extends MarkOneProps<HTMLElement> {
   /** The id of the button */
   id?: string;
   /** Specifies the Font Awesome Icon(s) */
