@@ -64,11 +64,6 @@ const StyledMenu = styled.div<MenuProps>`
   position: absolute;
   transform: translate3d(0em, 0.1em, 0em);
   z-index: 100;
-  display: ${({ isMenuVisible }): boolean => (
-    isMenuVisible
-      ? 'block'
-      : 'none'
-  )};
 `;
 
 const StyledMenuList = styled.ul`
