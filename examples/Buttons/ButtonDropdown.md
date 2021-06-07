@@ -1,3 +1,4 @@
+The following is an example of the `ButtonDropdown` component being used to outline timeslots. When the user clicks the button, a menu dropdown appears containing timeslot options. If the user clicks outside the menu, selects an item in the menu, or clicks the button that opened the menu a second time, the menu will minimize. Users can determine behavior when an option in the dropdown is selected.
 ```jsx
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
