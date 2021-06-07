@@ -2,6 +2,7 @@ import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import React, {
   FunctionComponent,
   ReactElement,
+  Ref,
   useCallback,
   useContext,
   useEffect,
@@ -10,7 +11,6 @@ import React, {
 import styled, { ThemeContext } from 'styled-components';
 import {
   fromTheme,
-  MarkOneProps,
 } from '../Theme';
 
 interface DropdownOptionProps {
@@ -28,7 +28,7 @@ export interface MenuProps {
   isMenuVisible: boolean;
 }
 
-export interface ButtonDropdownProps extends MarkOneProps<HTMLElement> {
+export interface ButtonDropdownProps {
   /** The id of the button */
   id?: string;
   /** Specifies the Font Awesome Icon(s) */
@@ -39,6 +39,10 @@ export interface ButtonDropdownProps extends MarkOneProps<HTMLElement> {
    * An array of string that outline the choices in the dropdown
    */
   options: Array<DropdownOptionProps>;
+  /** Specifies the alt text for screen readers */
+  alt: string;
+  /** Specifies the ref of the element */
+  forwardRef?: Ref<HTMLButtonElement>;
 }
 
 const StyledButtonDropdown = styled.button<ButtonDropdownProps>`
