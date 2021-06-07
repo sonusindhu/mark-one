@@ -31,10 +31,10 @@ export interface MenuProps {
 export interface ButtonDropdownProps {
   /** The id of the button */
   id?: string;
-  /** Specifies the Font Awesome Icon(s) */
+  /** Specifies the Font Awesome Icon */
   children: ReactElement<FontAwesomeIconProps>;
   /** Function to call on click of a selection within the dropdown */
-  onChange: (string) => void;
+  onChange: (arg0: string) => void;
   /**
    * An array of string that outline the choices in the dropdown
    */
@@ -45,7 +45,7 @@ export interface ButtonDropdownProps {
   forwardRef?: Ref<HTMLButtonElement>;
 }
 
-const StyledButtonDropdown = styled.button<ButtonDropdownProps>`
+const StyledButtonDropdown = styled.button`
   background: ${fromTheme('color', 'background', 'medium')};
   border: none;
   cursor: pointer;
