@@ -139,25 +139,23 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
         { children }
       </StyledButtonDropdown>
       {isMenuVisible && (
-        <>
-          <StyledMenu isMenuVisible={isMenuVisible}>
-            <StyledMenuList>
-              {options.map((option) => (
-                <StyledMenuListItem
-                  key={option.value}
-                  onClick={() => {
-                    onChange(option.value);
-                    setMenuVisible(false);
-                  }}
-                >
-                  <StyledMenuButton>
-                    {option.label}
-                  </StyledMenuButton>
-                </StyledMenuListItem>
-              ))}
-            </StyledMenuList>
-          </StyledMenu>
-        </>
+        <StyledMenu isMenuVisible={isMenuVisible}>
+          <StyledMenuList>
+            {options.map((option) => (
+              <StyledMenuListItem
+                key={option.value}
+                onClick={() => {
+                  onChange(option.value);
+                  setMenuVisible(false);
+                }}
+              >
+                <StyledMenuButton>
+                  {option.label}
+                </StyledMenuButton>
+              </StyledMenuListItem>
+            ))}
+          </StyledMenuList>
+        </StyledMenu>
       )}
     </>
   );
