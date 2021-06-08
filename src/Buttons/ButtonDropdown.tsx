@@ -136,7 +136,6 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
                 key={option.value}
                 onClick={() => {
                   onChange(option.value);
-                  setMenuVisible(false);
                 }}
               >
                 <StyledMenuButton>
