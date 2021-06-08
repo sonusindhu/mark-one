@@ -1,7 +1,7 @@
-import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 import React, {
   FunctionComponent,
   ReactElement,
+  ReactNode,
   Ref,
   useCallback,
   useContext,
@@ -31,8 +31,8 @@ export interface MenuProps {
 export interface ButtonDropdownProps {
   /** The id of the button */
   id?: string;
-  /** Specifies the Font Awesome Icon */
-  children: ReactElement<FontAwesomeIconProps>;
+  /** Specifies the text or Font Awesome Icon displayed on the button */
+  children: ReactNode;
   /** Function to call on click of a selection within the dropdown */
   onChange: (arg0: string) => void;
   /**
