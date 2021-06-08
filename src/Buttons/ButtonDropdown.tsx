@@ -20,14 +20,6 @@ interface DropdownOptionProps {
   value: string;
 }
 
-export interface MenuProps {
-  /**
-   * Whether or not the menu should be visible.
-   * This will be controlled by the parent component, likely via useState.
-   */
-  isMenuVisible: boolean;
-}
-
 export interface ButtonDropdownProps {
   /** The id of the button */
   id?: string;
@@ -35,9 +27,7 @@ export interface ButtonDropdownProps {
   children: ReactNode;
   /** Function to call on click of a selection within the dropdown */
   onChange: (arg0: string) => void;
-  /**
-   * An array of string that outline the choices in the dropdown
-   */
+  /** An array of string that outline the choices in the dropdown */
   options: Array<DropdownOptionProps>;
   /** Specifies the alt text for screen readers */
   alt: string;
@@ -60,7 +50,7 @@ const StyledButtonDropdown = styled.button`
   }
 `;
 
-const StyledMenu = styled.div<MenuProps>`
+const StyledMenu = styled.div`
   background: ${fromTheme('color', 'background', 'light')};
   border: ${fromTheme('border', 'hairline')};
   min-height: 3em;
@@ -139,7 +129,7 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
         { children }
       </StyledButtonDropdown>
       {isMenuVisible && (
-        <StyledMenu isMenuVisible={isMenuVisible}>
+        <StyledMenu>
           <StyledMenuList>
             {options.map((option) => (
               <StyledMenuListItem
