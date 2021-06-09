@@ -1,3 +1,4 @@
+import { ButtonDropdownMenuItem } from 'Buttons';
 import React, {
   FunctionComponent,
   ReactElement,
@@ -13,28 +14,18 @@ import {
 } from '../Theme';
 import Button from './Button';
 
-interface DropdownOptionProps {
-  /** The label of the dropdown option */
-  label: string;
-  /** The value of the dropdown option */
-  value: string;
-}
-
 export interface ButtonDropdownProps {
   /** The id of the button */
   id?: string;
   /** Specifies the text or Font Awesome Icon displayed on the button */
-  children: ReactNode;
-  /** Function to call on click of a selection within the dropdown */
-  onChange: (arg0: string) => void;
-  /** An array of string that outline the choices in the dropdown */
-  options: Array<DropdownOptionProps>;
+  label: ReactNode;
   /** Specifies the alt text for screen readers */
   alt: string;
   /** Specifies the ref of the element */
   forwardRef?: Ref<HTMLButtonElement>;
   /** Allows user to pass in a variant property from the VARIANT enum */
   variant: VARIANT;
+  children: Array<ButtonDropdownMenuItem>;
 }
 
 const StyledMenu = styled.div`
@@ -51,24 +42,6 @@ const StyledMenuList = styled.ul`
   list-style-type: none;
 `;
 
-const StyledMenuListItem = styled.li`
-  &:hover {
-    background: ${fromTheme('color', 'background', 'medium')};
-    cursor: pointer;
-  }
-`;
-
-const StyledMenuButton = styled.button`
-  background: transparent;
-  border: none;
-  padding: ${fromTheme('ws', 'small')};
-  width: 100%;
-  &:hover {
-    background: ${fromTheme('color', 'background', 'medium')};
-    cursor: pointer;
-  }
-`;
-
 /**
  * A component that allows users to specify a Font Awesome icon to be displayed
  * in the button and options within the dropdown. When an option is clicked, the
@@ -79,12 +52,11 @@ const ButtonDropdownMenu: FunctionComponent<ButtonDropdownProps> = (props)
 : ReactElement => {
   const {
     id,
-    children,
-    onChange,
+    label,
     forwardRef,
     alt,
-    options,
     variant,
+    children,
   } = props;
 
   const [isMenuVisible, setMenuVisible] = useState(false);
@@ -114,24 +86,12 @@ const ButtonDropdownMenu: FunctionComponent<ButtonDropdownProps> = (props)
         alt={alt}
         variant={variant}
       >
-        { children }
+        { label }
       </Button>
       {isMenuVisible && (
         <StyledMenu>
           <StyledMenuList>
-            {options.map((option) => (
-              <StyledMenuListItem
-                key={option.value}
-              >
-                <StyledMenuButton
-                  onClick={() => {
-                    onChange(option.value);
-                  }}
-                >
-                  {option.label}
-                </StyledMenuButton>
-              </StyledMenuListItem>
-            ))}
+            {children}
           </StyledMenuList>
         </StyledMenu>
       )}

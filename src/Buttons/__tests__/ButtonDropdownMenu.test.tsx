@@ -15,39 +15,53 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import ButtonDropdownMenu from 'Buttons/ButtonDropdownMenu';
 import { VARIANT } from 'Theme';
+import { ButtonDropdownMenuItem } from 'Buttons';
 
 describe('Button Dropdown Menu', function () {
   let getByLabelText: BoundFunction<GetByText>;
   let getByText: BoundFunction<GetByText>;
   let queryByText: BoundFunction<QueryByText>;
-  let changeSpy: SinonSpy;
+  let clickSpy: SinonSpy;
   const testLabel = '9:00AM-10:00AM';
   const times = [
     {
+      startTime: '09:00',
+      endTime: '10:00',
       value: '09:00-10:00',
       label: testLabel,
     },
     {
+      startTime: '10:00',
+      endTime: '11:00',
       value: '10:00-11:00',
       label: '10:00AM-11:00AM',
     },
   ];
   const altText = 'Timeslot button dropdown';
   beforeEach(function () {
-    changeSpy = spy();
+    clickSpy = spy();
     ({ getByLabelText, getByText, queryByText } = render(
       <ButtonDropdownMenu
-        alt={altText}
-        onChange={changeSpy}
-        options={times}
+        alt="Timeslot button dropdown"
+        label={<FontAwesomeIcon icon={faClock} size="sm" />}
         variant={VARIANT.BASE}
       >
-        <FontAwesomeIcon icon={faClock} size="sm" />
+        {times.map(({
+          label,
+          value,
+        }) => (
+          <ButtonDropdownMenuItem
+            onClick={clickSpy}
+            key={value}
+            label={label}
+            value={value}
+          />
+        ))}
       </ButtonDropdownMenu>
     ));
   });
   afterEach(function () {
-    changeSpy.resetHistory();
+    clickSpy.resetHistory();
   });
   it('renders', function () {
     getByLabelText(altText);
@@ -75,7 +89,7 @@ describe('Button Dropdown Menu', function () {
   it('calls the change handler when an option in the dropdown is selected', function () {
     fireEvent.click(getByLabelText(altText));
     fireEvent.click(getByText(testLabel));
-    strictEqual(changeSpy.callCount, 1);
+    strictEqual(clickSpy.callCount, 1);
   });
   it('minimizes the dropdown menu after a selection is made', function () {
     fireEvent.click(getByLabelText(altText));
