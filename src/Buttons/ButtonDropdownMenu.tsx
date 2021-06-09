@@ -75,7 +75,7 @@ const StyledMenuButton = styled.button`
  * value that was selected is passed to the onChange function and the dropdown
  * menu collapses.
  */
-const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
+const ButtonDropdownMenu: FunctionComponent<ButtonDropdownProps> = (props)
 : ReactElement => {
   const {
     id,
@@ -139,8 +139,8 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
   );
 };
 
-ButtonDropdown.defaultProps = {
+ButtonDropdownMenu.defaultProps = {
   variant: VARIANT.BASE,
 };
 
-export default ButtonDropdown;
+export default ButtonDropdownMenu;

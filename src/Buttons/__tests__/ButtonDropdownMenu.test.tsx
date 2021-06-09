@@ -13,10 +13,10 @@ import {
 } from 'sinon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
-import ButtonDropdown from 'Buttons/ButtonDropdown';
+import ButtonDropdownMenu from 'Buttons/ButtonDropdownMenu';
 import { VARIANT } from 'Theme';
 
-describe('Button Dropdown', function () {
+describe('Button Dropdown Menu', function () {
   let getByLabelText: BoundFunction<GetByText>;
   let getByText: BoundFunction<GetByText>;
   let queryByText: BoundFunction<QueryByText>;
@@ -36,14 +36,14 @@ describe('Button Dropdown', function () {
   beforeEach(function () {
     changeSpy = spy();
     ({ getByLabelText, getByText, queryByText } = render(
-      <ButtonDropdown
+      <ButtonDropdownMenu
         alt={altText}
         onChange={changeSpy}
         options={times}
         variant={VARIANT.BASE}
       >
         <FontAwesomeIcon icon={faClock} size="sm" />
-      </ButtonDropdown>
+      </ButtonDropdownMenu>
     ));
   });
   afterEach(function () {
