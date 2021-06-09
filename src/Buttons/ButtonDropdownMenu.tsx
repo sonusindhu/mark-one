@@ -1,4 +1,3 @@
-import { ButtonDropdownMenuItem } from 'Buttons';
 import React, {
   FunctionComponent,
   ReactElement,
@@ -13,6 +12,7 @@ import {
   fromTheme, VARIANT,
 } from '../Theme';
 import Button from './Button';
+import ButtonDropdownMenuItem from './ButtonDropdownMenuItem';
 
 export interface ButtonDropdownProps {
   /** The id of the button */
@@ -25,7 +25,8 @@ export interface ButtonDropdownProps {
   forwardRef?: Ref<HTMLButtonElement>;
   /** Allows user to pass in a variant property from the VARIANT enum */
   variant: VARIANT;
-  children: Array<ButtonDropdownMenuItem>;
+  /** Our ButtonDropdownMenuItem functional component serves as the children for ButtonDropdownMenu  */
+  children: Array<ButtonDropdownMenuItem>
 }
 
 const StyledMenu = styled.div`

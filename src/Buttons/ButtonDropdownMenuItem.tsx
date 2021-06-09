@@ -53,4 +53,6 @@ const ButtonDropdownMenuItem
   );
 };
 
+declare type ButtonDropdownMenuItem = ReactElement<ButtonDropdownMenuItemProps>;
+
 export default ButtonDropdownMenuItem;
