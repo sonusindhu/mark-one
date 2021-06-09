@@ -52,7 +52,6 @@ const StyledMenuList = styled.ul`
 `;
 
 const StyledMenuListItem = styled.li`
-  padding: ${({ theme }) => (`${theme.ws.xsmall} ${theme.ws.small}`)};
   &:hover {
     background: ${fromTheme('color', 'background', 'medium')};
     cursor: pointer;
@@ -62,6 +61,8 @@ const StyledMenuListItem = styled.li`
 const StyledMenuButton = styled.button`
   background: transparent;
   border: none;
+  padding: ${fromTheme('ws', 'small')};
+  width: 100%;
   &:hover {
     background: ${fromTheme('color', 'background', 'medium')};
     cursor: pointer;
@@ -121,11 +122,12 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
             {options.map((option) => (
               <StyledMenuListItem
                 key={option.value}
-                onClick={() => {
-                  onChange(option.value);
-                }}
               >
-                <StyledMenuButton>
+                <StyledMenuButton
+                  onClick={() => {
+                    onChange(option.value);
+                  }}
+                >
                   {option.label}
                 </StyledMenuButton>
               </StyledMenuListItem>
