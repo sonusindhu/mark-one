@@ -4,14 +4,14 @@ import React, {
   ReactNode,
   Ref,
   useCallback,
-  useContext,
   useEffect,
   useState,
 } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import styled from 'styled-components';
 import {
-  fromTheme,
+  fromTheme, VARIANT,
 } from '../Theme';
+import Button from './Button';
 
 interface DropdownOptionProps {
   /** The label of the dropdown option */
@@ -33,22 +33,9 @@ export interface ButtonDropdownProps {
   alt: string;
   /** Specifies the ref of the element */
   forwardRef?: Ref<HTMLButtonElement>;
+  /** Allows user to pass in a variant property from the VARIANT enum */
+  variant: VARIANT;
 }
-
-const StyledButtonDropdown = styled.button`
-  background: ${fromTheme('color', 'background', 'medium')};
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  font-size: ${fromTheme('font', 'body', 'size')};
-  font-weight: ${fromTheme('font', 'body', 'weight')};
-  padding: ${({ theme }) => (`${theme.ws.xsmall} ${theme.ws.small}`)};
-  &:hover {
-    background: ${fromTheme('color', 'background', 'dark')};
-    border: none;
-    color: ${fromTheme('color', 'text', 'base')};
-  }
-`;
 
 const StyledMenu = styled.div`
   background: ${fromTheme('color', 'background', 'light')};
@@ -96,10 +83,10 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
     forwardRef,
     alt,
     options,
+    variant,
   } = props;
 
   const [isMenuVisible, setMenuVisible] = useState(false);
-  const theme = useContext(ThemeContext);
 
   // When the menu is open and the user clicks on the document, it minimizes the menu
   const handleDocumentBodyClick = useCallback(() => {
@@ -117,17 +104,17 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
 
   return (
     <>
-      <StyledButtonDropdown
+      <Button
         id={id}
         onClick={() => {
           setMenuVisible(!isMenuVisible);
         }}
-        theme={theme}
-        ref={forwardRef}
-        aria-label={alt}
+        forwardRef={forwardRef}
+        alt={alt}
+        variant={variant}
       >
         { children }
-      </StyledButtonDropdown>
+      </Button>
       {isMenuVisible && (
         <StyledMenu>
           <StyledMenuList>
@@ -148,6 +135,10 @@ const ButtonDropdown: FunctionComponent<ButtonDropdownProps> = (props)
       )}
     </>
   );
+};
+
+ButtonDropdown.defaultProps = {
+  variant: VARIANT.BASE,
 };
 
 export default ButtonDropdown;

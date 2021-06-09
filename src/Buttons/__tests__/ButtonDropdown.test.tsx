@@ -14,6 +14,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import ButtonDropdown from 'Buttons/ButtonDropdown';
+import { VARIANT } from 'Theme';
 
 describe('Button Dropdown', function () {
   let getByLabelText: BoundFunction<GetByText>;
@@ -39,6 +40,7 @@ describe('Button Dropdown', function () {
         alt={altText}
         onChange={changeSpy}
         options={times}
+        variant={VARIANT.BASE}
       >
         <FontAwesomeIcon icon={faClock} size="sm" />
       </ButtonDropdown>
