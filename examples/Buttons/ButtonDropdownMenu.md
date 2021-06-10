@@ -42,13 +42,12 @@ const times = [
   alt="Timeslot button dropdown"
   label={<FontAwesomeIcon icon={faClock} size="sm" />}
 >
-  {times.map(({ label, startTime, endTime, value }) => (
+  {times.map(({ label, startTime, endTime }) => (
     <ButtonDropdownMenuItem
-      onClick={function() {
+      onClick={function () {
         alert('You chose ' + startTime + '-' + endTime);
       }}
       key={label}
-      value={value}
     >
       {label}
     </ButtonDropdownMenuItem>
