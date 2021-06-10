@@ -53,9 +53,9 @@ describe('Button Dropdown Menu', function () {
           <ButtonDropdownMenuItem
             onClick={clickSpy}
             key={value}
-            label={label}
-            value={value}
-          />
+          >
+            {label}
+          </ButtonDropdownMenuItem>
         ))}
       </ButtonDropdownMenu>
     ));
