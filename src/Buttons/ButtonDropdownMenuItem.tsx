@@ -7,10 +7,6 @@ import styled from 'styled-components';
 import { fromTheme } from '../Theme';
 
 export interface ButtonDropdownMenuItemProps {
-  /** The label describing the menu item */
-  label: string;
-  /** The value of the menu item */
-  value: string;
   /** Function to call on click event */
   onClick: MouseEventHandler;
 }
@@ -37,17 +33,14 @@ const ButtonDropdownMenuItem
 : FunctionComponent<ButtonDropdownMenuItemProps> = (props): ReactElement => {
   const {
     onClick,
-    label,
-    value,
+    children,
   } = props;
   return (
-    <StyledMenuListItem
-      value={value}
-    >
+    <StyledMenuListItem>
       <StyledMenuButton
         onClick={onClick}
       >
-        {label}
+        {children}
       </StyledMenuButton>
     </StyledMenuListItem>
   );

@@ -48,9 +48,10 @@ const times = [
         alert('You chose ' + startTime + '-' + endTime);
       }}
       key={label}
-      label={label}
       value={value}
-    />
+    >
+      {label}
+    </ButtonDropdownMenuItem>
   ))}
 </ButtonDropdownMenu>
 ```
