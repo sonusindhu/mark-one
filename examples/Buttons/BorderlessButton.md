@@ -83,6 +83,48 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 </BorderlessButton>
 ```
 
+### With the `disabled` prop
+
+This shows the full set of buttons in "active" mode alongside the buttons in "disabled" mode:
+
+```jsx
+import { VARIANT } from 'mark-one';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+
+const TwoUpBox = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
+  border-bottom: ${({theme}) => (theme.border.hairline)}
+`;
+
+<>
+  {Object.keys(VARIANT).map((variantName) => (
+    <TwoUpBox key={variantName}>
+      <BorderlessButton
+        variant={VARIANT[variantName]}
+        onClick={() => {}}
+        title={`Active ${variantName}`}
+      >
+        <FontAwesomeIcon icon={faCheck} size="lg" />
+      </BorderlessButton>
+      <strong>{variantName}</strong>
+      <BorderlessButton
+        variant={VARIANT[variantName]}
+        onClick={() => {}}
+        disabled
+        title={`Disabled ${variantName}`}
+      >
+        <FontAwesomeIcon icon={faTimes} size="lg" />
+      </BorderlessButton>
+    </TwoUpBox>
+  ))}
+</>
+
+```
+
 ### With the `forwardRef`
 Ref example: The optional `forwardRef` property is set. When the primary themed button is clicked, the focus shifts to the borderless button.
 ```jsx

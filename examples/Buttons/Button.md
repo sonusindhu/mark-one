@@ -72,6 +72,44 @@ import { VARIANT } from 'mark-one';
 </Button>
 ```
 
+### With the `disabled` prop
+
+This shows the full set of buttons in "active" mode alongside the buttons in "disabled" mode:
+
+```jsx
+import { VARIANT } from 'mark-one';
+import styled from 'styled-components';
+
+const TwoUpBox = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
+  border-bottom: ${({theme}) => (theme.border.hairline)}
+`;
+
+<>
+  {Object.keys(VARIANT).map((variantName) => (
+    <TwoUpBox key={variantName}>
+      <Button
+        variant={VARIANT[variantName]}
+        onClick={() => {}}
+      >
+        {`Active`}
+      </Button>
+      <strong>{variantName}</strong>
+      <Button
+        variant={VARIANT[variantName]}
+        onClick={() => {}}
+        disabled
+      >
+        {`Disabled`}
+      </Button>
+    </TwoUpBox>
+  ))}
+</>
+
+```
+
 ### With the `forwardRef`
 Ref example: The optional `forwardRef` property is set. When the primary themed button is clicked, the focus shifts to the borderless button.
 ```jsx
