@@ -42,6 +42,11 @@ const StyledButton = styled.button<ButtonProps>`
     theme.color.text[variant === VARIANT.BASE ? 'dark' : 'light']
   )};
   }
+  &:disabled {
+    cursor: not-allowed;
+    background: ${({ theme, variant }) => theme.color.background[variant].medium};
+    opacity: 0.66;
+  }
 `;
 
 StyledButton.defaultProps = {

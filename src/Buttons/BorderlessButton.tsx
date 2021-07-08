@@ -34,6 +34,11 @@ const StyledBorderlessButton = styled.button<BorderlessButtonProps>`
     background: transparent;
     color: ${({ variant, theme }) => theme.color.background[variant].dark};
   }
+  &:disabled {
+    cursor: not-allowed;
+    color: ${({ theme, variant }) => theme.color.background[variant].medium};
+    opacity: 0.66;
+  }
 `;
 
 StyledBorderlessButton.defaultProps = {
