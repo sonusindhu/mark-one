@@ -38,7 +38,6 @@ export interface TableCellProps {
 const StyledCell = styled.td<TableCellProps>`
   border-left: ${fromTheme('border', 'light')};
   border-right: ${fromTheme('border', 'light')};
-  font-family: ${fromTheme('font', 'data', 'family')};
   font-size:  ${fromTheme('font', 'data', 'size')};
   font-weight: ${({ theme, variant }) => (
     theme.font[[TEXT_VARIANT.NEGATIVE, TEXT_VARIANT.MEDIUM]
