@@ -40,4 +40,8 @@ const ModalMessage: FunctionComponent<ModalMessageProps> = (props)
   );
 };
 
+ModalMessage.defaultProps = {
+  variant: VARIANT.BASE,
+};
+
 export default ModalMessage;
