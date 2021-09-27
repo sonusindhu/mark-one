@@ -114,3 +114,12 @@ export enum VARIANT {
   DANGER = 'negative',
   DEFAULT = 'base',
 }
+
+/**
+ * A set of enums used for the text variations within a TableCell component
+ */
+export enum TEXT_VARIANT {
+  MEDIUM = 'medium',
+  NEGATIVE = 'negative',
+  BASE = 'base',
+}

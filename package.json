@@ -1,6 +1,6 @@
 {
   "name": "mark-one",
-  "version": "0.2.0",
+  "version": "0.2.6",
   "description": "A UI component library for building React Apps",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -55,7 +55,6 @@
     "@typescript-eslint/parser": "^3.0.0",
     "acorn": "^6.3.0",
     "acorn-jsx": "^5.1.0",
-    "canvas": "^2.6.0",
     "codecov": "^3.6.1",
     "color-convert": "^2.0.1",
     "css-loader": "^3.2.0",
@@ -97,13 +96,14 @@
     "@openfonts/open-sans_all": "^1.43.0",
     "@openfonts/roboto-mono_all": "^1.43.0",
     "aria-query": "^4.0.2",
+    "canvas": "^2.8.0",
     "polished": "^3.4.1",
     "react-transition-group": "^4.3.0"
   },
   "peerDependencies": {
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "styled-components": "^5.1.1",
-    "react-router-dom": "^5.1.2"
+    "react-router-dom": "^5.1.2",
+    "styled-components": "^5.1.1"
   }
 }

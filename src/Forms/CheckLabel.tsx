@@ -4,7 +4,6 @@ import React, {
   FunctionComponent,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { fromTheme } from '../Theme';
 import { POSITION, RequiredSymbol } from './InputLabel';
 
 export type CheckLabelPosition = POSITION.LEFT | POSITION.RIGHT;
@@ -16,6 +15,8 @@ export interface StyledCheckLabelProps {
   labelPosition?: CheckLabelPosition;
   /** Specifies the id for the label */
   htmlFor: string;
+  /** If true, hide the space allocated for the error message */
+  hideError?: boolean;
 }
 
 export interface StyledCheckLabelTextProps {
@@ -25,6 +26,8 @@ export interface StyledCheckLabelTextProps {
   labelPosition?: CheckLabelPosition
   /** Used to style label text in a different style if disabled is true */
   disabled?: boolean;
+  /** If true, hide the space allocated for the error message */
+  hideError?: boolean;
 }
 
 export interface LabelProps {
@@ -40,6 +43,8 @@ export interface LabelProps {
   isRequired?: boolean;
   /** Used to style label text in a different style if disabled is true */
   disabled?: boolean;
+  /** If true, hide the space allocated for the error message */
+  hideError?: boolean;
 }
 
 const generateGrid = (
@@ -65,11 +70,14 @@ const StyledCheckLabel = styled.label<StyledCheckLabelProps>`
       ? 'auto minmax(0, 1fr)'
       : 'repeat(3, 1fr)'
   )};
-  grid-template-rows: 1fr minmax(1em, max-content);
+  grid-template-rows: ${({ hideError }) => (
+    (hideError)
+      ? '1fr'
+      : '1fr minmax(1em, max-content)'
+  )};
   grid-template-areas: ${({ labelPosition, isLabelVisible }) => (
     generateGrid(labelPosition, isLabelVisible)
   )};
-  margin: ${fromTheme('ws', 'small')};
   align-items: baseline;
   gap: ${({ theme }) => (theme.ws.xsmall) + ' ' + (theme.ws.xsmall)};
 `;
@@ -98,6 +106,7 @@ const CheckLabel: FunctionComponent<LabelProps> = (props): ReactElement => {
     children,
     isRequired,
     disabled,
+    hideError,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -106,6 +115,7 @@ const CheckLabel: FunctionComponent<LabelProps> = (props): ReactElement => {
       labelPosition={labelPosition}
       theme={theme}
       isLabelVisible={isLabelVisible}
+      hideError={hideError}
     >
       <StyledCheckLabelText
         isLabelVisible={isLabelVisible}
@@ -126,11 +136,13 @@ CheckLabel.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
   disabled: false,
+  hideError: false,
 };
 
 StyledCheckLabel.defaultProps = {
   labelPosition: POSITION.LEFT,
   isLabelVisible: true,
+  hideError: false,
 };
 
 export default CheckLabel;

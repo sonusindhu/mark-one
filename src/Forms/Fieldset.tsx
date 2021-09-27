@@ -6,6 +6,7 @@ import React,
   useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { fromTheme } from '../Theme';
 import { NoteText } from '../Typography';
 import ValidationErrorMessage from './ValidationErrorMessage';
 import { RequiredSymbol } from './InputLabel';
@@ -15,6 +16,8 @@ interface StyledFieldsetProps {
   form?: string;
   /** Specifies whether the border of fieldset is visible */
   isBorderVisible?: boolean;
+  /** Specifies whether the legend of the fieldset is visible */
+  isLegendVisible?: boolean;
 }
 
 export interface FieldsetProps {
@@ -39,6 +42,8 @@ export interface FieldsetProps {
 interface StyledLegendProps {
   /** Specifies whether the legend of the fieldset is visible */
   isLegendVisible?: boolean;
+  /** Specifies whether the border of fieldset is visible */
+  isBorderVisible?: boolean;
 }
 
 const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
@@ -48,17 +53,25 @@ const StyledFieldset = styled.fieldset<StyledFieldsetProps>`
       ? `${theme.border.light}`
       : 'none'
   )};
-  margin-inline-start: 0.125em;
-  margin-inline-end: 0.125em;
-  padding-block-start: 0.35em;
-  padding-inline-start: 0.75em;
+  padding-inline-start: ${({ isBorderVisible, isLegendVisible }): string => (
+    !isBorderVisible && !isLegendVisible
+      ? null
+      : '0.75em'
+  )};
   padding-inline-end: 0.75em;
-  padding-block-end: 0.625em;
   min-inline-size: min-content;
+  & > * {
+    margin-top: ${fromTheme('ws', 'small')};
+    margin-bottom: ${fromTheme('ws', 'small')};
+  }
 `;
 
 const StyledLegend = styled.legend<StyledLegendProps>`
-  padding: 0.25em;
+  padding: ${({ isBorderVisible }): string => (
+    isBorderVisible
+      ? '0.25em'
+      : null
+  )};
   position: ${({ isLegendVisible }): string => (
     isLegendVisible
       ? null

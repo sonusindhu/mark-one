@@ -94,7 +94,6 @@ const switchModal = (isOpen) => {
           label="Enter text:"
           value={formValue}
           changeHandler={(evt) => {
-            console.log(evt.target.value);
             setFormValue(evt.target.value);
           }}
         />

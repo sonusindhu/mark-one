@@ -286,4 +286,36 @@ describe('Checkbox', function () {
       });
     });
   });
+  describe('hideError prop', function () {
+    context('when hideError and errorMessage prop are present', function () {
+      const errorMessage = 'Please select this checkbox before proceeding.';
+      const labelText = 'I agree to the terms and conditions.';
+      beforeEach(function () {
+        changeSpy = spy();
+        ({ getByText, queryByText } = render(
+          <Checkbox
+            id={checkboxId}
+            checked={false}
+            label={labelText}
+            onChange={changeSpy}
+            errorMessage={errorMessage}
+            hideError
+            isRequired
+          />
+        ));
+      });
+      it('renders', function () {
+        getByText(labelText);
+      });
+      it('does not render the error message', function () {
+        const errorField = queryByText(errorMessage);
+        strictEqual(errorField, null);
+      });
+      it('sets the grid-template-rows style accordingly', function () {
+        const style = window.getComputedStyle(getByText(labelText)
+          .parentNode as HTMLElement);
+        strictEqual(style['grid-template-rows'], '1fr');
+      });
+    });
+  });
 });

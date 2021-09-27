@@ -19,8 +19,8 @@ const MarkOneTheme: DefaultTheme = {
   color: {
     background: {
       light: WHITE,
-      subtle: darken(0.07, WHITE),
-      medium: darken(0.175, WHITE),
+      subtle: '#f2f2f2',
+      medium: '#e8e8e8',
       dark: '#93a1ad',
       darker: darken(0.75, WHITE),
       accent: '#a51c30',
@@ -48,11 +48,11 @@ const MarkOneTheme: DefaultTheme = {
     text: {
       base: BLACK,
       light: lighten(0.9, BLACK),
-      medium: lighten(0.35, BLACK),
+      medium: '#575757',
       dark: BLACK,
       info: '#4e88c7',
       positive: '#4db848',
-      negative: '#ff4040',
+      negative: '#bd0f24',
     },
     area: {
       acs: '#da373e',
@@ -83,7 +83,7 @@ const MarkOneTheme: DefaultTheme = {
     data: {
       family: FONT.MONO,
       size: '0.9em',
-      weight: WEIGHT.BOLD,
+      weight: WEIGHT.MEDIUM,
     },
     note: {
       family: FONT.SANS,
