@@ -5,7 +5,7 @@ const TSConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
   name: 'styleguide',
-  mode: 'none',
+  mode: 'development',
   entry: ['./src/index.ts'],
   output: {
     path: path.resolve(__dirname, 'build/static'),
@@ -47,30 +47,4 @@ module.exports = {
       },
     ],
   },
-  optimization: {
-    minimize: false,
-    noEmitOnErrors: true,
-    nodeEnv: 'production',
-    occurrenceOrder: true,
-    providedExports: true,
-    usedExports: true,
-    sideEffects: true,
-    splitChunks: {
-      chunks: 'all',
-      name: true,
-      minSize: 1,
-      minChunks: 1,
-      cacheGroups: {
-        assets: {
-          test: /[\\/]node_modules[\\/]/,
-          enforce: true,
-          reuseExistingChunk: true,
-          filename: '[name][hash].js',
-        },
-      },
-    },
-  },
-  plugins: [
-    new webpack.optimize.ModuleConcatenationPlugin(),
-  ],
 };
