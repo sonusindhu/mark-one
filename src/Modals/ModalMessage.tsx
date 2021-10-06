@@ -12,9 +12,9 @@ export interface ModalMessageProps {
   /** Allows you to pass in a variant property from the VARIANT enum */
   variant: VARIANT;
   /** The aria role of the message displayed */
-  role: string;
+  role?: string;
   /** The value of the aria-live property */
-  ariaLive: string;
+  ariaLive?: ARIA_LIVE_VARIANT;
 }
 
 const StyledModalMessage = styled.span<ModalMessageProps>`
