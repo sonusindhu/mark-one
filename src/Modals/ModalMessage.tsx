@@ -2,6 +2,7 @@ import React, {
   FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { ARIA_LIVE_VARIANT } from '../const';
 import { fromTheme, VARIANT } from '../Theme';
 
 export interface ModalMessageProps {
@@ -11,6 +12,14 @@ export interface ModalMessageProps {
   children: string;
   /** Allows you to pass in a variant property from the VARIANT enum */
   variant: VARIANT;
+  /** The aria role of the message displayed. A list of the different role
+   * values that should be used can be found in the w3 docs:
+   * https://www.w3.org/TR/wai-aria-1.1/#live_region_roles
+   * The default value role is 'alert.'
+   * */
+  role?: string;
+  /** The value of the aria-live property */
+  ariaLive?: ARIA_LIVE_VARIANT;
 }
 
 const StyledModalMessage = styled.span<ModalMessageProps>`
@@ -27,6 +36,8 @@ const ModalMessage: FunctionComponent<ModalMessageProps> = (props)
     id,
     children,
     variant,
+    role,
+    ariaLive,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -34,6 +45,8 @@ const ModalMessage: FunctionComponent<ModalMessageProps> = (props)
       id={id}
       variant={variant}
       theme={theme}
+      role={role}
+      aria-live={ariaLive}
     >
       {children}
     </StyledModalMessage>
@@ -42,6 +55,8 @@ const ModalMessage: FunctionComponent<ModalMessageProps> = (props)
 
 ModalMessage.defaultProps = {
   variant: VARIANT.BASE,
+  role: 'alert',
+  ariaLive: ARIA_LIVE_VARIANT.ASSERTIVE,
 };
 
 export default ModalMessage;
