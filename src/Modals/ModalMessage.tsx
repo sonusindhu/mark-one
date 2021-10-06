@@ -14,7 +14,7 @@ export interface ModalMessageProps {
   /** The aria role of the message displayed */
   role?: string;
   /** The value of the aria-live property */
-  ariaLive?: ARIA_LIVE_VARIANT;
+  ariaLive?: string;
 }
 
 const StyledModalMessage = styled.span<ModalMessageProps>`
