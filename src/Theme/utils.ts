@@ -123,9 +123,3 @@ export enum TEXT_VARIANT {
   NEGATIVE = 'negative',
   BASE = 'base',
 }
-
-export enum ARIA_LIVE_VARIANT {
-  OFF = 'off',
-  ASSERTIVE = 'assertive',
-  POLITE = 'polite',
-}
