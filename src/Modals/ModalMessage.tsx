@@ -2,7 +2,7 @@ import React, {
   FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import { fromTheme, VARIANT } from '../Theme';
+import { ARIA_LIVE_VARIANT, fromTheme, VARIANT } from '../Theme';
 
 export interface ModalMessageProps {
   /** The id of the modal message */
@@ -14,7 +14,7 @@ export interface ModalMessageProps {
   /** The aria role of the message displayed */
   role?: string;
   /** The value of the aria-live property */
-  ariaLive?: string;
+  ariaLive?: ARIA_LIVE_VARIANT;
 }
 
 const StyledModalMessage = styled.span<ModalMessageProps>`
@@ -51,7 +51,7 @@ const ModalMessage: FunctionComponent<ModalMessageProps> = (props)
 ModalMessage.defaultProps = {
   variant: VARIANT.BASE,
   role: 'alert',
-  ariaLive: 'assertive',
+  ariaLive: ARIA_LIVE_VARIANT.ASSERTIVE,
 };
 
 export default ModalMessage;
