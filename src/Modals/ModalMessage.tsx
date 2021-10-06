@@ -1,8 +1,8 @@
-import { ARIA_LIVE_VARIANT } from 'const';
 import React, {
   FunctionComponent, ReactElement, useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { ARIA_LIVE_VARIANT } from '../const';
 import { fromTheme, VARIANT } from '../Theme';
 
 export interface ModalMessageProps {
