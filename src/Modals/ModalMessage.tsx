@@ -11,6 +11,10 @@ export interface ModalMessageProps {
   children: string;
   /** Allows you to pass in a variant property from the VARIANT enum */
   variant: VARIANT;
+  /** The aria role of the message displayed */
+  role: string;
+  /** The value of the aria-live property */
+  ariaLive: string;
 }
 
 const StyledModalMessage = styled.span<ModalMessageProps>`
@@ -27,6 +31,8 @@ const ModalMessage: FunctionComponent<ModalMessageProps> = (props)
     id,
     children,
     variant,
+    role,
+    ariaLive,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -34,6 +40,8 @@ const ModalMessage: FunctionComponent<ModalMessageProps> = (props)
       id={id}
       variant={variant}
       theme={theme}
+      role={role}
+      aria-live={ariaLive}
     >
       {children}
     </StyledModalMessage>
@@ -42,6 +50,8 @@ const ModalMessage: FunctionComponent<ModalMessageProps> = (props)
 
 ModalMessage.defaultProps = {
   variant: VARIANT.BASE,
+  role: 'alert',
+  ariaLive: 'assertive',
 };
 
 export default ModalMessage;
