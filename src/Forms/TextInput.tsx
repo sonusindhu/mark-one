@@ -46,7 +46,7 @@ export interface TextInputProps {
   hideError?: boolean;
 }
 
-const StyledTextInput = styled.input<TextInputProps>`
+export const StyledTextInput = styled.input<TextInputProps>`
   border: ${fromTheme('border', 'hairline')};
   width: 100%;
   padding: ${fromTheme('ws', 'xsmall')};

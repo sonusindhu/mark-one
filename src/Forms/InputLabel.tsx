@@ -84,7 +84,7 @@ const generateGrid = (
           ". e e"`;
 };
 
-const StyledInputLabel = styled.label<StyledInputLabelProps>`
+export const StyledInputLabel = styled.label<StyledInputLabelProps>`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: ${({ hideError }) => (
@@ -103,7 +103,7 @@ const StyledInputLabel = styled.label<StyledInputLabelProps>`
   )};
 `;
 
-const StyledInputLabelText = styled.span<StyledInputLabelTextProps>`
+export const StyledInputLabelText = styled.span<StyledInputLabelTextProps>`
   ${({ isLabelVisible }) => (isLabelVisible ? '' : hideFromDisplay)};
   grid-area: l;
   justify-self: ${({ labelPosition }) => (
