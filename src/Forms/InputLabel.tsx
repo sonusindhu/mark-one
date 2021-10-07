@@ -21,7 +21,7 @@ export interface StyledInputLabelProps {
   /** Allows you to pass in a label position property from the POSITION enum */
   labelPosition?: InputLabelPosition;
   /** Specifies the id for the label */
-  htmlFor: string;
+  htmlFor?: string;
   /** If true, hide the error Msg and change the style StyledLabelProps */
   hideError?: boolean;
 }
