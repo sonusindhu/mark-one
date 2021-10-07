@@ -5,13 +5,14 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 import { fromTheme } from '../Theme';
+import { DropdownListItem } from '../Lists';
 
 export interface ButtonDropdownMenuItemProps {
   /** Function to call on click event */
   onClick: MouseEventHandler;
 }
 
-const StyledMenuListItem = styled.li`
+const StyledMenuListItem = styled(DropdownListItem)`
   &:hover {
     background: ${fromTheme('color', 'background', 'medium')};
     cursor: pointer;
