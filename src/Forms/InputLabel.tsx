@@ -16,8 +16,6 @@ export enum POSITION {
 }
 
 export interface StyledInputLabelProps {
-  /** Specifies the label text */
-  label: string;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
@@ -140,7 +138,6 @@ FunctionComponent<InputLabelProps> = (props): ReactElement => {
       labelPosition={labelPosition}
       theme={theme}
       isLabelVisible={isLabelVisible}
-      label={label}
       hideError={hideError}
     >
       <StyledInputLabelText
