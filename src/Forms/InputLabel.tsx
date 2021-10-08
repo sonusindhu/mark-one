@@ -4,6 +4,7 @@ import React, {
   FunctionComponent,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { hideFromDisplay } from '../const';
 import { fromTheme } from '../Theme';
 
 export type InputLabelPosition = POSITION.TOP | POSITION.LEFT;
@@ -53,17 +54,6 @@ export interface InputLabelProps {
   /** If true, hide the error Msg and change the style StyledLabelProps */
   hideError?: boolean;
 }
-
-const hideFromDisplay = `
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-`;
 
 const generateGrid = (
   labelPosition: InputLabelPosition,
