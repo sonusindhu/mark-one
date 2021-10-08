@@ -19,6 +19,7 @@ import { StyledTextInput } from './TextInput';
 import { Button } from '../Buttons';
 import { DropdownList, DropdownListItem } from '../Lists';
 import { fromTheme } from '../Theme';
+import { hideFromDisplay } from '../const';
 
 /**
 * Describes the shape of the data displayed in the combobox
@@ -125,10 +126,10 @@ const InputWrapper = styled.div`
 
 const ComboboxMenu = styled(DropdownList)<{isOpen: boolean}>`
   top: 1.8em;
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   width: 100%;
   max-height: 16em;
   overflow-y: scroll;
+  ${({ isOpen }) => (isOpen ? '' : hideFromDisplay)};
 `;
 
 /**
