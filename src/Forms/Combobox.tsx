@@ -292,6 +292,9 @@ Combobox.defaultProps = {
     .startsWith(
       inputValue.toLowerCase()
     )),
+  hideError: false,
+  isLabelVisible: true,
+  isRequired: false,
 };
 
 export default Combobox;

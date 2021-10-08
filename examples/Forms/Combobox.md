@@ -74,7 +74,6 @@ const [valueTwo, setValueTwo] = useState(null);
 <div>
   <Combobox
     labelPosition={POSITION.TOP}
-    isLabelVisible={true}
     options={options}
     label="Food"
     currentValue={valueTwo}
@@ -156,7 +155,6 @@ const [valueFour, setValueFour] = useState(null);
 
 <div>
   <Combobox
-    isLabelVisible={true}
     options={options}
     label="Food"
     isRequired
