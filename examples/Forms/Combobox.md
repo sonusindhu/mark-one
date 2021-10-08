@@ -170,3 +170,83 @@ const [valueFour, setValueFour] = useState(null);
   </p>
 </div>
 ```
+
+### Customizing the filter function
+
+By default, the Combobox will perform a case-insensitive match of the user's input against the beginning of the `"label"` value for each option in the list. This can be customized with the `filterFunction` prop, which accepts a function that takes an option object and search string, and returns true if that option should be shown in the dropdown menu.
+
+Note that this function will only affect the options _shown in the menu_, it has no direct impact on the value _selected by the user_.
+
+```tsx
+import { useState } from 'react';
+import { POSITION } from 'mark-one';
+
+const options = [
+  {
+    label: 'Apples',
+    value: 'a',
+  },
+  {
+    label: 'Granny Smith Apples',
+    value: 'g',
+  },
+  {
+    label: 'Honeycrisp Apples',
+    value: 'h',
+  },
+  {
+    label: 'Macoun Apples',
+    value: 'm',
+  },
+  {
+    label: 'Red Delicious Apples',
+    value: 'r',
+  },
+  {
+    label: 'Bananas',
+    value: 'b',
+  },
+  {
+    label: 'Cucumbers',
+    value: 'c',
+  },
+  {
+    label: 'Donuts',
+    value: 'd',
+  },
+];
+
+const [valueFive, setValueFive] = useState(null);
+const [valueSix, setValueSix] = useState(null);
+
+<div>
+  <div>
+    <Combobox
+      options={options}
+      label="Food (Default Search)"
+      currentValue={valueFive}
+      onOptionSelected={({ selectedItem }) => {setValueOne(selectedItem)}}
+    />
+
+    <p>
+      You chose: <strong>{valueFive ? valueFive.label : ''}</strong>
+    </p>
+  </div>
+  <div>
+    <Combobox
+      options={options}
+      label="Food (Custom Regex Search)"
+      currentValue={valueSix}
+      onOptionSelected={({ selectedItem }) => {setValueOne(selectedItem)}}
+      filterFunction={(option, inputValue) => {
+        const re = new RegExp(inputValue, 'i');
+        return re.test(option.label);
+      }}
+    />
+
+    <p>
+      You chose: <strong>{valueSix ? valueSix.label : ''}</strong>
+    </p>
+  </div>
+</div>
+```

@@ -42,7 +42,19 @@ interface ComboboxProps {
    * A validation message displayed under the input
    */
   errorMessage?: string;
+  /**
+   * The function used to filter the list of results based on the user input.
+   * By default, it will perform a case-insensitive match of the user input
+   * against the beginning of the option's "label" value
+   *
+   * The function passed here will be called inside of a `Array.filter()` call
+   * on the complete list of options, so it should return true if the option
+   * should be included as a valid result, and false if not
    */
+  filterFunction?: (
+    option: ComboboxOption,
+    inputValue: string,
+  ) => boolean;
   /**
    * Specifies the ref applied to the text input
    */
@@ -213,11 +225,7 @@ const Combobox: FunctionComponent<ComboboxProps> = (
     onSelectedItemChange: onOptionSelected,
     onInputValueChange: ({ inputValue }) => {
       setFilteredOptions(options.filter((option) => (
-        option.label
-          .toLowerCase()
-          .startsWith(
-            inputValue.toLowerCase()
-          )
+        filterFunction(option, inputValue)
       )));
     },
     selectedItem: currentValue,
@@ -276,6 +284,14 @@ const Combobox: FunctionComponent<ComboboxProps> = (
     </ComboboxWrapper>
   );
   /* eslint-enable react/jsx-props-no-spreading */
+};
+
+Combobox.defaultProps = {
+  filterFunction: (option, inputValue) => (option.label
+    .toLowerCase()
+    .startsWith(
+      inputValue.toLowerCase()
+    )),
 };
 
 export default Combobox;
