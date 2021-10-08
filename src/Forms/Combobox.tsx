@@ -24,7 +24,7 @@ import { hideFromDisplay } from '../const';
 /**
 * Describes the shape of the data displayed in the combobox
 */
-interface ComboboxOption {
+export interface ComboboxOption {
   /** The user-facing value, e.g. the name of an area or faculty member */
   label: string;
   /** The back-end data value, e.g. the UUID */
