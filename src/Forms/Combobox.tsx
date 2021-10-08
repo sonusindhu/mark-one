@@ -29,6 +29,13 @@ interface ComboboxOption {
   label: string;
   /** The back-end data value, e.g. the UUID */
   value: string;
+  /**
+   * Allow other values to be passed in, e.g. separate firstName and lastName
+   * fields. These fields won't affect the rendering of the list, but can be
+   * used in conjunction with a custom filterFunction to search against other
+   * fields
+   */
+  [key: string]: unknown;
 }
 
 interface ComboboxProps {
