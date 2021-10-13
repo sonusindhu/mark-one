@@ -4,7 +4,7 @@ import { fromTheme } from '../Theme';
 /**
 * Defines a primitive floating list component, which can be used in
 * implementing a dropdown by selectively rendering it, or wrapping it and
-* providing a conditionaly display value.
+* providing a conditionally display value.
 */
 
 const DropdownList = styled.ul`
