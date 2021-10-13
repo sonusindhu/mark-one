@@ -87,5 +87,24 @@ describe('Combobox', function () {
         strictEqual(menu.children.length, apples.length, 'Rendered entries that did not include "apples"');
       });
     });
+    context('When there is no match', function () {
+      it('Should show a "No Results" message', async function () {
+        const SelectionStub = stub();
+        const nonMatchingString = 'Zebra';
+        render(
+          <Combobox
+            options={options}
+            label="Food (Default Search)"
+            currentValue={null}
+            onOptionSelected={SelectionStub}
+          />
+        );
+        const input = screen.getByRole('textbox');
+        await userEvent.type(input, nonMatchingString);
+        const menu = screen.getByRole('listbox');
+        const message = within(menu).getAllByText(`No results for "${nonMatchingString}"`);
+        strictEqual(message.length, 1);
+      });
+    });
   });
 });

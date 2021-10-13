@@ -163,6 +163,15 @@ const ComboboxMenuItem = styled(DropdownListItem)<{highlight: boolean}>`
 `;
 
 /**
+ * Used to show that there are no matching results for a given search string.
+ */
+const ComboboxNoResultsItem = styled(DropdownListItem)`
+  font-style: italic;
+  text-align: right;
+  color: ${fromTheme('color', 'text', 'medium')};
+`;
+
+/**
  * The button used to open the menu; the additional border is applied to better
  * integrate with the look and feel of the text input
  */
@@ -238,9 +247,15 @@ const Combobox: FunctionComponent<ComboboxProps> = (
     selectedItem: currentValue,
   });
 
-  // Grabs a reference to the downshift-generated id value, which we can use in
-  // our error component
-  const { id: inputId } = getInputProps() as { id: string };
+  // Grabs a reference to the downshift-generated id value, which we need in
+  // the id of our error component, and the current value of the input, needed
+  // for the "no results" message.
+  // Note that we have to provide a type for the return object because the
+  // library types the return value as "any"
+  const {
+    id: inputId,
+    value: inputValue,
+  } = getInputProps() as { id: string, value: string };
 
   // This rule needs to be disabled to use the getterProps created by
   // Downshift's useCombobox hook
@@ -265,15 +280,21 @@ const Combobox: FunctionComponent<ComboboxProps> = (
           {...getInputProps({ ref: forwardRef })}
         />
         <ComboboxMenu isOpen={isOpen} {...getMenuProps({ refKey: 'ref' })}>
-          {filteredOptions.map((item, index) => (
-            <ComboboxMenuItem
-              key={item.value}
-              highlight={highlightedIndex === index}
-              {...getItemProps({ item, index })}
-            >
-              {item.label}
-            </ComboboxMenuItem>
-          ))}
+          {filteredOptions.length > 0
+            ? filteredOptions.map((item, index) => (
+              <ComboboxMenuItem
+                key={item.value}
+                highlight={highlightedIndex === index}
+                {...getItemProps({ item, index })}
+              >
+                {item.label}
+              </ComboboxMenuItem>
+            ))
+            : (
+              <ComboboxNoResultsItem>
+                {`No results for "${inputValue}"`}
+              </ComboboxNoResultsItem>
+            )}
         </ComboboxMenu>
         <ComboboxButton
           alt={`Show all options for ${label}`}
