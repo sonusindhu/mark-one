@@ -100,6 +100,11 @@ interface ComboboxProps {
    * The list of items that should be selectable in the combobox
    */
   options: ComboboxOption[];
+  /**
+   * Temporary text that will be displayed in the input before the user types
+   * anything
+   */
+  placeholder?: string;
 }
 
 /**
@@ -215,6 +220,7 @@ const Combobox: FunctionComponent<ComboboxProps> = (
     labelPosition,
     onOptionSelected,
     options,
+    placeholder,
   }
 ): ReactElement => {
   /**
@@ -278,6 +284,7 @@ const Combobox: FunctionComponent<ComboboxProps> = (
       <InputWrapper {...getComboboxProps()}>
         <StyledTextInput
           {...getInputProps({ ref: forwardRef })}
+          placeholder={placeholder}
         />
         <ComboboxMenu isOpen={isOpen} {...getMenuProps({ refKey: 'ref' })}>
           {filteredOptions.length > 0
@@ -323,6 +330,7 @@ Combobox.defaultProps = {
   hideError: false,
   isLabelVisible: true,
   isRequired: false,
+  placeholder: '',
 };
 
 export default Combobox;
