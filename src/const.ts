@@ -19,3 +19,22 @@ export enum ARIA_LIVE_VARIANT {
   ASSERTIVE = 'assertive',
   POLITE = 'polite',
 }
+
+/**
+ * A css snippet that can be applied conditionally within a styled component to
+ * hide elements from the visual output of the page, while still making them
+ * accesible to assistive technologies.
+ *
+ * It should be included at the end of a style block to prevent other styles
+ * overriding these values.
+ */
+export const hideFromDisplay = `
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+`;

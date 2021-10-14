@@ -4,6 +4,7 @@ import React, {
   FunctionComponent,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import { hideFromDisplay } from '../const';
 import { fromTheme } from '../Theme';
 
 export type InputLabelPosition = POSITION.TOP | POSITION.LEFT;
@@ -16,14 +17,12 @@ export enum POSITION {
 }
 
 export interface StyledInputLabelProps {
-  /** Specifies the label text */
-  label: string;
   /** If true, label will be visible */
   isLabelVisible?: boolean;
   /** Allows you to pass in a label position property from the POSITION enum */
   labelPosition?: InputLabelPosition;
   /** Specifies the id for the label */
-  htmlFor: string;
+  htmlFor?: string;
   /** If true, hide the error Msg and change the style StyledLabelProps */
   hideError?: boolean;
 }
@@ -56,17 +55,6 @@ export interface InputLabelProps {
   hideError?: boolean;
 }
 
-const hideFromDisplay = `
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-`;
-
 const generateGrid = (
   labelPosition: InputLabelPosition,
   isLabelVisible: boolean
@@ -84,7 +72,7 @@ const generateGrid = (
           ". e e"`;
 };
 
-const StyledInputLabel = styled.label<StyledInputLabelProps>`
+export const StyledInputLabel = styled.label<StyledInputLabelProps>`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: ${({ hideError }) => (
@@ -103,7 +91,7 @@ const StyledInputLabel = styled.label<StyledInputLabelProps>`
   )};
 `;
 
-const StyledInputLabelText = styled.span<StyledInputLabelTextProps>`
+export const StyledInputLabelText = styled.span<StyledInputLabelTextProps>`
   ${({ isLabelVisible }) => (isLabelVisible ? '' : hideFromDisplay)};
   grid-area: l;
   justify-self: ${({ labelPosition }) => (
@@ -140,7 +128,6 @@ FunctionComponent<InputLabelProps> = (props): ReactElement => {
       labelPosition={labelPosition}
       theme={theme}
       isLabelVisible={isLabelVisible}
-      label={label}
       hideError={hideError}
     >
       <StyledInputLabelText
