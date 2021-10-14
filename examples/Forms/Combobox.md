@@ -117,6 +117,7 @@ const [valueThree, setValueThree] = useState(null);
     hideError={true}
     options={options}
     label="Food"
+    placeholder="Choose a Food"
     currentValue={valueThree}
     onOptionSelected={({ selectedItem }) => {setValueThree(selectedItem)}}
   />
