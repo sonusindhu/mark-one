@@ -1,6 +1,6 @@
 {
   "name": "mark-one",
-  "version": "0.3.0",
+  "version": "0.3.4",
   "description": "A UI component library for building React Apps",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -97,6 +97,7 @@
     "@openfonts/roboto-mono_all": "^1.43.0",
     "aria-query": "^4.0.2",
     "canvas": "^2.8.0",
+    "downshift": "^6.1.7",
     "polished": "^3.4.1",
     "react-transition-group": "^4.3.0"
   },

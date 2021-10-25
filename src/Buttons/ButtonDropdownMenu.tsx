@@ -7,12 +7,12 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import styled from 'styled-components';
 import {
-  fromTheme, VARIANT,
+  VARIANT,
 } from '../Theme';
 import Button from './Button';
 import ButtonDropdownMenuItem from './ButtonDropdownMenuItem';
+import { DropdownList } from '../Lists';
 
 export interface ButtonDropdownProps {
   /** The id of the button */
@@ -26,22 +26,8 @@ export interface ButtonDropdownProps {
   /** Allows user to pass in a variant property from the VARIANT enum */
   variant: VARIANT;
   /** Our ButtonDropdownMenuItem functional component serves as the children for ButtonDropdownMenu  */
-  children: Array<ButtonDropdownMenuItem>
+  children: ButtonDropdownMenuItem | ButtonDropdownMenuItem[];
 }
-
-const StyledMenu = styled.div`
-  background: ${fromTheme('color', 'background', 'light')};
-  border: ${fromTheme('border', 'hairline')};
-  min-height: 3em;
-  min-width: 6em;
-  position: absolute;
-  transform: translate3d(0em, 0.1em, 0em);
-  z-index: 100;
-`;
-
-const StyledMenuList = styled.ul`
-  list-style-type: none;
-`;
 
 /**
  * A component that allows users to specify a Font Awesome icon to be displayed
@@ -90,11 +76,9 @@ const ButtonDropdownMenu: FunctionComponent<ButtonDropdownProps> = (props)
         { label }
       </Button>
       {isMenuVisible && (
-        <StyledMenu>
-          <StyledMenuList>
-            {children}
-          </StyledMenuList>
-        </StyledMenu>
+        <DropdownList>
+          {children}
+        </DropdownList>
       )}
     </>
   );

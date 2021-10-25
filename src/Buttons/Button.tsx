@@ -23,6 +23,8 @@ export interface ButtonProps extends MarkOneProps<HTMLButtonElement> {
   disabled?: boolean;
   /** Allows you to pass in a variant property from the VARIANT enum */
   variant: VARIANT;
+  /** Pass through the className to allow wrapping with styled() */
+  className?: string;
 }
 
 const StyledButton = styled.button<ButtonProps>`
@@ -57,6 +59,7 @@ const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
     variant,
     forwardRef,
     alt,
+    className,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -68,6 +71,7 @@ const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
       variant={variant}
       ref={forwardRef}
       aria-label={alt}
+      className={className}
     >
       { children }
     </StyledButton>
@@ -76,6 +80,7 @@ const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
 
 Button.defaultProps = {
   children: '',
+  className: null,
 };
 
 export default Button;
