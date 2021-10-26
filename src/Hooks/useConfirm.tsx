@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 /**
-* A default message shown in the confirm diralog when the user has unsaved
+* A default message shown in the confirm dialog when the user has unsaved
 * changes
 */
 const confirmMessage = "You have unsaved changes. Click 'OK' to disregard changes, or 'Cancel' to continue editing.";
@@ -12,14 +12,14 @@ const confirmMessage = "You have unsaved changes. Click 'OK' to disregard change
 export interface UseConfirmFunctions {
   /**
    * Function that should be called alongside any changes to the application
-   * data. After this has been called with true, the browser will be prompt the
-   * user to discard their changes when confirmDiscard is called, or when they try
-   * to navigate/refresh away. Calling with false will reset the change state,
-   * causing all checks to pass
+   * data. After this has been called with true, the browser will prompt the user
+   * to discard their changes when confirmDiscard is called, or when they try to
+   * navigate/refresh away. Calling with false will reset the change state,
+   * causing all checks to pass.
    */
   markAsChanged: (state: boolean) => void;
   /**
-   * if markAsChaged has been called already, show a prompt asking the user to
+   * if markAsChanged has been called already, show a prompt asking the user to
    * confirm that their changes should be discarded. This is for use when closing
    * non-navigation elements, e.g. modals.
    */
@@ -31,7 +31,7 @@ export interface UseConfirmFunctions {
 * prompt by returning a function to explicitly mark the local data as changed.
 * It adds an event listener that will prompt the user before navigating away,
 * and also provides a function to explicitly prompt the user for use in a
-* cancel button or other non-navgations exit.
+* cancel button or other non-navigation exit.
 */
 export const useConfirm = (): UseConfirmFunctions => {
   /**
