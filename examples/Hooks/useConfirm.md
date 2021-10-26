@@ -16,7 +16,7 @@ const [text, setText] = useState('');
 
   <div>
     <TextInput
-      isLabelVisible={true}
+      isLabelVisible
       label="Enter some text"
       value={text}
       onChange={({ target }) => {
