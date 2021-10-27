@@ -84,7 +84,6 @@ const GlobalMessage: FunctionComponent<GlobalMessageProps> = (props)
         theme={theme}
         role={role}
         aria-live={ariaLive}
-        onClick={onClick}
       >
         <TextContainer>{children}</TextContainer>
         <ButtonContainer>
