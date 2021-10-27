@@ -8,3 +8,4 @@ export { default as CheckLabel } from './CheckLabel';
 export { default as Fieldset } from './Fieldset';
 export { default as RadioButton } from './RadioButton';
 export { default as Form } from './Form';
+export { default as GlobalMessage } from './GlobalMessage';
