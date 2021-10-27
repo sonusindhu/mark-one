@@ -25,9 +25,9 @@ export interface GlobalMessageProps {
    * */
   role?: string;
   /** Specifies the alt text for screen readers */
-  alt: string;
+  buttonAlt: string;
   /** Specifies the text on the button */
-  label: string;
+  buttonLabel: string;
   /** The value of the aria-live property */
   ariaLive?: ARIA_LIVE_VARIANT;
   /** Specifies the ref of the element */
@@ -70,8 +70,8 @@ const GlobalMessage: FunctionComponent<GlobalMessageProps> = (props)
     variant,
     role,
     ariaLive,
-    label,
-    alt,
+    buttonLabel,
+    buttonAlt,
     forwardRef,
     onClick,
   } = props;
@@ -88,12 +88,12 @@ const GlobalMessage: FunctionComponent<GlobalMessageProps> = (props)
         <TextContainer>{children}</TextContainer>
         <ButtonContainer>
           <Button
-            alt={alt}
+            alt={buttonAlt}
             onClick={onClick}
             variant={VARIANT.BASE}
             forwardRef={forwardRef}
           >
-            { label }
+            { buttonLabel }
           </Button>
         </ButtonContainer>
       </StyledGlobalMessage>

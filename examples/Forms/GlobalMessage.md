@@ -7,8 +7,8 @@ import { VARIANT } from 'mark-one';
   onClick={function() {
     alert('You clicked the "Close" button.')
   }}
-  alt='Close Button'
-  label='Close'
+  buttonAlt='Close Button'
+  buttonLabel='Close'
 >
   Error: Please try again.
 </GlobalMessage>
@@ -23,8 +23,8 @@ import { VARIANT } from 'mark-one';
   onClick={function() {
     alert('You clicked the "Close" button.')
   }}
-  alt='Close Button'
-  label='Close'
+  buttonAlt='Close Button'
+  buttonLabel='Close'
 >
   Success: The information has been updated.
 </GlobalMessage>
@@ -39,8 +39,8 @@ import { VARIANT } from 'mark-one';
   onClick={function() {
     alert('You clicked the "Close" button.')
   }}
-  alt='Close Button'
-  label='Close'
+  buttonAlt='Close Button'
+  buttonLabel='Close'
 >
   Info: Maintenance is scheduled to occur this evening at 7:00PM EST.
 </GlobalMessage>
