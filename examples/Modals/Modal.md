@@ -107,3 +107,88 @@ const switchModal = (isOpen) => {
   </Modal>
 </>
 ```
+
+### Prompt before closing
+
+The `useConfirm` hook can be used to track changes to data and prompt the user to confirm that they want to discard those changes before closing the modal.
+
+```tsx
+import { useState, useRef } from 'react';
+import {
+  Button,
+  ModalBody,
+  ModalHeader,
+  ModalFooter,
+  TextInput,
+  useConfirm,
+} from 'mark-one';
+
+const inputRef = useRef(null);
+const [modalVisible, setModalVisible] = useState(false);
+const [formValue, setFormValue] = useState('');
+const { markAsChanged, confirmDiscard } = useConfirm();
+
+const switchModal = (isOpen) => {
+  setModalVisible(isOpen);
+  if (isOpen) {
+    setTimeout(() => { inputRef.current.focus() }, 500)
+  } else {
+    setFormValue('');
+  }
+}
+
+<>
+  <Button
+    id="testButton"
+    onClick={() => { switchModal(true) }}
+  >
+    Open Modal
+  </Button>
+  <Modal
+    ariaLabelledBy="testButton"
+    closeHandler={() => { 
+      if (confirmDiscard()) {
+        switchModal(false)
+      }
+    }}
+    isVisible={modalVisible}
+  >
+    <ModalHeader
+      closeButtonHandler={() => { 
+        if (confirmDiscard()) {
+          switchModal(false)
+        }
+    }}
+    >
+      Modal Example 3
+    </ModalHeader>
+    <ModalBody>
+      <div>
+        After entering text here, you'll be prompted to confirm before closing the modal
+      </div>
+      <div>
+        <TextInput
+          forwardRef={inputRef}
+          label="Enter text:"
+          value={formValue}
+          onChange={(evt) => {
+            markAsChanged(true);
+            setFormValue(evt.target.value);
+          }}
+        />
+      </div>
+    </ModalBody>
+    <ModalFooter>
+      <Button 
+        onClick={() => { 
+          if(confirmDiscard()) {
+            switchModal(false)
+          }
+        }}
+      >
+        Close Modal
+      </Button>
+    </ModalFooter>
+  </Modal>
+</>
+```
