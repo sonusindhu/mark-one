@@ -1,6 +1,6 @@
 {
   "name": "mark-one",
-  "version": "0.3.4",
+  "version": "0.4.1",
   "description": "A UI component library for building React Apps",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -95,6 +95,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@openfonts/open-sans_all": "^1.43.0",
     "@openfonts/roboto-mono_all": "^1.43.0",
+    "@testing-library/react-hooks": "^7.0.2",
     "aria-query": "^4.0.2",
     "canvas": "^2.8.0",
     "downshift": "^6.1.7",
