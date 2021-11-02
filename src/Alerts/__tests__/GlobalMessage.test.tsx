@@ -10,8 +10,8 @@ import {
   spy,
   SinonSpy,
 } from 'sinon';
-import { GlobalMessage } from 'Forms';
 import { VARIANT } from 'Theme';
+import { GlobalMessage } from 'Alerts';
 
 describe('Global Message', function () {
   let getByLabelText: BoundFunction<GetByText>;

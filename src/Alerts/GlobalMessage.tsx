@@ -1,4 +1,3 @@
-import Button from 'Buttons/Button';
 import React, {
   FunctionComponent,
   MouseEventHandler,
@@ -8,6 +7,7 @@ import React, {
   useContext,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Button from '../Buttons/Button';
 import { ARIA_LIVE_VARIANT } from '../const';
 import { fromTheme, VARIANT } from '../Theme';
 
