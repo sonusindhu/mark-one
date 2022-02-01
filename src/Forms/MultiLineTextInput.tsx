@@ -32,7 +32,7 @@ export interface MultiLineTextInputProps {
   /** Specify the position of the input label */
   labelPosition?: InputLabelPosition;
   /** Specifies the ref of the text input */
-  forwardRef?: Ref<HTMLInputElement>;
+  forwardRef?: Ref<HTMLTextAreaElement>;
 }
 
 export const StyledTextArea = styled.textarea<MultiLineTextInputProps>`

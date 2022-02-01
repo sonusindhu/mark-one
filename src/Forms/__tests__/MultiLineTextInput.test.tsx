@@ -205,7 +205,7 @@ describe('Multi-Line Text Input', function () {
     it('shifts the focus to another element', function () {
       inputId = 'focused-multi-line-text-box';
       const RefExample = () => {
-        const ref = useRef<HTMLInputElement>(null);
+        const ref = useRef<HTMLTextAreaElement>(null);
         const onButtonClick = () => {
           if (ref.current) {
             ref.current.focus();
