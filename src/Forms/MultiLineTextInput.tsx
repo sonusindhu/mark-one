@@ -3,7 +3,6 @@ import React, {
   FunctionComponent,
   ChangeEventHandler,
   useContext,
-  MouseEventHandler,
   Ref,
 } from 'react';
 import styled, { ThemeContext } from 'styled-components';
@@ -30,8 +29,6 @@ export interface MultiLineTextInputProps {
   isLabelVisible?: boolean;
   /** Disables the field entirely and prevents the onChange handler from being called */
   isDisabled?: boolean;
-  /** Optional event handler that fires if the element is clicked */
-  onClick?: MouseEventHandler;
   /** Specify the position of the input label */
   labelPosition?: InputLabelPosition;
   /** Specifies the ref of the text input */
