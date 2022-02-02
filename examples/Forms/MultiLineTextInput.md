@@ -64,7 +64,6 @@ const [value, setValue] = useState('');
   value={value}
   id="course-notes"
   label="Course notes"
-  isLabelVisible={false}
   isRequired
   onChange={(event) => {
     setValue(event.target.value);
