@@ -112,6 +112,7 @@ const onButtonClick = () => {
   </Button>
   <MultiLineTextInput
     id="text input"
+    label="Course Notes"
     onChange={() => {}}
     forwardRef={ref}
   />

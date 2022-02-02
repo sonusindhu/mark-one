@@ -26,6 +26,7 @@ describe('Multi-Line Text Input', function () {
       multiLineTextInput = render(
         <MultiLineTextInput
           id={inputId}
+          label="Course Notes"
           onChange={changeSpy}
         />
       );
@@ -40,6 +41,7 @@ describe('Multi-Line Text Input', function () {
       return render(
         <MultiLineTextInput
           id={inputId}
+          label="Course Notes"
           onChange={() => {}}
           value={testString}
         />
@@ -70,6 +72,7 @@ describe('Multi-Line Text Input', function () {
       multiLineTextInput = render(
         <MultiLineTextInput
           id={inputId}
+          label="Course Notes"
           onChange={changeSpy}
           value={testString}
           errorMessage="This is an error message"
@@ -99,6 +102,7 @@ describe('Multi-Line Text Input', function () {
       required = render(
         <MultiLineTextInput
           id={inputId}
+          label="Course Notes"
           onChange={changeSpy}
           isRequired
         />
@@ -109,6 +113,7 @@ describe('Multi-Line Text Input', function () {
       const component = render(
         <MultiLineTextInput
           id={inputId}
+          label="Course Notes"
           onChange={changeSpy}
           value="some text"
         />
@@ -166,6 +171,7 @@ describe('Multi-Line Text Input', function () {
       multiLineTextInput = render(
         <MultiLineTextInput
           id={inputId}
+          label="Course Notes"
           onChange={() => {}}
           value="disabled element"
           isDisabled
@@ -197,6 +203,7 @@ describe('Multi-Line Text Input', function () {
             </Button>
             <MultiLineTextInput
               id={inputId}
+              label="Course Notes"
               onChange={() => {}}
               forwardRef={ref}
             />
