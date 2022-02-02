@@ -9,6 +9,7 @@ const [value, setValue] = useState('CS50 is an on-campus and online introductory
 <MultiLineTextInput
   value={value}
   id="course-notes"
+  name="course-notes"
   label="Course notes"
   onChange={(event) => {
     setValue(event.target.value);
@@ -26,6 +27,7 @@ const [value, setValue] = useState('');
 <MultiLineTextInput
   value={value}
   id="course-notes"
+  name="course-notes"
   label="Course notes"
   errorMessage="Please provide a value for this field"
   onChange={(event) => {
@@ -44,6 +46,7 @@ const [value, setValue] = useState('');
 <MultiLineTextInput
   value={value}
   id="course-notes"
+  name="course-notes"
   label="Course notes"
   isLabelVisible={false}
   onChange={(event) => {
@@ -63,6 +66,7 @@ const [value, setValue] = useState('');
 <MultiLineTextInput
   value={value}
   id="course-notes"
+  name="course-notes"
   label="Course notes"
   isRequired
   onChange={(event) => {
@@ -81,6 +85,7 @@ const [value, setValue] = useState('Some text that you can\'t change');
 <MultiLineTextInput
   value={value}
   id="course-notes"
+  name="course-notes"
   label="Course notes"
   isDisabled
   onChange={(event) => {
@@ -112,6 +117,7 @@ const onButtonClick = () => {
   </Button>
   <MultiLineTextInput
     id="text input"
+    name="course-notes"
     label="Course Notes"
     onChange={() => {}}
     forwardRef={ref}

@@ -26,6 +26,7 @@ describe('Multi-Line Text Input', function () {
       multiLineTextInput = render(
         <MultiLineTextInput
           id={inputId}
+          name="course-notes"
           label="Course Notes"
           onChange={changeSpy}
         />
@@ -41,6 +42,7 @@ describe('Multi-Line Text Input', function () {
       return render(
         <MultiLineTextInput
           id={inputId}
+          name="course-notes"
           label="Course Notes"
           onChange={() => {}}
           value={testString}
@@ -72,6 +74,7 @@ describe('Multi-Line Text Input', function () {
       multiLineTextInput = render(
         <MultiLineTextInput
           id={inputId}
+          name="course-notes"
           label="Course Notes"
           onChange={changeSpy}
           value={testString}
@@ -102,6 +105,7 @@ describe('Multi-Line Text Input', function () {
       required = render(
         <MultiLineTextInput
           id={inputId}
+          name="course-notes"
           label="Course Notes"
           onChange={changeSpy}
           isRequired
@@ -113,6 +117,7 @@ describe('Multi-Line Text Input', function () {
       const component = render(
         <MultiLineTextInput
           id={inputId}
+          name="course-notes"
           label="Course Notes"
           onChange={changeSpy}
           value="some text"
@@ -144,6 +149,7 @@ describe('Multi-Line Text Input', function () {
     it('contains the supplied label text', function () {
       return render(
         <MultiLineTextInput
+          name="course-notes"
           id={inputId}
           onChange={changeSpy}
           label="label text"
@@ -158,6 +164,7 @@ describe('Multi-Line Text Input', function () {
       const { getByLabelText } = render(
         <MultiLineTextInput
           id={inputId}
+          name="course-notes"
           onChange={changeSpy}
           label="label text"
           isDisabled
@@ -171,6 +178,7 @@ describe('Multi-Line Text Input', function () {
       multiLineTextInput = render(
         <MultiLineTextInput
           id={inputId}
+          name="course-notes"
           label="Course Notes"
           onChange={() => {}}
           value="disabled element"
@@ -203,6 +211,7 @@ describe('Multi-Line Text Input', function () {
             </Button>
             <MultiLineTextInput
               id={inputId}
+              name="course-notes"
               label="Course Notes"
               onChange={() => {}}
               forwardRef={ref}
