@@ -23,7 +23,7 @@ export interface MultiLineTextInputProps {
   isRequired?: boolean;
   /** The label to display beside this multi-line input field(if any) */
   label?: string;
-  /** Wether to show or hide the label */
+  /** Whether to show or hide the label */
   isLabelVisible?: boolean;
   /** Disables the field entirely and prevents the onChange handler from being called */
   isDisabled?: boolean;
