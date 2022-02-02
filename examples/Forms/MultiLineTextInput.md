@@ -34,26 +34,6 @@ const [value, setValue] = useState('');
 />
 ```
 
-Multi-line text box with a hidden error
-```jsx
-import { MultiLineTextInput } from 'mark-one';
-import { useState } from 'react';
-
-const [value, setValue] = useState('');
-
-<MultiLineTextInput
-  value={value}
-  id="course-notes"
-  label="Course notes"
-  errorMessage="Please provide a value for this field"
-  hideError
-  onChange={(event) => {
-    setValue(event.target.value);
-  }}
-/>
-```
-
-
 Multi-line text box with a hidden label
 ```jsx
 import { MultiLineTextInput } from 'mark-one';

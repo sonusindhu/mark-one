@@ -91,31 +91,6 @@ describe('Multi-Line Text Input', function () {
       return multiLineTextInput.getByText('error message', { exact: false });
     });
   });
-  describe('hideError', function () {
-    it('supresses the display of the error message', function () {
-      inputId = 'multi-line-text-input-with-hidden-error-message';
-      changeSpy = spy();
-      const { queryByText } = render(
-        <MultiLineTextInput
-          id={inputId}
-          onChange={changeSpy}
-          errorMessage="This is an error message"
-          hideError
-        />
-      );
-      strictEqual(queryByText('error message', { exact: false }), null);
-    });
-    it('defaults to false', function () {
-      inputId = 'multi-line-text-input-without-hidden-error-message';
-      return render(
-        <MultiLineTextInput
-          id={inputId}
-          onChange={changeSpy}
-          errorMessage="This is an error message"
-        />
-      ).getByText('error message', { exact: false });
-    });
-  });
   describe('isRequired', function () {
     let required: RenderResult;
     beforeEach(function () {

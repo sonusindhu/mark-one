@@ -19,8 +19,6 @@ export interface MultiLineTextInputProps {
   value?: string;
   /** Function to call on change event */
   onChange: ChangeEventHandler;
-  /** Used to control the suppression of the error message value */
-  hideError?: boolean;
   /** Marks the field as required */
   isRequired?: boolean;
   /** The label to display beside this multi-line input field(if any) */
@@ -54,7 +52,6 @@ ReactElement => {
     value,
     onChange,
     errorMessage,
-    hideError,
     isRequired,
     label,
     isLabelVisible,
@@ -68,7 +65,6 @@ ReactElement => {
       htmlFor={id}
       label={label}
       isRequired={isRequired}
-      hideError={hideError}
       isLabelVisible={isLabelVisible}
       labelPosition={labelPosition}
     >
@@ -85,8 +81,7 @@ ReactElement => {
         aria-disabled={isDisabled}
         ref={forwardRef}
       />
-      {errorMessage && !hideError
-      && (
+      {errorMessage && (
         <ValidationErrorMessage id={`${id}-error`}>
           {errorMessage}
         </ValidationErrorMessage>
@@ -98,7 +93,6 @@ ReactElement => {
 MultiLineTextInput.defaultProps = {
   value: '',
   errorMessage: '',
-  hideError: false,
   isRequired: false,
   label: '',
   isLabelVisible: true,
