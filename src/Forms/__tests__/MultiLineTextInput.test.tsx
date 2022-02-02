@@ -26,6 +26,7 @@ describe('Multi-Line Text Input', function () {
       multiLineTextInput = render(
         <MultiLineTextInput
           id={inputId}
+          placeholder="Type your text here"
           name="course-notes"
           label="Course Notes"
           onChange={changeSpy}
@@ -42,6 +43,7 @@ describe('Multi-Line Text Input', function () {
       return render(
         <MultiLineTextInput
           id={inputId}
+          placeholder="Type your text here"
           name="course-notes"
           label="Course Notes"
           onChange={() => {}}
@@ -74,6 +76,7 @@ describe('Multi-Line Text Input', function () {
       multiLineTextInput = render(
         <MultiLineTextInput
           id={inputId}
+          placeholder="Type your text here"
           name="course-notes"
           label="Course Notes"
           onChange={changeSpy}
@@ -105,6 +108,7 @@ describe('Multi-Line Text Input', function () {
       required = render(
         <MultiLineTextInput
           id={inputId}
+          placeholder="Type your text here"
           name="course-notes"
           label="Course Notes"
           onChange={changeSpy}
@@ -117,6 +121,7 @@ describe('Multi-Line Text Input', function () {
       const component = render(
         <MultiLineTextInput
           id={inputId}
+          placeholder="Type your text here"
           name="course-notes"
           label="Course Notes"
           onChange={changeSpy}
@@ -150,6 +155,7 @@ describe('Multi-Line Text Input', function () {
       return render(
         <MultiLineTextInput
           name="course-notes"
+          placeholder="Type your text here"
           id={inputId}
           onChange={changeSpy}
           label="label text"
@@ -164,6 +170,7 @@ describe('Multi-Line Text Input', function () {
       const { getByLabelText } = render(
         <MultiLineTextInput
           id={inputId}
+          placeholder="Type your text here"
           name="course-notes"
           onChange={changeSpy}
           label="label text"
@@ -178,6 +185,7 @@ describe('Multi-Line Text Input', function () {
       multiLineTextInput = render(
         <MultiLineTextInput
           id={inputId}
+          placeholder="Type your text here"
           name="course-notes"
           label="Course Notes"
           onChange={() => {}}
@@ -211,6 +219,7 @@ describe('Multi-Line Text Input', function () {
             </Button>
             <MultiLineTextInput
               id={inputId}
+              placeholder="Type your text here"
               name="course-notes"
               label="Course Notes"
               onChange={() => {}}

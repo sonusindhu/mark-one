@@ -29,6 +29,7 @@ const [value, setValue] = useState('');
   id="course-notes"
   name="course-notes"
   label="Course notes"
+  placeholder="Your text here"
   errorMessage="Please provide a value for this field"
   onChange={(event) => {
     setValue(event.target.value);
@@ -48,6 +49,7 @@ const [value, setValue] = useState('');
   id="course-notes"
   name="course-notes"
   label="Course notes"
+  placeholder="Your text here"
   isLabelVisible={false}
   onChange={(event) => {
     setValue(event.target.value);
@@ -68,6 +70,7 @@ const [value, setValue] = useState('');
   id="course-notes"
   name="course-notes"
   label="Course notes"
+  placeholder="Your text here"
   isRequired
   onChange={(event) => {
     setValue(event.target.value);
@@ -87,6 +90,7 @@ const [value, setValue] = useState('Some text that you can\'t change');
   id="course-notes"
   name="course-notes"
   label="Course notes"
+  placeholder="Your text here"
   isDisabled
   onChange={(event) => {
     setValue(event.target.value);
@@ -119,8 +123,27 @@ const onButtonClick = () => {
     id="text input"
     name="course-notes"
     label="Course Notes"
+    placeholder="Your text here"
     onChange={() => {}}
     forwardRef={ref}
   />
 </>
+```
+
+
+
+Multi-line text box with a `placeholder` set
+```jsx
+import { MultiLineTextInput, Button, VARIANT } from 'mark-one';
+import { useState, useRef } from 'react';
+
+const [value, setValue] = useState('');
+  <MultiLineTextInput
+    id="text input"
+    name="course-notes"
+    label="Course Notes"
+    placeholder="Your text here"
+    onChange={() => {}}
+    forwardRef={ref}
+  />
 ```

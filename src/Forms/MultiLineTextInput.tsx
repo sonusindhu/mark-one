@@ -33,6 +33,8 @@ export interface MultiLineTextInputProps {
   forwardRef?: Ref<HTMLTextAreaElement>;
   /** The value to set for the `name` prop of the underlying `textarea` element */
   name: string;
+  /** Provides a placeholder value for the `textarea` */
+  placeholder: string;
 }
 
 export const StyledTextArea = styled.textarea<MultiLineTextInputProps>`
@@ -61,6 +63,7 @@ ReactElement => {
     labelPosition,
     forwardRef,
     name,
+    placeholder,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -84,6 +87,7 @@ ReactElement => {
         aria-disabled={isDisabled}
         ref={forwardRef}
         name={name}
+        placeholder={placeholder}
       />
       {errorMessage && (
         <ValidationErrorMessage id={`${id}-error`}>
