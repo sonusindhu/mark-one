@@ -87,6 +87,7 @@ ReactElement => {
         aria-disabled={isDisabled}
         ref={forwardRef}
         name={name}
+        label={label}
         placeholder={placeholder}
       />
       {errorMessage && (
