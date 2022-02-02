@@ -52,25 +52,6 @@ const [value, setValue] = useState('');
 />
 ```
 
-Multi-line text box with a hidden label
-```jsx
-import { MultiLineTextInput } from 'mark-one';
-import { useState } from 'react';
-
-const [value, setValue] = useState('');
-
-
-<MultiLineTextInput
-  value={value}
-  id="course-notes"
-  label="Course notes"
-  isLabelVisible={false}
-  onChange={(event) => {
-    setValue(event.target.value);
-  }}
-/>
-```
-
 Required multi-line text box
 ```jsx
 import { MultiLineTextInput } from 'mark-one';
