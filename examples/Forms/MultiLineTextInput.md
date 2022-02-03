@@ -144,6 +144,5 @@ const [value, setValue] = useState('');
     label="Course Notes"
     placeholder="Your text here"
     onChange={() => {}}
-    forwardRef={ref}
   />
 ```
