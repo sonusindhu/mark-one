@@ -27,6 +27,7 @@ describe('Multi-Line Text Input', function () {
         <MultiLineTextInput
           id={inputId}
           placeholder="Type your text here"
+          value=""
           name="course-notes"
           label="Course Notes"
           onChange={changeSpy}
@@ -109,6 +110,7 @@ describe('Multi-Line Text Input', function () {
         <MultiLineTextInput
           id={inputId}
           placeholder="Type your text here"
+          value=""
           name="course-notes"
           label="Course Notes"
           onChange={changeSpy}
@@ -156,6 +158,7 @@ describe('Multi-Line Text Input', function () {
         <MultiLineTextInput
           name="course-notes"
           placeholder="Type your text here"
+          value=""
           id={inputId}
           onChange={changeSpy}
           label="label text"
@@ -171,6 +174,7 @@ describe('Multi-Line Text Input', function () {
         <MultiLineTextInput
           id={inputId}
           placeholder="Type your text here"
+          value=""
           name="course-notes"
           onChange={changeSpy}
           label="label text"
@@ -220,6 +224,7 @@ describe('Multi-Line Text Input', function () {
             <MultiLineTextInput
               id={inputId}
               placeholder="Type your text here"
+              value=""
               name="course-notes"
               label="Course Notes"
               onChange={() => {}}

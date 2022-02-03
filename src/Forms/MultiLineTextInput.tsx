@@ -16,7 +16,7 @@ export interface MultiLineTextInputProps {
   /** The body of the error message, if applicable */
   errorMessage?: string;
   /** The value of the multi-line text area */
-  value?: string;
+  value: string;
   /** Function to call on change event */
   onChange: ChangeEventHandler;
   /** Marks the field as required */

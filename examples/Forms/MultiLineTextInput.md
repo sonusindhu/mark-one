@@ -11,6 +11,7 @@ const [value, setValue] = useState('CS50 is an on-campus and online introductory
   id="course-notes"
   name="course-notes"
   label="Course notes"
+  value={value}
   onChange={(event) => {
     setValue(event.target.value);
   }}
@@ -31,6 +32,7 @@ const [value, setValue] = useState('');
   label="Course notes"
   placeholder="Your text here"
   errorMessage="Please provide a value for this field"
+  value={value}
   onChange={(event) => {
     setValue(event.target.value);
   }}
@@ -50,6 +52,7 @@ const [value, setValue] = useState('');
   name="course-notes"
   label="Course notes"
   placeholder="Your text here"
+  value={value}
   isLabelVisible={false}
   onChange={(event) => {
     setValue(event.target.value);
@@ -71,6 +74,7 @@ const [value, setValue] = useState('');
   name="course-notes"
   label="Course notes"
   placeholder="Your text here"
+  value={value}
   isRequired
   onChange={(event) => {
     setValue(event.target.value);
@@ -91,6 +95,7 @@ const [value, setValue] = useState('Some text that you can\'t change');
   name="course-notes"
   label="Course notes"
   placeholder="Your text here"
+  value={value}
   isDisabled
   onChange={(event) => {
     setValue(event.target.value);
@@ -124,6 +129,7 @@ const onButtonClick = () => {
     name="course-notes"
     label="Course Notes"
     placeholder="Your text here"
+    value={value}
     onChange={(event) => {
       setValue(event.target.value);
     }}
@@ -145,6 +151,7 @@ const [value, setValue] = useState('');
   name="course-notes"
   label="Course Notes"
   placeholder="Your text here"
+  value={value}
   onChange={(event) => {
     setValue(event.target.value);
   }}
