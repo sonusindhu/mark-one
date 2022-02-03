@@ -124,7 +124,9 @@ const onButtonClick = () => {
     name="course-notes"
     label="Course Notes"
     placeholder="Your text here"
-    onChange={() => {}}
+    onChange={(event) => {
+      setValue(event.target.value);
+    }}
     forwardRef={ref}
   />
 </>
@@ -138,11 +140,13 @@ import { MultiLineTextInput, Button, VARIANT } from 'mark-one';
 import { useState, useRef } from 'react';
 
 const [value, setValue] = useState('');
-  <MultiLineTextInput
-    id="text input"
-    name="course-notes"
-    label="Course Notes"
-    placeholder="Your text here"
-    onChange={() => {}}
-  />
+<MultiLineTextInput
+  id="text input"
+  name="course-notes"
+  label="Course Notes"
+  placeholder="Your text here"
+  onChange={(event) => {
+    setValue(event.target.value);
+  }}
+/>
 ```
