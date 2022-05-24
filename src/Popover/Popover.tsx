@@ -86,11 +86,9 @@ const PopoverWrapper = styled.div<PopoverWrapperProps>`
     background-color: ${fromTheme('color', 'background', 'subtle')};
     padding: ${fromTheme('ws', 'xsmall')};
     border-bottom: ${fromTheme('border', 'hairline')};
-    > strong {
-      font-family: ${fromTheme('font', 'bold', 'family')};
-      font-size: ${fromTheme('font', 'bold', 'size')};
-      font-weight: ${fromTheme('font', 'bold', 'weight')};
-    }
+    font-family: ${fromTheme('font', 'bold', 'family')};
+    font-size: ${fromTheme('font', 'bold', 'size')};
+    font-weight: ${fromTheme('font', 'bold', 'weight')};
   }
   > div.mark-one__popover-body {
     background-color: ${fromTheme('color', 'background', 'light')};
@@ -128,7 +126,7 @@ const Popover: FunctionComponent<PopoverProps> = ({
           {title
             ? (
               <div className="mark-one__popover-heading">
-                <strong>{title}</strong>
+                {title}
               </div>
             )
             : null}
