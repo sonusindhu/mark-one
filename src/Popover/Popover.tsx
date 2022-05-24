@@ -82,22 +82,22 @@ const PopoverWrapper = styled.div<PopoverWrapperProps>`
   color: ${fromTheme('color', 'text', 'dark')};
   max-width: 10em;
   z-index: 10;
-  > strong {
+  > div.mark-one__popover-heading {
     background-color: ${fromTheme('color', 'background', 'subtle')};
-    display: block;
-    font-family: ${fromTheme('font', 'bold', 'family')};
-    font-size: ${fromTheme('font', 'bold', 'size')};
-    font-weight: ${fromTheme('font', 'bold', 'weight')};
-    border-bottom: ${fromTheme('border', 'hairline')};
     padding: ${fromTheme('ws', 'xsmall')};
+    border-bottom: ${fromTheme('border', 'hairline')};
+    > strong {
+      font-family: ${fromTheme('font', 'bold', 'family')};
+      font-size: ${fromTheme('font', 'bold', 'size')};
+      font-weight: ${fromTheme('font', 'bold', 'weight')};
+    }
   }
-  > p {
+  > div.mark-one__popover-body {
     background-color: ${fromTheme('color', 'background', 'light')};
     font-family: ${fromTheme('font', 'note', 'family')};
     font-weight: ${fromTheme('font', 'note', 'weight')};
     font-size: ${fromTheme('font', 'note', 'size')};
     padding: ${fromTheme('ws', 'xsmall')};
-    text-align: left;
   }
 `;
 
@@ -125,8 +125,16 @@ const Popover: FunctionComponent<PopoverProps> = ({
           left={xOffset}
           bottom={yOffset}
         >
-          {title ? <strong>{title}</strong> : null}
-          <p ref={forwardRef}>{children}</p>
+          {title
+            ? (
+              <div className="mark-one__popover-heading">
+                <strong>{title}</strong>
+              </div>
+            )
+            : null}
+          <div className="mark-one__popover-body" ref={forwardRef}>
+            {children}
+          </div>
         </PopoverWrapper>
       )
       : null}
