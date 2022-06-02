@@ -81,6 +81,7 @@ const PopoverWrapper = styled.div<PopoverWrapperProps>`
   bottom: ${({ bottom }) => bottom};
   color: ${fromTheme('color', 'text', 'dark')};
   max-width: 10em;
+  width: max-content;
   z-index: 10;
   > div.mark-one__popover-heading {
     background-color: ${fromTheme('color', 'background', 'subtle')};
