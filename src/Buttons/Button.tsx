@@ -25,6 +25,8 @@ export interface ButtonProps extends MarkOneProps<HTMLButtonElement> {
   variant: VARIANT;
   /** Pass through the className to allow wrapping with styled() */
   className?: string;
+  /** Pass through the form to allow the button to bind with that form */
+  form?: string;
 }
 
 const StyledButton = styled.button<ButtonProps>`
@@ -60,6 +62,7 @@ const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
     forwardRef,
     alt,
     className,
+    form,
   } = props;
   const theme = useContext(ThemeContext);
   return (
@@ -72,6 +75,7 @@ const Button: FunctionComponent<ButtonProps> = (props): ReactElement => {
       ref={forwardRef}
       aria-label={alt}
       className={className}
+      form={form}
     >
       { children }
     </StyledButton>
