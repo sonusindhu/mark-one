@@ -72,6 +72,48 @@ import { VARIANT } from 'mark-one';
 </Button>
 ```
 
+
+The following is an example of a `form` prop for `button`
+
+```jsx
+import { useState } from 'react';
+
+const SimpleForm = (props) => {
+  
+  const [state, setState] = React.useState({ name: '' });
+  
+  const handleChange = ({ target }) => {
+    setState({ name: target.value });
+  };
+
+  const resetForm = () => {
+    setState({ name: '' });
+    document.getElementById("name").focus();
+  };
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert('Your name is: ' + state.name);
+    resetForm();
+  };
+  
+  return(
+    <div>
+      <form id="simpleForm" onSubmit={handleSubmit}>
+        <label>
+          Name: <input type="text" id="name" value={state.name} onChange={handleChange} />
+        </label>
+      </form>
+
+      <button form="simpleForm">Submit</button>
+
+    </div>
+  );
+}
+
+<SimpleForm />
+```
+
 ### With the `forwardRef`
 Ref example: The optional `forwardRef` property is set. When the primary themed button is clicked, the focus shifts to the borderless button.
 ```jsx
