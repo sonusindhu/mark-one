@@ -105,7 +105,7 @@ const SimpleForm = (props) => {
         </label>
       </form>
 
-      <button form="simpleForm">Submit</button>
+      <Button form="simpleForm">Submit</Button>
 
     </div>
   );
