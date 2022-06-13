@@ -77,35 +77,37 @@ The following is an example of a `form` prop for `button`
 
 ```jsx
 import { useState } from 'react';
+import { Button, TextInput, VARIANT } from 'mark-one';
 
-const SimpleForm = (props) => {
+const SimpleForm = () => {
   
-  const [state, setState] = React.useState({ name: '' });
+  const [state, setState] = useState({ name: '' });
   
   const handleChange = ({ target }) => {
     setState({ name: target.value });
-  };
-
-  const resetForm = () => {
-    setState({ name: '' });
-    document.getElementById("name").focus();
   };
   
   const handleSubmit = (event) => {
     event.preventDefault();
     alert('Your name is: ' + state.name);
-    resetForm();
   };
   
   return(
     <div>
-      <form id="simpleForm" onSubmit={handleSubmit}>
-        <label>
-          Name: <input type="text" id="name" value={state.name} onChange={handleChange} />
-        </label>
+      <form id="simpleForm">
+        <TextInput
+           id="name"
+           name="name"
+           label="Name:"
+           onChange={handleChange}
+           value={state.name}
+         />
       </form>
 
-      <Button form="simpleForm">Submit</Button>
+      <Button 
+        variant={VARIANT.DEFAULT} 
+        onClick={handleSubmit}
+        form="simpleForm">Submit</Button>
 
     </div>
   );
